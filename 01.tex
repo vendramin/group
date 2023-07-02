@@ -120,7 +120,214 @@ the maps $L_g\colon G\to G$, $x\mapsto gx$, and
 $R_g\colon G\to G$, $x\mapsto xg$, are bijective. 
 \end{exercise}
 
+\index{Group!table}
+Let $G=\{g_1,g_2,\dots,g_n\}$ be a finite group. The \textbf{table} 
+of $G$ is the matrix 
+that in position $(i,j)$ has the element $g_ig_j$. 
+For example, the table of 
+the additive group  
+$\Z/4$ of integers modulo 4 is the following:
+\begin{center}
+  \begin{tabular}{l|cccc}
+     &0&1&2&3 \\
+    \hline
+    0 & 0 & 1 & 2 & 3\\
+    1 & 1 & 2 & 3 & 0\\
+    2 & 2 & 3 & 0 & 1\\
+    3 & 3 & 0 & 1 & 2
+  \end{tabular}
+\end{center}
+
+We know that $\Z$ is a group with the usual addition. 
+We now discuss a multiplicative version of this group, as it will be
+very important later. We first need a little bit of notation. 
+Let $G$ be a group and $g\in G$. For $k\in\Z\setminus\{0\}$, we write 
+\begin{align*}
+                & g^k=g\cdots g\quad (k-\text{times}) && \text{if $k>0$},\\
+                & g^k=g^{-1}\cdots g^{-1}\quad (|k|-\text{times}) && \text{if $k
+<0$}.
+\end{align*}
+By convention, $g^0=1$.
+The following facts are left as an exercise: 
+        \begin{enumerate}
+                \item $(g^k)^l=g^{kl}$ for all $k,l\in\Z$.
+                \item If $G$ is abelian, then $(xy)^k=x^ky^k$ for all $x,y\in G$
+                        and $k\in\Z$.
+        \end{enumerate}
+
+\begin{example}
+\label{exa:cyclic}
+Fix a formal symbol $g$. Consider the set  
+\[
+\langle g\rangle=\{g^k:k\in\Z\}
+\]
+of integers powers of $g$ (with the usual convention $g^0=1$). Then
+$\langle g\rangle$
+with the operation $g^ig^j=g^{i+j}$ is an abelian group. 
+\end{example}
+
+We will see later that $\Z$ and the group of 
+Example \ref{exa:cyclic} are ``indistinguishable'' 
+as groups, even if they appear to be completely different. 
+
+\begin{example}
+Let $n$ be a positive integer. The set 
+$G_n=\{z\in\C:z^n=1\}$ is an abelian group with
+the usual multiplication. Moreover, the set 
+$\cup_{n\geq1}G_n$ is an abelian group. 
+\end{example}
+
+\begin{example}
+    Let $X$ be a set. The set $\Sym_X$ of bijective maps $X\to X$ 
+    is a group with the usual composition of maps. If $|X|\geq3$, the group
+    $\mathbb{S}_{X}$ is non-abelian. To prove this, let $a,b,c\in
+        X$ be three different elemants. Let $f\colon X\to X$ be such that
+        $f(a)=b$, $f(b)=c$ and $f(c)=
+a$ and $g\colon X\to
+        X$ be such that $g(a)=b$, $g(b)=a$ and $g(x)=x$ for all $x\in
+        X\setminus\{a,b\}$.  Then $fg\ne gf$.
+\end{example}
+
+\index{Permutation}
+\index{Group!symmetric}
+If $X=\{1,2,\dots,n\}$, the group $\Sym_X$ will be written as $\Sym_n$. This is
+the \textbf{symmetric group} of degree $n$. The elements of $\Sym_n$ are
+called \textbf{permutations} of degree $n$. 
+Note that $|\Sym_n|=n!$ and $\Sym_n$
+is abelian if and only if $n\in\{1,2\}$. Each element of $\Sym_n$ is a 
+bijective map 
+$f\colon\{1,\dots,n\}\to \{1,\dots,n\}$. To denote permutations, 
+we can use the following convention. The symbol  
+\[
+\binom{12345}{32145}
+\]
+denotes the map 
+$f\colon\{1,2,3,4,5\}\to\{1,2,3,4,5\}$ such that 
+\[
+f(1)=3,
+\quad f(2)=2,
+\quad f(3)=1, 
+\quad f(4)=4,
+\quad f(5)=5.
+\]
 
 
+\begin{example}[Klein group]
+\index{Klein group}
+The set  
+\[
+K=\left\{ \mathrm{id},\binom{1234}{2143},\binom{1234}{3412},\binom{1234}{4321}\right\}
+\]
+together with the usual composition of maps is an abelian group. 
+Note that $K$ is included in $\mathbb{S}_{4}$.
+Can you compute the table of this group?
+\end{example}
 
+Every permutation can be written as a product of disjoint cycles.  
 
+\begin{example}
+\label{exa:S3}
+\index{Symmetric group $\Sym_3$}
+The set $\Sym_3$ of bijective maps $\{1,2,3\}\to\{1,2,3\}$
+together with the composition of maps is a group of order six. 
+Its elements are the permutations 
+        \[
+        \id,\binom{123}{213},\binom{123}{321},\binom{123}{132},\binom{123}{231},
+\binom{123}{312}.
+        \]
+        There is a handy way of writing permutations. It is based on \emph{decomposing
+        permutations as a product of disjoint cycles}. 
+        In this particular case, the elements of $\Sym_3$ 
+        are        
+        \[
+                \id,(12),(13),(23),(123),(132),
+        \]
+        where, for example, the symbol $(12)$ represents 
+        the map $\{1,2,3\}\to\{1,2,3\}$ such that 
+        $1\mapsto 2$, $2\mapsto 1$ and $3\mapsto 3$. Can you construct the table of this group? 
+\end{example}
+
+\begin{example}
+\label{exa:another_S3}
+The set of maps 
+\[
+G=\left\{x,\frac{1}{x},1-x,\frac{1}{1-x},\frac{x}{x-1},\frac{x-1}{x}\right\}
+\]
+is a non-abelian group with the usual composition of maps. 
+Let $\overline{\R}=\R\cup\{\infty\}$ (here $\infty$ is just a symbol) 
+and assume that the following rules hold: 
+\[
+1/\infty=0,
+\quad 1/\infty,
+\quad \infty/\infty=1,
+\quad 1-\infty=\infty-1=\infty.
+\]
+Then
+$G$ is the set of bijective maps 
+$\{0,1,\infty\}\to\{0,1,\infty\}$. For example, 
+the map $x\mapsto\frac{1}{x}$ can be identified with the permutation of
+the set 
+$\{0,1,\infty\}$ that permutes $0$ and $\infty$ and fixes $1$. Similarly, 
+$\frac{1}{1-x}$ permutes the elements $\{0,1,\infty\}$ cyclically 
+in the following way:
+\[
+\begin{tikzcd}
+        0 \\
+        & 1 \\
+        \infty
+        \arrow[from=1-1, to=2-2]
+        \arrow[from=2-2, to=3-1]
+        \arrow[from=3-1, to=1-1]
+\end{tikzcd}\]
+\end{example}
+
+We will see later that the 
+groups of Examples \ref{exa:S3} and \ref{exa:another_S3} are
+indeed ``indistinguishable'' as groups. 
+
+\begin{example}
+Let $n\geq2$. The units of $\Z/n$ form a group 
+with the usual multiplication modulo $n$. We will use the following notation:
+\[
+\mathcal{U}(\Z/n)=\{x\in\Z/n:\gcd(x,n)=1\}.
+\]
+The order of $\mathcal{U}(\Z/n)$ is $\varphi(n)$, where $\varphi$ 
+is the Euler's function, that is 
+\[
+\varphi(n)=|\{x\in\Z:1\leq x\leq n,\,\gcd(x,n)=1\}|.
+\]
+
+Let us discuss a concrete example. The table of 
+$\mathcal{U}(\Z/8)=\{1,3,5,7\}$
+is
+\begin{center}
+  \begin{tabular}{l|cccc}
+     &1&3&5&7 \\
+    \hline
+    1 & 1 & 3 & 5 & 7\\
+    3 & 3 & 1 & 7 & 5\\
+    5 & 5 & 7 & 1 & 3\\
+    7 & 7 & 5 & 3 & 1
+  \end{tabular}
+\end{center}
+\end{example}
+
+\begin{exercise}
+\label{exa:direct_product}
+        \index{Direct product!of groups}
+        Let $G$ and $H$ be groups. Prove that 
+        the set 
+        $G\times H$
+        of pairs $(g,h)$, where $g\in G$ and 
+        $h\in H$, is a group with
+        the operation
+        \[
+                (g,h)(g_1,h_1)=(gg_1,hh_1).
+        \]
+        This group is called the 
+        \textbf{direct product} of $G$ and $H$.
+\end{exercise}
+
+The construction of Example \ref{exa:direct_product}
+can be easily generalized to the product of 
+three or more groups. 
