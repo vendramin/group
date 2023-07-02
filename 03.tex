@@ -1,0 +1,241 @@
+\chapter{}
+
+\topic{Lagrange's theorem}
+
+Let $G$ be a group and $H$ be a subgroup of $G$. We say that the elements $x,y\in
+G$ are (left) equivalent modulo $H$ if $x^{-1}y\in H$.
+We will use the following notation:
+\begin{equation}
+\label{eq:modH}
+    x\equiv y\bmod
+    H\Longleftrightarrow x^{-1}y\in H.
+\end{equation}
+
+\begin{exercise}
+    Prove that~\eqref{eq:modH} is an equivalence relation. This means that
+    the following properties hold:
+    \begin{enumerate}
+    \item $x\equiv x\bmod H$ for all $x$.
+    \item If $x\equiv y\bmod H$, then $y\equiv x\bmod H$.
+    \item If $x\equiv y\bmod H$ and $y\equiv z\bmod H$, then $x\equiv z\bmod H$.
+    \end{enumerate}
+\end{exercise}
+
+The equivalence classes of this equivalence relation modulo $H$
+are the sets of the form $xH=\{xh:h\in H\}$, as the class 
+of an element $x\in G$ is the set 
+\[
+        \{y\in G:x\equiv y\bmod H\}=\{y\in G:x^{-1}y\in H\}=\{y\in G:y\in xH\}=xH.
+\]
+The set $xH$ is called 
+a \textbf{left coset} of $H$ in $G$.
+
+Having an equivalence relation modulo $H$ in $G$ allows us to
+decompose $G$ as a disjoint union of certain subsets related to $H$. 
+
+\begin{proposition}
+Let $G$ be a group and $H$ be a subgroup of $G$. 
+\begin{enumerate}
+\item If $xH\cap yH\ne\emptyset$, then $xH=yH$.
+\item The group $G$ decomposes as a disjoint union 
+of different left cosets of $H$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    Let us prove the first claim. If $g\in xH\cap yH$, we write 
+    $g=xh$ for some $h\in H$. Then 
+    \[
+    gH=(xh)H=x(hH)=xH.
+    \]
+    Similarly, $gH=yH$. Hence $xH=yH$.
+    The second claim follows from the first one. 
+\end{proof}
+
+One can also define right cosets: $x\equiv
+y\bmod H$ if and only if $xy^{-1}\in H$. In this case, 
+the equivalence classes are 
+the sets of the form $Hx$ with $x\in X$. The set $Hx$ 
+is called a \textbf{right coset}
+of $H$ in $G$.
+
+\begin{proposition}
+    If $H$ is a subgroup of $G$, then  $|Hx|=|H|=|xH|$ for all $x\in G$.
+\end{proposition}
+
+\begin{proof}
+    Let $x\in G$. The map $H\to Hx$, $h\mapsto hx$, is bijective 
+    with inverse $hx\mapsto h$. Similarly, the map $H\to xH$,
+    $h\mapsto xh$, is bijective.
+\end{proof}
+
+The map 
+\[
+        \{\text{right cosets of $H$ in $G$}\}\to\{\text{left cosets of $H$ in $G$}\}
+\]
+given by $Hx\mapsto x^{-1}H$ is a bijection, as 
+\[
+        Hx=Hy
+        \Longleftrightarrow xy^{-1}\in H
+        \Longleftrightarrow (x^{-1})^{-1}y^{-1}\in H
+        \Longleftrightarrow x^{-1}H=y^{-1}H.
+\]
+In particular, the number of right cosets of $H$ in $G$
+equals the number of left cosets of $H$ in $G$. 
+
+
+\begin{example}
+    If $G=\Z$ and $S=n\Z$, then 
+    \[
+    a+S=\{a+nq:q\in\Z\}=\{k\in\Z:k\equiv a\bmod n\}.
+    \]
+\end{example}
+    
+\begin{example}
+    The subgroups of $\Sym_3$ are $\{\id\}$,the order-two subgroups 
+    $\Sym_3$, $\langle(12)\rangle$, 
+    $\langle(13)\rangle$ and $\langle(23)\rangle$, and 
+    the order-three subgroup $\langle(123)\rangle=\{\id,(123),(132)\}$.  
+    If $H=\langle(12)\rangle=\{\id,(12)\}$, then 
+    \begin{align*}
+    &H=(12)H=\{\id,(12)\},\\
+    &(123)H=(13)H=\{(13),(123)\},\\
+    &(132)H=(23)H=\{(23),(132)\}.
+    \end{align*}
+    Note that our group decomposes as 
+    \[
+    \Sym_3=H\cup (123)H\cup (132)H\quad\text{(disjoint union)}.
+    \]
+    \end{example}
+
+    \begin{example}
+        Let $G=\R^2$ with the usual addition 
+        and $v\in\R^2$. The line $L=\{\lambda v:\lambda\in\R\}$ 
+        is a subgroup of $G$. For each 
+        $p\in R^2$, the coset $p+L$ 
+        is the line parallel to $L$ that 
+        passes through $p$.
+    \end{example}
+
+
+\begin{definition}
+    \index{Index}
+    If $H$ is a subgroup of $G$, the \textbf{índex} of $H$ in $G$
+    is the number $(G:H)$ of left (or right) cosets of $H$ in $G$. 
+\end{definition}
+
+The following important theorem will be used extensively. 
+
+\begin{theorem}[Lagrange]
+\index{Lagrange's theorem}
+    If $G$ is a finite group and $H$ is a subgroup of $G$, 
+    then $|G|=|H|(G:H)$. In particular, $|H|$ divides $|G|$.
+\end{theorem}
+
+\begin{proof}
+    We decompose $G$ into equivalence classes modulo $H$, that is 
+    \[
+    G=\bigcup_{i=1}^n x_iH\quad\text{(disjoint union)}
+    \]
+    for some $x_1,\dots,x_n\in G$, where $n=(G:H)$. 
+    Since each of these equivalence classes has 
+    exactly 
+    $|H|$ elements,
+    \[
+            |G|=\sum_{i=1}^n|x_iH|=\sum_{i=1}^n|H|=|H|(G:H).\qedhere
+    \]
+\end{proof}
+
+Let us discuss some corollaries. 
+
+\begin{corollary}
+    If $G$ is a finite group and $g\in G$, then $g^{|G|}=1$.
+\end{corollary}
+
+\begin{proof}
+    By definition. $|g|=|\langle g\rangle|$. Apply Lagrange's theorem 
+    to the subgroup $H=\langle g\rangle$ to obtain that 
+    \[
+            g^{|G|}=g^{|H|(G:H)}=(g^{|H|})^{(G:H)}=1.\qedhere
+    \]
+\end{proof}
+
+\begin{corollary}
+    If $G$ has prime order, then $G$ is cyclic. 
+\end{corollary}
+
+\begin{proof}
+    Let $g\in G\setminus\{1\}$ and $H=\langle g\rangle$. By Lagrange's theorem, 
+    $|H|$ divides $|G|$. Thus $|H|=|G|$, as $|G|$ is prime. Therefore 
+    $G=H=\langle g\rangle$.
+\end{proof}
+
+\begin{corollary}
+\label{cor:coprime_orders}
+    If $G$ is an abelian group and $g,h\in G$ are elements of finite coprime orders, 
+    then 
+    $|gh|=|g||h|$.
+\end{corollary}
+
+\begin{proof}
+    Let $n=|g|$, $m=|h|$ and $l=|gh|$. Since $G$ os abelian,
+    \[
+    (gh)^{nm}=(g^n)^m(h^m)^n=1. 
+    \]
+    Thus $l$ divides $nm$. Since $(gh)^l=1$,
+    $g^l=h^{-l}\in \langle g\rangle\cap\langle h\rangle=\{1\}$ 
+    (because $|\langle g\rangle|=n$ and $|\langle h\rangle|=m$ are coprime, 
+    $nm$ divides $l$ by Lagrange's theorem).
+\end{proof}
+
+Fermat's little theorem is a particular case of Lagrange's theorem. 
+
+\begin{exercise}[Fermat's little theorem]
+    \index{Fermat's little theorem}
+    Let $p$ be a prime number. Prove that 
+    \[a^{p-1}\equiv1\bmod p
+    \]
+    for all $a\in\{1,2,\dots,p-1\}$.
+\end{exercise}
+
+For the next corollary we need Euler's totient function. 
+Recall that 
+$\varphi(n)$ is the number of positive integers $k\in\{1,\dots,n\}$
+coprime with $n$. The group of units of 
+$\Z/n$ has $\varphi(n)$ elements (because $x\in\Z/n$ is invertible
+if and only if $x$ and $n$ are coprime).
+
+\begin{exercise}[Euler's theorem]
+        \index{Euler's theorem }
+        Let $a$ and $n$ be coprime integers. Prove that 
+        $a^{\varphi(n)}\equiv1\bmod n$.
+\end{exercise}
+
+The converse of Lagrange's theorem does not hold. 
+
+\begin{example}
+Consider the \textbf{alternating group}
+    \begin{multline*}
+\Alt_4=\{\id,(234),(243),(12)(34),(123),(124),\\(132),(134),(13)(24),(142),(143),(14)(23)\}\leq\Sym_4.
+\end{multline*}
+We claim that $\Alt_4$ has no subgroups of order six. If $H\leq\Alt_4$ is such that 
+$|H|=6$, then, since $(\Alt_4:H)=2$, for every $x\not\in H$ we can decompose $\Alt_4$ as 
+as disjoint union 
+$\Alt_4=H\cup xH$.
+
+For each $g\in\Alt_4$ we have that $g^2\in H$ (if $g\not\in H$, then, since $g^2\in\Alt_4=H\cup
+gH$, it follows that $g^2\in H$). In particular, since 
+$(ijk)=(ikj)^2$, order-three elements of $\Alt_4$ belong to $H$, a contradiction, 
+because $\Alt_4$ has eight elements of order three. 
+\end{example}
+
+We all need a favorite group. Mine is $\SL_2(3)$,
+the group of $2\times2$ matrices with coefficients in $\Z/3$
+and determinant one. 
+
+\begin{exercise}
+Prove that    \[
+    \SL_2(3)=\left\{\begin{pmatrix}a&b\\c&d\end{pmatrix}:ad-bc=1,\,a,b,c,d\in\Z/3\right\}
+    \]
+    has order 24 and does not contain subgroups of order 12. 
+    \end{exercise}
