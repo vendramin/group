@@ -1,0 +1,126 @@
+\chapter{}
+
+\topic{Groups}
+
+Before defining groups, we recall that a binary operation on a set $X$
+is simply a map 
+\[
+X\times X\to X,
+\quad (x,y)\mapsto xy.
+\]
+Note that we have used 
+juxtaposition to denote this generic binary operation. For example,
+$(x,y)\mapsto x-y$ is a binary operation in $\Z$ but not, for example, 
+in $\Z_{\geq 0}$.
+
+\begin{definition}
+\index{Group}
+A \textbf{group} is a non-empty set $G$ with a binary operation
+$G\times G\to G$, $(x,y)\mapsto xy$, such that
+the following properties hold:
+\begin{enumerate}
+    \item (Associativity) $(xy)z=x(yz)$ for all $x,y,z\in R$.
+    \item (Existence of a neutral element) There exists $e\in G$ such that $xe=ex=x$ for all $x\in G$.
+    \item (Existence of inverses) For every $x\in G$ there exists $y\in G$ such that $xy=yx=e$.
+\end{enumerate}
+\end{definition}
+
+The associativity condition implies
+that all ordered products that we can form with 
+the elements, say, $x_1,x_2,\dots,x_n$ will be equal. For example,
+\[
+(x_1x_2)((x_3x_4)x_5)=x_1(x_2(x_3(x_4x_5)))
+\]
+and hence we can write, without ambiguity (and without using brackets), 
+$x_1x_2\cdots x_5$. This fact can be proved by induction; see for example
+Lang's book. We will provide an alternative proof as an application
+of Cayley's theorem. 
+
+\begin{proposition}
+    In a group $G$, every element $x\in G$ admits a unique inverse.
+\end{proposition}
+
+\begin{proof}
+    Let $y,z\in G$ be inverses of $x\in G$. Then 
+    $z=z(xy)=(zx)y=ey=y$.
+\end{proof}
+
+\begin{exercise}
+    Prove that the neutral element of a group is unique. 
+\end{exercise}
+
+In general, when the binary operation is written multiplicatively, one
+writes the identity element $e$ of a group as $1_G$ or simply as $1$. The inverse of $x$ will be 
+denoted by $x^{-1}$. 
+
+\begin{example}
+    Let $n\geq1$. The set $\GL_n(\R)$ of $n\times n$ invertible real 
+matrices forms a
+    group with the usual matrix multiplication.  
+\end{example}
+
+It is a good idea to keep in mind the \emph{group of invertible matrices}. 
+With this, the 
+the following properties look familiar:
+\begin{enumerate}
+    \item $(x^{-1})^{-1}=x$ for all $x$.
+    \item $(xy)^{-1}=y^{-1}x^{-1}$ for all $x,y$. 
+\end{enumerate}
+
+\begin{exercise}
+    Prove that in a group, the equation $ax=b$ has 
+    a unique solution $x=a^{-1}b$. Similarly, the equation
+    $x=ba^{-1}$ is the unique solution of the equation
+    $xa=b$. 
+\end{exercise}
+
+\begin{definition}
+    \index{Group!abelian}
+    A group $G$ is \textbf{abelian} if $xy=yx$ for all $x,y\in G$. 
+\end{definition}
+
+Most of the time, for abelian groups we will use 
+the \emph{additive notation}. This means that the binary operation
+of the group will be denoted by $(x,y)\mapsto x+y$, the neutral
+element by $0$ and 
+the inverse of an element $x$ will be $-x$. 
+
+\begin{definition}
+    \index{Group!order}
+    The \textbf{order} $|G|$ of a group $G$ is the 
+    cardinality of $G$. A group $G$ is said to be
+    \textbf{finite} if $|G|$ is finite and \textbf{infinite}
+    otherwise. 
+\end{definition}
+
+\begin{example}
+\label{exa:abelian_groups}
+    Let us see some 
+    abelian groups: 
+    \begin{enumerate}
+        \item $\Z$, $\Q$, $\R$ and $\C$ with the usual addition. 
+        \item Let $n\geq2$. The set $\Z/n$ of integers modulo $n$ with the usual addition modulo $n$.
+        \item $\Q\setminus\{0\}$, $\R\setminus\{0\}$ and $\C\setminus\{0\}$ 
+        with the usual multiplication.
+        \item Let $p$ be a prime number. The set $(\Z/p)^{\times}=(\Z/p)\setminus\{0\}$ of invertible integers modulo $p$ 
+            with the usual multiplication modulo $p$. 
+    \end{enumerate}
+\end{example}
+
+The groups of the first two items will be written in additive notation. 
+
+The group $\Z/n$ of integers modulo $n$ is a finite group of order $n$. 
+The group $(\Z/p)^{\times}$ of units modulo $p$ is a finite
+group of order $p-1$. The other groups of Example \ref{exa:abelian_groups} are infinite groups. 
+
+\begin{exercise}
+\label{xca:LR}
+Let $G$ be a group and $g\in G$. Prove that 
+the maps $L_g\colon G\to G$, $x\mapsto gx$, and 
+$R_g\colon G\to G$, $x\mapsto xg$, are bijective. 
+\end{exercise}
+
+
+
+
+
