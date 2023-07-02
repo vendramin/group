@@ -33,7 +33,7 @@ the elements, say, $x_1,x_2,\dots,x_n$ will be equal. For example,
 \]
 and hence we can write, without ambiguity (and without using brackets), 
 $x_1x_2\cdots x_5$. This fact can be proved by induction; see for example
-Lang's book. We will provide an alternative proof as an application
+Lang's book \cite{MR783636}. We will provide an alternative proof as an application
 of Cayley's theorem. 
 
 \begin{proposition}
@@ -61,7 +61,7 @@ matrices forms a
 
 It is a good idea to keep in mind the \emph{group of invertible matrices}. 
 With this, the 
-the following properties look familiar:
+following properties look familiar:
 \begin{enumerate}
     \item $(x^{-1})^{-1}=x$ for all $x$.
     \item $(xy)^{-1}=y^{-1}x^{-1}$ for all $x,y$. 
@@ -79,7 +79,7 @@ the following properties look familiar:
     A group $G$ is \textbf{abelian} if $xy=yx$ for all $x,y\in G$. 
 \end{definition}
 
-Most of the time, for abelian groups we will use 
+Most of the time, for abelian groups, we will use 
 the \emph{additive notation}. This means that the binary operation
 of the group will be denoted by $(x,y)\mapsto x+y$, the neutral
 element by $0$ and 
@@ -111,7 +111,7 @@ The groups of the first two items will be written in additive notation.
 
 The group $\Z/n$ of integers modulo $n$ is a finite group of order $n$. 
 The group $(\Z/p)^{\times}$ of units modulo $p$ is a finite
-group of order $p-1$. The other groups of Example \ref{exa:abelian_groups} are infinite groups. 
+group of order $p-1$. The other groups of Example \ref{exa:abelian_groups} are infinite. 
 
 \begin{exercise}
 \label{xca:LR}
@@ -157,7 +157,7 @@ The following facts are left as an exercise:
 
 \begin{example}
 \label{exa:cyclic}
-Fix a formal symbol $g$. Consider the set  
+Fix a symbol $g$. Consider the set  
 \[
 \langle g\rangle=\{g^k:k\in\Z\}
 \]
@@ -181,7 +181,7 @@ $\cup_{n\geq1}G_n$ is an abelian group.
     Let $X$ be a set. The set $\Sym_X$ of bijective maps $X\to X$ 
     is a group with the usual composition of maps. If $|X|\geq3$, the group
     $\mathbb{S}_{X}$ is non-abelian. To prove this, let $a,b,c\in
-        X$ be three different elemants. Let $f\colon X\to X$ be such that
+        X$ be three different elements. Let $f\colon X\to X$ be such that
         $f(a)=b$, $f(b)=c$ and $f(c)=
 a$ and $g\colon X\to
         X$ be such that $g(a)=b$, $g(b)=a$ and $g(x)=x$ for all $x\in
@@ -224,14 +224,35 @@ Can you compute the table of this group?
 \end{example}
 
 Every permutation can be written as a product of disjoint cycles. The fact 
-is proved by induction, but is rather intuitive. Let us 
+is proved by induction but is relatively intuitive. Let us 
 decompose the permutation 
 \[
-\sigma=\binom{123456789}{638915724}\in\Sym_9
+\sigma=\binom{123456789}{6389157242}\in\Sym_{9}
 \]
-as a product of cycles. We just need to 
+as a product of cycles. We need to 
 draw a picture for $\sigma$:
-
+\[\begin{tikzcd}
+	1 & 6 & 2 & 3 & 4 & \\
+	& 5 && 8 & 9 & 7\arrow[loop]        
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=2-2, to=1-1]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=2-4]
+	\arrow[from=2-4, to=1-3]
+	\arrow[from=1-5, to=2-5]
+	\arrow[from=2-5, to=1-5]
+\end{tikzcd}\]
+We see that $\sigma$ has two 3-cycles, one 2-cycle
+and one loop. 
+Therefore 
+\[
+\sigma=(165)(238)(49)(7).
+\]
+Generally, 
+one omits loops and orders  
+the cycles according to 
+the length. Thus $\sigma=(49)(165)(238)$.  
 
 \begin{example}
 \label{exa:S3}
@@ -252,7 +273,7 @@ Its elements are the permutations
         \]
         where, for example, the symbol $(12)$ represents 
         the map $\{1,2,3\}\to\{1,2,3\}$ such that 
-        $1\mapsto 2$, $2\mapsto 1$ and $3\mapsto 3$. Can you construct the table of this group? 
+        $1\mapsto 2$, $2\mapsto 1$ and $3\mapsto 3$. Can you construct the table for this group? 
 \end{example}
 
 \begin{example}
@@ -327,7 +348,7 @@ is
         the set 
         $G\times H$
         of pairs $(g,h)$, where $g\in G$ and 
-        $h\in H$, is a group with
+        $h\in H$ is a group with
         the operation
         \[
                 (g,h)(g_1,h_1)=(gg_1,hh_1).
