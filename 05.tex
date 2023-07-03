@@ -158,7 +158,7 @@ Let $G=\R\times\R^\times$ with the operation
 (x,y)(u,v)=(x+yu,yv).
 \]
 Prove that $\{(x,1):x\in\R\}$ is normal in $G$ and that
-$\{(0,y):y\in(\R)^\times\}$ is not. 
+$\{(0,y):y\in\R^\times\}$ is not. 
 \end{exercise}
 
 Let us compute the list of normal subgroups of $\Alt_4$.
@@ -191,7 +191,7 @@ $(ab)(cd)\in N$. Hence
 and therefore $N=K$.
 \end{example}
 
-Being normal is not transitive. 
+Normality is not transitive. 
 
 \begin{exercise}
 \index{Dihedral group}
@@ -201,34 +201,33 @@ Prove that $H$ is normal in $N$, $N$ is normal in $G$ but $H$ is not normal in $
 
 \begin{example}
 \index{Normal subgroups!of $\Sym_4$}
-Vamos a demostrar que $\{\id\}$, $K$, $\Alt_4$ y $\Sym_4$ son los únicos subgrupos normales de $\Sym_
-4$.
+We claim that $\{\id\}$, $K$, $\Alt_4$ y $\Sym_4$ are the normal subgroups of $\Sym_4$.
 
-Sea $N$ un subgrupo normal de $\Sym_4$. Si $N\subseteq\Alt_4$, entonces $N$ es normal en $\Alt_4$ y l
-uego, por lo visto en el ejemplo anterior, $N=\{\id\}$,
-$N=K$ o bien $N=\Alt_4$. Supongamos entonces que $N\not\subseteq\Alt_4$, es decir $N$ contiene una pe
-rmutación impar. Si $\sigma\in\Sym_4$ es una permutación impar, entonces $\sigma$ es una trasposición
- o $\sigma$ es un 4-ciclo.
-
-Si $N$ contiene una trasposición, entonces todas las trasposiciones
-también pertenecen a $N$ pues
+Let $N$ be a normal subgroup of $\Sym_4$. If $N\subseteq\Alt_4$, then
+$N$ is normal in $\Alt_4$ and hence either $N=\{\id\}$,
+$N=K$ or $N=\Alt_4$. Assume that $N\not\subseteq\Alt_4$, that is
+$N$ contains an odd permutation. If $\sigma\in\Sym_4$ is odd, then 
+$\sigma$ is either a transposition or a 4-cycle. 
+ 
+If $N$ contains a transposition, then all transpositions 
+belong to $N$, as 
 \[
 \tau(ij)\tau^{-1}=(\tau(i)\,\tau(j))
 \]
-para todo $\tau\in\Sym_4$. En este caso, $N=\Sym_4$ pues $\Sym_4$ está generado por trasposiciones.
+for all $\tau\in\Sym_4$. In this case, $N=\Sym_4$ because 
+the transpositions generate $\Sym_4$. 
 
 
-Si $N$ contiene un 4-ciclo, todos los 4-ciclos también están en $N$ pues
+If $N$ contains a 4-cycle, all 4-cycles belong to $N$, as 
 \[
 \tau(ijkl)\tau^{-1}=(\tau(i)\,\tau(j)\,\tau(k)\,\tau(l))
 \]
-para todo $\tau\in\Sym_4$ y además $K\subseteq N$ pues
+for all $\tau\in\Sym_4$ and $K\subseteq N$ because 
 \[
 (ac)(bd)=(abcd)^2.
 \]
-Esto nos dice que $|N|\geq10$. Como además $K\subseteq N$, se tiene que $|N\cap\Alt_4|\geq 5$. Por ot
-ro lado, $N\cap\Alt_4$ es un subgrupo normal de $\Alt_4$.
-Por lo visto en el ejemplo anterior, $N\cap\Alt_4=\Alt_4\subseteq N$. En conclusión, $N=\Sym_4$.
+This implies that $|N|\geq10$. Since $K\subseteq N$,  $|N\cap\Alt_4|\geq 5$. Moreover, $N\cap\Alt_4$ is a normal subgroup of $\Alt_4$.
+Hence $N\cap\Alt_4=\Alt_4\subseteq N$. Therefore $N=\Sym_4$.
 \end{example}
 
 \begin{theorem}
@@ -247,25 +246,26 @@ the inverse of an element $xN$ is
 $(xN)^{-1}=x^{-1}N$. 
 \end{proof}
 
+We will see examples of quotient groups later. 
+
 \begin{exercise}
 \label{xca:commutator}
-Si $H$ es un subgrupo normal de $G$, entonces $G/H$ es abeliano si y sólo si $[G,G]\subseteq H$.
+Let $H$ be a normal subgroup of $G$. Prove that
+$G/H$ is abelian if and only if $[G,G]\subseteq H$.
 \end{exercise}
 
-
-
-Veamos una pequeña aplicación:
+As an application, 
+we compute the commutator subgroup of $\Alt_4$. 
 
 \begin{example}
-\index{Conmutador!de $\Alt_4$}
+\index{Commutator!of $\Alt_4$}
 $[\Alt_4,\Alt_4]=K=\{\id,(12)(34),(13)(24),(14)(23)\}$.
-Sabemos que $K$ es normal en $\Alt_4$. Como $\Alt_4/K$ tiene tres elementos, es abeliano. El ejercici
-o anterior, entonces,
-nos dice que $[\Alt_4,\Alt_4]\subseteq K$. Por otro lado, como
+We know that $K$ is normal in $\Alt_4$. Since $\Alt_4/K$ has order three, 
+it is abelian. Then $[\Alt_4,\Alt_4]\subseteq K$. Since 
 \[
 (ab)(cd)=[(abc),(cda)],
 \]
-se concluye que $K\subseteq[\Alt_4,\Alt_4]$.
+we conclude that $K\subseteq[\Alt_4,\Alt_4]$.
 \end{example}
 
 \begin{exercise}
@@ -273,57 +273,61 @@ se concluye que $K\subseteq[\Alt_4,\Alt_4]$.
 If $G/Z(G)$ is cyclic, then $G$ is abelian.
 \end{exercise}
 
-
 \begin{exercise}
-\index{Normalizador!de un subgrupo}
-Si $S$ es un subgrupo de $G$, se define el \textbf{normalizador} de $S$ en $G$ al subgrupo
+\label{xca:normalizer}
+\index{Normalizer}
+If $S$ is a subgroup of $G$, the \textbf{normalizer} of $S$ in $G$
+is the set  
 \[
 N_G(S)=\{g\in G:gSg^{-1}=S\}.
 \]
-Demuestre que valen las siguientes afirmaciones:
+Prove the following statements:
 \begin{enumerate}
+\item $N_G(S)\leq G$. 
 \item $S\unlhd N_G(S)$.
-\item Si $S\leq T\leq G$ y $S\unlhd T$, entonces $T\leq N_G(S)$.
+\item If $S\leq T\leq G$ and $S\unlhd T$, then $T\leq N_G(S)$.
 \end{enumerate}
 \end{exercise}
 
-El ejercicio anterior nos dice que el normalizador de un subgrupo $S$ en $G$ es el mayor subgrupo de
-$G$ que contiene a $S$ como subgrupo normal.
+The normalizer of a subgroup  $S$ in $G$ is the largest 
+subgroup of $G$ that contains $S$ as a normal subgroup. 
 
 \begin{definition}
 \index{Group!simple}
-A group $G$ es \textbf{simple} si $G\ne\{1\}$ y sus únicos subgrupos normales
-son $G$ y $\{1\}$.
+A group $G$ is \textbf{simple} if $G\ne\{1\}$ and 
+$G$ and $\{1\}$ are the only normal subgroups of $G$. 
 \end{definition}
 
-Por ahora, nos quedaremos conformes al observar que si $p$ es un número primo, entonces $\Z/p$ es un
-grupo simple. Veremos otros ejemplos más adelante.
+If $p$ is a prime number, then Lagrange's theorem implies that 
+$\Z/p$ is a simple group. 
+For $n\geq5$, the alternating group $\Alt_n$ is simple. However, 
+we will not
+prove this in this course. 
 
 \begin{exercise}
-Sea $p$ un número primo y sea $H$ un subgrupo de $G$. Si $(G:H)=p$, las siguientes afirmaciones son e
-quivalentes:
+\label{xca:index_p}
+Let $H$ be a subgroup of $G$ such that $p=(G:H)$ is a prime number. 
+Prove that the following statements are equivalent:
 \begin{enumerate}
-\item $H$ es normal en $G$.
-\item Si $g\in G\setminus H$, entonces $g^p\in H$.
-\item Si $g\in G\setminus H$, entonces $g^n\in H$ para algún $n$ sin divisores primos $<p$.
-\item Si $g\in G\setminus H$, entonces $g^k\not\in H$ para todo $k\in\{2,\dots,p-1\}$.
+\item $H$ is normal in $G$.
+\item If $g\in G\setminus H$, then $g^p\in H$.
+\item If $g\in G\setminus H$, then $g^n\in H$ for some $n$ with no prime divisors $<p$.
+\item If $g\in G\setminus H$, then $g^k\not\in H$ for all $k\in\{2,\dots,p-1\}$.
 \end{enumerate}
 \end{exercise}
 
-\begin{exercise}
-\label{xca:p_menor}
-        Sea $p$ el menor número primo que divide al orden de un grupo finito
-        $G$ y sea $H$ es un subgrupo de $G$ índice $p$. Entonces $H$ es normal en $G$.
-\end{exercise}
-
-% \begin{proof}
-%         Si $g\in G\setminus H$, entonces $g^n=1\in H$, donde $n=|G|$. Como $p$ es primo, $n$ no tiene
-%  divisores primos $<p$. El teorema anterior impica entonces que $H$ es normal en $G$.
-% \end{proof}
-
-We present two applications of Exercise...
+We now present two applications of the previous exercise. 
 
 \begin{exercise}
-Sea $p$ un número primo y sea $G$ un grupo tal que todo elemento tiene orden una potencia de $p$. Si
-$H$ es un subgrupo de $G$ de índice $p$, entonces $H$ es normal en $G$.
+\label{xca:p_smallest}
+    Let $G$ be a finite group and $p$ be the smallest prime number dividing $G$. Prove that if $H$ is a subgroup 
+    of $G$ with $(G:H)=p$, then $H$ is normal in $G$. 
 \end{exercise}
+
+\begin{exercise}
+Let $p$ be a prime number and $G$ be a group such that
+every element of $G$ has order a power of $p$. 
+If 
+$H$ is a subgroup of $G$ of index $p$, then $H$ is normal in $G$.
+\end{exercise}
+

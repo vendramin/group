@@ -1,0 +1,133 @@
+\chapter{}
+
+\topic{Permutable subgroups}
+
+\index{Product of subgroups}
+If $H$ and $K$ are subgroups of $G$, let 
+\[
+        HK=\{hk:h\in H,\,k\in K\}.
+\]
+Note that 
+\[
+H\cup K\subseteq HK\subseteq\langle H\cup K\rangle.
+\]
+When $HK$ is a subgroup of $G$? 
+Note that $HK\leq G$ if and only if $\langle H\cup K\rangle=HK$.
+
+\begin{proposition}
+        Let $H$ and $K$ be subgroups of $G$. Then $HK$ is a subgroup of
+        $G$ if and only if $HK=KH$.
+\end{proposition}
+
+\begin{proof}
+    Assume that $HK=KH$. Since $1\in H\cap K$, $HK\ne\emptyset$. 
+    If $h\in H$ and $k\in K$, then $(hk)^{-1}=k^{-1}h^{-1}\in KH=HK$. Moreover, 
+    \[
+    (HK)(HK)=H(KH)K=H(HK)K=(HH)(KK)=HK.
+    \]
+    Thus $HK$ is closed under multiplication. 
+
+    Now assume that $HK$ is a subgroup of $G$. Since $H\subseteq HK$,
+    $K\subseteq HK$ and $HK$ closed under multiplication,
+        $KH\subseteq (HK)(HK)\subseteq HK$. Conversely, let $g\in HK$.
+        Since $g^{-1}\in HK$, there exist $h\in H$ and $k\in K$ such that
+        $g^{-1}=hk$.
+        Thus $HK\subseteq KH$, as 
+        $g=k^{-1}h^{-1}\in KH$.
+\end{proof}
+
+\begin{exercise}
+\label{xca:HK_normal}
+Let $H$ and $K$ be subgroups of $G$. Prove that 
+if $H$ is normal in $G$, then $HK$ is a subgroup of $G$.
+\end{exercise}
+
+\begin{example}
+Let $G=\Sym_4$. The subgroups $H=\langle (12)\rangle$ and $K=\langle (34)\rangle$ satisfy that $HK=KH=\{
+\id,(12),(34),(12)(34)\}$ is a subgroup of 
+$\Sym_4$. Note that not $H$ nor $K$
+are normal in $G$.
+\end{example}
+
+\begin{exercise}
+Demuestre que si $H$ y $K$ son subgrupos normales de $G$, entonces $HK$ es también normal en $G$.
+\end{exercise}
+
+\begin{exercise}
+Let $G$ be a group and $S$ be a subgroup of $G$. 
+If $T\leq N_G(S)$, then $TS$ is a group and $S\leq TS$.
+\end{exercise}
+
+\index{Permutable subgroups}
+Two subgroups $H$ and $K$ of $G$ are said to be
+\textbf{permutable} if $HK=KH$.
+
+\begin{theorem}
+\label{thm:|HK|}
+    Let $H$ and $K$ be finite subgroups of $G$. 
+    Then 
+    \[
+        |HK|=\frac{|H||K|}{|H\cap K|}.
+    \]
+\end{theorem}
+
+\begin{proof}
+Let $L=H\cap K$.
+We decompose $H$ as a disjoint union of left coclases of $L$, say 
+$H=\cup_{i=1}^k x_iL$, where $k=(H:L)$. Note that $LK=K$, as $L\subseteq K$. Moreover, $K\subseteq 1K\subseteq LK$.
+Then
+\[
+HK=\bigcup_{i=1}^k x_iLK=\bigcup_{i=1}^k x_iK,
+\]
+In particular, since the union is disjoint, 
+\[
+|HK|=\sum_{i=1}^k |x_iK|=k|K|=\frac{|H||K|}{|H\cap K|}.\qedhere
+\]
+\end{proof}
+
+In the theorem, we do not assume that $HK$ is a subgroup of $G$. 
+
+As an application, the theorem yields a different solution to Exercise~\ref{xca:p_smallest} of page~\pageref{xca:p_smallest}. 
+If $\{gHg^{-1}:g\in G\}=\{H\}$, then $H$ is normal in $G$. Assume that
+there exists $g\in G$ such that
+$H\ne g^{-1}Hg=K$. Since $(H:H\cap K)$ divides $|H|$ 
+and all prime divisors of $|G|$ 
+are $\geq p$, it follows that $(H:H\cap K)\geq p$. Thus 
+\[
+|HK|=\frac{|H||K|}{|H\cap K|}\geq p|K|=|G|
+\]
+as $(G:H)=p$ y $|K|=|H|$. In particular, $HK=G$. Since $K=g^{-1}Hg$, 
+$g=h(g^{-1}h_1g)$ for some $h,h_1\in H$. Thus 
+\[
+1=hg^{-1}h_1\implies h_1h=g\in H\implies H=K,
+\]
+a contradiction.
+
+\begin{example}
+Let $G=\Sym_3$, $H=\langle (12)\rangle$ and $K=\langle (23)\rangle$. Then 
+\[
+HK=\{\id,(12),(23),(123)\}
+\]
+is not a subgroup of $G$, as by Lagrange's theorem, 
+$G$ cannot have subgroups of four elements. Another way 
+to see that $HK$ is not a subgroup of $G$ follows from 
+the fact that 
+$KH=\{\id,(12),(23),(132)\}\ne HK$.
+\end{example}
+
+\begin{example}
+Let $G=\Sym_3$, $H=\langle (12)\rangle$ and $K=\langle (123)\rangle$.
+Since $K$ is normal in $G$, $HK$ is a subgroup of $G$. By Lagrange's theorem, $|HK|=6$ and hence $G=HK$.
+Each $g\in G$ can be written uniquely as $g=hk$ for some $h\in H$ and $k\in K$ (one can prove this either considering all possible cases or 
+using the fact that $H\cap K=\{\id\}$). It follows that the map 
+\[
+H\times K\to G,\quad
+(h,k)\mapsto hk,
+\]
+is bijective. Note that this bijective map is not compatible 
+with the operation of $G$, as 
+$(h_1k_1)(h_2k_2)\ne (h_1h_2)(k_1k_2)$. 
+\end{example}
+
+\topic{Homomorphisms}
+
