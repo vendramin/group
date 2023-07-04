@@ -9,6 +9,22 @@
 
 \addcontentsline{toc}{chapter}{Some solutions}
 
+\begin{sol}{thm:quotient}
+Since $N$ is normal in $G$, the operation is well-defined. 
+Routine calculations show that 
+the operation is associative, that
+$N$ is the neutral element of $G/N$ and that 
+the inverse of an element $xN$ is 
+$(xN)^{-1}=x^{-1}N$. For example, for the associativity, 
+we note that for $x,y,z\in G$ one has 
+\begin{align*}
+    &((xN)(yN))(zN)=((xy)N)zN=(xy)zN,
+\shortintertext{equals}
+    &(xN)((yN)(zN))=(xN)((yz)N)=x(yz)N.
+\end{align*}
+since $x(yz)=(xy)z$.
+\end{sol}
+
 \begin{sol}{xca:commutator}
 For $x,y\in G$,
 \begin{align*}
@@ -24,6 +40,8 @@ Write $xZ(G)=g^kZ(G)$ and $yZ(G)=g^lZ(G)$,
 that is 
 $x=g^kz_1$ and $y=g^lz_2$ for some $k,l\in\Z$ y $z_1,z_2\in Z(G)$. Thus $xy=yx$.
 \end{sol}
+
+
 
 \begin{sol}{xca:p_smallest}
     If $g\in G\setminus H$, then $g^n=1\in H$, where $n=|G|$. Since $p$ is prime, $n$ has no prime divisors $<p$. By Exercise \ref{xca:index_p}, $H$ is normal in $G$.
