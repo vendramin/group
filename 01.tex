@@ -26,15 +26,18 @@ the following properties hold:
 \end{definition}
 
 The associativity condition implies
-that all ordered products that we can form with 
-the elements, say, $x_1,x_2,\dots,x_n$ will be equal. For example,
+that all ordered products that we can form with, say, 
+the elements $x_1,x_2,\dots,x_n$ will be equal. For example,
 \[
 (x_1x_2)((x_3x_4)x_5)=x_1(x_2(x_3(x_4x_5)))
 \]
-and hence we can write, without ambiguity (and without using brackets), 
-$x_1x_2\cdots x_5$. This fact can be proved by induction; see for example
+and hence we can write, without ambiguity and without using brackets, 
+\[
+x_1x_2\cdots x_5.
+\]
+This fact can be proved by induction; see for example
 Lang's book \cite{MR783636}. We will provide an alternative proof as an application
-of Cayley's theorem. 
+of Cayley's theorem \ref{thm:Cayley}. 
 
 \begin{proposition}
     In a group $G$, every element $x\in G$ admits a unique inverse.
@@ -50,7 +53,7 @@ of Cayley's theorem.
 \end{exercise}
 
 In general, when the binary operation is written multiplicatively, one
-writes the identity element $e$ of a group as $1_G$ or simply as $1$. The inverse of $x$ will be 
+writes the neutral element $e$ of a group as $1_G$ or simply as $1$. The inverse of $x$ will be 
 denoted by $x^{-1}$. 
 
 \begin{example}
@@ -69,7 +72,7 @@ following properties look familiar:
 
 \begin{exercise}
     Prove that in a group, the equation $ax=b$ has 
-    a unique solution $x=a^{-1}b$. Similarly, the equation
+    a unique solution: $x=a^{-1}b$. Similarly, 
     $x=ba^{-1}$ is the unique solution of the equation
     $xa=b$. 
 \end{exercise}
@@ -93,9 +96,12 @@ the inverse of an element $x$ will be $-x$.
     otherwise. 
 \end{definition}
 
+\index{Group!trivial}
+The \textbf{trivial group} is the (unique) group containing exactly one element $e$, the neutral element. Examples include the zero group $\{0\}$ with the addition $0+0=0$ and the multiplicative group $\{1\}$ with multiplication $1\cdot 1=1$. 
+
 \begin{example}
 \label{exa:abelian_groups}
-    Let us see some 
+    Let us see some examples 
     abelian groups: 
     \begin{enumerate}
         \item $\Z$, $\Q$, $\R$ and $\C$ with the usual addition. 
@@ -125,7 +131,7 @@ Let $G=\{g_1,g_2,\dots,g_n\}$ be a finite group. The \textbf{table}
 of $G$ is the matrix 
 that in position $(i,j)$ has the element $g_ig_j$. 
 For example, the table of 
-the additive group  
+the (additive) group  
 $\Z/4$ of integers modulo 4 is the following:
 \begin{center}
   \begin{tabular}{l|cccc}
@@ -150,7 +156,7 @@ Let $G$ be a group and $g\in G$. For $k\in\Z\setminus\{0\}$, we write
 By convention, $g^0=1$.
 The following facts are left as an exercise: 
         \begin{enumerate}
-                \item $(g^k)^l=g^{kl}$ for all $k,l\in\Z$.
+                \item $(x^k)^l=x^{kl}$ for all $x\in G$ and $k,l\in\Z$.
                 \item If $G$ is abelian, then $(xy)^k=x^ky^k$ for all $x,y\in G$
                         and $k\in\Z$.
         \end{enumerate}
@@ -178,7 +184,7 @@ $\cup_{n\geq1}G_n$ is an abelian group.
 \end{example}
 
 \begin{example}
-    Let $X$ be a set. The set $\Sym_X$ of bijective maps $X\to X$ 
+    Let $X$ be a non-empty set. The set $\Sym_X$ of bijective maps $X\to X$ 
     is a group with the usual composition of maps. If $|X|\geq3$, the group
     $\mathbb{S}_{X}$ is non-abelian. To prove this, let $a,b,c\in
         X$ be three different elements. Let $f\colon X\to X$ be such that
@@ -210,7 +216,18 @@ f(1)=3,
 \quad f(4)=4,
 \quad f(5)=5.
 \]
-
+As we said, the operation of this group is the usual
+composition of maps. 
+For example, 
+\[
+\binom{12345}{32145}
+\binom{12345}{13452}
+=
+\binom{12345}{32145}
+\circ 
+\binom{12345}{13452}
+=\binom{12345}{31452}.
+\]
 
 \begin{example}[Klein group]
 \index{Klein group}
@@ -227,7 +244,7 @@ Every permutation can be written as a product of disjoint cycles. The fact
 is proved by induction but is relatively intuitive. Let us 
 decompose the permutation 
 \[
-\sigma=\binom{123456789}{6389157242}\in\Sym_{9}
+\sigma=\binom{123456789}{638915724}\in\Sym_{9}
 \]
 as a product of cycles. We need to 
 draw a picture for $\sigma$:
@@ -252,7 +269,10 @@ Therefore
 Generally, 
 one omits loops and orders  
 the cycles according to 
-the length. Thus $\sigma=(49)(165)(238)$.  
+the length. Thus 
+\[
+\sigma=(49)(165)(238).
+\]
 
 \begin{example}
 \label{exa:S3}
@@ -264,25 +284,21 @@ Its elements are the permutations
         \id,\binom{123}{213},\binom{123}{321},\binom{123}{132},\binom{123}{231},
 \binom{123}{312}.
         \]
-        There is a handy way of writing permutations. It is based on \emph{decomposing
-        permutations as a product of disjoint cycles}. 
-        In this particular case, the elements of $\Sym_3$ 
+        Writing 
+        permutations as a product of disjoint cycles,  
+        the elements of $\Sym_3$ 
         are        
         \[
                 \id,(12),(13),(23),(123),(132),
         \]
-        where, for example, the symbol $(12)$ represents 
+        where, as we know, the symbol $(12)$ represents 
         the map $\{1,2,3\}\to\{1,2,3\}$ such that 
-        $1\mapsto 2$, $2\mapsto 1$ and $3\mapsto 3$. Can you construct the table for this group? 
+        $1\mapsto 2$, $2\mapsto 1$ and $3\mapsto 3$. 
+        Can you construct the table for this group? 
 \end{example}
 
 \begin{example}
 \label{exa:another_S3}
-The set of maps 
-\[
-G=\left\{x,\frac{1}{x},1-x,\frac{1}{1-x},\frac{x}{x-1},\frac{x-1}{x}\right\}
-\]
-is a non-abelian group with the usual composition of maps. 
 Let $\overline{\R}=\R\cup\{\infty\}$ (here $\infty$ is just a symbol) 
 and assume that the following rules hold: 
 \[
@@ -291,8 +307,17 @@ and assume that the following rules hold:
 \quad \infty/\infty=1,
 \quad 1-\infty=\infty-1=\infty.
 \]
+We now consider maps $\overline{R}\to\overline{R}$ such as  
+$x\mapsto x$ and $x\mapsto\frac{1}{x}$. 
+We claim that 
+the set of maps 
+\[
+G=\left\{x,\frac{1}{x},1-x,\frac{1}{1-x},\frac{x}{x-1},\frac{x-1}{x}\right\}
+\subseteq\{f\colon\overline{R}\to\overline{R}:f\text{ is a map}\}
+\]
+is a non-abelian group with the usual composition of maps. 
 Then
-$G$ is the set of bijective maps 
+$G$ can be identified with the set of bijective maps 
 $\{0,1,\infty\}\to\{0,1,\infty\}$. For example, 
 the map $x\mapsto\frac{1}{x}$ can be identified with the permutation of
 the set 
@@ -315,8 +340,9 @@ groups of Examples \ref{exa:S3} and \ref{exa:another_S3} are
 indeed ``indistinguishable'' as groups. 
 
 \begin{example}
-Let $n\geq2$. The units of $\Z/n$ form a group 
-with the usual multiplication modulo $n$. We will use the following notation:
+Let $n\geq2$. The multiplicative units of $\Z/n$ form a group 
+with the usual multiplication modulo $n$. 
+We will use the following notation:
 \[
 \mathcal{U}(\Z/n)=\{x\in\Z/n:\gcd(x,n)=1\}.
 \]
