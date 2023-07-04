@@ -1,0 +1,42 @@
+\chapter{}
+
+\topic{Double cosets (optional)}
+
+The idea used in Example \ref{exa:for_HK} can be generalized. 
+
+\begin{example}
+\index{Coclase!doble}
+Sea $G$ un grupo y sean $H$ y $K$ subgrupos de $G$. Hacemos
+que el grupo $L=H\times K$ actúe en $G$ por
+\[
+(h,k)\cdot g=hgk^{-1}.
+\]
+Las órbitas son los conjuntos de la forma
+\[
+HgK=\{hgk:h\in H,\,k\in K\},
+\]
+estos conjuntos se llaman $(H,K)$-coclases dobles.
+En particular, dos $(H,K)$-coclases dobles son disjuntas o iguales. Más aún,
+$G$ se descompone como unión disjunta
+\[
+G=\bigcup_{i\in I}Hg_iK,
+\]
+para algún conjunto $I$, es decir $G$
+es unión disjunta de $(H,K)$-coclases dobles.
+Calculamos ahora
+\[
+L_g=\{(h,k)\in H\times K:hgk^{-1}=g\}=\{(h,g^{-1}hg)\in H\times K\}
+\]
+y vemos que $|L_g|=|H\cap gKg^{-1}|$, pues los conjuntos $L_g$ y $H\cap gKg^{-1}$ están en biyección.
+
+Luego,
+gracias al principio fundamental del conteo,
+\[
+|HgK|=(L:L_g)=\frac{|H\times K|}{|H\cap gKg^{-1}|}=\frac{|H||K|}{|H\cap gKg^{-1}|}.
+\]
+\end{example}
+
+El ejemplo anterior puede generalizarse, lo que nos da una descomposición
+de un grupo como unión disjunta de \textbf{coclases dobles}. Veremos más adelante
+demostraciones alternativas de los teoremas de Sylow basadas en
+coclases dobles.

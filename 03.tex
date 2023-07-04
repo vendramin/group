@@ -12,12 +12,12 @@ We will use the following notation:
 \end{equation}
 
 \begin{exercise}
-    Prove that~\eqref{eq:modH} is an equivalence relation. This means that
-    the following properties hold:
+    Prove that~\eqref{eq:modH} is an equivalence relation, that
+    is 
     \begin{enumerate}
-    \item $x\equiv x\bmod H$ for all $x$.
-    \item If $x\equiv y\bmod H$, then $y\equiv x\bmod H$.
-    \item If $x\equiv y\bmod H$ and $y\equiv z\bmod H$, then $x\equiv z\bmod H$.
+    \item $x\equiv x\bmod H$ for all $x$; 
+    \item if $x\equiv y\bmod H$, then $y\equiv x\bmod H$; and 
+    \item if $x\equiv y\bmod H$ and $y\equiv z\bmod H$, then $x\equiv z\bmod H$.
     \end{enumerate}
 \end{exercise}
 
@@ -28,7 +28,8 @@ of an element $x\in G$ is the set
         \{y\in G:x\equiv y\bmod H\}=\{y\in G:x^{-1}y\in H\}=\{y\in G:y\in xH\}=xH.
 \]
 The set $xH$ is called 
-a \textbf{left coset} of $H$ in $G$.
+a \textbf{left coset} of $H$ in $G$ and $x$ is 
+a \textbf{representative} of $xH$.
 
 Having an equivalence relation modulo $H$ in $G$ allows us to
 decompose $G$ as a disjoint union of certain subsets related to $H$. 
@@ -57,7 +58,7 @@ y\bmod H$ if and only if $xy^{-1}\in H$. In this case,
 the equivalence classes are 
 the sets of the form $Hx$ with $x\in X$. The set $Hx$ 
 is called a \textbf{right coset}
-of $H$ in $G$.
+with \textbf{representative} $x$ of $H$ in $G$. 
 
 \begin{proposition}
     If $H$ is a subgroup of $G$, then  $|Hx|=|H|=|xH|$ for all $x\in G$.
@@ -83,6 +84,11 @@ given by $Hx\mapsto x^{-1}H$ is a bijection, as
 In particular, the number of right cosets of $H$ in $G$
 equals the number of left cosets of $H$ in $G$. 
 
+\begin{definition}
+    \index{Index}
+    If $H$ is a subgroup of $G$, the \textbf{índex} of $H$ in $G$
+    is the number $(G:H)$ of left (or right) cosets of $H$ in $G$. 
+\end{definition}
 
 \begin{example}
     If $G=\Z$ and $S=n\Z$, then 
@@ -92,7 +98,7 @@ equals the number of left cosets of $H$ in $G$.
 \end{example}
     
 \begin{example}
-    The subgroups of $\Sym_3$ are $\{\id\}$,the order-two subgroups 
+    The subgroups of $\Sym_3$ are $\{\id\}$, the order-two subgroups 
     $\Sym_3$, $\langle(12)\rangle$, 
     $\langle(13)\rangle$ and $\langle(23)\rangle$, and 
     the order-three subgroup $\langle(123)\rangle=\{\id,(123),(132)\}$.  
@@ -110,19 +116,15 @@ equals the number of left cosets of $H$ in $G$.
 
     \begin{example}
         Let $G=\R^2$ with the usual addition 
-        and $v\in\R^2$. The line $L=\{\lambda v:\lambda\in\R\}$ 
+        and $v\in\R^2$. The line 
+        \[
+        L=\{\lambda v:\lambda\in\R\}
+        \]
         is a subgroup of $G$. For each 
         $p\in R^2$, the coset $p+L$ 
         is the line parallel to $L$ that 
         passes through $p$.
     \end{example}
-
-
-\begin{definition}
-    \index{Index}
-    If $H$ is a subgroup of $G$, the \textbf{índex} of $H$ in $G$
-    is the number $(G:H)$ of left (or right) cosets of $H$ in $G$. 
-\end{definition}
 
 The following important theorem will be used extensively. 
 

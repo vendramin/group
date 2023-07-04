@@ -2,3 +2,353 @@
 
 \topic{Semi-direct products}
 
+We first start with an exercise of \textbf{direct products}.
+
+\begin{exercise}
+\index{Direct product of groups}
+\label{xca:direct_product}
+Let $G$ be a group and $H$ and $K$ be normal subgroups of $G$.
+If $G=HK$ and $H\cap K=\{1\}$, then $G\simeq H\times K$.
+\end{exercise}
+
+% \begin{proof}
+% Sea $f\colon G\to H\times K$, $f(g)=(h,k)$, donde $h\in H$ y $k\in K$ son únicos tales que $g=hk$. Esto tiene sentido pues si $g\in G$ then $g=hk$ para algún $h\in H$ y $k\in K$; si además $g=h_1h_1$ para $h_1\in H$ y $k_1\in K$, then, como $hk=h_1k_1$, se tiene que $h_1^{-1}h=k_1k^{-1}\in H\cap K=\{1\}$ y luego $h=h_1$ y $k=k_1$.
+
+% Veamos que si $g=hk$ y $g_1=h_1k_1$ para $h,h_1\in H$ y $k,k_1\in K$, then $kh_1=h_1k$. En efecto, $[k,h_1]=kh_1k^{-1}h_1^{-1}\in H\cap K=\{1\}$ pues la normalidad de $H$ y $K$ implican que $ kh_1k^{-1}\in H$ y $h_1k^{-1}h_1^{-1}\in K$.
+
+% La observación anterior nos permite demostrar que $f$ es un morfismo de grupos. Si $g=hk$ y $g_1=h_1k_1$ con $h,h_1\in H$ y $k,k_1\in K$, then, como $f(g)=(h,k)$ y $f(g_1)=(h_1,k_1)$, tenemos que
+% \[
+% f(gg_1)=f((hk)(h_1k_1))=f(h(kh_1)k_1)=f((hh_1)(kk_1))=(hh_1,kk_1).
+% \]
+% Queda como ejercicio demostrar que $f$ es biyectiva.
+% \end{proof}
+
+\begin{exercise}
+Let $A$ be a normal subgroup of $H$, and $B$ be a normal subgroup of $K$. 
+Prove that $A\times B$ is a normal subgroup of
+$H\times K$ and 
+\[
+\frac{H\times K}{A\times B}\simeq(H/A)\times(K/B).
+\]
+\end{exercise}
+
+\index{Exact factorization of groups}
+We say that a group $G$ admits an exact factorization through 
+the subgroups $H$ and $K$ if $G=HK$ and 
+$H\cap K=\{1\}$. By Exercise \ref{xca:direct_product}, 
+if $G$ admits an exact factorization through two normal subgroups, then 
+it is isomorphic to the direct product of these subgroups. 
+
+\begin{exercise}
+    Let $G$ be a group that admits an exact factorization through
+    the subgroups $H$ and $K$. Prove that every $g\in G$ can be written 
+    uniquely as $g=hk$ for some $h\in H$ and $k\in K$. 
+\end{exercise}
+
+\begin{example}
+Let $G=\Sym_3$, $H=\langle (123)\rangle\unlhd G$ and $K=\langle (12)\rangle$. Since
+$K$ is not normal in $G$, we cannot apply Exercise \ref{xca:direct_product}. 
+We do have $G=HK$ and $H\cap K=\{\id\}$, but $H\times K\simeq\Z/3\times\Z/2\not\simeq\Sym_3$, 
+as $\Z/3\times\Z/2$ is abelian and $\Sym_3$ is not. 
+\end{example}
+
+
+\begin{definition}
+\index{Complement}
+Let $G$ be a group, $K$ a normal subgroup of $G$, and $Q$ a subgroup of $G$. We say
+that $Q$ \textbf{complements} $K$ in $G$ if $K\cap Q=\{1\}$ y $G=KQ$.
+\end{definition}
+
+\begin{example}
+Let $G=\Sym_3$ and $K=\langle (123)\rangle\unlhd G$. The subgroups
+$\langle (12)\rangle$, $\langle
+(13)\rangle$ and $\langle (23)\rangle$ complement $K$ in $G$.
+\end{example}
+
+The previous example shows that complements are not unique. However, 
+complements are unique under isomorphism, as 
+\[
+G/K= KQ/K\simeq Q/K\cap Q=Q/\{1\}\simeq Q.
+\]
+
+\begin{definition}
+\index{Semi-direct product}
+We say that a group $G$ is a \textbf{semi-direct product} of $Q$ and $K$ if $K$ 
+is normal in $G$ and 
+$K$ admits a complement in $G$ isomorphic to $Q$. Notation: $G=K\rtimes Q$.
+\end{definition}
+
+Let us discuss some characterizations:
+
+\begin{proposition}
+Let $K$ be a normal subgroup of $G$. The following statements are equivalent:
+\begin{enumerate}
+\item $K$ admits a complement in $G$.
+\item There exists a subgroup $Q$ of $G$ such that each $g\in G$ can be written uniquely 
+as $g=xy$ for some 
+$x\in K$ and $y\in Q$.
+\item There exists a group homomorphism $s\colon G/K\to G$ such that $\pi\circ s=\id_{G/K}$, where $\pi\colon G\to G/K
+$, $g\mapsto Kg$, is the canonical homomorphism.
+\item There exists a group homomorphism $\rho\colon G\to G$ such that $\ker\rho=K$ and the restriction $\rho|_{\rho(G)}$ equals the identity. 
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+We first prove that $(1)\implies(2)$. If $Q$ complements $K$, then $G=KQ$ and
+$K\cap Q=\{1\}$. In particular, if $g\in G$, then $g=xy$ para $x\in K$ e $y\in Q$. To show that
+the decomposition is unique, suppose that 
+$g=x_1y_1$ with $x_1\in K$ and $y_1\in Q$. Then $x_1^{-1}x=yy_1^{-1}\in K\cap Q=\{1\}$ 
+and hence $x=x_1$ and $y=y_1$.
+
+It is an exercise to show that $(2)\implies(1)$.
+
+We now prove that $(2)\implies(3)$. Let $s\colon G/K\to G$, $s(Kg)=y$ if 
+$g=xy$ with $x\in K$ and $y\in Q$. (Note that here we use right cosets, as it is more convenient.)
+Let us check that $s$ is well-defined. 
+For that purpose, we must show that $Kg=Kg_1$ implies $s(Kg)=s(Kg_1)$. If $g=xy$ 
+and $g_1=x_1y_1$ with $x,x_1\in K$ and $y,y_1\in Q$, then, since $Kg=Kg_1$, 
+$xyy_1^{-1}x_1^{-1}=gg_1^{-1}\in K$, that is $yy_1^{-1}\in x^{-1}Kx_1=K$
+ because $x,x_1\in K$. Hence $yy_1^{-1}\in K\cap Q=\{1\}$ and thus $y=y_1$. 
+ We now show that $\pi\circ
+ s=\id_{G/K}$. If $g=xy$ with $x\in K$ e $y\in Q$, then
+$(\pi\circ s)(Kg)=\pi(y)=Ky=Kxy=Kg$. It is left to the reader to prove that 
+$s$ is a group homomorphism. 
+
+We now prove that $(3)\implies(4)$. Let $\rho=s\circ\pi$. Then $\rho$ is a group homomorphism (because it is the composition of homomorphisms). We compute: 
+\[
+\rho(\rho(g))=\rho( (s\circ\pi)(g))=\rho(s(Kg))=((s\circ\pi)\circ s)(Kg)=s(Kg)=\rho(g).
+\]
+We now compute $\ker\rho$. If $g\in\ker\rho$, then $s(\pi(g))=\rho(g)=1$. Thus 
+\[
+\pi(g)=\pi(s(\pi(g)))=\pi(1)=1_{G/K},
+\]
+that is $g\in\ker\pi=K$. Conversely, if $x\in K$, then
+\[
+\rho(x)=\rho(s(Kx))=\rho(s(K))=\rho(1)=1
+\]
+and hence $x\in\ker\rho$.
+
+Finally, we prove that $(4)\implies(1)$. We claim that $Q=\rho(G)$ complements $K$ in
+ $G$. We first show that $K\cap Q=\{1\}$: if $x\in K\cap Q$, then $x=\rho(g)$ for some $g\in G$. Moreover, 
+\[
+1=\rho(x)=\rho(\rho(g))=\rho(g).
+\]
+Hence $g\in\ker\rho=K$ and $x=1$. We now prove that $G=KQ$. For the inclusion $G\subseteq KQ$, 
+\[
+g=(g\rho(g^{-1}))\rho(g)
+\]
+and $g\rho(g^{-1})\in K=\ker\rho$, as $\rho(g\rho(g^{-1}))=  \rho(g)\rho(g^{-1})=1$.
+\end{proof}
+
+\begin{example}
+$\Sym_n=\Alt_n\rtimes\Z/2$, as $Q=\langle (12)\rangle\simeq\Z/2$ complements the normal subgroup 
+$\Alt_n$ of $\Sym_n$.
+\end{example}
+
+For a group $G$, 
+the set 
+\[
+\Aut(G)=\{f\colon G\to G:f\text{ bijective}\}
+\]
+is a group with the composition of maps. It is called 
+the \textbf{automorphism group} of $G$. 
+Examples of automorphism groups are the identity map and 
+conjugations homomorphisms. 
+
+\begin{example}
+$\Aut(\Z)\simeq\Z/2$, as $\Aut(\Z)=\{\id,-\id\}$.
+\end{example}
+
+\begin{example}
+$\Aut(\Z)\simeq\Z/2$ pues $\Aut(\Z)=\{\id,-\id\}$.
+\end{example}
+
+\begin{example}
+Let $G$ be a group and $g\in G$. The conjugation 
+map $\gamma_g\colon G\to G$, $x\mapsto gxg^{-1}$,
+is an automorphism of $G$, as 
+\[
+\gamma_g(xy)=g(xy)g^{-1}=(gxg^{-1})(gyg^{-1})=\gamma_g(x)\gamma_g(y).
+\]
+Moreover, $\gamma\colon G\to\Aut(G)$, $g\mapsto\gamma_g$, is a group
+homomorphism:
+\[
+\gamma_{gh}(x)=(gh)x(gh)^{-1}=g(\gamma_h(x))g^{-1}=\gamma_g(\gamma_h(x))=(\gamma_g\circ\gamma_h)(x).
+\]
+
+\index{Inner automorphisms}
+The group of \textbf{inner automorphisms} of $G$ is the 
+group 
+$\Inn(G)=\gamma(G)$. Note that $\ker\gamma=Z(G)$, as
+if $g\in G$ is such that $\gamma_g=\id$, then 
+\[
+\gamma_g(x)=gxg^{-1}=x
+\]
+for all $x\in G$. By the first isomorphism theorem, 
+\[
+G/Z(G)\simeq \gamma(G)=\Inn(G).
+\]
+\end{example}
+
+\begin{exercise}
+\label{xca:aut(S3)}
+    Prove that $\Aut(\Sym_3)\simeq\Sym_3$. 
+\end{exercise}
+
+\begin{exercise}
+    Let $G$ be a group. Prove that $\Inn(G)$ is a normal subgroup of $\Aut(G)$. 
+\end{exercise} 
+
+For a group $G$, the quotient $\Aut(G)/\Inn(G)$ is called 
+the group of \textbf{outer automorphisms} of $G$. 
+Note that 
+\[
+\Inn(G)\text{ is cyclic}\Longleftrightarrow
+|\Inn(G)|=1\Longleftrightarrow
+G\text{ is abelian.}
+\]
+
+\begin{exercise}
+Let $G$ be a group. 
+Prove that if $\Aut(G)$ is cyclic, then 
+$G$ is abelian. 
+\end{exercise}
+
+\begin{exercise}
+    Prove that if $G$ is finite, then $\Aut(G)$ is finite.
+\end{exercise}
+
+% \begin{exercise}
+% \label{xca:autgeq2}
+%         Si $G$ es un grupo tal que $|G|\geq3$, entonces $|\Aut(G)|\geq2$.
+% \end{exercise}
+
+
+% \begin{exercise}
+% \label{xca:aut_impar}
+%         No existe un grupo finito cuyo grupo de automorfismos sea no trivial cíclico y de orden impar.
+% \end{exercise}
+
+% \begin{exercise}
+% \label{xca:p2dividesAut}
+%         Sea $p$ un número primo.
+%         Si $G$ es un $p$-grupo no abeliano, entonces $p^2$ divide a $|\Aut(G)|$.
+% \end{exercise}
+
+% \begin{exercise}
+%         \label{xca:Aut(H)}
+%         Si $G=H\times K$, entonces $\Aut(H)$ es isomorfo a un subgrupo de $\Aut(G)$.
+% \end{exercise}
+
+% \begin{exercise}
+% \label{xca:aut_trivial_center}
+%         Si $G$ tiene centro trivial, entonces $\Aut(G)$ también.
+% \end{exercise}
+
+The following exercise constructs semi-direct products. 
+
+\begin{exercise}
+\label{xca:semi-direct}
+Let $K$ and $Q$ be groups and $\theta\colon Q\to\Aut(K)$, $x\mapsto\theta_x$, a group
+homomorphism. Prove that $K\times Q$ 
+with 
+\[
+(a,x)(b,y)=(a\theta_x(b),xy)
+\]
+is a group. This group will be written as $K\rtimes_\theta Q$.
+\end{exercise}
+
+% \begin{proof}[Bosquejo de la demostración]
+% Dejamos como ejercicio verificar que la operación es asociativa. Hay que verificar además que el elem
+% ento neutro de $K\rtimes_\theta Q$ será $(1,1)$ y
+% que el inverso de $(a,x)\in K\rtimes_\theta Q$ será $(\theta_{x^-1}(a^{-1}),x^{-1})$.
+% \end{proof}
+
+The group of Exercise \ref{xca:semi-direct} is the
+semi-direct product of the subgroups 
+\begin{align*}
+K\times\{1\}=\{(a,1):a\in K\}\simeq K,&&
+\{1\}\times Q=\{(1,x):x\in Q\}\simeq Q
+\end{align*}
+of $K\rtimes_\theta Q$. Note that $K\times\{1\}$ is normal in $K\rtimes_\theta Q$. 
+We can identity $K\rtimes\{1\}$ with $K$ 
+and $\{1\}\rtimes Q$ with $Q$. Thus we can write 
+\[
+\theta_x(a)=xax^{-1}
+\]
+for all $x\in Q$ and $a\in K$.
+
+
+\begin{exercise}
+Prove that if $G$ is a semi-direct product of the normal subgroup 
+$K$ with the subgroup $Q$, there exists a group homomorphism 
+$\theta\colon Q\to\Aut(K)$
+such that $G\simeq K\rtimes_\theta Q$.
+\end{exercise}
+
+% \begin{proof}[Bosquejo de la demostración]
+% Para $x\in Q$ sea $\theta_x\colon K\to K$, $\theta_x(a)=xax^{-1}$. Ya vimos que $\theta_x\in\Aut(K)$
+% y que $Q\to\Aut(K)$, $x\mapsto\theta_x$ es un morfismo de grupos. Queda verificar que
+% la función $K\rtimes_\theta Q\to G$, $(a,x)\mapsto ax$, es un morfismo biyectivo de grupos.
+% \end{proof}
+
+Let us discuss some examples. 
+
+\begin{example}
+Let $N\simeq \Z/n$ and $H\simeq\Z/2=\{0,1\}$. The map $\theta\colon H\to\Aut(N)$, 
+$1\mapsto (x\mapsto x^{-1})$, is a group homomorphism. Let $G=N\rtimes_\theta H$.
+Then $G\simeq\D_n$, the dihedral group of order $2n$.
+Recall that 
+\[
+\D_n=\langle r,s:r^n=s^2=1, srs^{-1}=r^{-1}\rangle.
+\]
+Assume that $N=\langle x\rangle$ and $H=\langle y\rangle$. Then $|(x,1)|=n$ and $|(1,y)|=2$. 
+Moreover,
+\begin{align*}
+(1,y)(x,1)(1,y)^{-1} &= (\varphi_y(x),y)(1,y)\\
+&=(\varphi_y(x),y^2)\\
+&=(\varphi_y(x),1)\\
+&=(x^{-1},1)\\
+&=(x,1)^{-1}.
+\end{align*}
+If $u=(x,1)$ y $v=(1,y)$, then $u^n=v^2=(1,1)$ and $vuv^{-1}=u^{-1}$. Thus there exists 
+a surjective group homomorphism 
+$\D_n\to G$ (because $G$ is generated by $u$ and $v$). Moreover, $|G|=|N||H|=2n$. Hence 
+$G$ has order $2n$ and therefore $G\simeq\D_n$.
+\end{example}
+
+\begin{example}
+Let $K=\{\id,(12)(34),(13)(24),(14)(23)\}$. Then $K$ is normal in $\Alt_4$. 
+Let $H=\langle (123)\rangle\simeq\Z/3$. Since $K\cap H$ is a subgroup of $H$ and $K$ and, moreover, 
+$K$ and $H$ have coprime orders, $H\cap K=\{\id\}$. Hence $\Alt_4=K\rtimes H$.
+\end{example}
+
+\begin{example}
+Let 
+\[
+K=\{\id,(12)(34),(13)(24),(14)(23)\},\quad  
+H=\{\sigma\in\Sym_4:\sigma(4)=4\}.
+\]
+Note that $H$ is a subgroup of 
+$\Sym_4$ isomorphic to $\Sym_3$. Then $H\cap K=\{\id\}$ and hence 
+$\Sym_4=K\rtimes H$.
+\end{example}
+
+Let $n\geq5$. 
+Using the fact that $\Alt_n$ is a simple group,  
+one proves that $\Alt_n$ cannot be written as a semi-direct product of proper subgroups. 
+
+\begin{example}
+Let $K=\Z/3$ and $Q=\Z/4$. Since $\Hom(Q,\Aut(K))=\{1,\tau\}$, where 
+\[
+\tau\colon\Z/4\to\Aut(\Z/3)=\{\id,\rho\}\simeq\Z/2,\quad 1\mapsto\rho,
+\]
+the semi-direct product $T=K\rtimes_\tau Q$ is a non-abelian group of order 12. Moreover,
+$T\not\simeq\Alt
+_4$ as $|(2,2)|=6$ and $\Alt_4$ has no elements of order six.
+\end{example}
+
+
+
+% todo: El grupo Aff(R) es un producto semidirecto
+% todo: Necesitamos más ejemplos de producto semidirecto

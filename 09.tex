@@ -1,0 +1,72 @@
+\chapter{}
+
+\topic{Cauchy's theorem}
+
+\index{Action!fixed points}
+\index{Class equation}
+Let $G$ be a group and
+$X$ be a finite $G$-set. Then $X$ decomposes as a disjoint 
+union of orbits. Let 
+\[
+\Fix(X)=\{x\in X:g\cdot x=x\text{ for all $g\in G$}\}
+\]
+be the set of \textbf{fixed points} of $X$. Gather  
+the one-element orbits and apply cardinality. By the 
+fundamental counting principle, 
+\begin{equation}
+\label{eq:clases}
+|X|=|\Fix(X)|+\sum_{i=1}^k|G\cdot x_i|
+=|\Fix(X)|+\sum_{i=1}^k(G:G_{x_i}),
+\end{equation}
+where the $x_j$'s are the representatives
+of the orbits of size $\geq2$. Equality~\eqref{eq:clases} is extremely 
+useful and is called the 
+\textbf{class equation}.
+
+\begin{example}
+Let a finite group $G$ act on $G$ by conjugation. 
+Then $\Fix(G)=Z(G)$ and 
+\[
+|G|=|Z(G)|+\sum_{i=1}^k(G:C_G(x_i)),
+\]
+for some $x_1,\dots,x_k\in G$ such that 
+$(G:C_G(x_i))\geq2$ for all $i\in\{1,\dots,k\}$.
+\end{example}
+
+\begin{definition}
+\index{$p$-group}
+Let $p$ be a prime number. We say 
+that $G$ is a \textbf{$p$-group} if $|G|=p^m$ for some $m\geq0$.
+\end{definition}
+
+\begin{theorem}
+Let $p$ be a prime number and 
+$G$ a $p$-group. If $\{1\}\ne N\unlhd G$, then
+$N\cap Z(G)\ne\{1\}$.
+\end{theorem}
+
+\begin{proof}
+Since $N$ is normal in $G$, $G$ acts on $N$ by conjugation. 
+By the fundamental counting principle,
+each orbit has prime-power size. Write 
+\[
+N=\underbrace{\mathcal{O}_1\cup\cdots\cup \mathcal{O}_k}_{\text{one-element orbits}}\cup\underbrace{\mathcal{O}_{k+1}\cup\cdots\cup\mathcal{O}_m}_{\text{orbits of size $>1$}},
+\]
+Since $N\cap Z(G)=\mathcal{O}_1\cup\cdots\cup\mathcal{O}_k$, 
+the integers $k=|N\cap Z(G)|$ and $|N\setminus(N\cap Z(G))|$ are divisible by $p$. Thus 
+\[
+|N|\equiv|N\cap Z(G)|\bmod p.
+\]
+Since $1\in N\cap Z(G)$, then
+$|N\cap Z(G)|>1$. In particular, $N\
+cap Z(G)\ne\{1\}$.
+\end{proof}
+
+The following corollary follows immediately: 
+
+\begin{corollary}
+Let $p$ be a prime number and 
+$G$ a $p$-group. Then 
+$Z(G)\ne\{1\}$.
+\end{corollary}
+
