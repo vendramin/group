@@ -1,0 +1,538 @@
+\chapter{}
+
+\topic{Sylow's theorems}
+
+\begin{definition}
+\index{Sylow subgroup}
+Let $G$ be a group of $p^\alpha m$, where $p$ is a prime number
+coprime with $m$. A subgroup $S$ of $G$ is said to be a \textbf{Sylow $p$-subgroup} of $G$ if $|S|=p^\alpha$.
+\end{definition}
+
+A subgroup $S$ of $G$ is a Sylow 
+$p$-subgroup of $G$ if and only if $S$ is a $p$-group and
+the prime $p$ does not divide $(G:S)$.
+
+\begin{example}\
+\begin{enumerate}
+\item If $p$ does not divide $|G|$, then $\{1\}$ is a 
+Sylow $p$-subgroup of $G$.
+\item If $G$ is a $p$-group, then $G$ is a Sylow
+$p$-subgroup of $G$.
+\end{enumerate}
+\end{example}
+
+\begin{example}
+Let $G=\Sym_3$. Then $\langle (12)\rangle$, $\langle (13)\rangle$ and $\langle (23)\rangle$ are the Sylow $2$-subgroups of $G$. Moreover, 
+$\langle (123)\rangle$ is the only Sylow $3$-subgroup of $G$.
+\end{example}
+
+\begin{example}
+Let $G=\Sym_4$. The subgroup $\langle (1234),(13)\rangle$ is a Sylow $2$-subgroup of $G$ and 
+$\langle (123)\rangle$ is a Sylow $3$-subgroup of $G$.
+\end{example}
+
+\begin{example}
+Let $G=\Z/18$. The subgroup 
+$\langle 2\rangle =\{0,2,4,6,8,10,12,14,16\}$ is the only Sylow $3$-subgroup of $G$ and $\langle 9\rangle=\{0,9\}$ is the only
+Sylow $2$-subgroup of $G$.
+\end{example}
+
+\begin{example}
+Let $p$ be a prime number and 
+$G=\GL_n(p)$. Since 
+\begin{align*}
+|\GL_n(p)|&=(p^n-1)(p^n-p)\cdots (p^n-p^{n-1})\\
+&=p^{1+2+\cdots+n}(p^n-1)(p^{n-1}-1)\cdots (p-1),
+\end{align*}
+we can write $|\GL_n(p)|=p^\alpha m$, where $\alpha=1+2+\cdots+n$ and $m$
+is an integer not divisible by $p$. 
+The subgroup of matrices of the form 
+\[
+\begin{pmatrix}
+1 & * & \cdots & *\\
+0 & 1 & \cdots & *\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & 1
+\end{pmatrix},
+\]
+that is the set of matrices $(g_{ij})$ with 
+\[
+g_{ij}=\begin{cases}
+1 & \text{si $i=j$},\\
+0 & \text{si $i>j$},
+\end{cases}
+\]
+has order $p^\alpha$. Thus it is a Sylow $p$-subgroup of 
+$\GL_n(p)$.
+\end{example}
+
+We will prove three crucial theorems that go back to Sylow. 
+The first one guarantees the existence of Sylow subgroups. 
+We shall need a lemma. 
+
+\begin{lemma}
+    If $p$is a prime number, 
+    $\alpha\geq0$ and $m\geq 1$, then 
+    \[
+        \binom{p^\alpha m}{p^\alpha}\equiv m\bmod p.
+    \]
+\end{lemma}
+
+\begin{proof}
+    By the binomial theorem,
+        \[
+        (1+X)^p=\sum_{j=0}^p\binom{p}{j}X^{p-j}\equiv 1+X^p\bmod p,
+        \]
+    because $\binom{p}{j}$ is divisible by $p$ for all
+    $j\in\{1,\dots,p-1\}$.
+    By using induction, one proves that 
+        \begin{gather*}
+        (1+X)^{p^j}\equiv 1+X^{p^j}\bmod p      \\
+        \shortintertext{holds for all $j$. Thus}
+        (1+X)^{p^\alpha m}\equiv (1+X^{p^\alpha})^m\bmod p.
+        \end{gather*}
+Comparing the coefficient of $X^{p^\alpha}$ in the previous
+formula, we get the result we wanted to prove.
+\end{proof}
+
+\begin{theorem}[Sylow's first theorem]
+\index{Theorem!Sylow, I}
+\label{thm:Sylow1}
+Let $G$ be a finite group and 
+$p$ a prime number. Then there exists a Sylow $p$-subgroup of $G$. 
+\end{theorem}
+
+\begin{proof}
+Write $|G|=p^\alpha m$ with $\gcd(p,m)=1$ and $\alpha\geq1$. Let 
+\[
+X=\{S:S\subseteq G\text{ subsets of size $p^\alpha$}\}.
+\]
+Let $G$ act on $X$ by left multiplication, as $|g\cdot S|=|gS|=|S|$ for all $g\in G$ and $S\in X$. Decompose $X$
+into $G$-orbits and note that the previous lemma
+implies that 
+\[
+|X|= \binom{p^\alpha m}{p^\alpha}\equiv m\not\equiv 0\bmod p.
+\]
+Thus there exists an orbit $\mathcal{O}$ of size not divisible by $p$. 
+If $S\in\mathcal{O}$, let $G_S$ be the stabilizer of $S$ in $G$. Since
+$|\mathcal{O}|=(G:G_S)$ and $|\mathcal{O}|$ is not divisible by $p$, we obtain that $p^\alpha$ divide a $|
+G_S|$. In particular, $p^\alpha\leq |G_S|$. If $g\in G_S$, then
+$gS=S$. If $x\in S$, then $G_Sx\subseteq S$. Thus 
+\[
+|G_S|=|G_Sx|\leq |S|=p^\alpha
+\]
+as $S\in X$. Therefore $G_S$ is a Sylow $p$-subgroup of $G$.
+\end{proof}
+
+If $G$ is a finite group and
+$p$ is a prime divisor of $|G|$, 
+let 
+\[
+\Syl_p(G)=\{\text{Sylow $p$-subgroups of $G$}\}.
+\]
+The first Sylow's theorem states that 
+$\Syl_p(G)$ is non-empty. 
+
+Before proving Sylow's second theorem, 
+we state and prove a slightly more technical result. 
+
+\begin{theorem}
+\label{thm:Sylow_auxiliar}
+Let $G$ be a finite group. 
+If $P$ is a $p$-subgroup of $G$ and $S\in\Syl_p(G)$, then $P\subseteq gSg^{-1}$ for some $g\in G$.
+\end{theorem}
+
+\begin{proof}
+    Let $X=\{xS:x\in G\}$ be the set of left cosets of $S$ in $G$. Then $|X|=(G:S)$ is not divisible by $p$. Let $G$ act on $X$ 
+    by left multiplication. In particular, 
+    $P$ also acts on $X$ by left multiplication. 
+    Decompose $X$ into 
+    $P$-orbits. There exists a $P$-orbit $\mathcal{O}$ of size
+    not divisible by $p$, as $|X|$ is not divisible by $p$. Since  $|\mathcal{O}|$ divides $|P|$ and $p$ does not divide 
+    $|\mathcal{O}|$, it follows that $|\mathcal{O}|=1$,
+    that is $\mathcal{O}=\{gS\}$ for some
+    $g\in G$. Since $P(gS)=gS$, in particular, $xg\in gS$ 
+    for all $x\in P$. This means that if $x\in P$, then 
+    $x\in gSg^{-1}$. Hence $P\subseteq gSg^{-1}$.
+\end{proof}
+
+An application:
+
+\begin{corollary}
+    Let $p$ be a prime number. 
+    If $G$ is a finite group and 
+    $P$ is a $p$-subgroup of $G$, then $P$ 
+    is contained in some Sylow $p$-subgroup of $G$.
+\end{corollary}
+
+\begin{proof}
+If $S\in\Syl_p(G)$, then $gSg^{-1}\in\Syl_p(G)$, as $|gSg^{-1}|=|S|$. 
+By the previous theorem, 
+$P\subseteq gSg^{-1}$ for some $g\in G$. Thus the claim follows. 
+\end{proof}
+
+Theorem \ref{thm:Sylow2} states 
+that any two Sylow $p$-subgroups are conjugate, that 
+is, $G$ acts transitively 
+by conjugation on $\Syl_p(G)$. 
+
+\begin{theorem}[Sylow's second theorem]
+\index{Theorem!Sylow, II}
+\label{thm:Sylow2}
+Let $G$ be a finite group and $p$ 
+a prime number. If 
+$S,T\in\Syl_p(G)$, then there exists 
+$g\in G$ such that $gSg^{-1}=T$.
+\end{theorem}
+
+\begin{proof}
+Use the previous theorem with $P=T$. Then
+$T\subseteq gSg^{-1}$ for some $g\in G$. Since 
+$|S|=|T|$ and 
+$|T|\leq |gSg^{-1}|=|S|$, we conclude that
+$T=gSg^{-1}$.
+\end{proof}
+
+\begin{corollary}
+Let $G$ be a finite group, $p$ a prime number and
+$S\in\Syl_p(G)$. If $S$ is normal in $G$, then 
+$\Syl_p(G)=\{S\}$.
+\end{corollary}
+
+\begin{proof}
+If $T\in\Syl_p(G)$, then $T=gSg^{-1}=S$ for some $g\in G$.
+\end{proof}
+
+For the next theorem, we need some notation. If $p$
+is a prime number and $G$ is a finite group of order
+$p^\alpha m$ with $\gcd(p,m)=1$, then
+$n_p(G)=|\Syl_p(G)|$. Note that 
+\[
+n_p(G)=(G:N_G(P))
+\]
+for all $P\in\Syl_p(G)$. We will prove that
+$n_p(G)$ divides $m$.
+
+\begin{theorem}[Sylow's third theorem]
+\index{Theorem!Sylow, III}
+\label{thm:Sylow3}
+Let $G$ be a finite group and $p$ a prime number. 
+Then $n_p(G)\equiv 1\bmod p$.
+\end{theorem}
+
+\begin{proof}
+    Assume that $|G|=p^{\alpha}m$ with $m$ not divisible by $p$.
+    By Sylow's first theorem, $\Syl_p(G)$ is non-empty. Let $P\in\Syl_p(G)$ and $n=n_p(G)$. We consider the set  
+    
+        \[
+        X=\{gPg^{-1}:g\in G\}=\{P=P_1,P_2,\dots,P_n\}.
+        \]
+    By Sylow's second theorem, $|X|=n$.
+
+    Let $G$ act on $X$ by conjugation. Then $P$ also acts on 
+    $X$ by conjugation. Each $P$-orbit has size a power of $p$. 
+    
+    We claim that $\{P\}$ is the only $P$-orbit of size one.  
+    Since $xPx^{-1}=P$ if $x\in P$, it follows that
+    $\{P\}$ is a $P$-orbit. Let $\{P_i\}$ be a $P$-orbit
+    of size one. Then 
+        $xP_ix^{-1}=P_i$ for all 
+        $x\in P$. Thus $P\subseteq N_G(P_i)$. The group 
+        $N_G(P_i)/P_i$ has order not divisible by $p$, as $P_i\in\Syl_p(G)$.
+        If $xP_i\in N_G(P_i)/P_i$ con $x\in P$, then $xP_i=P_i$. That is
+        $x\in P_i$, since 
+        $(xP_i)^{p^{\alpha}}=x^{p^{\alpha}}P_i=P_i$ implies that 
+        $|xP_i|$ divides $p^{\alpha}$. Hence $|xP_i|=1$,
+        as $N_G(P_i)/P_i$ has order coprime with $p$. Therefore 
+        $x\in P_i$.
+        This implies that 
+        $P\subseteq P_i$. Hence $P=P_i$, as both sets 
+        have size $p^{\alpha}$. Now 
+        \[
+        X=\{P\}\cup \underbrace{\mathcal{O}_1\cup\mathcal{O}_2\cup\cdots\cup\mathcal{O}_k}_{\text{of size $>1$ divisible by $p$}}.
+        \]
+        Thus $n_p(G)=|X|\equiv 1\bmod p$.
+\end{proof}
+
+We now discuss some applications of Sylow's theorems. 
+
+\begin{example}
+If $G$ is a group of order 15, then $G$ is cyclic.
+
+Let $n_3=n_3(G)$ and $n_5=n_5(G)$. Then $n_3\equiv1\bmod 3$ and $n_3$ divides 5. Thus $n_3=1$ and hence there exists a unique
+$H\in\Syl_3(G)$. This group is then normal in $G$ and isomorphic to
+$\Z/3$. Similarly, 
+ $n_5=1$ and there is a unique subgroup $K\in\Syl_5(G)$ such that
+ $K\unlhd G$ and $K\simeq\Z/5$. Since $H\cap K=\{1\}$ by Lagrange's theorem, 
+ \[
+|HK|=\frac{|H||K|}{|H\cap K|}=|H||K|=15=|G|.
+\]
+Hence $G=HK\simeq H\times K\simeq \Z/3\times\Z/5\simeq\Z/15$.
+\end{example}
+
+\begin{example}
+If $G$ is a group of order 455, then $G$ is cyclic.
+
+For every prime number $p$ dividing $|G|$, let $n_p=n_p(G)$. 
+Since $n_5$ divides $7\times 13$ and
+$n_5\equiv 1\bmod 5$, then $n_5\in\{1.91\}$. A direct 
+calculation shows that $n_7=n_{13}=1$. Let $P\in\Syl_7(G)$ and  $Q\in\Syl_{13}(G)$, both normal subgroups of $G$. Since $P$ and $Q$ 
+have coprime orders, Lagrange's theorem implies that 
+$P\cap Q=\{1\}$.
+We now apply Sylow's theorems to the quotients $G/P$ and $G/Q$.
+Let $m_5=n_5(G/P)$ and $m_{13}=n_{13}(G/P)$. Since $m_5$ divides 13 and  $m_5\equiv1\bmod 5$, it follows that 
+$m_5=1$. Similarly, $m_{13}=1$ and
+hence $G/P\simeq\Z/5\times\Z/13$. The same argument shows that 
+$G/Q\simeq\Z/5\times\Z/7$. Thus both $G/P$ and $G/Q$ are abelian. 
+This means that 
+$[G,G]\subseteq P\cap Q=\{1\}$. Hence $G$ is also abelian. 
+In particular, $n_5=1$ and 
+\[
+G\simeq\Z/5\times\Z/7\times\Z/13\simeq\Z/455.
+\]
+\end{example}
+
+\begin{example}
+If $G$ is a group of order 21, then either 
+\[
+G\simeq\Z/21
+\quad\text{or}\quad 
+G\simeq\langle x,y:x^7=y^3=1,\,yx=x^2y\rangle.
+\]
+
+Let $n_3=n_3(G)$ and $n_7=n_7(G)$. Since $n_7\equiv1\bmod 7$ and $n_3$ divides $3$, it follows that $n_7=1$. There is a unique
+$H\in\Syl_7(G)$. This subgroup $H$ is such that
+$H\unlhd G$ and $H\simeq\Z/7$. Thus $H=\langle x\rangle$, where
+$x^7=1$.
+Let $K\in\Syl_3(G)$. Since $n_3$ divides 7 and
+$n_3\equiv1\bmod 3$, it follows that $n_3\in\{1,7\}$. 
+Hence $K\simeq\Z/3$ and thus 
+$K=\langle y\rangle$ where $y^3=1$. By Lagrange's theorem, 
+$H\cap K=\{1\}$ and $G=HK$. In particular,
+\[
+G=\{x^iy^j:0\leq i\leq 6,\,0\leq j\leq 2\}.
+\]
+Since $H$ is normal in $G$, $yxy^{-1}\in H$. That is 
+$yxy^{-1}=x^i$ for some $i\in\{1,\dots,6\}$. Therefore 
+$x^7=y^3=1$ and  $yx=x^iy$ for some $i\in\{1,\dots,6\}$. What can we say about this $i$? We note that
+\[
+x=y^3xy^{-3}=y^2(yxy^{-1})y^{-2}=y^2x^iy^{-2}=y(x^i)^2y^{-1}=(x^i)^3.
+\]
+Then $i^3\equiv 1\bmod 7$, that is $i\in\{1,2,4\}$. There are
+three cases: 
+\begin{enumerate}
+        \item[(a)] If $yxy^{-1}=x$, then $xy=yx$. Thus $K\unlhd G$ and $G\simeq H \times K\simeq\Z/21$.
+        \item[(b)] If $yxy^{-1}=x^2$, then we can compute the table of $G$. In particular, $G$ can be obtained as a certain subgroup of  $\GL_2(\Z/7)$, that is 
+        \[
+        x=\begin{pmatrix}
+        1&1\\
+        0&1\end{pmatrix},
+        \quad
+        y=\begin{pmatrix}
+        2&0\\
+        0&1\end{pmatrix},
+        \quad
+        G\simeq\langle x,y\rangle\leq \GL_2(\Z/7).
+\]
+\item[(c)] If $yxy^{-1}=x^4$, then $y^2xy^{-2}=x^2$. Since $|y^2|=|y|=3$, if $z=y^2$, then $H=\langle y\rangle=\langle z\rangle$. 
+So we are in the previous case. 
+\end{enumerate}
+\end{example}
+
+\begin{example}
+If $G$ is a group of order $5\cdot 7\cdot 17$, then $G$ is cyclic.
+
+For $p\in\{5,7,17\}$, let $n_p=n_p(G)$. Since $n_5\equiv 1\bmod 5$ and $n_5$ divides $7\cdot 17$, it follows that 
+$n_5=1$. Let $H\in\Syl_5(G)$. This is the only Sylow $5$-subgrop of $G$, 
+so $H$ is normal in $G$. Let $K\in\Syl_7(G)$ and $L\in\Syl_{17}(G)$. Since $H$ is normal in $G$, $HK$ is a subgroup of $G$. By Lagrange's theorem, $H\cap K=\{1\}$ because $H$ and $K$ have coprime orders.
+Thus  $|HK|=5\cdot 7$.
+We now apply Sylow's theorems to the group $HK$. If $m_7=n_7(HK)$, then $m_7=1$. In particular, $K\in\Syl_7(HK)$ and $K$ is normal in $HK$. 
+Thus $HK\subseteq N_G(K)$ and $|HK|\leq |N_G(K)|$. Since 
+\[
+n_7=(G:N_G(K))=\frac{|G|}{|N_G(K)|}\leq \frac{|G|}{|HK|}=\frac{5\cdot 7\cdot 17}{5\cdot 7}=17
+\]
+and $n_7\in\{1,5\cdot 17\}$, we conclude that
+$n_7=1$. The same argument shows that
+$n_{17}=1$. Therefore both $K$ and $L$ are normal in $G$. By
+Lagrange's theorem, 
+\[
+L\cap H=H\cap K=L\cap K=\{1\}
+\]
+It follows that
+\[
+L\cap (HK)=H\cap (LK)=K\cap (LH)=\{1\}.
+\]
+Hence $G=HKL\simeq\Z/5\times\Z/7\times\Z/17\simeq\Z/(5\cdot 7\cdot 17)$.
+\end{example}
+
+\begin{example}
+If $G$ is a group of order 12 such that 
+$n_3(G)\ne1$, then $G\simeq\Alt_4$.
+
+Let $P\in\Syl_3(G)$ and $n_3=n_3(G)=4$. Then $P$ is not normal in
+$G$. Let $G$ act on the set $G/P$ by left multiplication. 
+This induces a group homomorphism 
+\[
+\rho\colon G\to\Sym_{G/P}\simeq\Sym_4.
+\]
+We claim that $\rho$ is injective. Note that
+$\ker\rho\subseteq P$, as 
+\[
+x\in\ker\rho\implies
+\rho_x=\id\implies
+xP\subseteq P\implies
+x\in P.
+\]
+Since $P$ is not normal in $G$, $P\ne \ker\rho$. Thus $\ker\rho$ is a proper subgroup of $P$. Hence 
+$\ker\rho=\{1\}$ since $|P|=3$.
+Let $S,T\in\Syl_3(G)$. Since $S\simeq T\simeq\Z/3$, Lagrange's theorem implies that $S\cap T=\{1\}$. Thus $G$ 
+contains exactly eight elements of order three. 
+Since the elements of order three of $\Sym_4$ belong to $\Alt_4$, the subgroup $\rho(G)\cap\Alt_4$ of $\Sym_4$ contains at least
+eight elements. Therefore $G\simeq\rho(G)\simeq\Alt_4$.
+\end{example}
+
+Sylow's theorems can be used to detect non-simple groups. 
+
+\begin{example}
+If $G$ is a group of order 36, then $G$ is not simple.
+
+Assume that $G$ is simple. Then $n_3=n_3(G)=4$. 
+Let $P\in\Syl_3(G)$ and let $G$ act on $X=\{gPg^{-1}:g\in G\}$ by conjugation. This induces a group homomorphism 
+\[
+\rho\colon G\to\Sym_X\simeq\Sym_4.
+\]
+Since $G$ is simple, either $\ker\rho=\{1\}$ or $\ker\rho=G$. If $\ker\rho=G$, $P$ is normal in $G$, a
+contradiction. Thus $\ker\rho=\{1\}$ and hence
+$\rho$ is injective. In particular, 
+by the first isomorphism theorem, 
+\[
+G\simeq G/\ker\rho\simeq\rho(G)\lesssim\Sym_4.
+\]
+This implies that 36 divides 24, a contradiction. 
+\end{example}
+
+\begin{example}
+If $G$ is a group of order 30, then $G$ is not simple.
+
+For every prime number $p$ dividing 30, let $n_p=n_p(G)$. Assume that
+$n_2>1$, $n_3>1$ and $n_5>1$.
+ Then $n_3=10$. There are ten 
+Sylow $3$-subgroups, any two of them with trivial intersection. 
+In fact, if $P,Q\in\Syl_3(G)$ are such that 
+ $P\ne Q$, then $P\cap Q\leq P$ and hence 
+$|P\cap Q|\in\{1,3\}$. If $|P\cap Q|=3$, then $P\cap Q=P$ and $P=Q$, a contradiction. Similarly, 
+there are six Sylow $5$-subgroups of $G$, any two of them with 
+trivial intersection. In conclusion,
+\[
+|G|\geq 1+10\times 2+6\times 4>30,
+\]
+a contradiction.
+\end{example}
+
+% Al terminar la demostración del primer teorema de Sylow, usamos coclases dobles para demostrar que
+% si $H$ es un subgrupo de un grupo finito $G$ y
+% $P\in\Syl_p(G)$, entonces $g\in G$ tal que $gPg^{-1}\cap H\in\Syl_p(H)$. Otra demostración
+% puede obtenerse al considerar la acción de $H$ en $G/P$ por multiplicación a izquierda.
+
+\section*{More about Sylow's theorems (optional)}
+
+\begin{theorem}
+    Let $N$ be a normal subgroup of a finite group 
+    $G$ and $P\in\Syl_p(N)$. Then 
+    $P\cap N\in\Syl_p(N)$. Moreover, every Sylow 
+    $p$-subgroup of $N$  
+    can be obtained this way. 
+\end{theorem}
+
+\begin{proof}
+    Since $N$ is normal,
+    by Theorem \ref{thm:Sylow_auxiliar}, there exists 
+    $g\in G$ such that 
+        \[
+                g(P\cap N)g^{-1}=gPg^{-1}\cap gNg^{-1}=gPg^{-1}\cap N\in\Syl_p(N).
+        \]
+    Then $P\cap N$ is a Sylow $p$-subgroup of $g^{-1}Ng=N$.
+
+    Let $Q\in\Syl_pN$ and $P\in\Syl_p(G)$ be such that
+    $Q\subseteq P$. Then
+    $Q\subseteq P\cap N$. Hence 
+    $Q=P\cap N$, as $P\cap N$ is a Sylow $p$-subgroup of $N$. 
+\end{proof}
+
+As a corollary, if $G$ is a finite group and 
+$N$ is a normal subgroup of $G$, then 
+$n_p(N)\leq n_p(G)$.
+
+\begin{theorem}
+    Let $p$ be a prime number, $G$ be a finite group, $P\in\Syl_p(G)$, 
+    and $N$ be a normal subgroup of $G$. Let $\pi\colon G\to G/N$ be the canonical homomorphism. Then 
+    $\pi(G)\in\Syl_p(G/N)$ and every Sylow 
+    $p$-subgroup of $G/N$ can be obtained this way. 
+\end{theorem}
+
+\begin{proof}
+    Since $\pi(P)=\pi|_{P}(P)\simeq P/N\cap P$,
+    the second isomorphism theorem 
+    implies that 
+    $\pi(P)$ is a $p$-group. Since
+    $|PN|=|P||N|/|P\cap N|$,
+        \[
+                (G/N:\pi(P))=(G:PN)
+        \]
+        is not divisible by $p$. Thus $\pi(P)\in\Syl_p(G/N)$.
+
+        If $Q\in\Syl_p(G/N)$, then $Q=\pi(H)$ for some
+        subgroup $H$ of $G$
+        with $N\subseteq H$. In particular,
+        \[
+                |Q|=|\pi(H)|=\frac{|H|}{|H\cap N|}=\frac{|H|}{|N|}.
+        \]
+        Thus 
+        \[
+                (G:H)=\frac{|G|/|N|}{|H|/|N|}=(G/N:Q)
+        \]
+        is not divisible by $p$. Thus $X\in\Syl_p(H)$ and
+        hence   
+        $X\in\Syl_p(G)$. Therefore   
+        \[
+        \pi(X)\subseteq\pi(H)=Q
+        \]
+        and 
+        $\pi(X)=Q$, as 
+        $\pi(X)\in\Syl_p(G/N)$.
+\end{proof}
+
+As a corollary, if $G$ is a finite group and
+$N$ is a normal subgroup of $G$, then 
+$n_p(G/N)\leq n_p(G)$.
+
+\begin{corollary}
+Let $G$ be a finite group. Assume that 
+$G$ contains only one Sylow $p$-subgroup. Then
+every subgroup and every quotient of 
+$G$ 
+contains only one Sylow 
+$p$-subgroup. 
+\end{corollary}
+
+\begin{proof}
+    If $H$ is a subgroup of $G$, then
+    $n_p(H)\leq n_p(G)=1$. If $N$ is a normal subgroup of 
+    $G$, then $n_p(G/N)\leq n_p(G)=1$.
+\end{proof}
+
+%Veamos una aplicación.
+%
+%\begin{theorem}[Wilson]
+%       Sea $n\in\N$. Entonces $n$ es primo si y sólo si
+%       $(n-1)!\equiv -1\bmod n$.
+%\end{theorem}
+%
+%\begin{proof}
+%       Sea $p$ un número primo.
+%       El grupo $\Sym_p$ tiene $(p-1)!$ elementos de orden $p$. Cada
+%       $p$-subgroupo de Sylow de $\Sym_p$ está generado por un $p$-ciclo, y luego
+%       $n_p\equiv (p-2)!$. Por el tercer teorema de Sylow,
+%       $(p-2)!=n_p\equiv 1\bmod p$. Al multiplicar por $p-1$, tenemos
+%       $(p-1)!\equiv -1\bmod p$.
+%\end{proof}

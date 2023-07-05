@@ -40,3 +40,65 @@ El ejemplo anterior puede generalizarse, lo que nos da una descomposición
 de un grupo como unión disjunta de \textbf{coclases dobles}. Veremos más adelante
 demostraciones alternativas de los teoremas de Sylow basadas en
 coclases dobles.
+
+\begin{quote}
+Veamos una demostración alternativa del primer teorema de Sylow
+que utiliza coclases dobles.
+Primero demostraremos un resultado auxiliar. Si $P\in\Syl_p(G)$ y $H\leq G$, entonces
+existe un $g\in G$ tal que $H\cap gPg^{-1}\in\Syl_p(H)$. En efecto, supongamos que
+$|H|=p^\beta t$ con $p$ coprimo con $t$.
+Si descomponemos a $G$ en $(H,P)$-coclases dobles,
+\[
+|G|=\sum_{i=1}^k \frac{|H||P|}{|H\cap x_iPx_i^{-1}|}.
+\]
+Al simplificar $|P|=p^\alpha$, tenemos que $m=\sum_{i=1}^k(H:H\cap x_iPx_i^{-1})$, lo que nos dice
+que existe $i\in\{1,\dots,k\}$ tal que
+$(H:H\cap x_iPx_i^{-1})$ no es divisible por $p$. Esto significa que que
+$p^\beta$ divide a $|H\cap x_iPx_i^{-1}|$ y en consecuencia $H\cap x_iPx_i^{-1}\in\Syl_p(H)$.
+Por el teorema de Cayley podemos suponer que nuestro subgrupo $G$ es un subgrupo
+de $\GL_n(p)$ para algún $n$ y algún primo $p$. Sea $P$ un subgrupo de Sylow
+del grupo $\GL_n(P)$. La observación que demostramos
+aplicada al grupo $G$ nos dice que existe $g\in \GL_n(p)$ tal que $G\cap gPg^{-1}$ es un subgrupo de
+Sylow de $G$.
+\end{quote}
+
+\begin{quote}
+Veamos una
+demostración alternativa del segundo teorema de Sylow que usa coclases dobles.
+Si $P,Q\in\Syl_p(G)$ y
+descomponemos a $G$ en $(P,Q)$-coclases dobles, tenemos
+\[
+p^\alpha m=\sum_{i=1}^k\frac{|P||Q|}{|P\cap x_iQx_i^{-1}|}
+\implies
+m=\sum_{i=1}^k\frac{|P|}{|P\cap x_iQx_i^{-1}|}
+\]
+para ciertos $x_1,\dots,x_k\in G$.
+Como $m$ no es divisible por $p$, existe algún $i\in\{1,\dots,k\}$ tal que $|P|=|P\cap x_iQx_i^{-1}|$
+, lo que
+implica que $P=x_iQx_i^{-1}$ para algún $i\in\{1,\dots,k\}$.
+\end{quote}
+
+\begin{quote}
+Una demostración alternativa del tercer teorema de Sylow basada en coclases dobles.
+Sean $P\in\Syl_p(G)$ y $N=N_G(P)$. Recordemos
+que $n_p(G)=(G:N)$. Si descomponemos
+a $G$ en $(P,N)$-coclases dobles,
+\[
+|G|=\sum_{i=1}^k\frac{|P||N|}{|N\cap x_iPx_i^{-1}|}
+\]
+para ciertos $x_1,\dots,x_k\in G$. Sin perder generalidad podemos suponer que $x_1=1$, entonces la fó
+rmula anterior queda
+\[
+n_p(G)=1+\sum_{i=2}^k\frac{|P|}{|N\cap x_iPx_i^{-1}|},
+\]
+pues $(G:N)=n_p(G)$.
+El teorema quedará demostrado si vemos que la suma del miembro de la derecha es divisible por $p$. Si
+ esto no pasa,
+es decir si existe $i\in\{2,\dots,k\}$ tal que $|N\cap x_iPx_i^{-1}|=|P|$, entonces
+$x_iPx_i^{-1}=N\cap x_iPx_i^{-1}\subseteq N$. Como entonces $P$ y también $x_iPx_i^{-1}$ son ambos $p
+$-subgrupos de Sylow de $N$,
+el segundo teorema de Sylow afirma que estos subgrupos tienen que ser conjugados en $N$. Por definici
+ón del normalizador, $P$ es normal en $N$.
+En consecuencia, $x_iPx_i=P$, es decir $x_i\in N$, una contradicción pues como $i>1$ se tiene que
+$Px_iN$ y $Px_1N=PN$ son coclases dobles disjuntas.
+\end{quote}

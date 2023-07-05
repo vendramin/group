@@ -70,4 +70,108 @@ $G$ a $p$-group. Then
 $Z(G)\ne\{1\}$.
 \end{corollary}
 
+In Exercises \ref{xca:size4} and \ref{xca:size9}
+we proved that groups of order four and nine are always abelian. 
+
+\begin{corollary}
+    Let $p$ be a prime number. If $G$ is a group of order $p^2$, 
+    then $G$ is abelian. 
+\end{corollary}
+
+\begin{proof}
+By Lagrange's theorem, $|Z(G)|\in\{1,p,p^2\}$. Since $G$ 
+is a $p$-group, $Z(G)\ne\{1\}$. If $|Z(G)|=p$, then $G/Z(G)$ 
+is cyclic. By Exercise \ref{xca:G/Z(G)}, 
+$G$ is abelian, a contradiction. 
+Thus $|Z(G)|=p^2$ and hence $G=Z(G)$.
+\end{proof}
+
 \topic{Cauchy's theorem}
+
+\begin{theorem}[Cauchy]
+\index{Cauchy's theorem}
+\label{thm:Cauchy}
+Let $G$ be a finite group, and $p$ be a prime number
+that divides $|G|$. 
+Then there exists $g\in G$ of order $p$.
+\end{theorem}
+
+\begin{proof}
+Let $C=\Z/p$ and 
+\[
+X=\{(x_1,\dots,x_p)\in G\times\cdots\times G:x_1\cdots x_p=1\}.
+\]
+Then $C$ acts on $X$ by $k\cdot (x_1,\dots,x_p)=(x_{k+1},\dots,x_{k+p})$, where the indices are taken modulo $p$. To see that
+this is an action, note that 
+\[
+x_{i_1}\cdots x_{i_p}=1
+\implies (x_{i_1}^{-1}x_{i_1})x_{i_2}\cdots x_{i_p}=x_{i_1}^{-1}
+\implies x_{i_2}\cdots x_{i_p}x_{i_1}=1.
+\]
+If $x_1,\dots,x_{p-1}$ are fixed, then 
+$x_p=x_{p-1}^{-1}\cdots x_{1}^{-1}$. Thus $|X|=|G|^{p-1}$. Each $C$-orbit
+has either one or $p$ elements, as $|C|=p$. Write
+\[
+X=\underbrace{\mathcal{O}_1\cup\cdots\cup \mathcal{O}_k}_{\text{one-element orbits}}\cup\underbrace{\mathcal{O}_{k+1}\cup\cdots\cup\mathcal{O}_m}_{\text{orbits of size $p$}}.
+\]
+Hence $0\equiv |G|^{p-1}=|X|\equiv k\bmod p$, that is $p$ divides $k$. Since $(1,1,\dots,1)\in X$, $k\geq 1$. Therefore $p\leq k$. In particular,
+there exists $x\in G\setminus\{1\}$ such that $(x,x,\dots,x)\in X$. Hence $|x|=p$.
+\end{proof}
+
+\begin{corollary}
+    Let $p$ be a prime number and $G$ be a finite group. 
+    Then $G$ is a $p$-group if and only if 
+    every element of $G$ has order a power of $p$. 
+\end{corollary}
+
+\begin{proof}
+    If $G$ is a $p$-group, then, by Lagrange's theorem, 
+    every element has order a power of $p$. Conversely, 
+    if $q$ is a prime divisor of $|G|$, by 
+    Cauchy's theorem, there exists $g\in G$ of order $q$. Thus $q=p$.
+\end{proof}
+
+\begin{corollary}
+    Let $p>2$ be a prime number 
+    and $G$ be a group of order $2p$. 
+    Then either $G\simeq\Z/2p$ or $G\simeq\D_p$.
+\end{corollary}
+
+\begin{proof}
+    By Cauchy's theorem, there exist $r,s\in G$ such that
+    $|r|=p$ and $|s|=2$. Let $H=\langle r\rangle$. Then
+    $(G:H)=2$ and $H\unlhd G$. We can decompose $G$ as 
+    $G=H\cup Hs$ (disjoint union), 
+    as $s\not\in H$. In particular, 
+\[
+G=\{1,r,\dots,r^{p-1},s,rs,\dots,r^{p-1}s\}.
+\]
+Since $srs^{-1}\in H$, it follows that $srs^{-1}=r^k$ for some
+$k\in\{0,1,\dots,p-1\}$. Since $s^2=1$,
+\[
+r=s^2rs^{-2}=s(srs^{-1})s^{-1}=sr^ks^{-1}=r^{k^2}.
+\]
+Thus $k^2\equiv 1\bmod p$ and either 
+$k\equiv 1\bmod p$ or $k\equiv-1\bmod p$. 
+If $k\equiv -1\bmod p$, then $srs^{-1}=r^{-1}$ and hence $G\simeq\D_p$.
+If $k\equiv 1\bmod p$, then $rs=sr$ and hence, since $G$ is abelian, $G\simeq\Z/{2p}$.
+\end{proof}
+
+\begin{theorem}
+    A group of order $p^m$ has a normal subgroup of order
+    $p^n$ for every $n\leq m$.
+\end{theorem}
+
+\begin{proof}
+    We proceed by induction on $m$. The case where $m=1$ is trivial. Assume that the result holds for groups of order $p^m$. Let
+    $G$ be a group of order $p^{m+1}$.
+    We claim that if $n\leq m$, $G$ contains a normal subgroup of
+    order $p^n$. Since $Z(G)\ne\{1\}$, there exists
+    $g\in Z(G)\setminus\{1\}$ of order $p$. Let
+$N=\langle g\rangle\unlhd G$. The quotient 
+group $G/N$ has order $p^m$. By the inductive hypothesis, 
+there exists a normal subgroup $Y$ of $G/N$ of order $p^n$. By the correspondence theorem, $G$ contains a normal subgroup $K$ of $G$ 
+that contains $N$, that is $N\leq K\leq G$. In fact, 
+$Y=\pi(K)$ and 
+$(G:K)=(\pi(G):\pi(K))=p^{m-n}$. Hence $|K|=p^n$.
+\end{proof}
