@@ -1,13 +1,159 @@
-\chapter*{Some solutions}
+\section*{Some solutions}
 
-\pagestyle{plain}
-\fancyhf{}
-\fancyhead[LE,RO]{Rings and modules}
-\fancyhead[RE,LO]{Some solutions}
-\fancyfoot[CE,CO]{\leftmark}
-\fancyfoot[LE,RO]{\thepage}
+% \pagestyle{plain}
+% \fancyhf{}
+% \fancyhead[LE,RO]{Rings and modules}
+% \fancyhead[RE,LO]{Some solutions}
+% \fancyfoot[CE,CO]{\leftmark}
+% \fancyfoot[LE,RO]{\thepage}
+% \addcontentsline{toc}{chapter}{Some solutions}
+\begin{sol}{xca:neutral}
+If $e$ and $e_1$ are both neutral elements, then $e=ee_1=e_1$. 
+\end{sol}
 
-\addcontentsline{toc}{chapter}{Some solutions}
+\begin{sol}{xca:ax=b}
+    If $ax=b$, after multiplying on the left by $a^{-1}$ we
+    obtain that $x=a^{-1}b$. Similarly, the equation $xa=b$ 
+    has $x=ba^{-1}$ as its unique solution. 
+\end{sol}
+
+\begin{sol}{xca:LR}
+    For $g\in G$, the map $L_g\colon G\to G$, $x\mapsto gx$, is invertible 
+    with inverse $L_{g^{-1}}$, as
+    \[
+    (L_g\circ L_{g^{-1}})(x)=g(g^{-1}x)=(gg^{-1})x=x
+    \]
+    for all $x\in G$. Similarly, $L_{g^{-1}}\circ L_g)(x)=x$ for all $x\in G$. 
+    
+    In the same way, we prove that 
+    for each $g\in G$, the map $R_{g^{-1}}$ is the inverse of $R_g$. 
+\end{sol}
+
+\begin{sol}{xca:GxH}
+    The neutral element of $G\times H$ is $(1,1)$, as $(1,1)(g,h)=(g,h)=(g,h)(1,1)$. The inverse
+    of $(g,h)$ is $(g,h)^{-1}=(g^{-1},h^{-1})$, as
+    \begin{align*}
+    (g,h)(g,h)^{-1}&=(g,h)(g^{-1},h^{-1})=(gg^{-1},hh^{-1})=(1,1),\\
+    (g,h)^{-1}(g,h)&=(g^{-1},h^{-1})(g,h)=(g^{-1}g,h^{-1}h)=(1,1).
+    \end{align*}
+    To prove the associativity, let $g,g_1,g_2\in G$ and 
+    $h,h_1,h_2\in H$. Since $G$ and $H$ are groups, 
+    their multiplications are associative. Then 
+    \begin{align*}
+        ((g,h)(g_1,h_1))(g_2,h_2) &= (gg_1,hh_1)(g_2,h_2)
+        =((gg_1)g_2,(hh_1)h_2)\\
+        &= (g(g_1g_2),h(h_1h_2))
+        = (g,h)(g_1g_2,h_1h_2)
+        = (g,h)((g_1,h_1)(g_2,h_2)).
+    \end{align*}
+\end{sol}
+
+\begin{sol}{xca:center}
+    Clearly $1\in Z(G)$. If $x\in Z(G)$, then $xg=gx$ for all $g\in G$. Multiplying by $x^{-1}$ on the left and 
+    on the right, we get that $gx^{-1}=x^{-1}$ holds for all $g\in G$. Finally, if $x,y\in Z(G)$. Then
+    \[
+    (xy)g=x(yg)=x(gy)=(xg)y=(gx)y=g(xy)
+    \]
+    for all $g\in G$. Hence $xy\in Z(G)$. 
+\end{sol}
+
+% \begin{sol}{xca:centralizer}
+%     First, $1\in G_G(g)$, as $1g=g1=g$. If $x\in c_G(g)$, then $xg=gx$. Multiplying 
+%     on the left and on the right by $x^{-1}$, one gets $x^{-1}g=gx^{-1}$, that is 
+%     $x^{-1}\in C_G(g)$. Finally, if $x,y\in C_G(g)$, then 
+%     \[
+%     $(xy)g=$
+%     \]
+% \end{sol}
+
+\begin{sol}{xca:conjugate}
+    Since $S$ is a subgroup, $1\in S$ and 
+    if $x,y\in S$, then $x^{-1}\in S$ and $xy\in S$. Now 
+    $1\in gSg^{-1}$, as $1\in S$ and $1=g1g^{-1}$. If $x\in gSg^{-1}$, then 
+    $x=gsg^{-1}$ for some $s\in S$. Thus 
+    \[
+    x^{-1}=(gsg^{-1})^{-1}=gs^{-1}g^{-1}\in gSg^{-1},
+    \]
+    as $s^{-1}\in S$. Finally, 
+    if $x=gsg^{-1}\in gSg^{-1}$ and $y=gtg^{-1}\in gSg^{-1}$ for some $s,t\in S$, then 
+    \[
+    xy=(gsg^{-1})(gtg^{-1})=g(st)g^{-1}\in gSg^{-1},
+    \]
+    as $st\in S$. 
+\end{sol}
+
+\begin{sol}{xca:center_S3}
+    If $\sigma\in Z(\Sym_3)$ and $\sigma\ne\id$, there exists $i\in\{1,2,3\}$ such that 
+    $j=\sigma(i)\ne i$. Let $k\in\{1,2,3\}\setminus\{i,j\}$. Then 
+    $(jk)\sigma$ is a permutation such that $i\mapsto k$, while 
+    $\sigma(jk)$ is such that $i\mapsto j$. In particular, $(jk)\sigma\ne\sigma(jk)$, a contradiction.
+
+    The group $\Sym_3$ has six elements: $\id$, $(12)$, $(13)$, $(23)$. $(123)$ and $(132)$. 
+    First note that $\id\in C_{\Sym_3}((12))$ and 
+    $(12)\in C_{\Sym_3}((12))$. However, 
+    the permutations $(23)$, $(13)$, $(123)$ and $(132)$ do not commute with
+    $(12)$. For example, 
+    \[
+    (23)(12)=(132)\ne (123)=(12)(23).
+    \]
+\end{sol}
+
+\begin{sol}{xca:subgroup}
+    Let us prove $\implies$. Since $1\in S$, then $S\ne\emptyset$. If $u,v\in S$, then 
+    $v^{-1}\in S$ and $uv^{-1}\in S$. 
+
+    Let us prove now $\impliedby$. If $S\ne\emptyset$, let $u\in S$. Then $1=uu^{-1}\in S$. The assumption 
+    Let $u,v\in S$. The assumption with $x=1\in S$ and $y=v$ yields $v^{-1}\in S$. The assumption 
+    with $x=u$ and $y=v^{-1}$ yields $uv\in S$. 
+\end{sol}
+
+\begin{sol}{xca:SL_subgroup}
+    The identity matrix belongs to $\SL_n(\R)$. If $a,b\in\SL_n(\R)$, then 
+    $ab^{-1}\in\SL_n(\R)$, as 
+    \[
+    \det(ab^{-1})=\det(a)\det(b^{-1})=\det(a)\det(b)^{-1}=1.
+    \]
+    By Exercise \ref{xca:subgroup}, $\SL_n(\R)$ is a subgroup of $\GL_n(\R)$. 
+\end{sol}
+
+\begin{sol}{xca:intersection}
+    Let $\{H_\lambda:\lambda\in\Lambda\}$ be a collection of subgroups of a group $G$ and 
+    $H=\cap_{\lambda\in \Lambda}H_\lambda$. We claim that $H$ is a subgroup of $G$. Since
+    $1\in H_\lambda$ for all $\lambda$, $H$ is non-empty. If $x,y\in H$, then $x,y\in H_\lambda$ for all $\lambda$. 
+    Since each $H_\lambda$ is a subgroup of $G$, $xy^{-1}\in H_\lambda$ for all $\lambda$. Thus $xy^{-1}\in H$.
+\end{sol}
+
+\begin{sol}{xca:generated}
+    Let 
+    \[
+    H=\{x_1^{n_1}\cdots x_k^{n_k}:k\geq0,\,x_1,\dots,x_k\in X,\,-1\leq n_1,\dots,n_k\leq 1\}.
+    \]
+    To prove that $H\subseteq\langle X\rangle$, let $h=x_1^{n_1}\cdots x_k^{n_k}\in H$. 
+    If $S$ is a subgroup of $G$ containing $X$, then $x_j\in S$ for all $j$. This implies that 
+    $h=x_1^{n_1}\cdots x_k^{n_k}\in S$. Thus 
+    \[
+    h\in\bigcap_{\substack{S\leq G\\X\subseteq S}}S.
+    \]
+    
+    To prove that $H\supseteq \langle X\rangle$ we first 
+    claim that $H$ is a subgroup of $G$. Note that $H\ne\emptyset$, as $1\in H$ (this is the empty word). If 
+    $u=x_1^{n_1}\cdots x_k^{n_k}\in H$ and 
+    $v=x_{k+1}^{n_{k+1}}\cdots x_{l}^{n_l}\in H$, then 
+    \[
+    uv^{-1}=x_1^{n_1}\cdots x_k^{n_k}x_{l}^{-n_{l}}\cdots x_{k+1}^{-n_{k+1}}\in H. 
+    \]
+    Now note that $H$ is a subgroup of $G$ containing $X$. Thus 
+    \[
+    \langle X\rangle=\bigcap_{\substack{S\leq G\\X\subseteq S}}S\subseteq H.
+    \]
+\end{sol}
+
+\begin{sol}{xca:union}
+    Let $G=\Sym_3$. Then $H=\{\id,(12)\}$ and 
+    $K=\{\id,(23)\}$ are subgroups of $G$. However, 
+    $H\cup K=\{\id,(12),(23)\}$ is not a subgroup, as 
+    $(12)(23)=(123)\not\in H\cup K$. 
+\end{sol}
 
 \begin{sol}{thm:quotient}
 Since $N$ is normal in $G$, the operation is well-defined. 

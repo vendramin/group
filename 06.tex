@@ -1,6 +1,6 @@
-\chapter{}
+\section{}
 
-\topic{Permutable subgroups}
+\subsection{Permutable subgroups}
 
 \index{Product of subgroups}
 If $H$ and $K$ are subgroups of $G$, let 
@@ -125,7 +125,7 @@ with the operation of $G$, as
 $(h_1k_1)(h_2k_2)\ne (h_1h_2)(k_1k_2)$. 
 \end{example}
 
-\topic{Homomorphisms}
+\subsection{Homomorphisms}
 
 \begin{definition}
         \index{Homomorphism!of groups}
@@ -170,7 +170,7 @@ The map $\exp\colon\R\to\R^\times$, $\exp(x)=e^x$, is a group homomorphism.
 \end{example}
 
 \begin{example}
-\index{Inclusión}
+\index{Inclusion}
 The inclusion map $\Z\hookrightarrow\Q$ is an injective group homomorphism. 
 \end{example}
 
@@ -179,7 +179,7 @@ then the \textbf{inclusion map}  $S\hookrightarrow G$ is a group
 homomorphism. 
 
 \begin{example}
-$\det\colon\GL_2(\R)\to\R^\times$ is a group homomorphism. 
+The determinant $\det\colon\GL_2(\R)\to\R^\times$ is a group homomorphism. 
 \end{example}
 
 \begin{example}
@@ -496,7 +496,9 @@ $(xz)^k\ne1$ for all $k\in\{1,\dots,5\}$ and
 $(xz)^6=1$). Thus 
 $G=\langle xz\rangle\simeq\Z/6$. If, otherwise, 
 $zx=xz^2$, then 
-$G=\langle x,z:x^2=z^3=1,\,xzx^{-1}=z^2\rangle\simeq\D_3$.
+\[
+G=\langle x,z:x^2=z^3=1,\,xzx^{-1}=z^2\rangle\simeq\D_3.
+\]
 \end{example}
 
 How many (isomorphism classes of) groups are there? We are now 
@@ -532,7 +534,7 @@ $\Z/9$ and $\Z/3\times\Z/3$. In particular, groups of order
 nine are abelian. 
 \end{exercise}
 
-\topic{Isomorphism theorems}
+\subsection{Isomorphism theorems}
 
 The following theorem is fundamental. For example, it allows us to recognize quotient groups. 
 
@@ -564,9 +566,7 @@ If $f\colon G\to H$ is group homomorphism, then $G/\ker f\simeq f(G)$.
     we conclude that $G/K\simeq f(G)$.
 \end{proof}
 
-\begin{examples}
 If $G$ is a group, then $G/\{1\}\simeq G$ and $G/G\simeq\{1\}$.
-\end{examples}
 
 \begin{example}
 Since $f\colon\Z\to\Z/n$, $x\mapsto x\bmod n$, is a group homomorphism
@@ -786,7 +786,7 @@ In our particular case,
 Let us discuss some applications. 
 
 \begin{example}
-Let $a,b\in\Z$ be non-zero integers. Then $a\Z+b\Z=\gcd(a,b)\Z$ and $a\Z\cap b\Z=\lcm(a,b)\Z$. By the second isomorphism theorem,
+Let $a,b\in\Z\setminus\{0\}$. Then $a\Z+b\Z=\gcd(a,b)\Z$ and $a\Z\cap b\Z=\lcm(a,b)\Z$. By the second isomorphism theorem,
 \[
 \frac{\gcd(a,b)\Z}{b\Z}=\frac{a\Z+b\Z}{b\Z}\simeq
 \frac{a\Z}{a\Z\cap b\Z}=\frac{a\Z}{\lcm(a,b)\Z}.
