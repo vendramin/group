@@ -1,4 +1,4 @@
-\section{}
+\section{19/03/2024}
 
 \subsection{Permutable subgroups}
 
@@ -43,8 +43,12 @@ if $H$ is normal in $G$, then $HK$ is a subgroup of $G$.
 \end{exercise}
 
 \begin{example}
-Let $G=\Sym_4$. The subgroups $H=\langle (12)\rangle$ and $K=\langle (34)\rangle$ satisfy that $HK=KH=\{
-\id,(12),(34),(12)(34)\}$ is a subgroup of 
+Let $G=\Sym_4$. The subgroups $H=\langle (12)\rangle$ and $K=\langle (34)\rangle$ are such that 
+\[
+HK=KH=\{
+\id,(12),(34),(12)(34)\}
+\]
+is a subgroup of 
 $\Sym_4$. Note that not $H$ nor $K$
 are normal in $G$.
 \end{example}
@@ -108,7 +112,9 @@ is not a subgroup of $G$, as by Lagrange's theorem,
 $G$ cannot have subgroups of four elements. Another way 
 to see that $HK$ is not a subgroup of $G$ follows from 
 the fact that 
-$KH=\{\id,(12),(23),(132)\}\ne HK$.
+\[
+KH=\{\id,(12),(23),(132)\}\ne HK.
+\]
 \end{example}
 
 \begin{example}
@@ -122,7 +128,9 @@ H\times K\to G,\quad
 \]
 is bijective. Note that this bijective map is not compatible 
 with the operation of $G$, as 
-$(h_1k_1)(h_2k_2)\ne (h_1h_2)(k_1k_2)$. 
+\[
+(h_1k_1)(h_2k_2)\ne (h_1h_2)(k_1k_2).
+\]
 \end{example}
 
 \subsection{Homomorphisms}
@@ -196,9 +204,12 @@ $f(x+y)=f(x)f(y)$ for all $x,y\in\R$.
 \end{example}
 
 \begin{exercise}
-Let $f\colon G\to H$ be a group homomorphism. Prove that 
-$f(1)=1$, $f(g^{-1})=f(g)^{-1}$ and 
-$f(g^n)=f(g)^n$ for all $g\in G$ and $n\in\Z$.
+Let $f\colon G\to H$ be a group homomorphism. Prove the following properties: 
+\begin{enumerate}
+    \item $f(1)=1$.
+    \item $f(g^{-1})=f(g)^{-1}$ for all $g\in G$.
+    \item $f(g^n)=f(g)^n$ for all $g\in G$ and $n\in\Z$.
+\end{enumerate}
 \end{exercise}
 
 \begin{example}
@@ -318,7 +329,7 @@ $f$ equals $\{1,8,13,20\}$, a subgroup of $\mathcal{U}(\Z/21)$.
 
 \begin{example}
 The map $\sgn\colon\Sym_n\to\{-1,1\}$ is a surjective group 
-homomorphism and 
+homomorphism such that  
 $\ker(\sgn)=\Alt_n$. In particular, $\Alt_n$ is a normal subgroup of $\Sym_n$.
 \end{example}
 
@@ -508,6 +519,8 @@ Table \ref{tab:grupos<8}. For the classification of groups
 of order eight, we need more tools. 
 
 \begin{table}[ht]
+    \caption{Groups of order $\leq7$ (up to isomorphism).}
+
     \begin{tabular}{|c|c|c|}
     \hline
     Order & Number & Group(s)\\
@@ -523,14 +536,13 @@ of order eight, we need more tools.
         7 & 1 & $\Z/7$ \\
     \hline
     \end{tabular}
-    \caption{Groups of order $\leq7$ (up to isomorphism).}
     \label{tab:grupos<8}
 \end{table}
 
 \begin{exercise}
 \label{xca:size9}
-Prove that, up to isomorphism, the groups of order nine are 
-$\Z/9$ and $\Z/3\times\Z/3$. In particular, groups of order
+Prove that the groups of order nine are 
+$\Z/9$ and $\Z/3\times\Z/3$ (up to isomorphism). In particular, groups of order
 nine are abelian. 
 \end{exercise}
 
