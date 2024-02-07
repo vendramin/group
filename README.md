@@ -6,7 +6,7 @@ These are lecture notes for the course _Group theory_, taught by Leandro Vendram
 at Vrije Universiteit Brussel.
 
 ## PDF
-[Here](https://github.com/vendramin/group/blob/main/book.pdf) is the PDF.
+[Here](https://github.com/vendramin/group/blob/main/notes.pdf) is the PDF.
 
 ## License
 
