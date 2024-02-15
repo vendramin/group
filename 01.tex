@@ -96,10 +96,10 @@ the inverse of an element $x$ will be $-x$.
     abelian groups: 
     \begin{enumerate}
         \item $\Z$, $\Q$, $\R$ and $\C$ with the usual addition. 
-        \item Let $n\geq2$. The set $\Z/(n)$ of integers modulo $n$ with the usual addition modulo $n$.
+        \item Let $n\geq2$. The set $\Z/n$ of integers modulo $n$ with the usual addition modulo $n$.
         \item $\Q^\times=\setminus\{0\}$, $\R^\times=\setminus\{0\}$ and $\C^\times=\setminus\{0\}$ 
         with the usual multiplication.
-        \item Let $p$ be a prime number. The set $(\Z/(p))^{\times}=\Z/(p)\setminus\{0\}$ of invertible integers modulo $p$ 
+        \item Let $p$ be a prime number. The set $(\Z/p)^{\times}=\Z/p\setminus\{0\}$ of invertible integers modulo $p$ 
             with the usual multiplication modulo $p$. 
     \end{enumerate}
 \end{example}
@@ -117,8 +117,8 @@ The \textbf{trivial group} is the (unique) group containing exactly one element,
     otherwise. 
 \end{definition}
 
-The group $\Z/(n)$ of integers modulo $n$ is a finite group of order $n$. 
-The group $(\Z/(p))^{\times}$ of units modulo $p$ is a finite
+The group $\Z/n$ of integers modulo $n$ is a finite group of order $n$. 
+The group $(\Z/p)^{\times}$ of units modulo $p$ is a finite
 group of order $p-1$. The other groups of Example \ref{exa:abelian_groups} are infinite. 
 
 \begin{exercise}
@@ -134,7 +134,7 @@ of $G$ is the matrix
 that in position $(i,j)$ has the element $g_ig_j$. 
 For example, the table of 
 the (additive) group  
-$\Z/(4)$ of integers modulo 4 is the following:
+$\Z/4$ of integers modulo 4 is the following:
 \begin{center}
   \begin{tabular}{l|cccc}
      &0&1&2&3 \\
@@ -317,8 +317,9 @@ the set
 G=\left\{x,\frac{1}{x},1-x,\frac{1}{1-x},\frac{x}{x-1},\frac{x-1}{x}\right\}
 \subseteq\{f\colon\overline{\R}\to\overline{\R}:f\text{ is a map}\}
 \]
-is a non-abelian group with the usual composition of maps. 
-Then
+is a non-abelian group with the usual composition of maps. How is this group ``acting'' on 
+the set $\{0,1,\infty\}$? 
+The group 
 $G$ can be identified with the set of bijective maps 
 $\{0,1,\infty\}\to\{0,1,\infty\}$. For example, 
 the map $x\mapsto\frac{1}{x}$ can be identified with the permutation of
@@ -351,20 +352,20 @@ groups of Examples \ref{exa:S3} and \ref{exa:another_S3} are
 indeed ``indistinguishable'' as groups. 
 
 \begin{example}
-Let $n\geq2$. The multiplicative units of $\Z/(n))$ form a group 
+Let $n\geq2$. The multiplicative units of $\Z/n$ form a group 
 with the usual multiplication modulo $n$. 
 We will use the following notation:
 \[
-\mathcal{U}(\Z/(n))=\{x\in\Z/(n):\gcd(x,n)=1\}.
+\mathcal{U}(\Z/n)=\{x\in\Z/n:\gcd(x,n)=1\}.
 \]
-The order of $\mathcal{U}(\Z/(n))$ is $\varphi(n)$, where $\varphi$ 
+The order of $\mathcal{U}(\Z/n)$ is $\varphi(n)$, where $\varphi$ 
 is the Euler's function, that is 
 \[
 \varphi(n)=|\{x\in\Z:1\leq x\leq n,\,\gcd(x,n)=1\}|.
 \]
 
 Let us show a concrete example. The table of 
-$\mathcal{U}(\Z/(8))=\{1,3,5,7\}$
+$\mathcal{U}(\Z/8)=\{1,3,5,7\}$
 is
 \begin{center}
   \begin{tabular}{l|cccc}
