@@ -43,7 +43,7 @@
 \end{exercise}
                 
 The following exercise is a particular 
-case of Cauchy's theorem. 
+case of Cauchy's theorem; see Theorem~\ref{thm:Cauchy}. 
 
 \begin{exercise}
         \label{xca:orden2}
@@ -77,6 +77,12 @@ Let us see some concrete examples:
 \begin{example}
         The matrix $\begin{pmatrix}1&1\\0&1\end{pmatrix}\in\GL_2(\R)$ has infinite order.
 \end{example}                     
+
+\begin{example}
+    Let us compute the orders of $\Z/4=\{0,1,2,3\}$. This is an additive group and $0$ is the neutral element. 
+    Thus $|0|=1$. Since we are using additive notations, ``powers'' really mean multiples. A direct calculation
+    shows that $|1|=|3|=4$ and $|2|=2$. 
+\end{example}
                                 
 \begin{example}
         The group $G_\infty=\bigcup_{n\geq1}G_n$ is abelian and infinite. Note that every element of 
@@ -234,7 +240,7 @@ equals the number of left cosets of $H$ in $G$.
         L=\{\lambda v:\lambda\in\R\}
         \]
         is a subgroup of $G$. For each 
-        $p\in R^2$, the coset $p+L$ 
+        $p\in\R^2$, the coset $p+L$ 
         is the line parallel to $L$ that 
         passes through $p$.
     \end{example}
@@ -287,7 +293,7 @@ Let us discuss some corollaries.
 
 \begin{corollary}
 \label{cor:coprime_orders}
-    If $G$ is an abelian group and $g,h\in G$ are elements of finite coprime orders, 
+    If $G$ is a finite abelian group and $g,h\in G$ are elements of finite coprime orders, 
     then 
     $|gh|=|g||h|$.
 \end{corollary}
