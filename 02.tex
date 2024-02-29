@@ -278,6 +278,67 @@ triangle.
         a subgroup. Can you give an example? 
 \end{exercise}
 
+\begin{example}
+    Let $Q_8$ be the set of matrices 
+    \begin{align*}
+        I&=\begin{pmatrix}
+            1&0\\
+            0&1
+        \end{pmatrix},
+        &
+        -I&=\begin{pmatrix}
+            -1&0\\
+            0&-1
+        \end{pmatrix},
+        &
+        i&=\begin{pmatrix}
+            \sqrt{-1}&0\\
+            0&-\sqrt{-1}
+        \end{pmatrix},
+        &
+        -i&=\begin{pmatrix}
+            -\sqrt{-1}&0\\
+            0&\sqrt{-1}
+        \end{pmatrix},\\
+        j&=\begin{pmatrix}
+            0&1\\
+            -1&0
+        \end{pmatrix},
+        &
+        -j&=\begin{pmatrix}
+            0&-1\\
+            1&0
+        \end{pmatrix},
+        &
+        k&=\begin{pmatrix}
+            0&\sqrt{-1}\\
+            \sqrt{-1}&0
+        \end{pmatrix},
+        &
+        -k &=\begin{pmatrix}
+            0&-\sqrt{-1}\\
+            -\sqrt{-1}&0
+        \end{pmatrix}.
+    \end{align*}
+    Then $Q_8$ is a subgroup of $\GL_2(\C)$. It is known as the \textbf{quaternion group} of order eight. Sometimes, it is convenient just to write
+    \[
+    Q_8=\{1,-1,i,-i,j,-j,k,-k\}, 
+    \]
+    but one needs to remember 
+    that 1 is playing the role of the neutral element of $Q_8$, 
+    -1 commutes with every element of $Q_8$ 
+    and that $i^2=j^2=k^2=-1$ and $ijk=-1$. This is enough to compute the multiplication table
+    of $Q_8$. For example, to show that $ji=-k$ we proceed as follows: 
+    \[
+    ijk=-1\implies -jk=-i\implies jk=i\implies -k=ji.
+    \]
+\end{example}
+
+\begin{exercise}
+    Compute the multiplication table of $Q_8$. 
+\end{exercise}
+
+
 \subsection{Subgroups of $\Z$}
 
 What can we say about the subgroups of $\Z$? 
