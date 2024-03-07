@@ -14,7 +14,8 @@ a_1 & \text{if $i=r$}.
 \]
 
 For example, $(12)$, $(13)$ and $(23)$ are 2-cycles of 
-$\Sym_3$. We often say that 2-cycles are \textbf{transpositions}.
+$\Sym_3$. Note that 
+2-cycles are called \textbf{transpositions}.
 The permutations $(123)$ and $(132)$ are 3-cycles of $\Sym_3$.
 
 \index{Disjoint permutations}
@@ -37,10 +38,9 @@ Disjoint permutations commute.
 
 
 We now prove that every permutation can be written 
-as a product of disjoint cycles. 
-The proof of the theorem can be omitted in a first 
-lecture. 
-We start with a lemma. 
+as product of disjoint cycles. 
+The decomposition is unique up to the order of the factors. 
+We start with a lemma (used to prove the uniqueness of the decomposition).
 
 \begin{lemma}
         Let $\sigma=\alpha\beta\in\Sym_n$ with $\alpha$ and $\beta$ disjoint permutations. If $\alpha(
@@ -48,7 +48,8 @@ i)\ne i$, then $\sigma^k(i)=\alpha^k(i)$ for all $k\geq0$.
 \end{lemma}
 
 \begin{proof}
-    Without loss of generality, we may assume that $k>0$. Then \[
+    Without loss of generality, we may assume that $k>0$. 
+    Let $i\in\{1,\dots,n\}$. Then \[
     \sigma^k(i)=(\alpha\beta)^k(i)=\alpha^k(\beta^k(i))=\alpha^k(i).\qedhere
     \]
 \end{proof}
@@ -65,12 +66,13 @@ of disjoint cycles of length
     of elements of $\{1,\dots,n\}$ moved by $\sigma$. If $k=2$, 
     the result is trivial. Assume that the result 
     holds for all permutations moving $<k$ points. Let
+    $\sigma$ be a permutation that moves $k\geq2$ points and 
     $i_1\in\{1,\dots,n\}$ be such that $\sigma(i_1)\ne i_1$. We 
     consider the cycle that contains $i_1$. So let 
         $i_2=\sigma(i_1)$, $i_3=\sigma(i_2)$... We know that 
         there exists $r$ such that $\sigma(i_r)=i_1$
- (otherwise, if $\sigma(i_r)=i_j$ for some 
-        $j\in\{2,\dots,n\}$, then 
+        (otherwise, if $\sigma(i_r)=i_j$ for some 
+        $j\geq2$, then 
         \[
         \sigma(i_{j-1})=i_j=\sigma(i_r),
         \]
@@ -89,7 +91,7 @@ of disjoint cycles of length
 _t
 \]
 with $s>0$. Let $i_1\in\{1,\dots,n\}$ be such that 
-        $\sigma(i_1)\ne i_1$. By the previous lemma, $\sigma^k(i_1)=\sigma_1^k(i_1)$ for all $k\geq0$.
+        $\sigma_1(i_1)\ne i_1$. By the previous lemma, $\sigma^k(i_1)=\sigma_1^k(i_1)$ for all $k\geq0$.
         There exists $j\in\{1,\dots,t\}$ such that 
         $\tau_j(i_1)\ne i_1$. Since the $t_k$'s commute, 
         without loss of generality, we may assume that $j=
@@ -182,30 +184,56 @@ If $e_1,e_2,e_3$ is the standard basis of $\R^{3\times1}$, then
 \[
 P_{\sigma}(e_1)=e_2,
 \quad 
-P_{\sigma}(e_2)=e_1,
+P_{\sigma}(e_2)=e_3,
 \quad 
 P_{\sigma}(e_3)=e_1.
 \]
-The permutation matrix
-$P_\sigma$ associated with 
+We can write $P_\sigma$ as a sum
+of elementary matrices: 
+\[
+P_\sigma=\begin{pmatrix}
+    0&0&0\\
+    1&0&0\\
+    0&0&0
+\end{pmatrix}
++\begin{pmatrix}
+    0&0&1\\
+    0&0&0\\
+    0&0&0
+\end{pmatrix}
++\begin{pmatrix}
+    0&0&0\\
+    0&0&0\\
+    0&1&0
+\end{pmatrix}.
+\]
+
+In general, the permutation matrix
+$P_\sigma$ associated with a permutation 
 $\sigma\in\Sym_n$, permutes the elements of the standard basis
 of $\R^{n\times1}$ in the way $\sigma$ permutes 
 the elements of $\{1,2,\dots,n\}$.
 
-If $\sigma\in\Sym_n$, then
-\[
-P_\sigma=\sum_{i=1}^n E_{\sigma(i),i},
-\]
-where $E_{i,j}$ is the matrix with a one in position
+\index{Elementary matrix}
+Recall that the 
+\textbf{elementary matrix} 
+$E_{i,j}$ is the matrix with a one in position
 $(i,j)$ and zero in all other entries. Recall the
 following formulas: 
-\begin{equation}
-\label{eq:E}
-E_{i,j}E_{k,l}=\begin{cases}
+\begin{align*}
+E_{i,j}E_{k,l}&=\begin{cases}
 E_{i,l} & \text{if $j=k$},\\
-0 & \text{if $j\ne k$}.
+0 & \text{if $j\ne k$}
 \end{cases}
-\end{equation}
+\end{align*}
+
+\begin{exercise}
+\label{xca:permutation_matrix}
+Let $\sigma\in\Sym_n$. Prove that
+\[
+P_\sigma=\sum_{i=1}^n E_{\sigma(i),i}.
+\]
+\end{exercise}
 
 The determinant of a permutation matrix equals 
 $\pm1$. Why? 
@@ -335,6 +363,11 @@ Now the claim follows from the formulas
 Proposition \ref{pro:A_n3cycles} has several 
 important applications. 
 
+\begin{exercise}
+\label{xca:commutator_A4}
+    Prove that $[\Alt_4:\Alt_4]=\{\id,(12)(34),(13)(24),(14)(23)\}$. 
+\end{exercise}
+
 \begin{example}
 \index{Commutator!of $\Alt_n$}
 If $n\geq5$, then $[\Alt_n,\Alt_n]=\Alt_n$. To prove the non-trivial
@@ -346,8 +379,6 @@ is a product of commutators:
 \]
 where $\#\{a,b,c,d,e\}=5$.
 \end{example}
-
-Can you compute the commutator subgroup of $\Alt_4$? 
 
 \begin{example}
 \index{Commutator!of $\Sym_n$}

@@ -161,6 +161,22 @@ If $e$ and $e_1$ are both neutral elements, then $e=ee_1=e_1$.
     $(12)(23)=(123)\not\in H\cup K$. 
 \end{sol}
 
+\begin{sol}{xca:permutation_matrix}
+Let $\{e_1,\dots,e_n\}$ be the standard basis of $\R^n$. 
+To prove this formula note that
+\[
+E_{i,j}e_k=\begin{cases}
+    e_i&\text{if $j=k$,}\\
+    0 & \text{if $j\ne k$}.
+\end{cases}
+\]
+and verify that 
+$P_\sigma e_k=\sum_{i=1}^n E_{\sigma(i),i}e_k$ 
+for all $k\in\{1,\dots,n\}$. Since $P_\sigma$ and
+$\sum_{i=1}^n E_{\sigma(i),i}$ coincide in a basis of $\R^n$, 
+they are equal. 
+\end{sol} 
+
 \begin{sol}{thm:quotient}
 Since $N$ is normal in $G$, the operation is well-defined. 
 Routine calculations show that 
@@ -209,3 +225,5 @@ that $HK\supseteq KH$, let $y=kh\in KH$. Then $y=(khk^{-1})k\in HK$, as  $khk^{-
 \begin{sol}{xca:U(Z/10)}
 Just note that $\mathcal{U}(\Z/12)$ has no elements of order four.
 \end{sol}
+
+
