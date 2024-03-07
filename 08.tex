@@ -389,6 +389,36 @@ $H\cap K$. By the fundamental counting principle,
 \]
 \end{example}
 
+The idea used in Example \ref{exa:for_HK} can be generalized. 
+
+\begin{example}
+\index{Double coset}
+Let $G$ be a group and $H$ and $K$ be subgroups of $G$. Let the group $L=H\times K$ act on $G$ by
+\[
+(h,k)\cdot g=hgk^{-1}.
+\]
+The orbtis are sets of the form 
+\[
+HgK=\{hgk:h\in H,\,k\in K\}.
+\]
+These sets are called \textbf{double $(H,K)$-coset}. 
+In particular, two double cosets are either disjoint 
+or equal. Moreover, $G$ admits a decomposition 
+as a disjoint union of double cosets, that is 
+\[
+G=\bigcup_{i\in I}Hg_iK,
+\]
+for some set $I$. Now we compute 
+\[
+L_g=\{(h,k)\in H\times K:hgk^{-1}=g\}=\{(h,g^{-1}hg)\in H\times K\}.
+\]
+Then $|L_g|=|H\cap gKg^{-1}|$, because there is a bijection between $L_g$ and
+$H\cap gKg^{-1}$. By the fundamental counting principle (Theorem~\ref{thm:fundamental}), 
+\[
+|HgK|=(L:L_g)=\frac{|H\times K|}{|H\cap gKg^{-1}|}=\frac{|H||K|}{|H\cap gKg^{-1}|}.
+\]
+\end{example}
+
 As another application, we compute the
 order of the group $\GL_n(p)$ para $n\geq1$ and 
 a prime number $p$. 
