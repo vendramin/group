@@ -10,7 +10,7 @@ If $f\colon G\to H$ is group homomorphism, then $G/\ker f\simeq f(G)$.
 \end{theorem}
 
 \begin{proof}
-    Let $K=\ker f$ and $\varphi\colon G/K\to H$, $xK\mapsto f(x)$. We need to show that $\varphi$ is well-defined. This means that
+    Let $K=\ker f$ and $\varphi\colon G/K\to f(G)$, $xK\mapsto f(x)$. We need to show that $\varphi$ is well-defined. This means that
     we need to show that if $xK=yK$, then $f(x)=f(y)$. If $xK=yK$, then, since $y^{-1}x\in K$, 
     \[
         f(y)^{-1}f(x)=f(y^{-1}x)\in f(K)=\{1\}.
@@ -587,7 +587,7 @@ Every finite simple group $G$ is contained in some $\Alt_n$.
 \end{proposition}
 
 \begin{proof}
-If $|G|=2$, the result is trivial, as $G\simeq\Alt_2$. Assume 
+If $|G|=2$, the result is trivial, as $G\simeq\langle (12)(34)\rangle\subseteq\Alt_2$. Assume 
 that $|G|>2$.
 Let $f\colon G\to\Sym_n$ by the injective group homomorphism
 given by Cayley's theorem. If $H=f(G)$, then 
