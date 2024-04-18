@@ -2,7 +2,13 @@
 
 \subsection{Semi-direct products}
 
-We first start with an exercise of \textbf{direct products}.
+We first start with an exercise of \textbf{direct products}. Let $G$ be a group and $H$ and $K$ be normal subgroups with trivial intersection, that is $H\cap K=\{1\}$. 
+Then $hk=kh$ for all $h\in H$ and $k\in K$. In fact, 
+\[
+[h,k]=hkh^{-1}k^{-1}\in H\cap K=\{1\}, 
+\]
+since $hkh^{-1}\in K$ because $K$ is normal in $G$ and 
+$kh^{-1}k^{-1}\in H$ because $H$ is normal in $G$. 
 
 \begin{exercise}
 \index{Direct product of groups}
@@ -52,6 +58,37 @@ We do have $G=HK$ and $H\cap K=\{\id\}$, but $H\times K\simeq\Z/3\times\Z/2\not\
 as $\Z/3\times\Z/2$ is abelian and $\Sym_3$ is not. 
 \end{example}
 
+In the next example, we present a group of \textbf{affine transformations}. 
+
+\begin{example}
+\label{exa:affine}
+\index{Group!of affine transformations}
+    Let 
+    \[ 
+    G=\{f\colon\R\to\R, f(x)=ax+b\text{ for some $a,b\in\R$ with $a\ne 0$}\}.
+    \]
+    Then $G$ is a group with the usual composition of functions. The identity map is an element of $G$. 
+    If $f\in G$, say $f(x)=ax+b$, then the inverse is an element of $G$, as 
+    $f^{-1}(x)=(1/a)x-b/a$. Finally, compositions of functions of $G$ are elements of $G$: 
+    if $f(x)=ax+b$ and $g(x)=cx+d$, then 
+    \[
+    f(g(x))=f(cx+d)=a(xc+d)+b=(ac)x+(ad+b).
+    \]
+    
+    Note that $K=\{f\in G:f(x)=x+b\text{ for some $b\in\R$}\}$ is a normal subgroup 
+    of $G$ isomorphic to the additive group $\R$. In fact, let $f(x)=x+b$ be an element of $K$ 
+    and $g(x)=cx+d$ be an element of $G$. Then $gfg^{-1}\in K$, as 
+    \begin{align*}
+    (gfg^{-1})(x)&=g(f((1/c)x-d/c))\\
+    &=g((1/c)x-d/c+b)\\
+    &=c( (1/c)x-d/c+b)+d\\
+    &=x+(bc).
+    \end{align*}
+    
+    Finally, 
+    $Q=\{f\in G:f(x)=ax\text{ for some $a\ne0$}\}$ is a subgroup of $G$ isomorphic to the multiplicative group $\R^{\times}$. 
+    Then $G=KQ$ and $K\cap Q=\{\id\}$.
+\end{example}
 
 \begin{definition}
 \index{Complement}
@@ -71,6 +108,9 @@ complements are unique under isomorphism, as
 G/K= KQ/K\simeq Q/K\cap Q=Q/\{1\}\simeq Q.
 \]
 
+We now present a generalization of the (internal) direct product of
+Exercise~\ref{xca:direct_product}. 
+
 \begin{definition}
 \index{Semi-direct product}
 We say that a group $G$ is a \textbf{semi-direct product} of $Q$ and $K$ if $K$ 
@@ -78,9 +118,17 @@ is normal in $G$ and
 $K$ admits a complement in $G$ isomorphic to $Q$. Notation: $G=K\rtimes Q$.
 \end{definition}
 
-Let us discuss some characterizations:
+The symbol $\rtimes$ is not symmetric, but points to remind us which subgroup is normal. 
 
-\begin{proposition}
+Let $G=K\rtimes Q$. Then $G=KQ$ with $K$ normal in $G$. 
+Let $g=ax$ and $g_1=a_1x_1$ with $a,a_1\in K$ and $x,x_1\in Q$. 
+Then 
+\[
+gg_1=(ax)(a_1x_1)=(axa_1x^{-1})(xx_1)\in KQ,
+\]
+because $K$ is normal in $G$. 
+
+\begin{theorem}
 Let $K$ be a normal subgroup of $G$. The following statements are equivalent:
 \begin{enumerate}
 \item $K$ admits a complement in $G$.
@@ -91,7 +139,7 @@ $x\in K$ and $y\in Q$.
 $, $g\mapsto Kg$, is the canonical homomorphism.
 \item There exists a group homomorphism $\rho\colon G\to G$ such that $\ker\rho=K$ and the restriction $\rho|_{\rho(G)}$ equals the identity. 
 \end{enumerate}
-\end{proposition}
+\end{theorem}
 
 \begin{proof}
 We first prove that $(1)\implies(2)$. If $Q$ complements $K$, then $G=KQ$ and
@@ -100,23 +148,35 @@ the decomposition is unique, suppose that
 $g=x_1y_1$ with $x_1\in K$ and $y_1\in Q$. Then $x_1^{-1}x=yy_1^{-1}\in K\cap Q=\{1\}$ 
 and hence $x=x_1$ and $y=y_1$.
 
-It is an exercise to show that $(2)\implies(1)$.
+%It is an exercise to show that $(2)\implies(1)$.
 
 We now prove that $(2)\implies(3)$. Let $s\colon G/K\to G$, $s(Kg)=y$ if 
 $g=xy$ with $x\in K$ and $y\in Q$. (Note that here we use right cosets, as it is more convenient.)
 Let us check that $s$ is well-defined. 
-For that purpose, we must show that $Kg=Kg_1$ implies $s(Kg)=s(Kg_1)$. If $g=xy$ 
+For that purpose, we must show that $Kg=Kg_1$ implies $s(Kg)=s(Kg_1)$. Let $g=xy$ 
 and $g_1=x_1y_1$ with $x,x_1\in K$ and $y,y_1\in Q$, then, since $Kg=Kg_1$, 
 $xyy_1^{-1}x_1^{-1}=gg_1^{-1}\in K$, that is $yy_1^{-1}\in x^{-1}Kx_1=K$
  because $x,x_1\in K$. Hence $yy_1^{-1}\in K\cap Q=\{1\}$ and thus $y=y_1$. 
+ 
  We now show that $\pi\circ
- s=\id_{G/K}$. If $g=xy$ with $x\in K$ e $y\in Q$, then
-$(\pi\circ s)(Kg)=\pi(y)=Ky=Kxy=Kg$. It is left to the reader to prove that 
-$s$ is a group homomorphism. 
-
-We now prove that $(3)\implies(4)$. Let $\rho=s\circ\pi$. Then $\rho$ is a group homomorphism (because it is the composition of homomorphisms). We compute: 
+ s=\id_{G/K}$:
 \[
-\rho(\rho(g))=\rho( (s\circ\pi)(g))=\rho(s(Kg))=((s\circ\pi)\circ s)(Kg)=s(Kg)=\rho(g).
+(\pi\circ s)(Kg)=\pi(y)=Ky=Kxy=Kg.
+\]
+
+Finally, the map 
+$s$ is a group homomorphism, as 
+\[
+s((Kg)(Kg_1))=s(Kgg_1)=s(Kx(yx_1y^{-1})yy_1)=yy_1=s(Kg)s(Kg_1),
+\]
+since $yx_1y^{-1}\in K$. 
+
+
+We now prove that $(3)\implies(4)$. Let $\rho=s\circ\pi$. Then $\rho$ is a group homomorphism (because it is the composition of homomorphisms). 
+To prove that $\rho|_{\rho(G)}=\id$, we need to show that $\rho(\rho(g))=\rho(g)$ for all $g\in G$. 
+We compute: 
+\[
+\rho(\rho(g))=(s\circ(\pi\circ s)\circ\pi)(g)=(s\circ\pi)(g)=\rho(g).
 \]
 We now compute $\ker\rho$. If $g\in\ker\rho$, then $s(\pi(g))=\rho(g)=1$. Thus 
 \[
@@ -141,14 +201,14 @@ and $g\rho(g^{-1})\in K=\ker\rho$, as $\rho(g\rho(g^{-1}))=  \rho(g)\rho(g^{-1})
 \end{proof}
 
 \begin{example}
-$\Sym_n=\Alt_n\rtimes\Z/2$, as $Q=\langle (12)\rangle\simeq\Z/2$ complements 
+$\Sym_n=\Alt_n\rtimes\langle(12)\rangle$, as $Q=\langle (12)\rangle\simeq\Z/2$ complements 
 $\Alt_n$ in $\Sym_n$.
 \end{example}
 
 For a group $G$, 
 the set 
 \[
-\Aut(G)=\{f\colon G\to G:f\text{ bijective}\}
+\Aut(G)=\{f\colon G\to G:f\text{ bijective group homomorphism}\}
 \]
 is a group with the composition of maps. It is called 
 the \textbf{automorphism group} of $G$. 
@@ -241,6 +301,24 @@ $G$ is abelian.
 %         Si $G$ tiene centro trivial, entonces $\Aut(G)$ también.
 % \end{exercise}
 
+\index{Action!on groups}
+\index{Action!by automorphisms}
+Let us discuss how groups acts on groups. An action of a group on a group is 
+a group homomorphism 
+$\theta\colon Q\to\Aut(K)$, $x\mapsto\theta_x$. 
+This is nothing but a way in which $Q$ permutes the elements of $K$ 
+in a way that is compatible with both group structures. Typically, in this setting, 
+one says that $Q$ acts on $K$ by automorphisms. 
+
+For $x\in Q$, write $\theta_x\colon K\to K$, $a\mapsto x\cdot a$. 
+Then 
+\begin{enumerate}
+    \item $1\cdot a=a$ for all $a\in K$. 
+    \item $x\cdot (y\cdot a)=(xy)\cdot a$ for all $x,y\in Q$ and $a\in K$.
+    \item $x\cdot 1=1$ for all $x\in Q$. 
+    \item $x\cdot (ab)=(x\cdot a)(x\cdot b)$ for all $x\in Q$ and $a,b\in K$. 
+\end{enumerate}
+
 The following exercise constructs semi-direct products. 
 
 \begin{exercise}
@@ -268,16 +346,27 @@ K\times\{1\}=\{(a,1):a\in K\}\simeq K,&&
 \end{align*}
 of $K\rtimes_\theta Q$. Note that $K\times\{1\}$ is normal in $K\rtimes_\theta Q$. 
 We can identity $K\rtimes\{1\}$ with $K$ 
-and $\{1\}\rtimes Q$ with $Q$. Thus we can write 
+and $\{1\}\rtimes Q$ with $Q$. This means 
+that for $a\in K$ and $x\in Q$, 
+instead of writing $(a,1)$ one simply writes $a$ and 
+$(1,x)$ is replaced by $x$. Moreover,  
+\begin{gather*}
+ax=(a,1)(1,x)=(a,x)
+\shortintertext{and}
+xa=(1,x)(a,1)=(\theta_x(a),x)=(\theta_x(a),1)(1,x)=\theta_x(a)x.
+\end{gather*}
+Thus we can write 
 \[
 \theta_x(a)=xax^{-1}
 \]
-for all $x\in Q$ and $a\in K$.
-
+for all $x\in Q$ and $a\in K$, that is 
+\[
+\theta_x(a)=(\theta_x(a),1)=(1,x)(a,1)(1,x)^{-1}=xax^{-1}.
+\]
 
 \begin{exercise}
 Prove that if $G$ is a semi-direct product of the normal subgroup 
-$K$ with the subgroup $Q$, there exists a group homomorphism 
+$K$ with the subgroup $Q$, there exists a group homomorphism
 $\theta\colon Q\to\Aut(K)$
 such that $G\simeq K\rtimes_\theta Q$.
 \end{exercise}
@@ -291,9 +380,39 @@ such that $G\simeq K\rtimes_\theta Q$.
 Let us discuss some examples. 
 
 \begin{example}
+    The multiplicative group $Q=\R^{\times}$ acts on the 
+    additive group $K=\R$ by multiplication: If $x\in Q$ and $a\in K$, 
+    then $x\cdot a=xa$. This is an action by automorphisms,~as 
+    \[
+        1\cdot a=a,\quad 
+        x\cdot (y\cdot a)=x(ya)=(xy)a=(xy)\cdot a,\quad 
+        x\cdot 0=0,\quad 
+        x\cdot (a+b)=xa+xb
+    \]
+    for all $a,b\in\R$ and $x,y\in\R^{\times}$. 
+    
+    Hence one can construct the semi-direct product $K\rtimes Q$. The operation of 
+    this group is 
+    \[ 
+        (d,c)(b,a)=(cb+d,ca). 
+    \]
+    This group is isomorphic to the group of affine transformations of
+    Example~\ref{exa:affine}. In fact, one can easily show that 
+    \[ 
+        K\rtimes Q\to \{f\colon\R\to\R:f(x)=ax+b\text{ for some $a\in\R^{\times}$ and $b\in\R$}\},
+        \quad 
+        (b,a)\mapsto f(x)=ax+b,
+    \]
+    is a bijective group homomorphism. 
+\end{example}
+
+
+
+\begin{example}
 Let $N\simeq \Z/n$ and $H\simeq\Z/2=\{0,1\}$. The map $\theta\colon H\to\Aut(N)$, 
 $1\mapsto (x\mapsto x^{-1})$, is a group homomorphism. Let $G=N\rtimes_\theta H$.
 Then $G\simeq\D_n$, the dihedral group of order $2n$.
+
 Recall that 
 \[
 \D_n=\langle r,s:r^n=s^2=1, srs^{-1}=r^{-1}\rangle.
@@ -301,9 +420,9 @@ Recall that
 Assume that $N=\langle x\rangle$ and $H=\langle y\rangle$. Then $|(x,1)|=n$ and $|(1,y)|=2$. 
 Moreover,
 \begin{align*}
-(1,y)(x,1)(1,y)^{-1} &= (\varphi_y(x),y)(1,y)\\
-&=(\varphi_y(x),y^2)\\
-&=(\varphi_y(x),1)\\
+(1,y)(x,1)(1,y)^{-1} &= (\theta_y(x),y)(1,y)\\
+&=(\theta_y(x),y^2)\\
+&=(\theta_y(x),1)\\
 &=(x^{-1},1)\\
 &=(x,1)^{-1}.
 \end{align*}
@@ -342,481 +461,6 @@ Let $K=\Z/3$ and $Q=\Z/4$. Since $\Hom(Q,\Aut(K))=\{1,\tau\}$, where
 the semi-direct product $T=K\rtimes_\tau Q$ is a non-abelian group of order 12. Moreover,
 $T\not\simeq\Alt
 _4$ as $|(2,2)|=6$ and $\Alt_4$ has no elements of order six.
-\end{example}
-
-
-
-% todo: El grupo Aff(R) es un producto semidirecto
-% todo: Necesitamos más ejemplos de producto semidirecto
-\subsection{Actions}
-
-\begin{definition}
-\index{Action}
-    Let $G$ be a group and $X$ a set. 
-    A (left) \textbf{action} of $G$ on $X$ is a map 
-    $G\times X\to X$, $(g,x)\mapsto g\cdot x$, such that 
-    \begin{enumerate}
-        \item $1\cdot x=x$ for all $x\in X$, y
-        \item $g\cdot (h\cdot x)=(gh)\cdot x$ for all $g,h\ n G$ and $x\in X$.
-    \end{enumerate}
-\end{definition}
-
-If a group $G$ acts on a set $X$, we also say that
-$X$ is a $G$-set.
-
-\begin{example}
-\index{Action!trivial}
-Every group $G$ acts on $G$ trivially: $g\cdot h=h$ for all $g,h\in G$.
-\end{example}
-
-\begin{example}
-\index{Action!left multiplication}
-Every group $G$ acts on $G$ by left multiplication, that is
-$g\cdot h=gh$ for all $g,h\in G$.
-\end{example}
-
-\begin{example}
-\index{Action!conjugation}
-Every group $G$ acts on $G$ by conjugation, that is
-$g\cdot h=hg^{-1}$ for all $g,h\in G$. More generally, 
-if $N$ is a normal subgroup of $G$, then $G$ acts on
-$N$ by conjugation: $g\cdot x=gx
-g^{-1}$ for all $g\in G$ and $x\in N$. 
-\end{example}
-
-\begin{example}
-\index{Action!on left cosets}
-Let $G$ be a group $H$ be a subgroup of $G$. Then $G$ 
-acts on the set of left cosets $G/H$ by left multiplication, that 
-is $g\cdot (xH)=(gx)H$ for all $g,x\in G$.
-\end{example}
-
-There is a bijective correspondence between 
-left actions of a group $G$ on a set $X$ and
-group homomorphisms 
-$\rho\colon G\to\Sym_X$. The correspondence is given by
-the formula 
-\[
-\rho(g)(x)=g\cdot x,\quad g\in G,x\in X.
-\]
-We will write $\rho_g=\rho(g)$.
-
-As an example, if $G\times X\to X$, $(g,x)\mapsto x$, is 
-an action of $G$ on $X$, then
-each $\rho_g\colon X\to X$ is a bijective map with inverse 
-$(\rho_g)^{-1}=\rho_{g^{-1}}$. Moreover, 
- $\rho$ is a group homomorphism, as 
-\[
-\rho(gh)(x)=(gh)\cdot x=g\cdot (h\cdot x)=\rho_g(h\cdot x)=\rho_g(\rho_h(x))
-\]
-for all $g,h\in G$ and $x\in X$.
-
-\begin{example}
-Let $G=\Sym_3$ and 
-\[
-H=\langle (123)\rangle=\{\id,(123),(132)\}.
-\]
-Let $G$ act on the set $X=G/H=\{H,(12)H\}$ of left cosets of $H$ 
-by left multiplication. Write 
-$x_1=H$ and $x_2=(12)H$. Then
-\begin{align*}
-&(12)\cdot x_1=x_2,
-&&(12)\cdot x_2=x_1,
-&&(123)\cdot x_1=x_1,
-&&(123)\cdot x_2=x_2.
-\end{align*}
-Since $G=\langle (12),(123)\rangle$, one has the group 
-homomorphism 
-$\rho\colon G\to\Sym_{X}\simeq\Sym_2$ given by
-$(12)\mapsto (12)$, $(123)\mapsto\id$.
-\end{example}
-
-\begin{example}
-As before, let $G=\Sym_3$ and $H=\langle (12)\rangle=\{\id,(12)\}$. Let $G$ act on the set $X=G/H=\{H,(123
-)H,(132)H\}$ of left cosets of $H$ by left multiplication. Write 
-$x_1=H$, $x_2=(123)H$ and $x_3=(132)H$. Then
-\begin{align*}
-(12)\cdot x_1=x_1,&& (12)\cdot x_2=x_3, && (12)\cdot x_3=x_2,\\
-(123)\cdot x_1=x_2, && (123)\cdot x_2=x_3, &&(123)\cdot x_3=x_1.
-\end{align*}
-Since $G=\langle (12),(123)\rangle$, one has the group
-homomorphism 
-$\rho\colon G\to\Sym_{X}\simeq\Sym_3$ given by $(12)\mapsto (23)$, $(123)\mapsto (123)$.
-\end{example}
-
-
-\begin{example}
-Let $G=Q_8=\{1,-1,i,-i,j,-j,k,-k\}$ and $N=\{1,-1,i,-i\}$. Since
-$N$ is normal in $G$, $G$
-acts by conjugation on $X=N$.
-If $x_1=1$, $x_2=-1$, $x_3=i$ and $x_4=-i$, then
-$i\cdot x=x$ for all $x\in N$. Moreover, 
-\begin{align*}
-j\cdot x_1=x_1, && j\cdot x_2=x_2, && j\cdot x_3=x_4, && j\cdot x_4=x_3.
-\end{align*}
-Since $G=\langle i,j\rangle$, a group homomorphism $\rho\colon G\to\Sym_X\simeq\Sym_4$ is determined by 
-$\rho_i=\id$ and $\rho_j=(34)$.
-\end{example}
-
-The following example is important. 
-
-\begin{example}
-    The group $\Sym_n$ acts on $\R^n$ by
-    \[
-    \sigma\cdot (x_1,\dots,x_n)=(x_{\sigma^{-1}(1)},\dots,x_{\sigma^{-1}(n)}).
-    \]
-    It is very important to use $\sigma^{-1}$ and not 
-    $\sigma$, as we need to permute the elements of the standard basis of $\R^3$.
-
-    As a concrete example, let us see that the operation 
-    \[
-    \sigma\cdot (x_1,x_2,x_3)=(x_{\sigma(1)},x_{\sigma(2)},x_{\sigma(3)})
-    \]
-    is not an action of $\Sym_3$ on $\R^3$.
-    If $\sigma=(12)$ and $\tau=(23)$, then $\sigma\tau=(123)$. Since 
-    \begin{align*}
-    &(123)\cdot (5,6,7)=(6,7,5),\\
-    &(12)\cdot ((23)\cdot (5,6,7))=(1,2)\cdot (5,7,6)=(7,5,6),
-    \end{align*}
-    this does not define an action. If we compute 
-    \begin{align*}
-        \sigma\cdot (\tau\cdot (x_1,\dots,x_n))
-        =\sigma\cdot (x_{\tau(1)},\dots,x_{\tau(n)})
-    \end{align*}
-    and for each $i\in\{1,\dots,n\}$ we set $y_i=x_{\tau(i)}$, then 
-    \[
-    \sigma\cdot (\tau\cdot (x_1,\dots,x_n))=\sigma\cdot (y_1,\dots,y_n)=(y_{\sigma(1)},\dots,y_{\sigma(n)})
-    =(x_{\tau\sigma(1)},\dots,x_{\tau\sigma(n)}),
-    \]
-    even if $\sigma$ and $\tau$ do not commute.
-
-    Now we show that by using inverses, we do have an action. 
-    For $j\in\{1,\dots,n\}$, let $y_j=x_{\tau(j)}$,
-    that is 
-    \[
-    (y_1,y_2,\dots,y_n)=\tau\cdot (x_1,x_2,\cdots,x_n)=(x_{\tau^{-1}(1)},x_{\tau^{-1}(2)},\dots,x_{\tau^{-1}(n)}).
-    \]
-    Then 
-    \begin{align*}
-        \sigma\cdot (\tau\cdot (x_1,x_2,\dots,x_n))&=\sigma\cdot (y_1,y_2,\dots,y_n)\\
-        &=\left(y_{\sigma^{-1}(1)},y_{\sigma^{-1}(2)},\dots,y_{\sigma^{-1}(n)}\right)\\
-        &=\left(x_{\tau^{-1}(\sigma^{-1}(1))},x_{\tau^{-1}(\sigma^{-1}(2))},\dots,x_{\tau^{-1}(\sigma
-^{-1}(n))}\right)\\
-        &=\left(x_{(\sigma\tau)^{-1}(1))},x_{(\sigma\tau)^{-1}(2))},\dots,x_{(\sigma\tau)^{-1}(n))}\right).
-    \end{align*}
-\end{example}
-
-The following example is also important: 
-
-\begin{example}
-    The group $\Sym_n$ acts on the set of polynomials on
-    $n$ variables $X_1,\dots,X_n$
-    by permitting the variables. For example, for three variables, if 
-    $\sigma=(123)$ and $f=X_2X_3-X_1+5X_2X_3^2X_1$, then 
-    $\sigma\cdot f=X_2^2X_3-X_1+5X_2X_3^2X_1$.
-
-    Restricting the action, we see that 
-    $\Sym_n$ acts on the set 
-    \[
-    \{\lambda_1X_1+\cdots\lambda_nX_n:\lambda_1,\dots,\lambda_n\in\R\}.
-    \]
-    Then 
-    \begin{align*}
-    \sigma \cdot (\lambda_1X_1+\cdots+\lambda_nX_n) &= (\lambda_1X_{\sigma(1)}+\cdots+\lambda_nX_{\sigma(n)})
-    =(\lambda_{\sigma(1)}X_1+\cdots+\lambda_{\sigma(n)}X_n).
-    \end{align*}
-\end{example}
-
-It is relevant to compute the kernel of the action homomorphism. 
-
-\begin{example}
-Let $G$ be a group and $H$ be a subgroup of $G$. Then $G$ 
-acts on $G/H$ by left multiplication, that is 
-$g\cdot (xH)=(gx)H$ for all $g,x\in G$. Let $\rho\colon G\to\Sym_{G/H}$ be the group homomorphism induced by the action. 
-
-We claim that $\ker\rho=\cap_{x\in G}xHx^{-1}$. 
-We first prove $\supseteq$. If $g\in xHx^{-1}$ for all 
-$x\in G$, then, for a fixed $x\in G$,
- \[
- \rho(g)(xH)=g\cdot (xH)=(gx)H=(xhx^{-1})xH=(xh)H=xH
- \]
-because $g=xhx^{-1}$ for some $h\in H$. Thus $\rho(g)=\id$ 
-and hence $g\in\ker\rho$. We now prove 
-$\subseteq$. If $g\in\ker\rho$, then
- $\rho(g)=\id$. So for all $x\in G$,
- \begin{align*}
-\rho(g)(xH)=xH
-\Longleftrightarrow (gx)H=xH
-\Longleftrightarrow x^{-1}gx\in H
-\Longleftrightarrow g\in xHx^{-1}.
- \end{align*}
-It is an exercise to show that
-$\ker\rho$ is the largest normal subgroup of $G$ 
-contained in~$H$.
-\end{example}
-
-With these results, we can provide a third 
-solution to Exercise~\ref{xca:p_smallest} of 
-page~\pageref{xca:p_smallest}.
-We let  $G$ act on $G/H$ by left multiplication. 
-The induced group homomorphism  $\rho\colon G\to\Sym_p$ has 
-kernel 
-\[
-K=\ker\rho=\bigcap_{x\in G}xHx^{-1}\subseteq H.
-\]
-By the first isomorphism theorem, 
-$G/K\simeq\rho(G)\lesssim\Sym_p$ (this means that 
-$\rho(G)$ is isomorphic to a subgroup of $\Sym_p$). 
-Thus $|G/K|$ divides $p!$.
-Let $m=(H:K)$. By Lagrange's theorem,
-\[
-(G:K)=(G:H)(H:K)=pm
-\]
-and hence $pm$ divides $p!$. This implies that $m$ divides $(p-1)!$. If $q$ a prime number dividing 
- $m$, then $q\geq p$, by the minimality of $p$. Moreover, 
- every prime factor of $(p-1)!$ is 
- $<p$. Hence $m=1$ and therefore $H=K$.
-
-\begin{exercise}
-    Let a group $G$ act on a set $X$. 
-    On $X$, we define the following relation: $x\sim y$ if and only if
-    there exists $g\in G$ such that $g\cdot x=y$. Prove 
-    that this is an equivalence relation on $X$. 
-\end{exercise}
-
-\begin{definition}
-\index{Orbit}
-Let $G$ be a group acting on a set $X$. If $x\in X$, the
-orbit of $x$ is the set
-\[
-G\cdot x=\{g\cdot x:g\in G\}.
-\]
-\end{definition}
-
-The orbits of the action of $G$ on $X$ are 
-the equivalence classes of the equivalence 
-relation induced by the action. In particular, 
-every two orbits will be either disjoint or equal. Moreover, 
-$X$ decomposes as a disjoint union of orbits. 
-
-\begin{definition}
-        \index{Stabilizer of a point}
-        Let $G$ be a group that acts on $X$. If $x\in X$, the \textbf{stabilizer} of $x$ in $G$
-        is the set   
-        \[
-        G_x=\{g\in G:g\cdot x=x\}.
-        \]
-\end{definition}
-
-The reader must prove that the stabilizer is a subgroup. 
-
-\begin{definition}
-\index{Action!transitive}
-We say that an action of a group $G$ on a set $X$
-is \textbf{transitive} if for any $x,y\in X$ there exists $g\in G$ such that $g\cdot x=y$.
-\end{definition}
-
-\begin{example}
-    Let $G$ be a group and $H$ a subgroup of $G$. Let $G$ act
-    on $G/H$ by left multiplication. The action is transitive: if 
-    $xH,yH\in G/H$, there exists $g\in G$ such that
-    $(gx)H=yH$ (take for example $g=yx^{-1}$). 
-\end{example}
-
-\begin{example}
-Por evaluación,
-el grupo simétrico $\Sym_n$ actúa transitivamente en el conjunto $\{1,\dots,n\}$.
-\end{example}
-
-In the definition of a transitive action, there is no assumption
-on the number of elements $g$ such that $g\cdot x=y$.
-
-\begin{definition}
-\index{Action!faithful}
-We say that an action of a group $G$ on a set 
-$X$ is \textbf{faithful} if 
-\[
-\{g\in G:g\cdot x=x\text{ for all $x\in X$}\}=\{1\}.
-\]
-\end{definition}
-
-The definition is equivalent to the injectivity of 
-the group homomorphism induced
-by the action. 
-
-\begin{theorem}[Fundamental counting principle]
-\index{Theorem!fundamental counting principle}
-\label{thm:fundamental}
-Let $G$ be a finite group acting on a finite set $X$. If 
-$x\in X$, then $|G\cdot x|=(G:G_x)$.
-\end{theorem}
-
-\begin{proof}
-    Let $\varphi\colon G/G_x\to G\cdot x$, $gG_x\mapsto g\cdot x$. Then $\varphi$ is well-defined, as 
-        \[
-        gG_x=hG_x\implies h^{-1}g\in G_x
-        \implies h^{-1}g\cdot x=x\implies g\cdot x=h\cdot x.
-        \]
-    Moreover, $\varphi$ is injective: 
-        \[
-        \varphi(gG_x)=\varphi(hG_x)\implies
-        g\cdot x=h\cdot x\implies
-        h^{-1}g\in G_x\implies gG_x=hG_x.
-        \]
-    Finally, $\varphi$ is surjective. Hence 
-    $|G/G_x|=|G\cdot x|$.
-\end{proof}
-
-Theorem \ref{thm:fundamental} is also known 
-as the orbit--stabilizer theorem. 
-
-If $G$ is a group and $X$ and $Y$ are $G$-sets, 
-we say that a map $\varphi\colon X\to Y$ is a 
-\textbf{homomorphism} of $G$-sets if $\varphi(g\cdot x)=g\cdot \varphi(x)$ for all $g\in G$ and $x\in X$. The bijection 
-$\varphi$ constructed in the proof of Theorem \ref{thm:fundamental}
-is a homomorphism of $G$-sets, where
-$G$ acts on $G/G_x$ by left multiplication: 
-\[
-\varphi(g\cdot hG_x)=\varphi((gh)G_x)=(gh)\cdot x=g\cdot (h\cdot x)=g\cdot\varphi(hG_x).
-\]
-Thus $G\cdot x\simeq G/G_x$ as $G$-sets.
-
-\begin{example}
-    If$G$ acts on $G$ by conjugation, that is $g\cdot x=gxg^{-1}$, the orbits of this action are called the \textbf{conjugacy classes} 
-    of $G$. They are sets of the form
-        \[
-        G\cdot x=\{gxg^{-1}:g\in G\}.
-        \]
-    In particular, $G$ decomposes as a disjoint union of conjugacy classes. Moreover, 
-    the stabilizers are the centralizers:
-        \[
-        G_x=\{g\in G:g\cdot x=x\}=\{g\in G:gxg^{-1}=x\}=C_G(x).
-        \]
-    In particular, $|G\cdot x|=(G:C_G(x))$.
-\end{example}
-
-\begin{example}
-    Let $H$ be a subgroup of $G$ and $X$ the set of subsets of $G$. Let $G$ act on 
-    $X$ by conjugation, that is $S\in X$. Then
-        $g\cdot S=gSg^{-1}$. The orbit of $H$ 
-        is 
-        \[
-        G\cdot H=\{g\cdot H:g\in G\}=\{gHg^{-1}:g\in G\},
-        \]
-        the set of conjugates of $H$. The stabilizer of $H$ in $G$ 
-        is 
-        \[
-        G_H=\{g\in G:g\cdot H=H\}=\{g\in G:gHg^{-1}=H\}=N_G(H),
-        \]
-        the normalizer of $H$ in $G$. It follows that
-        $H$ has exactly $(G:N_G(H))$ conjugates in $G$. In particular,
-        if $G$ is finite, 
-        the number of conjugates of $H$ divides $|G|$. 
-\end{example}
-
-As an application, we provide an alternative proof
-of Theorem~\ref{thm:|HK|}. 
-
-\begin{example}
-\label{exa:for_HK}
-Let $G$ be a group and $H$ and $K$ be subgroups of $G$. 
-The group $L=H\times K$ acts on $X=HK$ by 
-\[
-(h,k)\cdot x=hxk^{-1},\quad x\in X,\,h\in H,\,k\in K.
-\]
-Note that $1\in HK$ and the action of $L$ on $X$ is transitive, as 
-$(h,k^{-1})\cdot 1 = hk$. Since 
-\[
-L_1=\{(h,k)\in H\times K: (h,k)\cdot 1=1\}=\{(h,k)\in H\times K:h=k\},
-\]
-it follows that $|L_1|=|H\cap K|$ because there exists a bijection
-between $L_1$ and 
-$H\cap K$. By the fundamental counting principle, 
-\[
-|HK|=(L:L_1)=\frac{|H\times K|}{|H\cap K|}=\frac{|H||K|}{|H\cap K|}.
-\]
-\end{example}
-
-The idea used in Example \ref{exa:for_HK} can be generalized. 
-
-\begin{example}
-\index{Double coset}
-Let $G$ be a group and $H$ and $K$ be subgroups of $G$. Let the group $L=H\times K$ act on $G$ by
-\[
-(h,k)\cdot g=hgk^{-1}.
-\]
-The orbtis are sets of the form 
-\[
-HgK=\{hgk:h\in H,\,k\in K\}.
-\]
-These sets are called \textbf{double $(H,K)$-coset}. 
-In particular, two double cosets are either disjoint 
-or equal. Moreover, $G$ admits a decomposition 
-as a disjoint union of double cosets, that is 
-\[
-G=\bigcup_{i\in I}Hg_iK,
-\]
-for some set $I$. Now we compute 
-\[
-L_g=\{(h,k)\in H\times K:hgk^{-1}=g\}=\{(h,g^{-1}hg)\in H\times K\}.
-\]
-Then $|L_g|=|H\cap gKg^{-1}|$, because there is a bijection between $L_g$ and
-$H\cap gKg^{-1}$. By the fundamental counting principle (Theorem~\ref{thm:fundamental}), 
-\[
-|HgK|=(L:L_g)=\frac{|H\times K|}{|H\cap gKg^{-1}|}=\frac{|H||K|}{|H\cap gKg^{-1}|}.
-\]
-\end{example}
-
-As another application, we compute the
-order of the group $\GL_n(p)$ para $n\geq1$ and 
-a prime number $p$. 
-The argument also works for
-the group $\GL_n(q)$ in the case where
-$q$ is a power of the prime number $p$.
-
-\begin{example}
-Let $K=\Z/p$.
-We claim that 
-\[
-|\GL_n(p)|=(p^n-1)p^{n-1}|\GL_{n-1}(p)|,
-\]
-and hence 
-\[
-|\GL_n(p)|=(p^n-1)(p^n-p)\cdots (p^n-p^{n-1}).
-\]
-The formula is valid if $n\in\{1,2\}$. 
-Assume that it holds for $n-1\geq1$.
-The group $G=\GL_{n}(p)$ acts on
-$K^{n}$ by left multiplication. There are two orbits, so 
-\[
-X=\{0\}\cup (K^{n}\setminus\{0\}),
-\]
-as if $v,w\in K^{n}\setminus\{0\}$, then there exists 
-$g\in G$ such that $gv=w$.
-By the fundamental counting principle,  
-\[
-p^{n+1}-1=|K^{n+1}\setminus\{0\}|=(G:G_{e_1}),
-\]
-where $e_1=(1,0,\dots,0)^T$. If $g=(g_{ij})\in G$ is such that
-$ge_1=e_1$, then 
-\[
-g=
-\begin{pmatrix}
-1 & g_{12} & \cdots & g_{1n}\\
-0 & g_{22} & \cdots & g_{2n}\\
-\vdots & \vdots & \ddots &\vdots\\
-0 & g_{n1} & \cdots & g_{nn}
-\end{pmatrix}.
-\]
-Therefore $|G_{e_1}|=p^{n-1}|\GL_{n-1}(p)|$, as the submatrix 
-$(g_{ij})_{2\leq i,j\leq n}$ is invertible and the 
-$g_{1j}$'s can be chosen 
-arbitrarily for all $j\in\{2,\dots,n\}$.
-Hence 
-\[
-p^{n}-1=\frac{|G|}{|G_{e_1}|}=\frac{|\GL_n(p)|}{p^{n-1}|\GL_{n-1}(p)|},
-\]
-which implies the formula we wanted to prove.
 \end{example}
 
 
