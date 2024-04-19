@@ -17,19 +17,8 @@ Let $G$ be a group and $H$ and $K$ be normal subgroups of $G$.
 If $G=HK$ and $H\cap K=\{1\}$, then $G\simeq H\times K$.
 \end{exercise}
 
-% \begin{proof}
-% Sea $f\colon G\to H\times K$, $f(g)=(h,k)$, donde $h\in H$ y $k\in K$ son únicos tales que $g=hk$. Esto tiene sentido pues si $g\in G$ then $g=hk$ para algún $h\in H$ y $k\in K$; si además $g=h_1h_1$ para $h_1\in H$ y $k_1\in K$, then, como $hk=h_1k_1$, se tiene que $h_1^{-1}h=k_1k^{-1}\in H\cap K=\{1\}$ y luego $h=h_1$ y $k=k_1$.
-
-% Veamos que si $g=hk$ y $g_1=h_1k_1$ para $h,h_1\in H$ y $k,k_1\in K$, then $kh_1=h_1k$. En efecto, $[k,h_1]=kh_1k^{-1}h_1^{-1}\in H\cap K=\{1\}$ pues la normalidad de $H$ y $K$ implican que $ kh_1k^{-1}\in H$ y $h_1k^{-1}h_1^{-1}\in K$.
-
-% La observación anterior nos permite demostrar que $f$ es un morfismo de grupos. Si $g=hk$ y $g_1=h_1k_1$ con $h,h_1\in H$ y $k,k_1\in K$, then, como $f(g)=(h,k)$ y $f(g_1)=(h_1,k_1)$, tenemos que
-% \[
-% f(gg_1)=f((hk)(h_1k_1))=f(h(kh_1)k_1)=f((hh_1)(kk_1))=(hh_1,kk_1).
-% \]
-% Queda como ejercicio demostrar que $f$ es biyectiva.
-% \end{proof}
-
 \begin{exercise}
+\label{xca:direct_product:quotient}
 Let $A$ be a normal subgroup of $H$, and $B$ be a normal subgroup of $K$. 
 Prove that $A\times B$ is a normal subgroup of
 $H\times K$ and 
@@ -46,6 +35,7 @@ if $G$ admits an exact factorization through two normal subgroups, then
 it is isomorphic to the direct product of these subgroups. 
 
 \begin{exercise}
+\label{xca:uniqueness}
     Let $G$ be a group that admits an exact factorization through
     the subgroups $H$ and $K$. Prove that every $g\in G$ can be written 
     uniquely as $g=hk$ for some $h\in H$ and $k\in K$. 
@@ -252,6 +242,7 @@ G/Z(G)\simeq \gamma(G)=\Inn(G).
 \end{exercise}
 
 \begin{exercise}
+\label{xca:inner_is_normal}
     Let $G$ be a group. Prove that $\Inn(G)$ is a normal subgroup of $\Aut(G)$. 
 \end{exercise} 
 
@@ -265,12 +256,14 @@ G\text{ is abelian.}
 \]
 
 \begin{exercise}
+\label{xca:aut_cyclic}
 Let $G$ be a group. 
 Prove that if $\Aut(G)$ is cyclic, then 
 $G$ is abelian. 
 \end{exercise}
 
 \begin{exercise}
+\label{xca:aut_finite}
     Prove that if $G$ is finite, then $\Aut(G)$ is finite.
 \end{exercise}
 
@@ -310,8 +303,10 @@ This is nothing but a way in which $Q$ permutes the elements of $K$
 in a way that is compatible with both group structures. Typically, in this setting, 
 one says that $Q$ acts on $K$ by automorphisms. 
 
+What does it mean that $\theta$ is a group homomorphism? 
 For $x\in Q$, write $\theta_x\colon K\to K$, $a\mapsto x\cdot a$. 
-Then 
+Then $\theta$ is a well-defined group homomorphism if and only if 
+the following properties hold: 
 \begin{enumerate}
     \item $1\cdot a=a$ for all $a\in K$. 
     \item $x\cdot (y\cdot a)=(xy)\cdot a$ for all $x,y\in Q$ and $a\in K$.
@@ -319,7 +314,55 @@ Then
     \item $x\cdot (ab)=(x\cdot a)(x\cdot b)$ for all $x\in Q$ and $a,b\in K$. 
 \end{enumerate}
 
-The following exercise constructs semi-direct products. 
+\begin{example}
+    The group $\GL_2(\R)$ acts 
+    on the additive group $\R^{2\times1}$ 
+    by automorphisms via the formula 
+    \begin{equation}
+    \label{eq:action}
+    \begin{pmatrix}
+        a&b\\
+        c&d
+        \end{pmatrix}\cdot\colvec{2}{x}{y}=\colvec{2}{ax+by}{cx+dy}.
+    \end{equation}
+    
+    Before doing calculations, note that 
+    this formula 
+    is nothing but the usual 
+    left multiplication of matrices 
+    by vectors! In fact
+    $\alpha\in\GL_2(\R)$ and $v\in\R^{2\times1}$, 
+    the action of \eqref{eq:action} is 
+    just 
+    \[
+    \alpha\cdot v=\alpha v.
+    \]
+    
+    To show that we have an action by automorphisms, there are four properties to verify. 
+    First, it is trivial to check the first property, as 
+    \[
+    \begin{pmatrix}1&0\\0&1\end{pmatrix}\colvec{2}{x}{y}=\colvec{2}{x}{y}.
+    \]
+    For the second property, a direct calculation shows that 
+    \[
+    \alpha\cdot (\beta\cdot v)=(\alpha\beta)\cdot v
+    \]
+    for all $\alpha,\beta\in\GL_2(\R)$ and $v\in\R^{2\times1}$. 
+    The third property is trivial:
+    \[
+    \begin{pmatrix}
+        a&b\\
+        c&d
+    \end{pmatrix}\colvec{2}{0}{0}=\colvec{2}{0}{0}.
+    \]
+    Finally, the fourth property is just the left distributivity:
+    \[
+    \alpha\cdot (v+w)=x(v+w)=\alpha v+\alpha w=\alpha\cdot v+\alpha\cdot w
+    \]
+    for all $\alpha\in\GL_2(\R)$ and $v,w\in\R^{2\times1}$. 
+\end{example}
+
+%The following exercise constructs semi-direct products. 
 
 \begin{exercise}
 \label{xca:semi-direct}
