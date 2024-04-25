@@ -1,6 +1,6 @@
 \section{25/04/2024}
 
-\subsection{Actions}
+\subsection{Actions of groups on sets}
 
 \begin{definition}
 \index{Action}
@@ -174,8 +174,8 @@ $x_1=H$ and $x_2=(12)H$. Then
 \end{align*}
 Since $G=\langle (12),(123)\rangle$, one has the group 
 homomorphism 
-$\rho\colon G\to\Sym_{X}\simeq\Sym_2$ given by
-$(12)\mapsto (12)$, $(123)\mapsto\id$.
+$\rho\colon G\to\Sym_{X}$ given by
+$(12)\mapsto (x_1x_2)$, $(123)\mapsto\id$.
 \end{example}
 
 \begin{example}
@@ -188,7 +188,7 @@ $x_1=H$, $x_2=(123)H$ and $x_3=(132)H$. Then
 \end{align*}
 Since $G=\langle (12),(123)\rangle$, one has the group
 homomorphism 
-$\rho\colon G\to\Sym_{X}\simeq\Sym_3$ given by $(12)\mapsto (23)$, $(123)\mapsto (123)$.
+$\rho\colon G\to\Sym_{X}$ given by $(12)\mapsto (x_2x_3)$, $(123)\mapsto (x_1x_2x_3)$.
 \end{example}
 
 
@@ -287,6 +287,7 @@ Let $G$ be a group and $H$ be a subgroup of $G$. Then $G$
 acts on $G/H$ by left multiplication, that is 
 $g\cdot (xH)=(gx)H$ for all $g,x\in G$. Let $\rho\colon G\to\Sym_{G/H}$ be the group homomorphism induced by the action. 
 
+\index{Core}
 We claim that $\ker\rho=\cap_{x\in G}xHx^{-1}$. 
 We first prove $\supseteq$. If $g\in xHx^{-1}$ for all 
 $x\in G$, then, for a fixed $x\in G$,
@@ -303,10 +304,15 @@ $\subseteq$. If $g\in\ker\rho$, then
 \Longleftrightarrow x^{-1}gx\in H
 \Longleftrightarrow g\in xHx^{-1}.
  \end{align*}
-It is an exercise to show that
-$\ker\rho$ is the largest normal subgroup of $G$ 
-contained in~$H$.
+The subgroup $\ker\rho$ is called the \textbf{core} of $H$ in $G$. 
 \end{example}
+
+\begin{exercise}
+    Let $G$ be a group and $H$ be a subgroup of $G$. Prove that
+    the core 
+    of $H$ in $G$ is the largest normal subgroup of $G$ 
+    contained in~$H$.
+\end{exercise}
 
 With these results, we can provide a third 
 solution to Exercise~\ref{xca:p_smallest} of 
@@ -348,9 +354,13 @@ G\cdot x=\{g\cdot x:g\in G\}.
 
 The orbits of the action of $G$ on $X$ are 
 the equivalence classes of the equivalence 
-relation induced by the action. In particular, 
-every two orbits will be either disjoint or equal. Moreover, 
-$X$ decomposes as a disjoint union of orbits. 
+relation induced by the action. 
+
+\begin{exercise}
+    Let a group $G$ acts on a set $X$. Prove that 
+    every two orbits will be either disjoint or equal. Moreover, 
+    $X$ decomposes as a disjoint union of orbits. 
+\end{exercise}
 
 \begin{definition}
         \index{Stabilizer of a point}
@@ -435,7 +445,7 @@ $G$ acts on $G/G_x$ by left multiplication:
 Thus $G\cdot x\simeq G/G_x$ as $G$-sets.
 
 \begin{example}
-    If$G$ acts on $G$ by conjugation, that is $g\cdot x=gxg^{-1}$, the orbits of this action are called the \textbf{conjugacy classes} 
+    If $G$ acts on $G$ by conjugation, that is $g\cdot x=gxg^{-1}$, the orbits of this action are called the \textbf{conjugacy classes} 
     of $G$. They are sets of the form
         \[
         G\cdot x=\{gxg^{-1}:g\in G\}.
@@ -489,265 +499,3 @@ $H\cap K$. By the fundamental counting principle,
 |HK|=(L:L_1)=\frac{|H\times K|}{|H\cap K|}=\frac{|H||K|}{|H\cap K|}.
 \]
 \end{example}
-
-The idea used in Example \ref{exa:for_HK} can be generalized. 
-
-\begin{example}
-\index{Double coset}
-Let $G$ be a group and $H$ and $K$ be subgroups of $G$. Let the group $L=H\times K$ act on $G$ by
-\[
-(h,k)\cdot g=hgk^{-1}.
-\]
-The orbtis are sets of the form 
-\[
-HgK=\{hgk:h\in H,\,k\in K\}.
-\]
-These sets are called \textbf{double $(H,K)$-coset}. 
-In particular, two double cosets are either disjoint 
-or equal. Moreover, $G$ admits a decomposition 
-as a disjoint union of double cosets, that is 
-\[
-G=\bigcup_{i\in I}Hg_iK,
-\]
-for some set $I$. Now we compute 
-\[
-L_g=\{(h,k)\in H\times K:hgk^{-1}=g\}=\{(h,g^{-1}hg)\in H\times K\}.
-\]
-Then $|L_g|=|H\cap gKg^{-1}|$, because there is a bijection between $L_g$ and
-$H\cap gKg^{-1}$. By the fundamental counting principle (Theorem~\ref{thm:fundamental}), 
-\[
-|HgK|=(L:L_g)=\frac{|H\times K|}{|H\cap gKg^{-1}|}=\frac{|H||K|}{|H\cap gKg^{-1}|}.
-\]
-\end{example}
-
-As another application, we compute the
-order of the group $\GL_n(p)$ para $n\geq1$ and 
-a prime number $p$. 
-The argument also works for
-the group $\GL_n(q)$ in the case where
-$q$ is a power of the prime number $p$.
-
-\begin{example}
-Let $K=\Z/p$.
-We claim that 
-\[
-|\GL_n(p)|=(p^n-1)p^{n-1}|\GL_{n-1}(p)|,
-\]
-and hence 
-\[
-|\GL_n(p)|=(p^n-1)(p^n-p)\cdots (p^n-p^{n-1}).
-\]
-The formula is valid if $n\in\{1,2\}$. 
-Assume that it holds for $n-1\geq1$.
-The group $G=\GL_{n}(p)$ acts on
-$K^{n}$ by left multiplication. There are two orbits, so 
-\[
-X=\{0\}\cup (K^{n}\setminus\{0\}),
-\]
-as if $v,w\in K^{n}\setminus\{0\}$, then there exists 
-$g\in G$ such that $gv=w$.
-By the fundamental counting principle,  
-\[
-p^{n+1}-1=|K^{n+1}\setminus\{0\}|=(G:G_{e_1}),
-\]
-where $e_1=(1,0,\dots,0)^T$. If $g=(g_{ij})\in G$ is such that
-$ge_1=e_1$, then 
-\[
-g=
-\begin{pmatrix}
-1 & g_{12} & \cdots & g_{1n}\\
-0 & g_{22} & \cdots & g_{2n}\\
-\vdots & \vdots & \ddots &\vdots\\
-0 & g_{n1} & \cdots & g_{nn}
-\end{pmatrix}.
-\]
-Therefore $|G_{e_1}|=p^{n-1}|\GL_{n-1}(p)|$, as the submatrix 
-$(g_{ij})_{2\leq i,j\leq n}$ is invertible and the 
-$g_{1j}$'s can be chosen 
-arbitrarily for all $j\in\{2,\dots,n\}$.
-Hence 
-\[
-p^{n}-1=\frac{|G|}{|G_{e_1}|}=\frac{|\GL_n(p)|}{p^{n-1}|\GL_{n-1}(p)|},
-\]
-which implies the formula we wanted to prove.
-\end{example}
-
-
-
-
-\subsection{$p$-groups}
-
-\index{Action!fixed points}
-\index{Class equation}
-Let $G$ be a group and
-$X$ be a finite $G$-set. Then $X$ decomposes as a disjoint 
-union of orbits. Let 
-\[
-\Fix(X)=\{x\in X:g\cdot x=x\text{ for all $g\in G$}\}
-\]
-be the set of \textbf{fixed points} of $X$. Gather  
-the one-element orbits and apply cardinality. By the 
-fundamental counting principle, 
-\begin{equation}
-\label{eq:clases}
-|X|=|\Fix(X)|+\sum_{i=1}^k|G\cdot x_i|
-=|\Fix(X)|+\sum_{i=1}^k(G:G_{x_i}),
-\end{equation}
-where the $x_j$'s are the representatives
-of the orbits of size $\geq2$. Equality~\eqref{eq:clases} is extremely 
-useful and is called the 
-\textbf{class equation}.
-
-\begin{example}
-Let a finite group $G$ act on $G$ by conjugation. 
-Then $\Fix(G)=Z(G)$ and 
-\[
-|G|=|Z(G)|+\sum_{i=1}^k(G:C_G(x_i)),
-\]
-for some $x_1,\dots,x_k\in G$ such that 
-$(G:C_G(x_i))\geq2$ for all $i\in\{1,\dots,k\}$.
-\end{example}
-
-\begin{definition}
-\index{$p$-group}
-Let $p$ be a prime number. We say 
-that $G$ is a \textbf{$p$-group} if $|G|=p^m$ for some $m\geq0$.
-\end{definition}
-
-\begin{theorem}
-Let $p$ be a prime number and 
-$G$ a $p$-group. If $\{1\}\ne N\unlhd G$, then
-$N\cap Z(G)\ne\{1\}$.
-\end{theorem}
-
-\begin{proof}
-Since $N$ is normal in $G$, $G$ acts on $N$ by conjugation. 
-By the fundamental counting principle,
-each orbit has prime-power size. Write 
-\[
-N=\underbrace{\mathcal{O}_1\cup\cdots\cup \mathcal{O}_k}_{\text{one-element orbits}}\cup\underbrace{\mathcal{O}_{k+1}\cup\cdots\cup\mathcal{O}_m}_{\text{orbits of size $>1$}},
-\]
-Since $N\cap Z(G)=\mathcal{O}_1\cup\cdots\cup\mathcal{O}_k$, 
-the integers $k=|N\cap Z(G)|$ and $|N\setminus(N\cap Z(G))|$ are divisible by $p$. Thus 
-\[
-|N|\equiv|N\cap Z(G)|\bmod p.
-\]
-Since $1\in N\cap Z(G)$, then
-$|N\cap Z(G)|>1$. In particular, $N\
-cap Z(G)\ne\{1\}$.
-\end{proof}
-
-The following corollary follows immediately: 
-
-\begin{corollary}
-Let $p$ be a prime number and 
-$G$ a $p$-group. Then 
-$Z(G)\ne\{1\}$.
-\end{corollary}
-
-In Exercises \ref{xca:size4} and \ref{xca:size9}
-we proved that groups of order four and nine are always abelian. 
-
-\begin{corollary}
-    Let $p$ be a prime number. If $G$ is a group of order $p^2$, 
-    then $G$ is abelian. 
-\end{corollary}
-
-\begin{proof}
-By Lagrange's theorem, $|Z(G)|\in\{1,p,p^2\}$. Since $G$ 
-is a $p$-group, $Z(G)\ne\{1\}$. If $|Z(G)|=p$, then $G/Z(G)$ 
-is cyclic. By Exercise \ref{xca:G/Z(G)}, 
-$G$ is abelian, a contradiction. 
-Thus $|Z(G)|=p^2$ and hence $G=Z(G)$.
-\end{proof}
-
-\subsection{Cauchy's theorem}
-
-\begin{theorem}[Cauchy]
-\index{Cauchy's theorem}
-\label{thm:Cauchy}
-Let $G$ be a finite group, and $p$ be a prime number
-that divides $|G|$. 
-Then there exists $g\in G$ of order $p$.
-\end{theorem}
-
-\begin{proof}
-Let $C=\Z/p$ and 
-\[
-X=\{(x_1,\dots,x_p)\in G\times\cdots\times G:x_1\cdots x_p=1\}.
-\]
-Then $C$ acts on $X$ by $k\cdot (x_1,\dots,x_p)=(x_{k+1},\dots,x_{k+p})$, where the indices are taken modulo $p$. To see that
-this is an action, note that 
-\[
-x_{i_1}\cdots x_{i_p}=1
-\implies (x_{i_1}^{-1}x_{i_1})x_{i_2}\cdots x_{i_p}=x_{i_1}^{-1}
-\implies x_{i_2}\cdots x_{i_p}x_{i_1}=1.
-\]
-If $x_1,\dots,x_{p-1}$ are fixed, then 
-$x_p=x_{p-1}^{-1}\cdots x_{1}^{-1}$. Thus $|X|=|G|^{p-1}$. Each $C$-orbit
-has either one or $p$ elements, as $|C|=p$. Write
-\[
-X=\underbrace{\mathcal{O}_1\cup\cdots\cup \mathcal{O}_k}_{\text{one-element orbits}}\cup\underbrace{\mathcal{O}_{k+1}\cup\cdots\cup\mathcal{O}_m}_{\text{orbits of size $p$}}.
-\]
-Hence $0\equiv |G|^{p-1}=|X|\equiv k\bmod p$, that is $p$ divides $k$. Since $(1,1,\dots,1)\in X$, $k\geq 1$. Therefore $p\leq k$. In particular,
-there exists $x\in G\setminus\{1\}$ such that $(x,x,\dots,x)\in X$. Hence $|x|=p$.
-\end{proof}
-
-\begin{corollary}
-    Let $p$ be a prime number and $G$ be a finite group. 
-    Then $G$ is a $p$-group if and only if 
-    every element of $G$ has order a power of $p$. 
-\end{corollary}
-
-\begin{proof}
-    If $G$ is a $p$-group, then, by Lagrange's theorem, 
-    every element has order a power of $p$. Conversely, 
-    if $q$ is a prime divisor of $|G|$, by 
-    Cauchy's theorem, there exists $g\in G$ of order $q$. Thus $q=p$.
-\end{proof}
-
-\begin{corollary}
-    Let $p>2$ be a prime number 
-    and $G$ be a group of order $2p$. 
-    Then either $G\simeq\Z/2p$ or $G\simeq\D_p$.
-\end{corollary}
-
-\begin{proof}
-    By Cauchy's theorem, there exist $r,s\in G$ such that
-    $|r|=p$ and $|s|=2$. Let $H=\langle r\rangle$. Then
-    $(G:H)=2$ and $H\unlhd G$. We can decompose $G$ as 
-    $G=H\cup Hs$ (disjoint union), 
-    as $s\not\in H$. In particular, 
-\[
-G=\{1,r,\dots,r^{p-1},s,rs,\dots,r^{p-1}s\}.
-\]
-Since $srs^{-1}\in H$, it follows that $srs^{-1}=r^k$ for some
-$k\in\{0,1,\dots,p-1\}$. Since $s^2=1$,
-\[
-r=s^2rs^{-2}=s(srs^{-1})s^{-1}=sr^ks^{-1}=r^{k^2}.
-\]
-Thus $k^2\equiv 1\bmod p$ and either 
-$k\equiv 1\bmod p$ or $k\equiv-1\bmod p$. 
-If $k\equiv -1\bmod p$, then $srs^{-1}=r^{-1}$ and hence $G\simeq\D_p$.
-If $k\equiv 1\bmod p$, then $rs=sr$ and hence, since $G$ is abelian, $G\simeq\Z/{2p}$.
-\end{proof}
-
-\begin{theorem}
-    A group of order $p^m$ has a normal subgroup of order
-    $p^n$ for every $n\leq m$.
-\end{theorem}
-
-\begin{proof}
-    We proceed by induction on $m$. The case where $m=1$ is trivial. So let $m\geq1$ and 
-    assume the result holds for groups of order $p^m$. Let
-    $G$ be a group of order $p^{m+1}$.
-    We claim that if $n\leq m$, $G$ contains a normal subgroup of
-    order $p^n$. Since $Z(G)\ne\{1\}$, there exists
-    $g\in Z(G)\setminus\{1\}$ of order $p$. Let
-$N=\langle g\rangle\unlhd G$. The quotient 
-group $G/N$ has order $p^m$. By the inductive hypothesis, 
-there exists a normal subgroup $Y$ of $G/N$ of order $p^n$. By the correspondence theorem, $G$ contains a normal subgroup $K$ of $G$ 
-that contains $N$, that is $N\leq K\leq G$. In fact, 
-$Y=\pi(K)$ and 
-$(G:K)=(\pi(G):\pi(K))=p^{m-n}$. Hence $|K|=p^n$.
-\end{proof}
