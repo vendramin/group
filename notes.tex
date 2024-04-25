@@ -6,6 +6,42 @@
 
 \usetikzlibrary{positioning}
 
+\newcommand\poly[1]{
+    \begin{tikzpicture}[auto=right,>={Triangle[open,fill=white,length=4pt,angle=60:1pt 2,inset=0pt]}]
+     % regular polygon sides
+    \def\rps{#1}
+    % rayon du cercle circonscrit
+    \def\rayonext{2.5cm}
+    % couleur de fond du polygone
+    \def\couleur{blue!25}
+    % nombre de rotations
+    \pgfmathsetmacro\nbrotation{int(\rps-1)}
+    % rayon du cercle inscrit
+    \pgfmathsetmacro\rayonint{multiply(\rayonext,cos(180/\rps))}
+   
+%    % definition de l'angle de départ des flèches des rotations
+    \pgfmathsetmacro\startarrow{90}
+
+    \node (a) 
+    [draw,blue!0!black,rotate=0,minimum size=2*\rayonext,regular polygon,fill=\couleur,regular polygon sides=\rps] at (0, 0) {}; 
+
+    \foreach \x in {1,...,\rps}{
+        \draw [black,dashed, shorten >=-1.5cm,shorten <=0cm](a.center) -- (a.side \x);
+        \draw [black,dashed, shorten >=-0.75cm,shorten <=0cm](a.center) -- (a.corner \x);
+        }
+    
+\foreach \i in {1,...,\rps}{
+        \draw[<->,double distance=1.4pt] ({\startarrow+(\i-1)*180/\rps}:\rayonext+5mm) ++([rotate=\startarrow+90+(\i-1)*180/\rps]-4mm,0) -- ++([rotate=\startarrow+90+(\i-1)*180/\rps]8mm,0)node[pos=.02,auto=right,outer sep=2pt,inner sep=1pt,]{\alphalph{\i+17}};
+    }
+
+\foreach \i [evaluate=\i as \ratio using \i/\rps] in {1,...,\nbrotation}{
+         \draw [->,double distance=1.4pt]               
+          ($(a.center)!\rayonint pt!(a.90)!\ratio!(a.center)$)arc[start angle=\startarrow,delta angle=360*\ratio,radius={\rayonint pt*(1-\ratio)}]
+         node[pos=.98,auto=right,outer sep=2pt,inner sep=0pt,node font=small,font=\bf,fill=\couleur,text=white]{\alphalph{\i}};
+    }
+\end{tikzpicture}
+}
+
 \begin{document}
 
 \maketitle

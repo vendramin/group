@@ -1,7 +1,5 @@
 \section{25/04/2024}
 
-% todo: El grupo Aff(R) es un producto semidirecto
-% todo: Necesitamos más ejemplos de producto semidirecto
 \subsection{Actions}
 
 \begin{definition}
@@ -16,7 +14,89 @@
 \end{definition}
 
 If a group $G$ acts on a set $X$, we also say that
-$X$ is a $G$-set.
+$X$ is a $G$-set. 
+
+\begin{example}
+    Recall the action of Example~\ref{xca:GL2onR2}. 
+    The group $\GL_2(\R)$ acts on $\R^{2\times 1}$ by left multiplication: if 
+    $A=\begin{pmatrix}
+        a&b\\
+        c&d
+    \end{pmatrix}\in\GL_2(\R)$ and $v=\colvec{2}{x}{y}\in\R^{2\times1}$, then 
+    \[ 
+    A\cdot v=\begin{pmatrix}
+        a&b\\
+        c&d
+    \end{pmatrix}
+    \cdot\colvec{2}{x}{y}=\colvec{2}{ax+by}{cx+dy}.
+    \]
+\end{example}
+
+\begin{example}
+    The group 
+    \[
+    G=\left\{\begin{pmatrix}
+        \cos\theta & \sin\theta\\
+        -\sin\theta & \cos\theta
+    \end{pmatrix}:\theta\in\R\right\}
+    \]
+    acts on the plane $\R^{2\times 1}$ by left multiplication. For example, with $\theta=\pi/2$, 
+    \[ 
+    \begin{pmatrix}
+        \cos\theta & \sin\theta\\
+        -\sin\theta & \cos\theta
+    \end{pmatrix}\cdot \colvec{2}{1}{0}
+    =\begin{pmatrix} 
+    0&1\\
+    -1&0
+    \end{pmatrix}
+    \colvec{2}{1}{0}
+    =\colvec{2}{0}{-1}.
+    \]
+\end{example}
+
+\begin{example}
+    The dihedral group $\D_8=\langle r,s:r^4=s^2,srs=r^{-1}\rangle$ of eight elements acts on the vertices of the square: 
+    
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+node distance = 9mm and 9mm, on grid,
+every node/.style = {draw, shape=circle, inner sep=2pt}]
+\node (a) {4};
+\node (b) [above right=of a] {1};
+\node (c) [above left=of b] {2};
+\node (d) [below left=of c] {3};
+\draw (a) -- (b) -- (c) -- (d) -- (a);
+\end{tikzpicture}
+\end{figure}
+
+The element $r$ is a rotation by 90\textdegree~counterclockwise 
+and $s$ is a reflection across the line joining vertices 1 and 3. 
+Thus $r$ 
+can be identified with the permutation $(1234)$ 
+and $s$ with $(24)$. The rest 
+of the elements of $\D_8$ as permutations on the vertices
+appear in the following table:
+\begin{center}
+\begin{tabular}{cccccccc}
+ $1$ & $r$ & $r^2$ & $r^3$ & $s$ & $rs$ & $r^2s$ & $r^3s$ \\
+ \hline 
+ $\id$ & $(1234)$ & $(13)(24)$ & $(1423)$ & $(24)$ & $(12)(34)$ & $(13)$ & $(14)(23)$
+\end{tabular}
+\end{center}
+\end{example}
+
+In the previous example, a relabelling of the vertices 
+will turn $\D_8$ into a different subgroup of $\Sym_4$. Do you remember 
+what conjugate subgroups are? 
+
+\begin{example}
+    The multiplicative group $\R^{\times}$ acts on the plane $\R^2$ by multiplication: 
+    \[ 
+    \lambda\cdot (x,y)=(\lambda x,\lambda y),\quad \lambda\in\R^{\times},(x,y)\in\R^2.
+    \]
+\end{example}
 
 \begin{example}
 \index{Action!trivial}
@@ -44,6 +124,19 @@ Let $G$ be a group $H$ be a subgroup of $G$. Then $G$
 acts on the set of left cosets $G/H$ by left multiplication, that 
 is $g\cdot (xH)=(gx)H$ for all $g,x\in G$.
 \end{example}
+
+For sets $X$ and $Y$, let 
+$\operatorname{Fun}(X,Y)$ be the set of maps $X\to Y$. 
+
+\begin{exercise}
+\label{xca:dual}
+    Let $G$ be a group and $X$ and $Y$ be sets. Assume that $G$ acts on $X$. 
+    Prove that 
+    $G$ acts on $\operatorname{Fun}(X,Y)$ by 
+    \[ 
+        (g\cdot f)(x)=f(g^{-1}\cdot x),\quad g\in G,\; f\in\operatorname{Fun}(X,Y),\; x\in X.
+    \]  
+\end{exercise}
 
 There is a bijective correspondence between 
 left actions of a group $G$ on a set $X$ and
@@ -645,7 +738,8 @@ If $k\equiv 1\bmod p$, then $rs=sr$ and hence, since $G$ is abelian, $G\simeq\Z/
 \end{theorem}
 
 \begin{proof}
-    We proceed by induction on $m$. The case where $m=1$ is trivial. Assume that the result holds for groups of order $p^m$. Let
+    We proceed by induction on $m$. The case where $m=1$ is trivial. So let $m\geq1$ and 
+    assume the result holds for groups of order $p^m$. Let
     $G$ be a group of order $p^{m+1}$.
     We claim that if $n\leq m$, $G$ contains a normal subgroup of
     order $p^n$. Since $Z(G)\ne\{1\}$, there exists
