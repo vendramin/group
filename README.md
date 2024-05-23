@@ -1,5 +1,7 @@
 # Group theory
 
+[![DOI](https://zenodo.org/badge/660269958.svg)](https://zenodo.org/doi/10.5281/zenodo.11262327)
+
 ## Leandro Vendramin
 
 These are lecture notes for the course _Group theory_, taught by Leandro Vendramin 
