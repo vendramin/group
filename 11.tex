@@ -277,7 +277,7 @@ Hence $G=HK\simeq H\times K\simeq \Z/3\times\Z/5\simeq\Z/15$.
 \begin{example}
 If $G$ is a group of order 455, then $G$ is cyclic.
 
-For every prime number $p$ dividing $|G|$, let $n_p=n_p(G)$. 
+For every prime $p$ dividing $|G|$, let $n_p=n_p(G)$. 
 Since $n_5$ divides $7\times 13$ and
 $n_5\equiv 1\bmod 5$, then $n_5\in\{1.91\}$. A direct 
 calculation shows that $n_7=n_{13}=1$. Let $P\in\Syl_7(G)$ and  $Q\in\Syl_{13}(G)$, both normal subgroups of $G$. Since $P$ and $Q$ 
@@ -437,106 +437,3 @@ a contradiction.
 % si $H$ es un subgrupo de un grupo finito $G$ y
 % $P\in\Syl_p(G)$, entonces $g\in G$ tal que $gPg^{-1}\cap H\in\Syl_p(H)$. Otra demostración
 % puede obtenerse al considerar la acción de $H$ en $G/P$ por multiplicación a izquierda.
-
-\subsection{More about Sylow's theorems}
-
-\begin{theorem}
-    Let $N$ be a normal subgroup of a finite group 
-    $G$ and $P\in\Syl_p(N)$. Then 
-    $P\cap N\in\Syl_p(N)$. Moreover, every Sylow 
-    $p$-subgroup of $N$  
-    can be obtained this way. 
-\end{theorem}
-
-\begin{proof}
-    Since $N$ is normal,
-    by Theorem \ref{thm:Sylow_auxiliar}, there exists 
-    $g\in G$ such that 
-        \[
-                g(P\cap N)g^{-1}=gPg^{-1}\cap gNg^{-1}=gPg^{-1}\cap N\in\Syl_p(N).
-        \]
-    Then $P\cap N$ is a Sylow $p$-subgroup of $g^{-1}Ng=N$.
-
-    Let $Q\in\Syl_pN$ and $P\in\Syl_p(G)$ be such that
-    $Q\subseteq P$. Then
-    $Q\subseteq P\cap N$. Hence 
-    $Q=P\cap N$, as $P\cap N$ is a Sylow $p$-subgroup of $N$. 
-\end{proof}
-
-As a corollary, if $G$ is a finite group and 
-$N$ is a normal subgroup of $G$, then 
-$n_p(N)\leq n_p(G)$.
-
-\begin{theorem}
-    Let $p$ be a prime number, $G$ be a finite group, $P\in\Syl_p(G)$, 
-    and $N$ be a normal subgroup of $G$. Let $\pi\colon G\to G/N$ be the canonical homomorphism. Then 
-    $\pi(G)\in\Syl_p(G/N)$ and every Sylow 
-    $p$-subgroup of $G/N$ can be obtained this way. 
-\end{theorem}
-
-\begin{proof}
-    Since $\pi(P)=\pi|_{P}(P)\simeq P/N\cap P$,
-    the second isomorphism theorem 
-    implies that 
-    $\pi(P)$ is a $p$-group. Since
-    $|PN|=|P||N|/|P\cap N|$,
-        \[
-                (G/N:\pi(P))=(G:PN)
-        \]
-        is not divisible by $p$. Thus $\pi(P)\in\Syl_p(G/N)$.
-
-        If $Q\in\Syl_p(G/N)$, then $Q=\pi(H)$ for some
-        subgroup $H$ of $G$
-        with $N\subseteq H$. In particular,
-        \[
-                |Q|=|\pi(H)|=\frac{|H|}{|H\cap N|}=\frac{|H|}{|N|}.
-        \]
-        Thus 
-        \[
-                (G:H)=\frac{|G|/|N|}{|H|/|N|}=(G/N:Q)
-        \]
-        is not divisible by $p$. Thus $X\in\Syl_p(H)$ and
-        hence   
-        $X\in\Syl_p(G)$. Therefore   
-        \[
-        \pi(X)\subseteq\pi(H)=Q
-        \]
-        and 
-        $\pi(X)=Q$, as 
-        $\pi(X)\in\Syl_p(G/N)$.
-\end{proof}
-
-As a corollary, if $G$ is a finite group and
-$N$ is a normal subgroup of $G$, then 
-$n_p(G/N)\leq n_p(G)$.
-
-\begin{corollary}
-Let $G$ be a finite group. Assume that 
-$G$ contains only one Sylow $p$-subgroup. Then
-every subgroup and every quotient of 
-$G$ 
-contains only one Sylow 
-$p$-subgroup. 
-\end{corollary}
-
-\begin{proof}
-    If $H$ is a subgroup of $G$, then
-    $n_p(H)\leq n_p(G)=1$. If $N$ is a normal subgroup of 
-    $G$, then $n_p(G/N)\leq n_p(G)=1$.
-\end{proof}
-
-%Veamos una aplicación.
-%
-%\begin{theorem}[Wilson]
-%       Sea $n\in\N$. Entonces $n$ es primo si y sólo si
-%       $(n-1)!\equiv -1\bmod n$.
-%\end{theorem}
-%
-%\begin{proof}
-%       Sea $p$ un número primo.
-%       El grupo $\Sym_p$ tiene $(p-1)!$ elementos de orden $p$. Cada
-%       $p$-subgroupo de Sylow de $\Sym_p$ está generado por un $p$-ciclo, y luego
-%       $n_p\equiv (p-2)!$. Por el tercer teorema de Sylow,
-%       $(p-2)!=n_p\equiv 1\bmod p$. Al multiplicar por $p-1$, tenemos
-%       $(p-1)!\equiv -1\bmod p$.
-%\end{proof}

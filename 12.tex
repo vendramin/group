@@ -1,5 +1,110 @@
 \section{23/05/2024}
 
+\subsection{More about Sylow's theorems}
+
+\begin{theorem}
+    Let $N$ be a normal subgroup of a finite group 
+    $G$ and $P\in\Syl_p(G)$. Then 
+    $P\cap N\in\Syl_p(N)$. Moreover, every Sylow 
+    $p$-subgroup of $N$  
+    can be obtained this way.
+\end{theorem}
+
+\begin{proof}
+    Since $N$ is normal,
+    by Theorem \ref{thm:Sylow_auxiliar} applied to the group $N$, 
+    there exists 
+    $g\in G$ such that 
+        \[
+                g(P\cap N)g^{-1}=gPg^{-1}\cap gNg^{-1}=gPg^{-1}\cap N\in\Syl_p(N).
+        \]
+    Then $P\cap N$ is a Sylow $p$-subgroup of $g^{-1}Ng=N$.
+
+    Let $Q\in\Syl_pN$ and $P\in\Syl_p(G)$ be such that
+    $Q\subseteq P$. Then
+    $Q\subseteq P\cap N$. Hence 
+    $Q=P\cap N$, as $P\cap N$ is a Sylow $p$-subgroup of $N$. 
+\end{proof}
+
+As a corollary, if $G$ is a finite group and 
+$N$ is a normal subgroup of $G$, then 
+$n_p(N)\leq n_p(G)$.
+
+\begin{theorem}
+    Let $p$ be a prime number, $G$ be a finite group, $P\in\Syl_p(G)$, 
+    and $N$ be a normal subgroup of $G$. Let $\pi\colon G\to G/N$ be the canonical homomorphism. Then 
+    $\pi(P)\in\Syl_p(G/N)$ and every Sylow 
+    $p$-subgroup of $G/N$ can be obtained this way. 
+\end{theorem}
+
+\begin{proof}
+    Since $\pi(P)=(\pi|_{P})(P)\simeq P/N\cap P$,
+    the second isomorphism theorem 
+    implies that 
+    $\pi(P)$ is a $p$-group. Since
+    $|PN|=|P||N|/|P\cap N|$,
+        \[
+                (G/N:\pi(P))=(G:PN)
+        \]
+        is not divisible by $p$. Thus $\pi(P)\in\Syl_p(G/N)$.
+
+        If $Q\in\Syl_p(G/N)$, then $Q=\pi(H)$ for some
+        subgroup $H$ of $G$
+        with $N\subseteq H$. In particular,
+        \[
+                |Q|=|\pi(H)|=\frac{|H|}{|H\cap N|}=\frac{|H|}{|N|}.
+        \]
+        Thus 
+        \[
+                (G:H)=\frac{|G|/|N|}{|H|/|N|}=(G/N:Q)
+        \]
+        is not divisible by $p$. 
+        
+        Let $X\in\Syl_p(H)$. Since $(G:H)$ is not divisible by $p$, 
+        $X\in\Syl_p(G)$. Hence 
+        \[
+        \pi(X)\subseteq\pi(H)=Q. 
+        \]
+        Thus 
+        $\pi(X)=Q$, as 
+        $\pi(X)\in\Syl_p(G/N)$.
+\end{proof}
+
+As a corollary, if $G$ is a finite group and
+$N$ is a normal subgroup of $G$, then 
+$n_p(G/N)\leq n_p(G)$.
+
+\begin{corollary}
+Let $G$ be a finite group. Assume that 
+$G$ contains only one Sylow $p$-subgroup. Then
+every subgroup and every quotient of 
+$G$ 
+contains only one Sylow 
+$p$-subgroup. 
+\end{corollary}
+
+\begin{proof}
+    If $H$ is a subgroup of $G$, then
+    $n_p(H)\leq n_p(G)=1$. If $N$ is a normal subgroup of 
+    $G$, then $n_p(G/N)\leq n_p(G)=1$.
+\end{proof}
+
+%Veamos una aplicación.
+%
+%\begin{theorem}[Wilson]
+%       Sea $n\in\N$. Entonces $n$ es primo si y sólo si
+%       $(n-1)!\equiv -1\bmod n$.
+%\end{theorem}
+%
+%\begin{proof}
+%       Sea $p$ un número primo.
+%       El grupo $\Sym_p$ tiene $(p-1)!$ elementos de orden $p$. Cada
+%       $p$-subgroupo de Sylow de $\Sym_p$ está generado por un $p$-ciclo, y luego
+%       $n_p\equiv (p-2)!$. Por el tercer teorema de Sylow,
+%       $(p-2)!=n_p\equiv 1\bmod p$. Al multiplicar por $p-1$, tenemos
+%       $(p-1)!\equiv -1\bmod p$.
+%\end{proof}
+
 \subsection{Abelian groups}
 
 Let $A$ be an abelian group, written additively, and $x_1,\dots,x_k\in A$. 
@@ -16,10 +121,26 @@ $A=\langle x_1,\dots,x_k\rangle$. And we say that the set
 $\{x_1,\dots,x_k\}$ is 
 \textbf{linearly independent} if 
 \[
-\sum_{i=1}^k m_ix_i=0\implies m_1=\cdots=m_k=0.
+\sum_{i=1}^k m_ix_i=0\implies m_1x_1=\cdots=m_kx_k=0.
 \]
-Finally, a \textbf{basis} of $A$ 
-will be a linearly independent set of generators of $A$. 
+
+Note that our definition of linearly independence for abelian groups is slightly 
+different from that of linear algebra. For example, in the group $\Z/5$, 
+one has $5x=0$ for all $x$. Thus there will be no linearly independent sets with 
+the standard linear algebra definition. 
+
+\begin{exercise}
+    Let $A$ be an abelian group and $X$ and $Y$ be subgroups of $A$. 
+    We say that $A$ is the \textbf{direct sum} of $X$ and $Y$ 
+    if $A=X+Y$ and $X\cap Y=\{0\}$. In this case, we write $A=X\oplus Y$. Prove that 
+    every element $a\in X\oplus Y$ can be
+    written uniquely as $a=x+y$ for $x\in X$ and $y\in Y$.     
+\end{exercise}
+
+A subset $\{x_1,\dots,x_k\}$ is a \textbf{basis} of $A$ 
+if $A=\langle x_1\rangle\oplus\cdots\oplus \langle x_k\rangle$, that is
+if $\{x_1,\dots,x_k\}$ is a 
+linearly independent set of generators of $A$. 
 
 
 \begin{theorem}
@@ -79,30 +200,30 @@ Now we are ready to prove the main theorem of this section.
     \eqref{eq:decomposition} does not hold, 
     $\langle x_1\rangle\cap \langle x_2,\dots,x_n\rangle\ne\{0\}$. Let  
     $\xi\in \langle x_1\rangle\cap \langle x_2,\dots,x_n\rangle$ be a non-zero element. Then 
-    $\xi=m_1x_1=m_2x_2+\cdots+m_kx_k$ for some integer 
-    $m_1\ne 0$ and $m_2,\dots,m_k\in\Z$ not all zero.  Thus 
+    $\xi=m_1x_1=m_2x_2+\cdots+m_nx_n$ for some integer 
+    $m_1x_1\ne 0$ and $m_2,\dots,m_n\in\Z$ not all zero.  Thus 
     \[ 
-    (-m_1)x_1+m_2+\cdots+m_kx_k=0.
+    (-m_1)x_1+m_2+\cdots+m_nx_n=0.
     \]
     After changing the sign of some of the generators, 
     we produce a generating set $\{z_1,\dots,z_k\}$ of $A$ 
     such that our linear combination becomes 
     \[ 
-    \lambda_1z_1+m_2z_2+\cdots+\lambda_kz_k=0, 
+    \lambda_1z_1+\lambda_2z_2+\cdots+\lambda_nz_n=0, 
     \]
     where $\lambda_1,\dots,\lambda_k\in\Z_{\geq 0}$ 
-    and $0<\lambda_1<|z_1|$. Let $d=\gcd(\lambda_1,\dots,\lambda_k)$ and
-    for each $i\in\{1,\dots,k\}$, let 
+    and $0<\lambda_1<|z_1|$. Let $d=\gcd(\lambda_1,\dots,\lambda_n)$ and
+    for each $i\in\{1,\dots,n\}$, let 
     $c_i=\lambda_i/d$. 
     By Lemma~\ref{lem:trick_abelian}, there exist 
-    $y_1,\dots,y_k\in A$ such that 
-    $A=\langle y_1,\dots,y_k\rangle$ and 
+    $y_1,\dots,y_n\in A$ such that 
+    $A=\langle y_1,\dots,y_n\rangle$ and 
     \[ 
-    y_1=c_1z_1+\cdots+c_kz_k.
+    y_1=c_1z_1+\cdots+c_nz_n.
     \]
-    But $dy_1=\lambda_1z_1+\cdots+\lambda_kz_k=0$ and 
+    But $dy_1=\lambda_1z_1+\cdots+\lambda_nz_n=0$ and 
     $d\leq \lambda_1<|x_1|$. We have found a generating set 
-    $\{y_1,\dots,y_k\}$ in which the element
+    $\{y_1,\dots,y_n\}$ in which the element
     $y_1$ has order smaller than $|x_1|$, a contradiction. 
 \end{proof}
 
