@@ -5,7 +5,7 @@
 \begin{definition}
 \index{Action}
     Let $G$ be a group and $X$ a set. 
-    A (left) \textbf{action} of $G$ on $X$ is a map 
+    A (left) \emph{action} of $G$ on $X$ is a map 
     $G\times X\to X$, $(g,x)\mapsto g\cdot x$, such that 
     \begin{enumerate}
         \item $1\cdot x=x$ for all $x\in X$, and 
@@ -58,18 +58,6 @@ $X$ is a $G$-set.
 \begin{example}
     The dihedral group $\D_8=\langle r,s:r^4=s^2,srs=r^{-1}\rangle$ of eight elements acts on the vertices of the square: 
     
-\begin{figure}[ht]
-\centering
-\begin{tikzpicture}[
-node distance = 9mm and 9mm, on grid,
-every node/.style = {draw, shape=circle, inner sep=2pt}]
-\node (a) {4};
-\node (b) [above right=of a] {1};
-\node (c) [above left=of b] {2};
-\node (d) [below left=of c] {3};
-\draw (a) -- (b) -- (c) -- (d) -- (a);
-\end{tikzpicture}
-\end{figure}
 
 The element $r$ is a rotation by 90\textdegree~counterclockwise 
 and $s$ is a reflection across the line joining vertices 1 and 3. 
@@ -86,6 +74,20 @@ appear in the following table:
 \end{tabular}
 \end{center}
 \end{example}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+node distance = 9mm and 9mm, on grid,
+every node/.style = {draw, shape=circle, inner sep=2pt}]
+\node (a) {4};
+\node (b) [above right=of a] {1};
+\node (c) [above left=of b] {2};
+\node (d) [below left=of c] {3};
+\draw (a) -- (b) -- (c) -- (d) -- (a);
+\end{tikzpicture}
+\end{figure}
+
 
 In the previous example, a relabelling of the vertices 
 will turn $\D_8$ into a different subgroup of $\Sym_4$. Do you remember 
@@ -304,7 +306,7 @@ $\subseteq$. If $g\in\ker\rho$, then
 \Longleftrightarrow x^{-1}gx\in H
 \Longleftrightarrow g\in xHx^{-1}.
  \end{align*}
-The subgroup $\ker\rho$ is called the \textbf{core} of $H$ in $G$. 
+The subgroup $\ker\rho$ is called the \emph{core} of $H$ in $G$. 
 \end{example}
 
 \begin{exercise}
@@ -364,7 +366,7 @@ relation induced by the action.
 
 \begin{definition}
         \index{Stabilizer of a point}
-        Let $G$ be a group that acts on $X$. If $x\in X$, the \textbf{stabilizer} of $x$ in $G$
+        Let $G$ be a group that acts on $X$. If $x\in X$, the \emph{stabilizer} of $x$ in $G$
         is the set   
         \[
         G_x=\{g\in G:g\cdot x=x\}.
@@ -376,7 +378,7 @@ The reader must prove that the stabilizer is a subgroup.
 \begin{definition}
 \index{Action!transitive}
 We say that an action of a group $G$ on a set $X$
-is \textbf{transitive} if for any $x,y\in X$ there exists $g\in G$ such that $g\cdot x=y$.
+is \emph{transitive} if for any $x,y\in X$ there exists $g\in G$ such that $g\cdot x=y$.
 \end{definition}
 
 \begin{example}
@@ -397,7 +399,7 @@ on the number of elements $g$ such that $g\cdot x=y$.
 \begin{definition}
 \index{Action!faithful}
 We say that an action of a group $G$ on a set 
-$X$ is \textbf{faithful} if 
+$X$ is \emph{faithful} if 
 \[
 \{g\in G:g\cdot x=x\text{ for all $x\in X$}\}=\{1\}.
 \]
@@ -435,7 +437,7 @@ as the orbit--stabilizer theorem.
 
 If $G$ is a group and $X$ and $Y$ are $G$-sets, 
 we say that a map $\varphi\colon X\to Y$ is a 
-\textbf{homomorphism} of $G$-sets if $\varphi(g\cdot x)=g\cdot \varphi(x)$ for all $g\in G$ and $x\in X$. The bijection 
+\emph{homomorphism} of $G$-sets if $\varphi(g\cdot x)=g\cdot \varphi(x)$ for all $g\in G$ and $x\in X$. The bijection 
 $\varphi$ constructed in the proof of Theorem \ref{thm:fundamental}
 is a homomorphism of $G$-sets, where
 $G$ acts on $G/G_x$ by left multiplication: 
@@ -445,7 +447,7 @@ $G$ acts on $G/G_x$ by left multiplication:
 Thus $G\cdot x\simeq G/G_x$ as $G$-sets.
 
 \begin{example}
-    If $G$ acts on $G$ by conjugation, that is $g\cdot x=gxg^{-1}$, the orbits of this action are called the \textbf{conjugacy classes} 
+    If $G$ acts on $G$ by conjugation, that is $g\cdot x=gxg^{-1}$, the orbits of this action are called the \emph{conjugacy classes} 
     of $G$. They are sets of the form
         \[
         G\cdot x=\{gxg^{-1}:g\in G\}.

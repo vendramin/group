@@ -42,7 +42,7 @@ a contradiction.
 \begin{definition}
     \index{Subgroup!normal}
     Let $G$ be a group. 
-    A subgroup $N$ of $G$ is said to be \textbf{normal} if $gNg^{-1}\subseteq N$ for all $g\in G$.
+    A subgroup $N$ of $G$ is said to be \emph{normal} if $gNg^{-1}\subseteq N$ for all $g\in G$.
     Notation: If $N$ is normal in $G$, then $N\unlhd G$.
 \end{definition}
 
@@ -275,7 +275,7 @@ If $G/Z(G)$ is cyclic, then $G$ is abelian.
 \begin{exercise}
 \label{xca:normalizer}
 \index{Normalizer}
-If $S$ is a subgroup of $G$, the \textbf{normalizer} of $S$ in $G$
+If $S$ is a subgroup of $G$, the \emph{normalizer} of $S$ in $G$
 is the set  
 \[
 N_G(S)=\{g\in G:gSg^{-1}=S\}.
@@ -293,7 +293,7 @@ subgroup of $G$ that contains $S$ as a normal subgroup.
 
 \begin{definition}
 \index{Group!simple}
-A group $G$ is \textbf{simple} if $G\ne\{1\}$ and 
+A group $G$ is \emph{simple} if $G\ne\{1\}$ and 
 $G$ and $\{1\}$ are the only normal subgroups of $G$. 
 \end{definition}
 
@@ -303,7 +303,7 @@ For $n\geq5$, the alternating group $\Alt_n$ is simple. However,
 we will not
 prove this in this course. 
 
-\begin{exercise}
+\begin{bonus}
 \label{xca:index_p}
 Let $H$ be a subgroup of $G$ such that $p=(G:H)$ is a prime number. 
 Prove that the following statements are equivalent:
@@ -313,20 +313,20 @@ Prove that the following statements are equivalent:
 \item If $g\in G\setminus H$, then $g^n\in H$ for some $n$ with no prime divisors $<p$.
 \item If $g\in G\setminus H$, then $g^k\not\in H$ for all $k\in\{2,\dots,p-1\}$.
 \end{enumerate}
-\end{exercise}
+\end{bonus}
 
 We now present two applications of the previous exercise. 
 
-\begin{exercise}
+\begin{bonus}
 \label{xca:p_smallest}
     Let $G$ be a finite group and $p$ be the smallest prime number dividing $G$. Prove that if $H$ is a subgroup 
     of $G$ with $(G:H)=p$, then $H$ is normal in $G$. 
-\end{exercise}
+\end{bonus}
 
-\begin{exercise}
+\begin{bonus}
 Let $p$ be a prime number and $G$ be a group such that
 every element of $G$ has order a power of $p$. 
 If 
 $H$ is a subgroup of $G$ of index $p$, then $H$ is normal in $G$.
-\end{exercise}
+\end{bonus}
 

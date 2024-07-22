@@ -147,8 +147,8 @@ of an element $x\in G$ is the set
         \{y\in G:x\equiv y\bmod H\}=\{y\in G:x^{-1}y\in H\}=\{y\in G:y\in xH\}=xH.
 \]
 The set $xH$ is called 
-a \textbf{left coset} of $H$ in $G$ and $x$ is 
-a \textbf{representative} of $xH$.
+a \emph{left coset} of $H$ in $G$ and $x$ is 
+a \emph{representative} of $xH$.
 
 Having an equivalence relation modulo $H$ in $G$ allows us to
 decompose $G$ as a disjoint union of certain subsets related to $H$. 
@@ -176,8 +176,8 @@ One can also define right cosets: $x\equiv
 y\bmod H$ if and only if $xy^{-1}\in H$. In this case, 
 the equivalence classes are 
 the sets of the form $Hx$ with $x\in X$. The set $Hx$ 
-is called a \textbf{right coset}
-with \textbf{representative} $x$ of $H$ in $G$. 
+is called a \emph{right coset}
+with \emph{representative} $x$ of $H$ in $G$. 
 
 \begin{proposition}
     If $H$ is a subgroup of $G$, then  $|Hx|=|H|=|xH|$ for all $x\in G$.
@@ -205,7 +205,7 @@ equals the number of left cosets of $H$ in $G$.
 
 \begin{definition}
     \index{Index}
-    If $H$ is a subgroup of $G$, the \textbf{index} of $H$ in $G$
+    If $H$ is a subgroup of $G$, the \emph{index} of $H$ in $G$
     is the number $(G:H)$ of left (or right) cosets of $H$ in $G$. 
 \end{definition}
 
@@ -344,7 +344,7 @@ Consider the group
 \Alt_4=\{\id,(234),(243),(12)(34),(123),(124),(132),(134),(13)(24),(142),(143),(14)(23)\}.
 \end{multline*}
 This is an important subgroup of $\Sym_4$ known as the 
-\textbf{alternating group} in four symbols. 
+\emph{alternating group} in four symbols. 
 
 We claim that $\Alt_4$ has no subgroups of order six. If $H\leq\Alt_4$ is such that 
 $|H|=6$, then, since $(\Alt_4:H)=2$, for every $x\not\in H$ we can decompose $\Alt_4$ as 
@@ -361,10 +361,10 @@ We all need a favorite group. Mine is $\SL_2(3)$,
 the group of $2\times2$ matrices with coefficients in $\Z/3$
 and determinant one. 
 
-\begin{exercise}
+\begin{bonus}
 Prove that    \[
     \SL_2(3)=\left\{\begin{pmatrix}a&b\\c&d\end{pmatrix}:ad-bc=1,\,a,b,c,d\in\Z/3\right\}
     \]
     has order 24 and does not contain subgroups of order 12.
-    \end{exercise}
+\end{bonus}
 

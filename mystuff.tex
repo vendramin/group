@@ -9,6 +9,7 @@
 \usepackage{mdframed}
 \usepackage{textcomp}
 \usepackage{colortbl}
+\usepackage[most]{tcolorbox}
 
 % For Dyslexic replace the next three lines by 
 %\usepackage{fontspec}
@@ -19,6 +20,12 @@
 \usepackage[margin=1in,footskip=.25in]{geometry}
 
 \overfullrule=1mm
+
+\usepackage{xcolor,etoolbox}
+\definecolor{mymagenta}{RGB}{195,51,117} % magenta
+%\DeclareEmphSequence{\bfseries\textcolor{magenta}}
+\renewcommand\emph[1]{\textcolor{mymagenta}{\textbf{#1}}}
+
 
 \lstdefinelanguage{Julia}%
   {morekeywords={abstract,break,case,catch,const,continue,do,else,elseif,%
@@ -64,15 +71,15 @@
 
 \usepackage[most]{tcolorbox}
 
-\newtcolorbox{mybox}{
-enhanced,
-boxrule=0pt,frame hidden,
-%borderline west={4pt}{0pt}{black},
-%colback={gray!20},
-sharp corners,
-left=.5cm
-%left=18.0pt
-}
+%\newtcolorbox{mybox}%[colback=red!5!white,colframe=red!75!black]
+% enhanced,
+% boxrule=0pt,frame hidden,
+% %borderline west={4pt}{0pt}{black},
+% %colback={gray!20},
+% sharp corners,
+% left=.5cm
+% %left=18.0pt
+% }
 
 \makeindex             
 
@@ -139,12 +146,15 @@ left=.5cm
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
-\newtheorem{examples}[theorem]{Examples}
+%\newtheorem{examples}[theorem]{Examples}
 \newtheorem{xca}[theorem]{Exercise}
+\newtheorem{bxca}[theorem]{Bonus exercise}
+%\newtheorem{exa}[theorem]{Example}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{question}[theorem]{Question}
 \newtheorem{conjecture}[theorem]{Conjecture}
 \newtheorem{problem}[theorem]{Open problem}
+%\newtheorem{exercise}[theorem]{Exercise}
 
 \theoremstyle{remark}
 \newtheorem*{claim}{Claim}
@@ -153,9 +163,39 @@ left=.5cm
 {\renewcommand{\qedsymbol}{}\begin{proof}[\ref{#1}]}
   {\end{proof}}
 
+% \newtcolorbox{mybox}{
+% enhanced,
+% boxrule=0pt,frame hidden,
+% %borderline west={4pt}{0pt}{black},
+% %colback={gray!20},
+% sharp corners,
+% left=.5cm
+% %left=18.0pt
+% }
+% \newenvironment{exercise}
+%   {\begin{mybox}\begin{xca}}
+%   {\end{xca}\end{mybox}}
+
 \newenvironment{exercise}
-  {\begin{mybox}\begin{xca}}
-  {\end{xca}\end{mybox}}
+{\begin{tcolorbox}[boxrule=0pt,frame hidden,colback=green!5!white,
+  left=.3em, right=.3em, top=-.2em, bottom=.3em,
+  beforeafter skip balanced=.4\baselineskip plus 2pt,
+  before upper={\parindent4mm\noindent},
+colframe=green!55!black]\begin{xca}}{\end{xca}\end{tcolorbox}}
+
+\newenvironment{bonus}
+{\begin{tcolorbox}[boxrule=0pt,frame hidden,colback=yellow!55!white,
+  left=.3em, right=.3em, top=-.2em, bottom=.3em,
+  beforeafter skip balanced=.4\baselineskip plus 2pt,
+  before upper={\parindent4mm\noindent},
+colframe=yellow!45!black]\begin{bxca}}{\end{bxca}\end{tcolorbox}}
+
+% \newenvironment{example}
+% {\begin{tcolorbox}[boxrule=0pt,frame hidden,colback=red!5!white,
+%   left=.3em, right=.3em, top=-.2em, bottom=.3em,
+%   beforeafter skip balanced=.4\baselineskip plus 2pt,
+%   before upper={\parindent4mm\noindent},
+% colframe=red!55!black]\begin{exa}}{\end{exa}\end{tcolorbox}}
 
 \numberwithin{figure}{section}
 \numberwithin{equation}{section}
