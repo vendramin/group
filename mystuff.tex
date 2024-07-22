@@ -11,6 +11,15 @@
 \usepackage{colortbl}
 \usepackage[most]{tcolorbox}
 
+\hypersetup{
+  final, 
+  colorlinks, 
+  linkcolor=-red!55!green!50, 
+  citecolor=blue!50!red,
+  urlcolor=green!30!black
+}
+
+
 % For Dyslexic replace the next three lines by 
 %\usepackage{fontspec}
 %\setmainfont{OpenDyslexic}
@@ -21,10 +30,11 @@
 
 \overfullrule=1mm
 
-\usepackage{xcolor,etoolbox}
-\definecolor{mymagenta}{RGB}{195,51,117} % magenta
-%\DeclareEmphSequence{\bfseries\textcolor{magenta}}
-\renewcommand\emph[1]{\textcolor{mymagenta}{\textbf{#1}}}
+\renewcommand\emph[1]{\textcolor{blue!50!red}
+{\bfseries #1}}
+
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\arabic{section}.\arabic{subsection}}
 
 
 \lstdefinelanguage{Julia}%
@@ -184,7 +194,7 @@
 colframe=green!55!black]\begin{xca}}{\end{xca}\end{tcolorbox}}
 
 \newenvironment{bonus}
-{\begin{tcolorbox}[boxrule=0pt,frame hidden,colback=yellow!55!white,
+{\begin{tcolorbox}[boxrule=0pt,frame hidden,colback=yellow!15!white,
   left=.3em, right=.3em, top=-.2em, bottom=.3em,
   beforeafter skip balanced=.4\baselineskip plus 2pt,
   before upper={\parindent4mm\noindent},
@@ -211,6 +221,12 @@ Science, Vrije Universiteit Brussel, Pleinlaan 2, 1050 Brussel}
 \date{}
 
 \makeatletter
+\renewcommand\section{\@startsection{section}{1}%
+  \z@{.7\linespacing\@plus\linespacing}{.5\linespacing}%
+  {\color{-red!55!green!50}\normalfont\bfseries\centering}}
+\renewcommand\subsection{\@startsection{subsection}{2}%
+  \normalparindent{.5\linespacing\@plus.7\linespacing}{-.5em}%
+  {\color{green!30!black}\normalfont\bfseries}}
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
