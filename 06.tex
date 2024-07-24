@@ -29,7 +29,10 @@ Note that $HK\leq G$ if and only if $\langle H\cup K\rangle=HK$.
 
     Now assume that $HK$ is a subgroup of $G$. Since $H\subseteq HK$,
     $K\subseteq HK$ and $HK$ closed under multiplication,
-        $KH\subseteq (HK)(HK)\subseteq HK$. Conversely, let $g\in HK$.
+        \[
+        KH\subseteq (HK)(HK)\subseteq HK.
+        \]
+        Conversely, let $g\in HK$.
         Since $g^{-1}\in HK$, there exist $h\in H$ and $k\in K$ such that
         $g^{-1}=hk$.
         Thus $HK\subseteq KH$, as 
@@ -449,8 +452,11 @@ f(k)=f(\underbrace{(-1)+\cdots+(-1)}_{|k|-\text{times}})=f(-1)^{-k}=(g^{-1})^{-k
 \end{example}
 
 \begin{example}
-We claim that $\Hom(\Z/8,\Z/10)$ has exactly two elements.
-Let $f\colon\Z/8\to\Z/10$ be a non-trivial homomorphism. If 
+We claim that $\Hom(\Z/8,\Z/10)$ has exactly two elements (one of these elements being 
+the zero homomorphism, that is $\Z/8\to\Z/10$, $x\mapsto 0$).
+Let $f\in\Hom(\Z/8,\Z/10)$ be a non-zero homomorphism. 
+%be a non-trivial homomorphism. If 
+If 
 $n=|f(1)|$, then 
 $n$ divides $8$, that is $n\in\{1,2,4,8\}$. Since $f(1)\in\Z/10$ and
 $f$ is non-trivial,

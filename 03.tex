@@ -201,7 +201,7 @@ given by $Hx\mapsto x^{-1}H$ is a bijection, as
         \Longleftrightarrow x^{-1}H=y^{-1}H.
 \]
 In particular, the number of right cosets of $H$ in $G$
-equals the number of left cosets of $H$ in $G$. 
+equals the number of left cosets of $H$ in~$G$. 
 
 \begin{definition}
     \index{Index}
@@ -217,11 +217,13 @@ equals the number of left cosets of $H$ in $G$.
 \end{example}
     
 \begin{example}
-    The subgroups of $\Sym_3$ are $\{\id\}$, the order-two subgroups 
-    $\Sym_3$, $\langle(12)\rangle$, 
+    The subgroups of $\Sym_3$ are $\{\id\}$, $\Sym_3$, 
+    the order-two subgroups 
+    $\langle(12)\rangle$, 
     $\langle(13)\rangle$ and $\langle(23)\rangle$, and 
     the order-three subgroup $\langle(123)\rangle=\{\id,(123),(132)\}$.  
-    If $H=\langle(12)\rangle=\{\id,(12)\}$, then 
+    
+    Let $H=\langle(12)\rangle=\{\id,(12)\}$. Then 
     \begin{align*}
     &H=(12)H=\{\id,(12)\},\\
     &(123)H=(13)H=\{(13),(123)\},\\
@@ -319,7 +321,8 @@ Fermat's little theorem is a particular case of Lagrange's theorem.
     for all $a\in\{1,2,\dots,p-1\}$.
 \end{exercise}
 
-For the next corollary, we need Euler's totient function. 
+\index{Euler's totient function}
+For the next corollary, we need \emph{Euler's totient function}. 
 Recall that 
 $\varphi(n)$ is the number of positive integers $k\in\{1,\dots,n\}$
 coprime with $n$. The group of units of 
@@ -327,7 +330,7 @@ $\Z/n$ has $\varphi(n)$ elements (because $x\in\Z/n$ is invertible
 if and only if $x$ and $n$ are coprime).
 
 \begin{exercise}[Euler's theorem]
-        \index{Euler's theorem }
+        \index{Euler's theorem}
         Let $a$ and $n$ be coprime integers. Prove that 
         \[
         a^{\varphi(n)}\equiv1\bmod n.
@@ -341,7 +344,7 @@ The converse of Lagrange's theorem does not hold.
 \label{exa:A4}
 Consider the group 
     \begin{multline*}
-\Alt_4=\{\id,(234),(243),(12)(34),(123),(124),(132),(134),(13)(24),(142),(143),(14)(23)\}.
+\Alt_4=\{\id,(234),(243),(12)(34),\\(123),(124),(132),(134),(13)(24),(142),(143),(14)(23)\}.
 \end{multline*}
 This is an important subgroup of $\Sym_4$ known as the 
 \emph{alternating group} in four symbols. 
