@@ -142,7 +142,7 @@ if $\dim V<\infty$.
 If $f\colon V\to U$ is a linear map, then
 $V/\ker f\simeq f(V)$ as abelian groups (by the first
 isomorphism theorem). The map realizing this
-isomorphism is moreover linear, so 
+isomorphism is linear, so 
 $V/\ker f\simeq f(V)$ as vector spaces. In particular, 
 if $\dim V<\infty$, then
 \[
@@ -155,7 +155,10 @@ if $\dim V<\infty$, then
 Let $f\colon G\to H$ be a group homomorphism and 
 $K$ a normal subgroup of $G$ such that $K\subseteq\ker f$. 
 Prove that there exists a unique group homomorphism 
-$\varphi\colon G/K\to H$ such that the diagram 
+\[
+\varphi\colon G/K\to H
+\]
+such that the diagram 
 \[\begin{tikzcd}
         G & H \\
         {G/K}
@@ -313,7 +316,7 @@ There is a third isomorphism theorem.
 % % todo: escribir bien la demo del tercero, ese lema es horrible
 % %Un caso particular del lema nos permite demostrar elegantemente el tercer teorema de isomorfismos.
 
-\begin{exercise}[Third isomorphism theorem]
+\begin{bonus}[Third isomorphism theorem]
 \label{xca:third}
 Let $S$ and $T$ be normal subgroups of $G$ such that 
 $S\subseteq T$. Prove that $S$ is normal in $T$, 
@@ -322,7 +325,7 @@ $T/S$ is normal in $G/S$ and
 \frac{G/S}{T/S}\simeq G/T,
 \]
 where $T/S=\{tS:t\in T\}$.
-\end{exercise}
+\end{bonus}
 
 The following example helps to visualize the third isomorphism
 theorem. 
@@ -436,7 +439,10 @@ We now show that $\alpha$ is injective. If $\alpha(gH)=\alpha(g_1H)$, then,
 f(g)^{-1}f(g_1)=f(h)\in f(H)
 \]
 for some $h\in H$, that is 
-$f(g_1)=f(g)f(h)=f(gh)$ for some $h\in H$. 
+\[
+f(g_1)=f(g)f(h)=f(gh)
+\]
+for some $h\in H$. 
 This implies that $g_1=ghk$ for some $k\in\ker f\subset
 eq H$ and hence 
 $g_1=gh_1$ for some $h_1\in H$, that is $g_1H=gH$.
@@ -447,7 +453,7 @@ In the case of the canonical homomorphism $\pi\colon
 If $N$ is a normal subgroup of $G$, then
 $K\mapsto K/N$ is a bijection between the set of 
 (normal) subgroups of $G$ containing $N$ and the 
-set of (normal) subgroups of$G/N$.
+set of (normal) subgroups of $G/N$.
 If $H$ is a subgroup of $G$, then
 \[
 \pi(H)=HN/N.
@@ -458,7 +464,7 @@ Let us show that every subgroup of
 \[
 Q_8=\{1,-1,i,-i,j,-j,k,-k\}
 \]
-is normal $Q_8$. Let $N=\{-1,1\}$. Then $N$ is normal in $Q_8$, as $N\subseteq Z(Q_8)$). Since $|Q_8/N|=4$, 
+is normal $Q_8$. Let $N=\{-1,1\}$. Then $N$ is normal in $Q_8$, as $N\subseteq Z(Q_8)$. Since $|Q_8/N|=4$, 
 $Q_8/N$ is an abelian group. 
 
 We claim that $N$ is included in every non-trivial 
@@ -588,7 +594,11 @@ Every finite simple group $G$ is contained in some $\Alt_n$.
 \end{proposition}
 
 \begin{proof}
-If $|G|=2$, the result is trivial, as $G\simeq\langle (12)(34)\rangle\subseteq\Alt_2$. Assume 
+If $|G|=2$, the result is trivial, as 
+\[
+G\simeq\langle (12)(34)\rangle\subseteq\Alt_2.
+\]
+Assume 
 that $|G|>2$.
 Let $f\colon G\to\Sym_n$ by the injective group homomorphism
 given by Cayley's theorem. If $H=f(G)$, then 
