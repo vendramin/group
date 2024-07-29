@@ -1,4 +1,4 @@
-\section{02/05/2024}
+\section{Lecture: 02/05/2024}
 
 
 The idea used in Example \ref{exa:for_HK} can be generalized. 
@@ -274,3 +274,46 @@ that contains $N$, that is $N\leq K\leq G$. In fact,
 $Y=\pi(K)$ and 
 $(G:K)=(\pi(G):\pi(K))=p^{m-n}$. Hence $|K|=p^{n+1}$.
 \end{proof}
+
+% The following exercise uses group actions to 
+% prove Fermat's theorem on the representation 
+% of primes as sum of two squares. 
+% Elsholtz, C. (2010). A Combinatorial Approach to Sums of Two Squares and Related Problems. Additive Number Theory, 115–140. doi:10.1007/978-0-387-68361-4_8 
+% \begin{bonus}
+
+%     \label{xca:twosquares}
+%     Let 
+%     \[
+%     X_1=\begin{pmatrix}
+%        0&1&0\\
+%        1&0&0\\
+%        0&0&-1
+%     \end{pmatrix},\quad 
+%     X_2=\begin{pmatrix}
+%         0&1&0\\
+%         1&0&0\\
+%         0&0&1
+%     \end{pmatrix},\quad 
+%     X_3=\begin{pmatrix}
+%         1&-1&1\\
+%         0&1&0\\
+%         0&2&-1
+%     \end{pmatrix}.
+%     \]
+%     Let 
+%     \begin{align*}
+%         S &= \{(x,y,z)\in\Z^3:p=4xy+z^2,\quad x,y>0\},\\
+%         T &= \{(x,y,z)\in S:z>0\},\\
+%         U &= \{(x,y,z)\in S:x+z>y\}.
+%     \end{align*}
+%     Prove the following statements:
+%     \begin{enumerate}
+%         \item $X_1^2=X_2^2=X_3^2=I$, the identity matrix.
+%         \item $X_1$ maps $S$ to $S$, $X_2$ maps $T$ to $T$ and $X_3$ maps $U$ to $U$.  
+%         \item $|T|=|X_1(T)|$. 
+%         \item %$S=T\cup X_1(T)$ (disjoint union). Thus 
+%         $|S|=2|T|=2|U|$. 
+%         \item The map $X_3$ acting on $U$ has exactly one orbit of length one and since all other orbits have length two. In particular, $|U|$ is odd. 
+%         \item The action of $X_2$ on $T$ has an orbit of length one. Conclude that $p=4x^2+y^2$. 
+%     \end{enumerate}
+% \end{bonus}

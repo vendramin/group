@@ -74,7 +74,7 @@
     columns=fixed,
 }
 
-\renewcommand\sectionname{Lecture}
+%\renewcommand\sectionname{Lecture}
 \renewcommand\subsectionname{\S}
 
 % para enumerar
@@ -103,6 +103,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathbb{B}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\D}{\mathbb{D}}
 \newcommand{\rank}{\operatorname{rank}}
@@ -130,6 +131,17 @@
 \newcommand{\Soc}{\operatorname{Soc}}
 \newcommand{\Core}{\operatorname{Core}}
 \newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+\newcommand{\Fun}{\operatorname{Fun}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\Ind}{\operatorname{Ind}}
+\newcommand{\cp}{\operatorname{cp}}
+\newcommand{\cf}{\operatorname{cf}}
+\newcommand{\Char}{\operatorname{Char}}
+\newcommand{\gl}{\mathfrak{gl}}
+\renewcommand{\sl}{\mathfrak{sl}}
+\newcommand{\ad}[1]{\operatorname{ad}\,#1}
+\newcommand{\A}{\mathbb{A}}
+
 
 % column vector
 \newcount\colveccount
@@ -162,8 +174,8 @@
 \newtheorem{bxca}[theorem]{Bonus exercise}
 %\newtheorem{exa}[theorem]{Example}
 \newtheorem{remark}[theorem]{Remark}
-\newtheorem{question}[theorem]{Question}
-\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{que}[theorem]{Question}
+\newtheorem{conj}[theorem]{Conjecture}
 \newtheorem{open}[theorem]{Open problem}
 %\newtheorem{exercise}[theorem]{Exercise}
 
@@ -193,6 +205,20 @@
   beforeafter skip balanced=.4\baselineskip plus 2pt,
   before upper={\parindent4mm\noindent},
 colframe=blue!55!white]\begin{open}}{\end{open}\end{tcolorbox}}
+
+\newenvironment{question}
+{\begin{tcolorbox}[boxrule=0pt,frame hidden,colback=blue!5!white,
+  left=.3em, right=.3em, top=-.2em, bottom=.3em,
+  beforeafter skip balanced=.4\baselineskip plus 2pt,
+  before upper={\parindent4mm\noindent},
+colframe=blue!55!white]\begin{que}}{\end{que}\end{tcolorbox}}
+
+\newenvironment{conjecture}
+{\begin{tcolorbox}[boxrule=0pt,frame hidden,colback=blue!5!white,
+  left=.3em, right=.3em, top=-.2em, bottom=.3em,
+  beforeafter skip balanced=.4\baselineskip plus 2pt,
+  before upper={\parindent4mm\noindent},
+colframe=blue!55!white]\begin{conj}}{\end{conj}\end{tcolorbox}}
 
 
 \newenvironment{exercise}
