@@ -10,6 +10,7 @@
 \usepackage{textcomp}
 \usepackage{colortbl}
 \usepackage[most]{tcolorbox}
+%\usepackage{cleveref}
 
 \hypersetup{
   final, 
@@ -262,6 +263,10 @@ Science, Vrije Universiteit Brussel, Pleinlaan 2, 1050 Brussel}
 \renewcommand\subsection{\@startsection{subsection}{2}%
   \normalparindent{.5\linespacing\@plus.7\linespacing}{-.5em}%
   {\color{-red!55!green!50}\normalfont\bfseries}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}%
+  \normalparindent\z@{-.5em}%
+  {\color{green!50!blue}\normalfont\itshape}}
+
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
