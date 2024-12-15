@@ -305,6 +305,17 @@ Its elements are the permutations
         Can you construct the table for this group? 
 \end{example}
 
+\label{convention:left-to-right}
+In our calculations with permutations, we have adopted the right-to-left convention, aligning with the rest of the course, where we consider groups acting on the left on sets. However, some people prefer the left-to-right convention, which corresponds to the way English is read (and to groups acting on the right). This is the convention used Magma:
+\begin{lstlisting}
+> S3 := Sym(3);
+> a := S3!(1,2);
+> b := S3!(2,3);
+> a*b;
+(1, 3, 2)
+\end{lstlisting}
+But there’s no need to worry: both conventions are equivalent, see Example \ref{ex:op}. 
+
 \begin{example}
 \label{exa:another_S3}
 Let $\overline{\R}=\R\cup\{\infty\}$ (here $\infty$ is just a symbol) 
