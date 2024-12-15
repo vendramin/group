@@ -515,22 +515,45 @@ h = (9\,10)(11\,12).
 \end{align*}
 Then $[G,G]$ has order 16, but the set of commutators of 
 $G$ has 15 elements:
+% \begin{lstlisting}
+% gap> a := (1,3)(2,4);;
+% gap> b := (5,7)(6,8);;
+% gap> c := (9,11)(10,12);;
+% gap> d := (13,15)(14,16);;
+% gap> e := (1,3)(5,7)(9,11);;
+% gap> f := (1,2)(3,4)(13,15);;
+% gap> g := (5,6)(7,8)(13,14)(15,16);;
+% gap> h := (9,10)(11,12);;
+% gap> G := Group([a,b,c,d,e,f,g,h]);;
+% gap> D := DerivedSubgroup(G);;
+% gap> Size(D);
+% 16
+% gap> Size(Set(Cartesian(G, G), x->Comm(x[1], x[2])));
+% 15
+% gap> c*d in Difference(D, Set(Cartesian(G, G), Comm));
+% true
+% \end{lstlisting}
+% % G<a,b,c,d,e,f,g,h> := PermutationGroup<16 | (1,3)(2,4), (5,7)(6,8),(9,11)(10,12), (13,15)(14,16), (1,3)(5,7)(9,11), (1,2)(3,4)(13,15), (5,6)(7,8)(13,14)(15,16), (9,10)(11,12)>;
+% % D := DerivedSubgroup(G);
+% % c*d in { x : x in D } diff { u*v*Inverse(u)*Inverse(v) : u in G, v in G};
 \begin{lstlisting}
-gap> a := (1,3)(2,4);;
-gap> b := (5,7)(6,8);;
-gap> c := (9,11)(10,12);;
-gap> d := (13,15)(14,16);;
-gap> e := (1,3)(5,7)(9,11);;
-gap> f := (1,2)(3,4)(13,15);;
-gap> g := (5,6)(7,8)(13,14)(15,16);;
-gap> h := (9,10)(11,12);;
-gap> G := Group([a,b,c,d,e,f,g,h]);;
-gap> D := DerivedSubgroup(G);;
-gap> Size(D);
+> S16 := Sym(16);
+> a := S16 ! (1,3)(2,4);
+> b := S16 ! (5,7)(6,8);
+> c := S16 ! (9,11)(10,12);
+> d := S16 ! (13,15)(14,16);
+> e := S16 ! (1,3)(5,7)(9,11);
+> f := S16 ! (1,2)(3,4)(13,15);
+> g := S16 ! (5,6)(7,8)(13,14)(15,16);
+> h := S16 ! (9,10)(11,12);
+> G := PermutationGroup< 16 | a,b,c,d,e,f,g,h >;
+> D := DerivedSubgroup(G);
+> #D;
 16
-gap> Size(Set(Cartesian(G, G), x->Comm(x[1], x[2])));
-15
-gap> c*d in Difference(D, Set(Cartesian(G, G), Comm));
+> #{ x*y*Inverse(x)*Inverse(y) : x in G, y in G };
+15    
+> c*d in { x : x in D } \ 
+> diff { u*v*Inverse(u)*Inverse(v) : u in G, v in G };
 true
 \end{lstlisting}
 \end{example}
@@ -546,18 +569,35 @@ G=\langle (135)(246)(7\,11\,9)(8\,12\,10),(394\,10)(58)(67)(11\,12)\rangle.
 \]
 has order 96. The set of commutators 
 is different from the commutator subgroup:
+% \begin{lstlisting}
+% gap> x := (1,3,5)(2,4,6)(7,11,9)(8,12,10);;
+% gap> y := (3,9,4,10)(5,8)(6,7)(11,12);;
+% gap> G := Group([x,y]);;
+% gap> Order(G);
+% 96
+% gap> D := DerivedSubgroup(G);;
+% gap> Order(D);
+% 32
+% gap> Size(Set(Cartesian(G, G), x->Comm(x[1], x[2])));
+% 29
+% \end{lstlisting}
 \begin{lstlisting}
-gap> x := (1,3,5)(2,4,6)(7,11,9)(8,12,10);;
-gap> y := (3,9,4,10)(5,8)(6,7)(11,12);;
-gap> G := Group([x,y]);;
-gap> Order(G);
+> a := S12 ! (1,3,5)(2,4,6)(7,11,9)(8,12,10);
+> b := S12 ! (3,9,4,10)(5,8)(6,7)(11,12);
+> G := PermutationGroup< 12 | a,b >;
+> Order(G);
 96
-gap> D := DerivedSubgroup(G);;
-gap> Order(D);
+> D := DerivedSubgroup(G);
+> Order(D);
 32
-gap> Size(Set(Cartesian(G, G), x->Comm(x[1], x[2])));
+> #{ a*b*Inverse(a)*Inverse(b) : a in G, b in G };
 29
 \end{lstlisting}
+% G<x,y> := PermutationGroup< 12 | (1,3,5)(2,4,6)(7,11,9)(8,12,10), (3 ,9 ,4 ,10)(5 ,8)(6 ,7)(11 ,12) >;
+% Order(G);
+% D := DerivedSubgroup (G);
+% Order(D);
+% # { a*b*Inverse(a)*Inverse(b) : a in G, b in G };
 Moreover, 
 $G$ is the smallest group with the property that  
 the set of commutators is not a subgroup. 

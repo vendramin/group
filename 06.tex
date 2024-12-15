@@ -412,6 +412,30 @@ Note that $\mathcal{U}(\Z/5)\simeq\mathcal{U}(\Z/10)$, as
 both groups are cyclic of order four. 
 \end{example}
 
+In page \pageref{convention:left-to-right} we mentioned that left-to-right and right-to-left 
+conventions for multiplying permutations were equivalent. What does this really mean?
+
+\begin{example}
+\label{exa:op}
+    For a group $G$, 
+    one can define the group $G^{\operatorname{op}}$ as the group structure 
+    on the set $G$ given by the \emph{opposite multiplication},  
+    \[
+    (x,y)\mapsto x\cdot_{\operatorname{op}}y=yx.
+    \]
+    A routine calculation shows that  
+    $G^{\operatorname{op}}$ is a group. We claim that the map 
+    \[
+    f\colon G\to G^{\op},\quad x\mapsto x^{-1},
+    \]
+    is an isomorphism of groups. The map $f$ is invertible with inverse $f^{-1}=f$. 
+    Let us verify that 
+    $f$ is a group homomorphism:
+    \[
+    f(xy)=(xy)^{-1}=y^{-1}x^{-1}=x^{-1}\cdot_{\operatorname{op}}y^{-1}=f(x)\cdot_{\operatorname{op}}f(y).
+    \]
+\end{example}
+
 \begin{exercise}
 \label{xca:U(Z/10)}
    Prove that $\mathcal{U}(\Z/10)\not\simeq\mathcal{U}(\Z/12)$.

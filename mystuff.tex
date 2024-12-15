@@ -12,6 +12,9 @@
 \usepackage[most]{tcolorbox}
 %\usepackage{cleveref}
 
+%\usepackage{fontspec}
+%\setmainfont{Verdana}
+
 \hypersetup{
   final, 
   colorlinks, 
@@ -39,38 +42,47 @@
 \renewcommand\thesubsection{\arabic{section}.\arabic{subsection}}
 
 
-\lstdefinelanguage{Julia}%
-  {morekeywords={abstract,break,case,catch,const,continue,do,else,elseif,%
-      end,export,false,for,function,immutable,import,importall,if,in,%
-      macro,module,otherwise,quote,return,switch,true,try,type,typealias,%
-      using,while},%
-   sensitive=true,%
-   alsoother={$},%
-   morecomment=[l]\#,%
-   morecomment=[n]{\#=}{=\#},%
-   morestring=[s]{"}{"},%
-   morestring=[m]{'}{'},%
-}[keywords,comments,strings]%
+% \lstdefinelanguage{Julia}%
+%   {morekeywords={abstract,break,case,catch,const,continue,do,else,elseif,%
+%       end,export,false,for,function,immutable,import,importall,if,in,%
+%       macro,module,otherwise,quote,return,switch,true,try,type,typealias,%
+%       using,while},%
+%    sensitive=true,%
+%    alsoother={$},%
+%    morecomment=[l]\#,%
+%    morecomment=[n]{\#=}{=\#},%
+%    morestring=[s]{"}{"},%
+%    morestring=[m]{'}{'},%
+% }[keywords,comments,strings]%
 
-\definecolor{background}{HTML}{F5F5F5}
-\definecolor{jlstring}{HTML}{880000}%          % julia's strings
-\definecolor{jlbase}{HTML}{444444}%            % julia's base color
-\definecolor{jlkeyword}{HTML}{444444}%         % julia's keywords
-\definecolor{jlliteral}{HTML}{78A960}%         % julia's literals
-\definecolor{jlbuiltin}{HTML}{397300}%         % julia's built-ins
-\definecolor{jlmacros}{HTML}{1F7199}%          % julia's macros
-\definecolor{jlfunctions}{HTML}{444444}%       % julia's functions
-\definecolor{jlcomment}{HTML}{888888}%         % julia's comments
-\definecolor{jlstring}{HTML}{880000}%          % julia's strings
+% \definecolor{background}{HTML}{F5F5F5}
+% \definecolor{jlstring}{HTML}{880000}%          % julia's strings
+% \definecolor{jlbase}{HTML}{444444}%            % julia's base color
+% \definecolor{jlkeyword}{HTML}{444444}%         % julia's keywords
+% \definecolor{jlliteral}{HTML}{78A960}%         % julia's literals
+% \definecolor{jlbuiltin}{HTML}{397300}%         % julia's built-ins
+% \definecolor{jlmacros}{HTML}{1F7199}%          % julia's macros
+% \definecolor{jlfunctions}{HTML}{444444}%       % julia's functions
+% \definecolor{jlcomment}{HTML}{888888}%         % julia's comments
+% \definecolor{jlstring}{HTML}{880000}%          % julia's strings
 
 
-\lstset{%
-    language         = Julia,
-    basicstyle       = \color{jlstring}\ttfamily\scriptsize,
-    backgroundcolor  = \color{background},
-    keywordstyle     = \color{jlkeyword},
-    stringstyle      = \color{jlstring},
-    commentstyle     = \color{jlcomment},
+% \lstset{%
+%     language         = Julia,
+%     basicstyle       = \color{jlstring}\ttfamily\scriptsize,
+%     backgroundcolor  = \color{background},
+%     keywordstyle     = \color{jlkeyword},
+%     stringstyle      = \color{jlstring},
+%     commentstyle     = \color{jlcomment},
+%     showstringspaces = false,
+%     columns=fixed,
+% }
+
+\lstset{
+    language = Magma,
+    basicstyle=\ttfamily\small,
+    commentstyle=\small,
+    backgroundcolor = \color{gray!20!white},
     showstringspaces = false,
     columns=fixed,
 }
@@ -178,6 +190,8 @@
 \newtheorem{que}[theorem]{Question}
 \newtheorem{conj}[theorem]{Conjecture}
 \newtheorem{open}[theorem]{Open problem}
+\newtheorem{convention}[theorem]{Convention}
+
 %\newtheorem{exercise}[theorem]{Exercise}
 
 \theoremstyle{remark}

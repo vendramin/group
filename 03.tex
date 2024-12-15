@@ -343,9 +343,9 @@ The converse of Lagrange's theorem does not hold.
 \index{Alternating group $\Alt_4$}
 \label{exa:A4}
 Consider the group 
-    \begin{multline*}
-\Alt_4=\{\id,(234),(243),(12)(34),\\(123),(124),(132),(134),(13)(24),(142),(143),(14)(23)\}.
-\end{multline*}
+    \begin{align*}
+\Alt_4=\{\id,(234),(243),&(12)(34),\\&(123),(124),(132),(134),(13)(24),(142),(143),(14)(23)\}.
+\end{align*}
 This is an important subgroup of $\Sym_4$ known as the 
 \emph{alternating group} in four symbols. 
 
@@ -371,3 +371,23 @@ Prove that    \[
     has order 24 and does not contain subgroups of order 12.
 \end{bonus}
 
+The previous exercise is straightforward to solve using Magma. However, instead of solving it directly, we will use the software to show that $\SL_2(3)$ has order 24 and 
+contains exactly one subgroup of order six:
+
+\begin{lstlisting}
+> G := SL(2,3);
+> Order(G);
+24
+> Subgroups(G:OrderEqual:=6);
+Conjugacy classes of subgroups
+------------------------------
+
+[1]     Order 6            Length 4
+        MatrixGroup(2, GF(3)) of order 2 * 3
+        Generators:
+            [1 1]
+            [0 1]
+
+            [2 0]
+            [0 2]
+\end{lstlisting}
