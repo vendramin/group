@@ -399,6 +399,91 @@ is
 \end{center}
 \end{example}
 
+
+
+\begin{example}
+Let us explore the spatial symmetries of the (equilateral) triangle shown in Figure~\ref{fig:triangle}; our triangle is centered at the origin. The spatial transformations that preserve the triangle are the identity, the counterclockwise (plane) rotations  $R_{2\pi/3}$  and  $R_{4\pi/3}$  by angles  $2\pi/3$  and  $4\pi/3$, respectively, as well as the (spatial) rotations by angle  $\pi$  about each of the three lines shown in the figure.
+\begin{figure}[h]
+\begin{tikzpicture}[help lines/.style={blue!30,very thin},
+ pics/ngon/.style={code={\tikzset{ngon/.cd,#1}
+  \node[regular polygon,regular polygon sides=\pgfkeysvalueof{/tikz/ngon/n},
+  minimum size=4cm,draw,ngon/border] (\pgfkeysvalueof{/tikz/ngon/name}){};
+   \foreach \X in {1,...,\pgfkeysvalueof{/tikz/ngon/n}}
+   {\pgfmathsetmacro{\myfillcolor}{{\LstFillCols}[mod(\X-1,5)]}
+    \pgfmathsetmacro{\mydrawcolor}{{\LstDrawCols}[mod(\X-1,5)]}
+   \path (\pgfkeysvalueof{/tikz/ngon/name}.center) -- (\pgfkeysvalueof{/tikz/ngon/name}.corner \X) 
+    node[circle,draw=\mydrawcolor,fill=\myfillcolor,ngon/nodes]{} 
+    node[pos=\pgfkeysvalueof{/tikz/ngon/label pos},transform shape=false](\X){\X};
+    }
+    }},flip about/.style={/utils/exec=\pgfmathsetmacro{\posangle}{%
+    -1*iseven(\pgfkeysvalueof{/tikz/ngon/n})*180/\pgfkeysvalueof{/tikz/ngon/n}+%
+    (#1-1)*360/\pgfkeysvalueof{/tikz/ngon/n}},
+    rotate=\posangle,xscale=-1,rotate=-1*\posangle},
+    ngon/.cd,n/.initial=5,border/.style={very thick},nodes/.style={very thick},
+    name/.initial={ngon},label pos/.initial=1.2,
+    angle of/.code 2 args=\pgfmathsetmacro{#2}{%
+    -1*iseven(\pgfkeysvalueof{/tikz/ngon/n})*180/\pgfkeysvalueof{/tikz/ngon/n}+%
+    (#1-1)*360/\pgfkeysvalueof{/tikz/ngon/n}}]
+ \edef\LstFillCols{"red!50","blue!50","green!30","red!30!yellow!30","red!50!blue"}
+ \edef\LstDrawCols{"red","blue","green","orange","purple"}
+ \pic{ngon={n=3}};
+    \draw[dashed] (60+90:3.9) -- (60+270:3.9);  
+    \draw[dashed] (120+90:3.9) -- (120+270:3.9);  
+    \draw[dashed] (180+90:3.9) -- (180+270:3.9); 
+\end{tikzpicture}
+\caption{Symmetries of the triangle.}
+\label{fig:triangle}
+\end{figure}
+
+What happens to the vertices of our triangle under these transformations? We observe that the rotation  $R_{2\pi/3}$  maps 1 to 2, 2 to 3, and 3 to 1. Similarly, the reflection across the vertical line fixes 1 and interchanges 2 and 3. Thus, the symmetries of the triangle correspond to the permutations
+\[
+\id, (12), (13), (23), (123), (132).
+\]
+\end{example}
+
+\begin{example}
+Let us study the symmetries of the square shown in Figure~\ref{fig:square}. Our square is centered at the origin. The transformations that preserve the square are the identity, the counterclockwise (plane) rotations
+    $R_{\pi/2}$, $R_{\pi}$ and $R_{3\pi/2}$ by angles 
+    $\pi/2$, $\pi$ and $3\pi/2$, respectively. Additionally, there are reflections across the lines shown in the figure. 
+\begin{figure}[h]
+\begin{tikzpicture}[help lines/.style={blue!30,very thin},
+ pics/ngon/.style={code={\tikzset{ngon/.cd,#1}
+  \node[regular polygon,regular polygon sides=\pgfkeysvalueof{/tikz/ngon/n},
+  minimum size=4cm,draw,ngon/border] (\pgfkeysvalueof{/tikz/ngon/name}){};
+   \foreach \X in {1,...,\pgfkeysvalueof{/tikz/ngon/n}}
+   {\pgfmathsetmacro{\myfillcolor}{{\LstFillCols}[mod(\X-1,5)]}
+    \pgfmathsetmacro{\mydrawcolor}{{\LstDrawCols}[mod(\X-1,5)]}
+   \path (\pgfkeysvalueof{/tikz/ngon/name}.center) -- (\pgfkeysvalueof{/tikz/ngon/name}.corner \X) 
+    node[circle,draw=\mydrawcolor,fill=\myfillcolor,ngon/nodes]{} 
+    node[pos=\pgfkeysvalueof{/tikz/ngon/label pos},transform shape=false](\X){\X};
+    }
+    }},flip about/.style={/utils/exec=\pgfmathsetmacro{\posangle}{%
+    -1*iseven(\pgfkeysvalueof{/tikz/ngon/n})*180/\pgfkeysvalueof{/tikz/ngon/n}+%
+    (#1-1)*360/\pgfkeysvalueof{/tikz/ngon/n}},
+    rotate=\posangle,xscale=-1,rotate=-1*\posangle},
+    ngon/.cd,n/.initial=5,border/.style={very thick},nodes/.style={very thick},
+    name/.initial={ngon},label pos/.initial=1.2,
+    angle of/.code 2 args=\pgfmathsetmacro{#2}{%
+    -1*iseven(\pgfkeysvalueof{/tikz/ngon/n})*180/\pgfkeysvalueof{/tikz/ngon/n}+%
+    (#1-1)*360/\pgfkeysvalueof{/tikz/ngon/n}}]
+ \edef\LstFillCols{"red!50","blue!50","green!30","red!30!yellow!30","red!50!blue"}
+ \edef\LstDrawCols{"red","blue","green","orange","purple"}
+ \pic{ngon={n=4}};
+    \draw[dashed] (0+90:3.9) -- (0+270:3.9); 
+    \draw[dashed] (90+90:3.9) -- (90+270:3.9);  
+    \draw[dashed] (45+90:3.9) -- (45+270:3.9);  
+    \draw[dashed] (135+90:3.9) -- (135+270:3.9); 
+\end{tikzpicture}
+\label{fig:square}
+\caption{The symmetries of the square.}
+\end{figure}
+
+By observing the effect of these transformations on the vertices of our square, we find that these symmetries correspond to the permutations
+\[
+\id, (1234), (13)(24), (1432), (24), (13), (14)(23), (12)(34).
+\]
+\end{example}
+
 \begin{exercise}
 \label{xca:GxH}
         \index{Direct product!of groups}
@@ -418,7 +503,6 @@ is
 The construction of Example \ref{xca:GxH}
 can be easily generalized to the product of 
 three or more groups. 
-
 
 % add two bonus exercises
 % cos(a+b) and another group structure on... 
