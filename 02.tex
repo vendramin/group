@@ -7,14 +7,14 @@ When is a subset $S$ of a group $G$ itself a group under the operations inherite
 \begin{definition}
 \index{Subgroup}
     Let $G$ be a group. 
-        A subset $S$ of $G$ is said to be a \emph{subgrup} of $G$ 
+        A subset $S$ of $G$ is said to be a \emph{subgroup} of $G$ 
         if the following properties are satisfied:
         \begin{enumerate}
                 \item $1\in S$,
                 \item $x\in S\implies x^{-1}\in S$, and 
                 \item $x,y\in S\implies xy\in S$.
         \end{enumerate}
-        Notation: $S$ is a subgroup of $G$ if and only if $S\leq G$.
+        Notation: To say that $S$ is a subgroup of $G$, we write $S\leq G$.
 \end{definition}
 
 The first condition of the definition can be replaced by
@@ -40,7 +40,7 @@ is a chain of subgroups.
 $S^1=\{z\in\C:|z|=1\}\leq\C^\times=\C\setminus\{0\}$.
 \end{example}
 
-Note that one cannot prove that $S^1\leq\C$. Why?
+Note that $S^1$ is not a subgroup of $\C$. Why?
 
 \begin{example}
 Let $n\geq1$. Then $G_n=\{z\in\C:z^
@@ -538,8 +538,8 @@ in particular, an abelian group.
                 g^k=g^{nt+r}=(g^n)^tg^r=g^r, 
         \]
         as, by assumption, $g^n=1$. To see that the elements 
-        $1,g,\dots,g^{n-1}$ are all different, it is enough to show that if $g^k=g^l$ with $0\leq
-        k<l\leq n-1$, then, since $g^{l-k}=1$ and $0<l-k\leq n-1$. However, by assumption, 
+        $1,g,\dots,g^{n-1}$ are all different, let us assume that $g^k=g^l$ for some $k,l$ such that $0\leq
+        k<l\leq n-1$. Then $g^{l-k}=1$ and $0<l-k\leq n-1$. However, by assumption, 
         $n$ divides $l-k$, and therefore
         $n\leq l-k$,
         a contradiction.
