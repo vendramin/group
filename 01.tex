@@ -63,7 +63,8 @@ denoted by $x^{-1}$.
 \begin{example}
     Let $n\geq1$. The set $\GL_n(\R)$ of $n\times n$ invertible real 
 matrices forms a
-    group with the usual matrix multiplication. The neutral element is the identity matrix. The product 
+    group with the usual matrix multiplication. The neutral element is the $n\times n$ 
+    identity matrix. The product 
     of matrices is associative. And, by definition, every element of $\GL_n(\R)$ admits an inverse. 
 \end{example}
 
@@ -306,7 +307,7 @@ Its elements are the permutations
 \end{example}
 
 \label{convention:left-to-right}
-In our calculations with permutations, we have adopted the right-to-left convention, aligning with the rest of the course, where we consider groups acting on the left on sets. However, some people prefer the left-to-right convention, which corresponds to the way English is read (and to groups acting on the right). This is the convention used Magma:
+In our calculations with permutations, we have adopted the right-to-left convention, aligning with the rest of the course, where we consider groups acting on the left on sets. However, some people prefer the left-to-right convention, which corresponds to the way English is read (and to groups acting on the right). This is the convention used by Magma:
 \begin{lstlisting}
 > S3 := Sym(3);
 > a := S3!(1,2);
@@ -399,43 +400,42 @@ is
 \end{center}
 \end{example}
 
+%plane rotations around an axis perpendicular to the plane and passing %through the center of the triangle'. 
+
+
 
 
 \begin{example}
-Let us explore the spatial symmetries of the (equilateral) triangle shown in Figure~\ref{fig:triangle}; our triangle is centered at the origin. The spatial transformations that preserve the triangle are the identity, the counterclockwise (plane) rotations  $R_{2\pi/3}$  and  $R_{4\pi/3}$  by angles  $2\pi/3$  and  $4\pi/3$, respectively, as well as the (spatial) rotations by angle  $\pi$  about each of the three lines shown in the figure.
+Let us explore the spatial symmetries of the equilateral triangle shown in Figure~\ref{fig:triangle}; our triangle is centered at the origin. The spatial transformations that preserve the triangle are the identity, the counterclockwise (plane) rotations  $R_{2\pi/3}$  and  $R_{4\pi/3}$ by angles $2\pi/3$ and  $4\pi/3$, respectively, as well as the (spatial) rotations by angle  $\pi$  about each of the three lines shown in the figure.
 \begin{figure}[h]
-\begin{tikzpicture}[help lines/.style={blue!30,very thin},
- pics/ngon/.style={code={\tikzset{ngon/.cd,#1}
-  \node[regular polygon,regular polygon sides=\pgfkeysvalueof{/tikz/ngon/n},
-  minimum size=4cm,draw,ngon/border] (\pgfkeysvalueof{/tikz/ngon/name}){};
-   \foreach \X in {1,...,\pgfkeysvalueof{/tikz/ngon/n}}
-   {\pgfmathsetmacro{\myfillcolor}{{\LstFillCols}[mod(\X-1,5)]}
-    \pgfmathsetmacro{\mydrawcolor}{{\LstDrawCols}[mod(\X-1,5)]}
-   \path (\pgfkeysvalueof{/tikz/ngon/name}.center) -- (\pgfkeysvalueof{/tikz/ngon/name}.corner \X) 
-    node[circle,draw=\mydrawcolor,fill=\myfillcolor,ngon/nodes]{} 
-    node[pos=\pgfkeysvalueof{/tikz/ngon/label pos},transform shape=false](\X){\X};
+\begin{tikzpicture}
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (4,0);
+    \coordinate (C) at (2,3);
+    \draw[thick, line width=.3mm] (A) -- (B) -- (C) -- cycle;
+    \foreach \point/\color in {A/red, B/blue, C/green} {
+        \fill[\color] (\point) circle (5pt); 
     }
-    }},flip about/.style={/utils/exec=\pgfmathsetmacro{\posangle}{%
-    -1*iseven(\pgfkeysvalueof{/tikz/ngon/n})*180/\pgfkeysvalueof{/tikz/ngon/n}+%
-    (#1-1)*360/\pgfkeysvalueof{/tikz/ngon/n}},
-    rotate=\posangle,xscale=-1,rotate=-1*\posangle},
-    ngon/.cd,n/.initial=5,border/.style={very thick},nodes/.style={very thick},
-    name/.initial={ngon},label pos/.initial=1.2,
-    angle of/.code 2 args=\pgfmathsetmacro{#2}{%
-    -1*iseven(\pgfkeysvalueof{/tikz/ngon/n})*180/\pgfkeysvalueof{/tikz/ngon/n}+%
-    (#1-1)*360/\pgfkeysvalueof{/tikz/ngon/n}}]
- \edef\LstFillCols{"red!50","blue!50","green!30","red!30!yellow!30","red!50!blue"}
- \edef\LstDrawCols{"red","blue","green","orange","purple"}
- \pic{ngon={n=3}};
-    \draw[dashed] (60+90:3.9) -- (60+270:3.9);  
-    \draw[dashed] (120+90:3.9) -- (120+270:3.9);  
-    \draw[dashed] (180+90:3.9) -- (180+270:3.9); 
+    \node[below left=5pt] at (A) {$2$};
+    \node[below right=5pt] at (B) {$3$};
+    \node[above=6pt] at (C) {$1$};
+    \coordinate (M_AB) at ($(A)!0.5!(B)$);
+    \coordinate (M_BC) at ($(B)!0.5!(C)$);
+    \coordinate (M_CA) at ($(C)!0.5!(A)$);
+    \coordinate (Ext_C_AB) at ($(C)!1.3!(M_AB)$);
+    \coordinate (Ext_A_BC) at ($(A)!1.3!(M_BC)$);
+    \coordinate (Ext_B_CA) at ($(B)!1.3!(M_CA)$);
+    \draw[dashed] (C) -- (Ext_C_AB); 
+    \draw[dashed] (A) -- (Ext_A_BC); 
+    \draw[dashed] (B) -- (Ext_B_CA); 
 \end{tikzpicture}
 \caption{Symmetries of the triangle.}
 \label{fig:triangle}
 \end{figure}
 
-What happens to the vertices of our triangle under these transformations? We observe that the rotation  $R_{2\pi/3}$  maps 1 to 2, 2 to 3, and 3 to 1. Similarly, the reflection across the vertical line fixes 1 and interchanges 2 and 3. Thus, the symmetries of the triangle correspond to the permutations
+What happens to the vertices of our triangle under these transformations? We observe that the (plane) rotation  $R_{2\pi/3}$  maps 1 to 2, 2 to 3, and 3 to 1. Similarly, the (spacial) rotation across the vertical line fixes 1 and interchanges 2 and 3. Thus 
+the symmetries of the triangle 
+correspond to the permutations
 \[
 \id, (12), (13), (23), (123), (132).
 \]
@@ -443,46 +443,51 @@ What happens to the vertices of our triangle under these transformations? We obs
 
 \begin{example}
 Let us study the symmetries of the square shown in Figure~\ref{fig:square}. Our square is centered at the origin. The transformations that preserve the square are the identity, the counterclockwise (plane) rotations
-    $R_{\pi/2}$, $R_{\pi}$ and $R_{3\pi/2}$ by angles 
-    $\pi/2$, $\pi$ and $3\pi/2$, respectively. Additionally, there are reflections across the lines shown in the figure. 
-\begin{figure}[h]
-\begin{tikzpicture}[help lines/.style={blue!30,very thin},
- pics/ngon/.style={code={\tikzset{ngon/.cd,#1}
-  \node[regular polygon,regular polygon sides=\pgfkeysvalueof{/tikz/ngon/n},
-  minimum size=4cm,draw,ngon/border] (\pgfkeysvalueof{/tikz/ngon/name}){};
-   \foreach \X in {1,...,\pgfkeysvalueof{/tikz/ngon/n}}
-   {\pgfmathsetmacro{\myfillcolor}{{\LstFillCols}[mod(\X-1,5)]}
-    \pgfmathsetmacro{\mydrawcolor}{{\LstDrawCols}[mod(\X-1,5)]}
-   \path (\pgfkeysvalueof{/tikz/ngon/name}.center) -- (\pgfkeysvalueof{/tikz/ngon/name}.corner \X) 
-    node[circle,draw=\mydrawcolor,fill=\myfillcolor,ngon/nodes]{} 
-    node[pos=\pgfkeysvalueof{/tikz/ngon/label pos},transform shape=false](\X){\X};
-    }
-    }},flip about/.style={/utils/exec=\pgfmathsetmacro{\posangle}{%
-    -1*iseven(\pgfkeysvalueof{/tikz/ngon/n})*180/\pgfkeysvalueof{/tikz/ngon/n}+%
-    (#1-1)*360/\pgfkeysvalueof{/tikz/ngon/n}},
-    rotate=\posangle,xscale=-1,rotate=-1*\posangle},
-    ngon/.cd,n/.initial=5,border/.style={very thick},nodes/.style={very thick},
-    name/.initial={ngon},label pos/.initial=1.2,
-    angle of/.code 2 args=\pgfmathsetmacro{#2}{%
-    -1*iseven(\pgfkeysvalueof{/tikz/ngon/n})*180/\pgfkeysvalueof{/tikz/ngon/n}+%
-    (#1-1)*360/\pgfkeysvalueof{/tikz/ngon/n}}]
- \edef\LstFillCols{"red!50","blue!50","green!30","red!30!yellow!30","red!50!blue"}
- \edef\LstDrawCols{"red","blue","green","orange","purple"}
- \pic{ngon={n=4}};
-    \draw[dashed] (0+90:3.9) -- (0+270:3.9); 
-    \draw[dashed] (90+90:3.9) -- (90+270:3.9);  
-    \draw[dashed] (45+90:3.9) -- (45+270:3.9);  
-    \draw[dashed] (135+90:3.9) -- (135+270:3.9); 
-\end{tikzpicture}
-\label{fig:square}
-\caption{The symmetries of the square.}
-\end{figure}
-
+$R_{\pi/2}$, $R_{\pi}$ and $R_{3\pi/2}$ by angles 
+$\pi/2$, $\pi$ and $3\pi/2$, respectively. Additionally, there are (spatial) rotations by an angle of $\pi$ about the axes along the lines shown in the figure. 
+    
 By observing the effect of these transformations on the vertices of our square, we find that these symmetries correspond to the permutations
 \[
 \id, (1234), (13)(24), (1432), (24), (13), (14)(23), (12)(34).
 \]
 \end{example}
+
+\begin{figure}[ht]
+\begin{tikzpicture}
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (3,0);
+    \coordinate (C) at (3,3);
+    \coordinate (D) at (0,3);
+    \draw[thick, line width=.3mm] (A) -- (B) -- (C) -- (D) -- cycle;
+    \foreach \point/\color in {A/red, B/blue, C/green, D/orange} {
+        \fill[\color] (\point) circle (4pt); 
+    }
+    \node[left =5pt] at (A) {$3$};
+    \node[right=5pt] at (B) {$4$};
+    \node[right=5pt] at (C) {$1$};
+    \node[left=5pt] at (D) {$2$};
+    \coordinate (M_AB) at ($(A)!0.5!(B)$);
+    \coordinate (M_BC) at ($(B)!0.5!(C)$);
+    \coordinate (M_CD) at ($(C)!0.5!(D)$);
+    \coordinate (M_DA) at ($(D)!0.5!(A)$);
+    \coordinate (Center) at ($(A)!0.5!(C)$);  
+    \coordinate (Ext_H1) at ($(M_AB)!1.3!(M_CD)$);
+    \coordinate (Ext_H2) at ($(M_CD)!1.3!(M_AB)$);
+    \coordinate (Ext_V1) at ($(M_BC)!1.3!(M_DA)$);
+    \coordinate (Ext_V2) at ($(M_DA)!1.3!(M_BC)$);
+    \coordinate (Ext_D1) at ($(A)!1.3!(C)$);
+    \coordinate (Ext_D2) at ($(C)!1.3!(A)$);
+    \coordinate (Ext_D3) at ($(B)!1.3!(D)$);
+    \coordinate (Ext_D4) at ($(D)!1.3!(B)$);
+    \draw[dashed] (Ext_H1) -- (Ext_H2); 
+    \draw[dashed] (Ext_V1) -- (Ext_V2); 
+    \draw[dashed] (Ext_D1) -- (Ext_D2); 
+    \draw[dashed] (Ext_D3) -- (Ext_D4); 
+\end{tikzpicture}
+\label{fig:square}
+\caption{The symmetries of the square.}
+\end{figure}
+
 
 \begin{exercise}
 \label{xca:GxH}
