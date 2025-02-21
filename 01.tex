@@ -433,7 +433,69 @@ Let us explore the spatial symmetries of the equilateral triangle shown in Figur
 \label{fig:triangle}
 \end{figure}
 
-What happens to the vertices of our triangle under these transformations? We observe that the (plane) rotation  $R_{2\pi/3}$  maps 1 to 2, 2 to 3, and 3 to 1. Similarly, the (spacial) rotation across the vertical line fixes 1 and interchanges 2 and 3. Thus 
+What happens to the vertices of our triangle under these transformations? We observe that the (plane) rotation  $R_{2\pi/3}$  maps vertex  1  to  2,  2  to  3, and  3  to  1. Thus we can identify $R_{2\pi/3}$ with the permutation  $(123)$. Similarly, the (spatial) reflection  $S$  across the vertical line fixes  1  and interchanges  2  and  3, which corresponds to the permutation $(23)$.
+Moreover, the compositions of these symmetries correspond to the compositions of their respective permutations. For example, if we first apply  $R_{2\pi/3}$  and then $S$, the resulting transformation on the vertices is given by
+\[
+(23)(123)=(13)
+\]
+as Figure~\ref{fig:composition} shows. 
+
+\begin{figure}
+\begin{tikzpicture}
+
+    % Define side length
+    \def\side{2}
+    \def\gap{2.5} % Increased gap between triangles
+
+    % Define the first triangle
+    \coordinate (A1) at (0,0);
+    \coordinate (B1) at (\side,0);
+    \coordinate (C1) at ($(A1)!0.5!(B1) + (0,{sqrt(3)/2*\side})$);
+
+    % Define the second triangle (R_{2pi/3} rotation)
+    \coordinate (A2) at ($(B1) + (\gap,0)$);
+    \coordinate (B2) at ($(A2) + (\side,0)$);
+    \coordinate (C2) at ($(A2)!0.5!(B2) + (0,{sqrt(3)/2*\side})$);
+
+    % Define the third triangle (S transformation)
+    \coordinate (A3) at ($(B2) + (\gap,0)$);
+    \coordinate (B3) at ($(A3) + (\side,0)$);
+    \coordinate (C3) at ($(A3)!0.5!(B3) + (0,{sqrt(3)/2*\side})$);
+
+    % Draw the three triangles
+    \draw[thick, line width=0.2mm] (A1) -- (B1) -- (C1) -- cycle;
+    \draw[thick, line width=0.2mm] (A2) -- (B2) -- (C2) -- cycle;
+    \draw[thick, line width=0.2mm] (A3) -- (B3) -- (C3) -- cycle;
+
+    % Draw and color the vertices
+    \foreach \point/\color in {A1/red, B1/blue, C1/green, 
+                               A2/red, B2/blue, C2/green,
+                               A3/red, B3/blue, C3/green} {
+        \fill[\color] (\point) circle (3pt); 
+    }
+
+    \node[below left=5pt] at (A1) {$2$};
+    \node[below right=5pt] at (B1) {$3$};
+    \node[above=6pt] at (C1) {$1$};
+
+    \node[below left=5pt] at (A2) {$1$};
+    \node[below right=5pt] at (B2) {$2$};
+    \node[above=6pt] at (C2) {$3$};
+
+    \node[below left=5pt] at (A3) {$2$};
+    \node[below right=5pt] at (B3) {$1$};
+    \node[above=6pt] at (C3) {$3$};
+
+    \draw[->, thick] ($(B1) + (.5,1)$) -- ($(A2) + (-0.5,1)$) node[midway, above] {$R_{2\pi/3}$};
+    \draw[->, thick] ($(B2) + (.5,1)$) -- ($(A3) + (-0.5,1)$) node[midway, above] {$S$};
+
+\end{tikzpicture}
+\caption{A composition of two transformations 
+of the triangle.}
+\label{fig:composition}
+\end{figure}
+
+In conclusion,  
 the symmetries of the triangle 
 correspond to the permutations
 \[
@@ -484,8 +546,8 @@ By observing the effect of these transformations on the vertices of our square, 
     \draw[dashed] (Ext_D1) -- (Ext_D2); 
     \draw[dashed] (Ext_D3) -- (Ext_D4); 
 \end{tikzpicture}
-\label{fig:square}
 \caption{The symmetries of the square.}
+\label{fig:square}
 \end{figure}
 
 
