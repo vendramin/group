@@ -212,7 +212,45 @@ that is
 $x=g^kz_1$ and $y=g^lz_2$ for some $k,l\in\Z$ y $z_1,z_2\in Z(G)$. Thus $xy=yx$.
 \end{sol}
 
+\begin{sol}{xca:index_p}
+Lagrange's theorem immediately proves $1)\implies 2)$, 
+as $|G/H|=p$. 
 
+The implication $2)\implies 3)$ is trivial, as $p$ is a prime number. 
+
+We now prove that $3)\implies 4)$. If $g^k\in H$ for
+some $k\in\{2,\dots,p-1\}$, then, since 
+$\gcd(k,n)=1$, there exist $r,s\in\Z$ such that 
+$rk+sn=1$. Thus 
+\[
+g=g^1=g^{rk+sn}=(g^k)^r(g^n)^s\in H,
+\]
+a contradiction. 
+
+Finally, we prove that $4)\implies 1)$. Let $x\in G\setminus H$ and $h\in H$. We claim that 
+$xhx^{-1}\in H$. Let $y=xhx^{-1}$ and assume that 
+$y\not\in H$. Then, by assumption, 
+$y^k\not\in H$ for all 
+$k\in\{1,2,\dots,p-1\}$. In particular,  
+the cosets 
+\[
+H, yH, y^2H, . . . , y^{p-1}H
+\]
+are all different (because if $y^iH=y^jH$ for some $i<j$, then $y^{j-i}\in H$ and $j-i\leq p-2$). Since 
+$y=xhx^{-1}$, 
+\[
+(yx)H = (xh)H= xH= y^iH
+\]
+for some $i\in\{0,\dots,p-1\}$. If $i=0$, 
+then $yx= xh\in H$ and therefore $x\in H$, a contradiction. Hence $(yx)H= y^iH$ for some 
+$i\in\{1,\dots,p-1\}$, which implies 
+$xH=y^{i-1}H$. Therefore 
+\[
+y^iH= xH= y^{i-1}H
+\]
+for some $i\in\{1,\dots,p-2\}$, which implies that 
+$y\in H$, a contradiction. 
+\end{sol}
 
 \begin{sol}{xca:p_smallest}
     If $g\in G\setminus H$, then $g^n=1\in H$, where $n=|G|$. Since $p$ is prime, $n$ has no prime divisors $<p$. By Exercise \ref{xca:index_p}, $H$ is normal in $G$.
