@@ -414,3 +414,158 @@ From this, the claim follows, as each 3-cycle is a commutator:
 (abc)=(ab)(ac)(ab)(ac)=[(ab),(ac)]\in[\Sym_n,\Sym_n].\qedhere
 \]
 \end{example}
+
+\subsection{
+(optional) Application: Block permutation cipher}
+A permutation $\sigma\in\Sym_n$ can be used as a secret key in the crypto-system 
+called \emph{permutation cipher}. The idea is simple: We are given a message
+\[
+a_1\cdots a_n
+\]
+of fixed length $n$ and with a permutation $\sigma\in\Sym_n$ 
+we produce the cipher text 
+\[
+a_{\sigma(1)}a_{\sigma(2)}\cdots a_{\sigma(n)}.
+\]
+If our message is longer than  $n$, we add spaces so that the length becomes a multiple of $n$, 
+and then split the message into smaller segments of length  $n$.
+
+Let us see how this works with a concrete example. Our message is taken from a quote often attributed to  
+Steven Weinberg and to  
+Hermann Weyl:
+\begin{center}
+    \textsf{the universe is an enormous direct product of representations of symmetry groups}
+\end{center}
+The message has length eighty. 
+Let 
+\[
+\sigma=(1\,18\,37\,10\,6\,17\,15\,13\,19\,2\,4\,16)(5\,12\,8\,20\,14)\in\Sym_{20}.
+\]
+We split the message into four smaller messages, each of length twenty:
+\begin{center}
+\textsf{the universe is an e|normous direct produ|ct of representation|s of symmetry groups}
+\end{center}
+Now apply $\sigma$ to each sub-message to obtain 
+\begin{center}
+\textsf{n i eareensv u tsehi|omsperiudur docn rot|iorastrnp eeofect tn|ufyrroesmstmp ysgo}
+\end{center}
+\subsection{(optional) Application: The 15-puzzle}
+
+Probably, we are all familiar with the 15-puzzle. The squares can slide vertically or horizontally, 
+using the empty square. Starting from the \emph{standard configuration} 
+\bigskip 
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            1 & 2 & 3 & 4\\
+            \hline
+            5 & 6 & 7 & 8\\
+            \hline
+            9 & 10 & 11 & 12\\
+            \hline
+            13 & 14 & 15 & \\
+            \hline
+        \end{tabular}
+    \end{center}
+\bigskip 
+one can reach any other \emph{admissible} position. 
+Around 1886, the following puzzle (known as the \emph{15-puzzle}) 
+became quite popular: Is the configuration 
+\bigskip 
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            1 & 2 & 3 & 4\\
+            \hline
+            5 & 6 & 7 & 8\\
+            \hline
+            9 & 10 & 11 & 12\\
+            \hline
+            13 & 15 & 14 & \\
+            \hline
+        \end{tabular}
+    \end{center}
+\bigskip 
+admissible? In other words, can the puzzle be solved and moved to the standard configuration? 
+
+A famous puzzle maker was so confident that the problem was very difficult 
+that he even offered a substantial amount of money—\$1,000 at the time, which was a small fortune. 
+The 15-puzzle has no solution. Let us see why.
+We identity the configuration 
+\bigskip 
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            $\sigma_1$ & $\sigma_2$ & $\sigma_3$ & $\sigma_4$\\
+            \hline
+            $\sigma_5$ & $\sigma_6$ & $\sigma_7$ & $\sigma_8$\\
+            \hline
+            $\sigma_9$ & $\sigma_{10}$ & $\sigma_{11}$ & $\sigma_{12}$\\
+            \hline
+            $\sigma_{13}$ & $\sigma_{14}$ & $\sigma_{15}$ & $\sigma_{16}$\\
+            \hline
+        \end{tabular}
+    \end{center}
+\bigskip 
+with the permutation $\sigma\in\Sym_{16}$ such that  
+$\sigma(i)=\sigma_i$ for all $i\in\{1,\dots,16\}$. Here $\sigma_{16}$ 
+represents the empty square. What happens to our permutation 
+$\sigma$ when we move squares? It should be enough to see 
+this in a concrete example. We know that the 15-puzzle has
+permutation $\sigma=(14\,15)$. Now if 
+we move 12 down, then the resulting 
+configuration is 
+\bigskip 
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            1 & 2 & 3 & 4\\
+            \hline
+            5 & 6 & 7 & 8\\
+            \hline
+            9 & 10 & 11 & \\
+            \hline
+            13 & 15 & 14 & 12\\
+            \hline
+        \end{tabular}
+    \end{center}
+\bigskip 
+so the resulting permutation 
+is $\sigma(12\,16)$. 
+
+In general, moving squares correspond to multiplying  
+our permutation by transpositions of the form $(i\,16)$ for
+some $i\in\{1,\dots,15\}$. This means that 
+after performing $m$ movements, 
+one gets a configuration with 
+permutation
+\[
+\tau_m\tau_{m-1}\cdots\tau_2\tau_1,
+\]
+where $\tau_1,\dots,\tau_m$ are transpositions. In particular, 
+to ``solve'' the puzzle (that is, to return it into the default position), 
+an even number of 
+movements is needed. This explains why the puzzle cannot
+be solved! 
+
+\begin{bonus}
+\label{xca:15tricky}
+    Can you solve the following variant of the
+    15-puzzle?
+
+    \bigskip 
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            M & I & N & D\\
+            \hline
+            Y & O & U & R\\
+            \hline
+            S & T & E & P\\
+            \hline
+            N & W & O & \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \bigskip 
+\end{bonus}
