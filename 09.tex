@@ -75,18 +75,56 @@ appear in the following table:
 \end{center}
 \end{example}
 
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}[
-node distance = 9mm and 9mm, on grid,
-every node/.style = {draw, shape=circle, inner sep=2pt}]
-\node (a) {4};
-\node (b) [above right=of a] {1};
-\node (c) [above left=of b] {2};
-\node (d) [below left=of c] {3};
-\draw (a) -- (b) -- (c) -- (d) -- (a);
+%\begin{figure}[ht]
+\begin{center}
+\begin{tikzpicture}
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (3,0);
+    \coordinate (C) at (3,3);
+    \coordinate (D) at (0,3);
+    \draw[thick, line width=.3mm] (A) -- (B) -- (C) -- (D) -- cycle;
+    \foreach \point/\color in {A/red, B/blue, C/green, D/orange} {
+        \fill[\color] (\point) circle (4pt); 
+    }
+    \node[left =5pt] at (A) {$3$};
+    \node[right=5pt] at (B) {$4$};
+    \node[right=5pt] at (C) {$1$};
+    \node[left=5pt] at (D) {$2$};
+    \coordinate (M_AB) at ($(A)!0.5!(B)$);
+    \coordinate (M_BC) at ($(B)!0.5!(C)$);
+    \coordinate (M_CD) at ($(C)!0.5!(D)$);
+    \coordinate (M_DA) at ($(D)!0.5!(A)$);
+    \coordinate (Center) at ($(A)!0.5!(C)$);  
+    \coordinate (Ext_H1) at ($(M_AB)!1.3!(M_CD)$);
+    \coordinate (Ext_H2) at ($(M_CD)!1.3!(M_AB)$);
+    \coordinate (Ext_V1) at ($(M_BC)!1.3!(M_DA)$);
+    \coordinate (Ext_V2) at ($(M_DA)!1.3!(M_BC)$);
+    \coordinate (Ext_D1) at ($(A)!1.3!(C)$);
+    \coordinate (Ext_D2) at ($(C)!1.3!(A)$);
+    \coordinate (Ext_D3) at ($(B)!1.3!(D)$);
+    \coordinate (Ext_D4) at ($(D)!1.3!(B)$);
+    %\draw[dashed] (Ext_H1) -- (Ext_H2); 
+    %\draw[dashed] (Ext_V1) -- (Ext_V2); 
+    \draw[dashed] (Ext_D1) -- (Ext_D2); 
+    %\draw[dashed] (Ext_D3) -- (Ext_D4); 
 \end{tikzpicture}
-\end{figure}
+\end{center}
+%\caption{The symmetries of the square.}
+%\label{fig:square}
+%\end{figure}
+
+% \begin{figure}[h]
+% \centering
+% \begin{tikzpicture}[
+% node distance = 9mm and 9mm, on grid,
+% every node/.style = {draw, shape=circle, inner sep=2pt}]
+% \node (a) {4};
+% \node (b) [above right=of a] {1};
+% \node (c) [above left=of b] {2};
+% \node (d) [below left=of c] {3};
+% \draw (a) -- (b) -- (c) -- (d) -- (a);
+% \end{tikzpicture}
+% \end{figure}
 
 
 In the previous example, a relabelling of the vertices 
@@ -290,7 +328,7 @@ acts on $G/H$ by left multiplication, that is
 $g\cdot (xH)=(gx)H$ for all $g,x\in G$. Let $\rho\colon G\to\Sym_{G/H}$ be the group homomorphism induced by the action. 
 
 \index{Core}
-We claim that $\ker\rho=\cap_{x\in G}xHx^{-1}$. 
+We claim that $\ker\rho=\bigcap_{x\in G}xHx^{-1}$. 
 We first prove $\supseteq$. If $g\in xHx^{-1}$ for all 
 $x\in G$, then, for a fixed $x\in G$,
  \[
