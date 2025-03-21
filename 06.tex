@@ -77,7 +77,7 @@ Two subgroups $H$ and $K$ of $G$ are said to be
 \begin{proof}
 Let $L=H\cap K$.
 We decompose $H$ as a disjoint union of left coclases of $L$, say 
-$H=\cup_{i=1}^k x_iL$, where $k=(H:L)$. Note that $LK=K$, as $L\subseteq K$ and $K\subseteq 1K\subseteq LK$.
+$H=\bigcup_{i=1}^k x_iL$, where $k=(H:L)$. Note that $LK=K$, as $L\subseteq K$ and $K\subseteq 1K\subseteq LK$.
 Then
 \[
 HK=\bigcup_{i=1}^k x_iLK=\bigcup_{i=1}^k x_iK,
@@ -91,9 +91,9 @@ In particular, since the union is disjoint,
 In the theorem, we do not assume that $HK$ is a subgroup of $G$. 
 
 As an application, the theorem yields a different solution to Exercise~\ref{xca:p_smallest} of page~\pageref{xca:p_smallest}. 
-If $\{gHg^{-1}:g\in G\}=\{H\}$, then $H$ is normal in $G$. Assume that
-there exists $g\in G$ such that
-$H\ne g^{-1}Hg=K$. Since $(H:H\cap K)$ divides $|H|$ 
+Assume that $H$ is not normal in $G$. Then 
+there exists $g\in G$ such that 
+$g^{-1}Hg\ne H$. Let $K=g^{-1}Hg$. Since $(H:H\cap K)$ divides $|H|$ 
 and all prime divisors of $|G|$ 
 are $\geq p$, it follows that $(H:H\cap K)\geq p$. Thus 
 \[
