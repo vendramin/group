@@ -338,12 +338,14 @@ If $m$ divides $n$, then $n\Z\leq m\Z\leq\Z$. Thus
 \end{example}
 
 The following theorem is known as the \emph{correspondence theorem}.
-It is powerful and essential. It helps to have in mind the following diagram: 
+It is powerful and essential. To understand how it works for a group homomorphism 
+$f\colon G\to f(G)$ with kernel $K=\ker f$, it is useful 
+to have in mind the following diagram: 
 \[
 \begin{tikzcd}
         && G \\
         & L && {f(G)} \\
-        N && Y \\
+        K && Y \\
         & {\{1\}}
         \arrow[no head, from=1-3, to=2-4]
         \arrow[no head, from=1-3, to=2-2]
@@ -422,7 +424,7 @@ $\ker f\subseteq H$ and
 \[
 \alpha\colon G/H\to f(G)/f(H),\quad \alpha(gH)=f(g)f(H).
 \]
-It is an exercise to show that $\alpha$ is well-defined. 
+It is an exercise to show that $\alpha$ is a well-defined map. 
 We need to show that $\alpha$ is bijective, as then 
 \[
 (G:H)=|G/H|=|f(G)/f(H)|=(f(G):f(H)).
@@ -444,8 +446,7 @@ for some $h\in H$, that is
 f(g_1)=f(g)f(h)=f(gh)
 \]
 for some $h\in H$. 
-This implies that $g_1=ghk$ for some $k\in\ker f\subset
-eq H$ and hence 
+This implies that $g_1=ghk$ for some $k\in\ker f\subseteq H$ and hence 
 $g_1=gh_1$ for some $h_1\in H$, that is $g_1H=gH$.
 \end{proof}
 
