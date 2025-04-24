@@ -56,7 +56,7 @@ $X$ is a $G$-set.
 \end{example}
 
 \begin{example}
-    The dihedral group $\D_8=\langle r,s:r^4=s^2,srs=r^{-1}\rangle$ of eight elements acts on the vertices of the square: 
+    The dihedral group $\D_4=\langle r,s:r^4=s^2,srs=r^{-1}\rangle$ of eight elements acts on the vertices of the square: 
     
 
 The element $r$ is a rotation by 90\textdegree~counterclockwise 
@@ -64,7 +64,7 @@ and $s$ is a reflection across the line joining vertices 1 and 3.
 Thus $r$ 
 can be identified with the permutation $(1234)$ 
 and $s$ with $(24)$. The rest 
-of the elements of $\D_8$ as permutations on the vertices
+of the elements of $\D_4$ as permutations on the vertices
 appear in the following table:
 \begin{center}
 \begin{tabular}{cccccccc}
@@ -128,7 +128,7 @@ appear in the following table:
 
 
 In the previous example, a relabelling of the vertices 
-will turn $\D_8$ into a different subgroup of $\Sym_4$. Do you remember 
+will turn $\D_4$ into a different subgroup of $\Sym_4$. Do you remember 
 what conjugate subgroups are? 
 
 \begin{example}
@@ -245,8 +245,11 @@ Since $G=\langle i,j\rangle$, a group homomorphism $\rho\colon G\to\Sym_X\simeq\
 $\rho_i=\id$ and $\rho_j=(34)$.
 \end{example}
 
-The following example is important. 
 
+
+The following examples is important, but could be omitted on a first read.
+
+\begin{optional}  
 \begin{example}
     The group $\Sym_n$ acts on $\R^n$ by
     \[
@@ -292,9 +295,11 @@ The following example is important.
         &=\left(x_{(\sigma\tau)^{-1}(1))},x_{(\sigma\tau)^{-1}(2))},\dots,x_{(\sigma\tau)^{-1}(n))}\right).
     \end{align*}
 \end{example}
+\end{optional}
 
 The following example is also important: 
 
+\begin{optional}
 \begin{example}
     The group $\Sym_n$ acts on the set of polynomials on
     $n$ variables $X_1,\dots,X_n$
@@ -319,6 +324,8 @@ The following example is also important:
     =(\lambda_{\sigma(1)}X_1+\cdots+\lambda_{\sigma(n)}X_n).
     \end{align*}
 \end{example}
+\end{optional}
+
 
 It is relevant to compute the kernel of the action homomorphism. 
 
@@ -354,6 +361,7 @@ The subgroup $\ker\rho$ is called the \emph{core} of $H$ in $G$.
     contained in~$H$.
 \end{exercise}
 
+\begin{optional}
 With these results, we can provide a third 
 solution to Exercise~\ref{xca:p_smallest} of 
 page~\pageref{xca:p_smallest}.
@@ -375,7 +383,8 @@ and hence $pm$ divides $p!$. This implies that $m$ divides $(p-1)!$. If $q$ a pr
  $m$, then $q\geq p$, by the minimality of $p$. Moreover, 
  every prime factor of $(p-1)!$ is 
  $<p$. Hence $m=1$ and therefore $H=K$.
-
+\end{optional}
+ 
 \begin{exercise}
     Let a group $G$ act on a set $X$. 
     On $X$, we define the following relation: $x\sim y$ if and only if
@@ -449,6 +458,7 @@ by the action.
 
 \begin{theorem}[Fundamental counting principle]
 \index{Theorem!fundamental counting principle}
+\index{Theorem!orbit-stabilizer}
 \label{thm:fundamental}
 Let $G$ be a finite group acting on a finite set $X$. If 
 $x\in X$, then $|G\cdot x|=(G:G_x)$.
@@ -471,8 +481,9 @@ $x\in X$, then $|G\cdot x|=(G:G_x)$.
 \end{proof}
 
 Theorem \ref{thm:fundamental} is also known 
-as the orbit--stabilizer theorem. 
+as the \emph{orbit--stabilizer theorem}. 
 
+\begin{optional}
 If $G$ is a group and $X$ and $Y$ are $G$-sets, 
 we say that a map $\varphi\colon X\to Y$ is a 
 \emph{homomorphism} of $G$-sets if $\varphi(g\cdot x)=g\cdot \varphi(x)$ for all $g\in G$ and $x\in X$. The bijection 
@@ -483,6 +494,7 @@ $G$ acts on $G/G_x$ by left multiplication:
 \varphi(g\cdot hG_x)=\varphi((gh)G_x)=(gh)\cdot x=g\cdot (h\cdot x)=g\cdot\varphi(hG_x).
 \]
 Thus $G\cdot x\simeq G/G_x$ as $G$-sets.
+\end{optional}
 
 \begin{example}
     If $G$ acts on $G$ by conjugation, that is $g\cdot x=gxg^{-1}$, the orbits of this action are called the \emph{conjugacy classes} 
