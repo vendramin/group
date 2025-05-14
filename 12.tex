@@ -1,7 +1,8 @@
 \section{Lecture -- Week 12}
 
-\subsection{More about Sylow's theorems}
+We conclude our study of the Sylow theorems with two final results, which may be omitted on a first reading.
 
+\begin{optional}
 \begin{theorem}
     Let $N$ be a normal subgroup of a finite group 
     $G$ and $P\in\Syl_p(G)$. Then 
@@ -25,11 +26,13 @@
     $Q\subseteq P\cap N$. Hence 
     $Q=P\cap N$, as $P\cap N$ is a Sylow $p$-subgroup of $N$. 
 \end{proof}
+\end{optional}
 
 As a corollary, if $G$ is a finite group and 
 $N$ is a normal subgroup of $G$, then 
 $n_p(N)\leq n_p(G)$.
 
+\begin{optional}
 \begin{theorem}
     Let $p$ be a prime number, $G$ be a finite group, $P\in\Syl_p(G)$, 
     and $N$ be a normal subgroup of $G$. Let $\pi\colon G\to G/N$ be the canonical homomorphism. Then 
@@ -69,11 +72,15 @@ $n_p(N)\leq n_p(G)$.
         $\pi(X)=Q$, as 
         $\pi(X)\in\Syl_p(G/N)$.
 \end{proof}
+\end{optional}
 
 As a corollary, if $G$ is a finite group and
 $N$ is a normal subgroup of $G$, then 
-$n_p(G/N)\leq n_p(G)$.
+\[
+n_p(G/N)\leq n_p(G).
+\]
 
+\begin{optional}
 \begin{corollary}
 Let $G$ be a finite group. Assume that 
 $G$ contains only one Sylow $p$-subgroup. Then
@@ -87,7 +94,8 @@ $p$-subgroup.
     If $H$ is a subgroup of $G$, then
     $n_p(H)\leq n_p(G)=1$. If $N$ is a normal subgroup of 
     $G$, then $n_p(G/N)\leq n_p(G)=1$.
-\end{proof}
+\end{proof}    
+\end{optional}
 
 %Veamos una aplicación.
 %
@@ -293,13 +301,28 @@ of the invariant factors. Instead, we will explain how to obtain them with some 
     \]
 \end{example}
 
+\begin{example}
+    There are six abelian groups of order 200, namely
+    \begin{align*}
+        &\Z/{200}, 
+        &&\Z/{2}\times\Z/{100}, 
+        &&\Z/{2}\times\Z/{2}\times\Z/{50},\\ 
+        &\Z/{5}\times\Z/{40}, 
+        &&\Z/{10}\times\Z/{20}, 
+        &&\Z/{2}\times\Z/{10}\times\Z/{10}.
+    \end{align*}
+\end{example}
+
 \begin{exercise}
 \label{xca:factors:24,12,4,2}
     Find the invariant factors 
     of the group $(\Z/4)\times(\Z/6)\times(\Z/8)\times(\Z/12)$. 
 \end{exercise}
 
-
+\begin{exercise}
+\label{xca:howmany:500}
+    How many abelian groups of order 500 are there? 
+\end{exercise}
 
 
     
