@@ -43,17 +43,18 @@ Let $p$ be a prime number and
 $G=\GL_n(p)$. Since 
 \begin{align*}
 |\GL_n(p)|&=(p^n-1)(p^n-p)\cdots (p^n-p^{n-1})\\
-&=p^{1+2+\cdots+n}(p^n-1)(p^{n-1}-1)\cdots (p-1),
+&=p^{1+2+\cdots+(n-1)}(p^n-1)(p^{n-1}-1)\cdots (p-1),
 \end{align*}
-we can write $|\GL_n(p)|=p^\alpha m$, where $\alpha=1+2+\cdots+n$ and $m$
+we can write $|\GL_n(p)|=p^\alpha m$, where $\alpha=1+2+\cdots+(n-1)$ and $m$
 is an integer not divisible by $p$. 
 The subgroup of matrices of the form 
 \[
 \begin{pmatrix}
-1 & * & \cdots & *\\
-0 & 1 & \cdots & *\\
-\vdots & \vdots & \ddots & \vdots\\
-0 & 0 & \cdots & 1
+1 & * & \cdots & * &  *\\
+0 & 1 & \cdots & * &  *\\
+\vdots & \vdots & \ddots & \vdots & \vdots\\
+0 & 0 & \cdots & 1 & *\\
+0 & 0 & \cdots & 0 & 1
 \end{pmatrix},
 \]
 that is the set of matrices $(g_{ij})$ with 
@@ -86,7 +87,7 @@ We shall need a lemma.
         \]
     because $\binom{p}{j}$ is divisible by $p$ for all
     $j\in\{1,\dots,p-1\}$.
-    By using induction, one proves that 
+    By induction, one proves that 
         \begin{gather*}
         (1+X)^{p^j}\equiv 1+X^{p^j}\bmod p      \\
         \shortintertext{holds for all $j$. Thus}
@@ -172,7 +173,7 @@ By the previous theorem,
 $P\subseteq gSg^{-1}$ for some $g\in G$. Thus the claim follows. 
 \end{proof}
 
-Theorem \ref{thm:Sylow2} states 
+Sylow's second theorem states 
 that any two Sylow $p$-subgroups are conjugate, that 
 is, $G$ acts transitively 
 by conjugation on $\Syl_p(G)$. 
@@ -211,7 +212,7 @@ $n_p(G)=|\Syl_p(G)|$. Note that
 \[
 n_p(G)=(G:N_G(P))
 \]
-for all $P\in\Syl_p(G)$. We will prove that
+for all $P\in\Syl_p(G)$ (see Example~\ref{xca:counting_conjugates}). We will prove that
 $n_p(G)$ divides $m$.
 
 \begin{theorem}[Sylow's third theorem]
@@ -235,25 +236,38 @@ Then $n_p(G)\equiv 1\bmod p$.
     
     We claim that $\{P\}$ is the only $P$-orbit of size one.  
     Since $xPx^{-1}=P$ if $x\in P$, it follows that
-    $\{P\}$ is a $P$-orbit. Let $\{P_i\}$ be a $P$-orbit
+    $\{P\}$ is a $P$-orbit. Let $\{P_i\}$ be some $P$-orbit
     of size one. Then 
         $xP_ix^{-1}=P_i$ for all 
         $x\in P$. Thus $P\subseteq N_G(P_i)$. The group 
-        $N_G(P_i)/P_i$ has order not divisible by $p$, as $P_i\in\Syl_p(G)$.
-        If $xP_i\in N_G(P_i)/P_i$ con $x\in P$, then $xP_i=P_i$. That is
-        $x\in P_i$, since 
+        $N_G(P_i)/P_i$ has order not divisible by $p$, as $P_i\in\Syl_p(G)$. 
+        
+        We claim that $P=P_i$. Let 
+        $x\in P$. Since
+        $|P|=p^\alpha$, $x^{p^{\alpha}}=1$. 
+        Note that $xP_i\in N_G(P_i)/P_i$, since $x\in P\subseteq N_G(P_i)$. Moreover, 
         \[
-        (xP_i)^{p^{\alpha}}=x^{p^{\alpha}}P_i=P_i
+        (xP_i)^{p^{\alpha}}=x^{p^{\alpha}}P_i=P_i.
         \]
-        implies that the order 
-        of the element $xP_i\in N_G(P_i)/P_i$ divides $p^{\alpha}$. Hence $xP_i$ is an element of order
-        one, as $N_G(P_i)/P_i$ has order coprime with $p$. Therefore 
-        $x\in P_i$.
-        This implies that 
-        $P\subseteq P_i$. Hence $P=P_i$, as both sets 
+        This means that the order of 
+        $xP_i\in N_G(P_i)/P_i$ has order dividing $p^{\alpha}$. Since 
+        $N_G(P_i)/P_i$ has order not divisible by $p$, it follows 
+        that $xP_i$ is the neutral element of $N_G(P_i)/P_i$, that is $xP_i=P_i$. Thus
+        $x\in xP_i=P_i$. 
+                 
+        % % $xP_i\in N_G(P_i)/P_i$,  with $x\in P$, then $xP_i=P_i$. That is
+        % % $x\in P_i$, since 
+        
+        % implies that the order 
+        % of the element $xP_i\in N_G(P_i)/P_i$ divides $p^{\alpha}$. Hence $xP_i$ is an element of order
+        % one, as $N_G(P_i)/P_i$ has order coprime with $p$. Therefore 
+        % $x\in P_i$.
+        % This implies that 
+        % $P\subseteq P_i$. 
+        Hence $P=P_i$, as both sets 
         have size $p^{\alpha}$. Now 
         \[
-        X=\{P\}\cup \underbrace{\mathcal{O}_1\cup\mathcal{O}_2\cup\cdots\cup\mathcal{O}_k}_{\text{of size $>1$ divisible by $p$}}.
+        X=\{P\}\cup \underbrace{\mathcal{O}_1\cup\mathcal{O}_2\cup\cdots\cup\mathcal{O}_k}_{\text{of size $>1$ and divisible by $p$}}.
         \]
         Thus $n_p(G)=|X|\equiv 1\bmod p$.
 \end{proof}
