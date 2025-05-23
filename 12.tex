@@ -137,11 +137,18 @@ different from that of linear algebra. For example, in the group $\Z/5$,
 one has $5x=0$ for all $x$. Thus there will be no linearly independent sets with 
 the standard linear algebra definition. 
 
-\begin{exercise}
+\begin{definition}
+\index{Direct sum of abelian groups}
     Let $A$ be an abelian group and $X$ and $Y$ be subgroups of $A$. 
     We say that $A$ is the \emph{direct sum} of $X$ and $Y$ 
-    if $A=X+Y$ and $X\cap Y=\{0\}$. In this case, we write $A=X\oplus Y$. Prove that 
-    every element $a\in X\oplus Y$ can be
+    if $A=X+Y$ and $X\cap Y=\{0\}$. In this case, we write $A=X\oplus Y$. 
+\end{definition}
+
+\begin{exercise}
+    Let $A$ be an abelian group and $X$ and $Y$ be subgroups of $A$
+    such that $A=X\oplus Y$.     
+    Prove that 
+    every element $a\in A$ can be
     written uniquely as $a=x+y$ for $x\in X$ and $y\in Y$.     
 \end{exercise}
 
@@ -208,8 +215,8 @@ Now we are ready to prove the main theorem of this section.
     \eqref{eq:decomposition} does not hold, 
     $\langle x_1\rangle\cap \langle x_2,\dots,x_n\rangle\ne\{0\}$. Let  
     $\xi\in \langle x_1\rangle\cap \langle x_2,\dots,x_n\rangle$ be a non-zero element. Then 
-    $\xi=m_1x_1=m_2x_2+\cdots+m_nx_n$ for some integer 
-    $m_1x_1\ne 0$ and $m_2,\dots,m_n\in\Z$ not all zero.  Thus 
+    $\xi=m_1x_1=m_2x_2+\cdots+m_nx_n$ for some integers  
+    $m_1\ne 0$ and $m_2,\dots,m_n\in\Z$ not all zero.  Thus 
     \[ 
     (-m_1)x_1+m_2+\cdots+m_nx_n=0.
     \]
