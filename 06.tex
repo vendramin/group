@@ -11,7 +11,7 @@ Note that
 \[
 H\cup K\subseteq HK\subseteq\langle H\cup K\rangle.
 \]
-When $HK$ is a subgroup of $G$? 
+When is $HK$ a subgroup of $G$? 
 Note that $HK\leq G$ if and only if $\langle H\cup K\rangle=HK$.
 
 \begin{proposition}
@@ -52,7 +52,7 @@ HK=KH=\{
 \id,(12),(34),(12)(34)\}
 \]
 is a subgroup of 
-$\Sym_4$. Note that not $H$ nor $K$
+$\Sym_4$. Note that neither $H$ nor $K$
 are normal in $G$.
 \end{example}
 
@@ -76,7 +76,7 @@ Two subgroups $H$ and $K$ of $G$ are said to be
 
 \begin{proof}
 Let $L=H\cap K$.
-We decompose $H$ as a disjoint union of left coclases of $L$, say 
+We decompose $H$ as a disjoint union of left cosets of $L$, say 
 $H=\bigcup_{i=1}^k x_iL$, where $k=(H:L)$. Note that $LK=K$, as $L\subseteq K$ and $K\subseteq 1K\subseteq LK$.
 Then
 \[
@@ -155,7 +155,7 @@ then $f(1)=1$. Why?
 \index{Homomorphism!surjective}
 \index{Homomorphism!bijective}
 If a group homomorphism is injective, it will be called
-a \emph{monomorphism}. If it is subjective, 
+a \emph{monomorphism}. If it is surjective, 
 an \emph{epimorphism}. If it is bijective, 
 an \emph{isomorphism}. Two groups $G$ and $H$ 
 are said to be \emph{isomorphic} (notation: $G\simeq H$)
@@ -480,7 +480,7 @@ f(k)=f(\underbrace{(-1)+\cdots+(-1)}_{|k|-\text{times}})=f(-1)^{-k}=(g^{-1})^{-k
 \begin{example}
 We claim that $\Hom(\Z/8,\Z/10)$ has exactly two elements (one of these elements being 
 the zero homomorphism, that is $\Z/8\to\Z/10$, $x\mapsto 0$).
-Let $f\in\Hom(\Z/8,\Z/10)$ be a non-zero homomorphism. 
+Let $f\in\Hom(\Z/8,\Z/10)$ be a non-trivial homomorphism. 
 %be a non-trivial homomorphism. If 
 If 
 $n=|f(1)|$, then 
@@ -544,8 +544,7 @@ G=\langle x,z:x^2=z^3=1,\,xzx^{-1}=z^2\rangle\simeq\D_3.
 \]
 \end{example}
 
-How many (isomorphism classes of) groups are there? We are now 
-ready to collect our results and give a classification 
+How many (isomorphism classes of) groups are there? We now summarize the classification 
 of isomorphism classes of groups of order $\leq7$; see
 Table \ref{tab:grupos<8}. For the classification of groups
 of order eight, we need more tools. 
