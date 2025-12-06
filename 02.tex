@@ -281,6 +281,21 @@ Note that this is (another representation of) the group of symmetries of an equi
 triangle. 
 \end{exercise}
 
+The following Magma code illustrates what happens with the previous exercise. The exercise, however, should be solved without the use of computers.
+
+\begin{lstlisting}
+> Q<x> := PolynomialAlgebra(Rationals());
+> f := x^2 - 3;
+> K<z> := NumberField(f);
+> z^2;
+3
+> a := Matrix(2, [-1/2,-z/2,z/2,-1/2]);
+> b := Matrix(2, [1,0,0,-1]);
+> G := MatrixGroup<2,K|a,b>;
+> GroupName(G);
+S3      
+\end{lstlisting}
+
 \begin{exercise}
 \label{xca:union}
         The union of subgroups is not necessarily 
@@ -341,6 +356,15 @@ triangle.
     \[
     ijk=-1\implies -jk=-i\implies jk=i\implies -k=ji.
     \]
+    This is the code to create the group in Magma:
+\begin{lstlisting}
+> K<i> := CyclotomicField(4);
+> a := Matrix(2, [i,0,0,-i]);
+> b := Matrix(2, [0,1,-1,0]);
+> G := MatrixGroup<2,K|a,b>;
+> GroupName(G);
+Q8      
+\end{lstlisting}    
 \end{example}
 
 \begin{exercise}
