@@ -150,6 +150,22 @@ $\Z/4$ of integers modulo 4 is the following:
   \end{tabular}
 \end{center}
 
+This is a naive Magma code that produces the table:
+\begin{lstlisting}
+> s := {0,1,2,3};
+> m := ZeroMatrix(Integers(), 4);
+> for x in s do
+for> for y in s do
+for|for> m[x+1,y+1] := (x+y) mod 4;
+for|for> end for;
+for> end for;
+> m;
+[0 1 2 3]
+[1 2 3 0]
+[2 3 0 1]
+[3 0 1 2]    
+\end{lstlisting}
+
 We know that $\Z$ is a group with the usual addition. 
 We now discuss a multiplicative version of this group, as it will be
 very important later. We first need a little bit of notation. 
@@ -200,6 +216,7 @@ a$ and $g\colon X\to
 
 \index{Permutation}
 \index{Group!symmetric}
+\label{convention:left-to-right}
 If $X=\{1,2,\dots,n\}$, the group $\Sym_X$ will be written as $\Sym_n$. This is
 the \emph{symmetric group} of degree $n$. The elements of $\Sym_n$ are
 called \emph{permutations} of degree $n$. 
@@ -306,16 +323,6 @@ Its elements are the permutations
         Can you construct the table for this group? 
 \end{example}
 
-\label{convention:left-to-right}
-In our calculations with permutations, we have adopted the right-to-left convention, aligning with the rest of the course, where we consider groups acting on the left on sets. However, some people prefer the left-to-right convention, which corresponds to the way English is read (and to groups acting on the right). This is the convention used by Magma:
-\begin{lstlisting}
-> S3 := Sym(3);
-> a := S3!(1,2);
-> b := S3!(2,3);
-> a*b;
-(1, 3, 2)
-\end{lstlisting}
-But there's no need to worry: both conventions are equivalent, see Example \ref{exa:op}. 
 
 \begin{example}
 \label{exa:another_S3}

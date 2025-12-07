@@ -92,14 +92,18 @@ Let us see some concrete examples:
 We conclude the topic with some exercises. 
 
 \begin{exercise}
+\label{xca:orders_Z6}
         Compute the orders of the elements of $\Z/6$.
 \end{exercise}       
 
 \begin{exercise}
+\label{xca:order_ab}
         Prove that $a=\begin{pmatrix}1&-1\\1&0\end{pmatrix}$ has order six, $b=\
         \begin{pmatrix}0&1\\-1&-1\end{pmatrix}$ has order three and 
         compute the order of $ab$.%=\begin{pmatrix}1&1\\0&1\end{pmatrix}$ tiene orden infinito.
 \end{exercise}
+
+
                                 
 \begin{exercise}
         Compute the order of 
@@ -214,6 +218,7 @@ equals the number of left cosets of $H$ in~$G$.
 \end{example}
     
 \begin{example}
+\label{exa:S3_cosets}
     The subgroups of $\Sym_3$ are $\{\id\}$, $\Sym_3$, 
     the order-two subgroups 
     $\langle(12)\rangle$, 
@@ -362,29 +367,10 @@ the group of $2\times2$ matrices with coefficients in $\Z/3$
 and determinant one. 
 
 \begin{bonus}
+\label{bonus:SL23}
 Prove that    \[
     \SL_2(3)=\left\{\begin{pmatrix}a&b\\c&d\end{pmatrix}:ad-bc=1,\,a,b,c,d\in\Z/3\right\}
     \]
     has order 24 and does not contain subgroups of order 12.
 \end{bonus}
 
-The previous exercise is straightforward to solve using Magma. However, instead of solving it directly, we will use the software to show that $\SL_2(3)$ has order 24 and 
-contains exactly one subgroup of order six:
-
-\begin{lstlisting}
-> G := SL(2,3);
-> Order(G);
-24
-> Subgroups(G:OrderEqual:=6);
-Conjugacy classes of subgroups
-------------------------------
-
-[1]     Order 6            Length 4
-        MatrixGroup(2, GF(3)) of order 2 * 3
-        Generators:
-            [1 1]
-            [0 1]
-
-            [2 0]
-            [0 2]
-\end{lstlisting}

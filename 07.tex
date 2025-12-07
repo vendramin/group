@@ -101,6 +101,10 @@ the first isomorphism theorem implies that
 $(\Z\times\Z)/\langle (1,3)\rangle\simeq\Z$.
 \end{example}
 
+% > G := AbelianGroup<a,b|3*a-b>;
+% > AbelianInvariants(G);
+% [ 0 ]
+
 \begin{exercise}
 Prove that $\R/\Z\simeq S^1$.
 \end{exercise}
@@ -466,6 +470,7 @@ If $H$ is a subgroup of $G$, then
 \pi(H)=HN/N.
 \]
 \begin{example}
+\label{exa:Q8normal}
 \index{Quaternion group}
 Let us show that every subgroup of 
 \[
@@ -492,11 +497,16 @@ Since $N\subseteq S$, it follows that
 $S=\pi^{-1}(\pi(S))$. Hence $S$ is normal in $Q_8$.
 \end{example}
 
+% Alternative: 
+%> { IsNormal(G,S`subgroup) : S in Subgroups(G) };
+%{ true }
+
 % En el ejemplo anterior, podríamos haber demostrado que
 % $G/N\simeq\Z/2\times\Z/2$, ya que como sabemos que $|G/N|=4$, hubiera alcanzado con calcular el orden
 %  de cada uno de los elementos de $G/N$.
 
 \begin{example}
+\label{exa:Z12->Z6}
 Let $f\colon\Z/12\to\Z/6$ be the group homomorphism given by 
 $1\mapsto 1$. Then $K=\ker f=\{0,6\}$.
 The subgroups of $\Z/12$ containing $K$ are

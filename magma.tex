@@ -1,0 +1,346 @@
+\section*{Magma code}
+
+\fancyhf{}
+\fancyfoot[R]{\thepage}
+\fancyhead[L]{\course}
+\fancyhead[R]{Magma code}
+\setlength{\headheight}{14pt}
+
+\subsection*{Permutations in Magma}
+
+In our calculations with permutations, we have adopted the right-to-left convention, aligning with the rest of the course, where we consider groups acting on the left on sets (see~\pageref{convention:left-to-right}). 
+However, some people prefer the left-to-right convention, which corresponds to the way English is read (and to groups acting on the right). This is the convention used by Magma:
+\begin{lstlisting}
+> S3 := Sym(3);
+> a := S3!(1,2);
+> b := S3!(2,3);
+> a*b;
+(1, 3, 2)
+\end{lstlisting}
+But there's no need to worry: both conventions are equivalent, see Example \ref{exa:op}. 
+
+\subsection*{Example~\ref{exa:Carmichael}}
+\label{magma:Carmichael}
+
+A nice subgroup of $\Sym_{16}$ 
+in which the set of commutators is not a subgroup: 
+
+\begin{lstlisting}
+> S16 := Sym(16);
+> a := S16 ! (1,3)(2,4);
+> b := S16 ! (5,7)(6,8);
+> c := S16 ! (9,11)(10,12);
+> d := S16 ! (13,15)(14,16);
+> e := S16 ! (1,3)(5,7)(9,11);
+> f := S16 ! (1,2)(3,4)(13,15);
+> g := S16 ! (5,6)(7,8)(13,14)(15,16);
+> h := S16 ! (9,10)(11,12);
+> G := PermutationGroup< 16 | a,b,c,d,e,f,g,h >;
+> D := DerivedSubgroup(G);
+> #D;
+16
+> #{ x*y*Inverse(x)*Inverse(y) : x in G, y in G };
+15    
+> c*d in { x : x in D } \ 
+> diff { u*v*Inverse(u)*Inverse(v) : u in G, v in G };
+true
+\end{lstlisting}
+
+\subsection*{Example~\ref{exa:Guralnick}}
+\label{magma:Guralnick}
+
+In the example, we claimed that 
+this is an example of a group where the set of commutators is not a subgroup. We 
+start creating a function that returns the set of commutators:
+\begin{lstlisting}
+> SetOfCommutators := function(G)
+function> return { (x,y) : x,y in G };
+function> end function;
+\end{lstlisting}
+Now we check that in Guralnick's group, the commutator subgroup 
+differs from the set of commutators: 
+\begin{lstlisting}
+> S12 := Sym(12);
+> a := S12 ! (1,3,5)(2,4,6)(7,11,9)(8,12,10);
+> b := S12 ! (3,9,4,10)(5,8)(6,7)(11,12);
+> G := PermutationGroup< 12 | a,b >;
+> Order(G);
+96
+> D := DerivedSubgroup(G);
+> Order(D);
+32
+> #SetOfCommutators(G);
+29
+\end{lstlisting}
+Let us see that no smaller group 
+have the desired property: 
+\begin{lstlisting}
+> { G : G in SmallGroups([1..95]) | not #DerivedSubgroup(G) 
+> eq #SetOfCommutators(G) };
+{}
+\end{lstlisting}
+
+\subsection*{Example~\ref{exa:HKneKH}}
+
+
+\subsection*{Exercise~\ref{xca:D3}}
+
+The following Magma code uses some more advanced methods to construct elements such as $\sqrt{3}$. These details are not needed for solving the exercise and may be ignored; they are included only to record a few useful tips for certain constructions in Magma. 
+
+\begin{lstlisting}
+> Q<x> := PolynomialAlgebra(Rationals());
+> f := x^2 - 3;
+> K<z> := NumberField(f);
+> z^2;
+3
+> r := Matrix(2, [-1/2,-z/2,z/2,-1/2]);
+> s := Matrix(2, [1,0,0,-1]);
+> G := MatrixGroup<2,K|r,s>;
+> #G
+6      
+\end{lstlisting}
+
+\subsection*{Example~\ref{exa:Q8}}
+
+This is the code to create the quaternion group $Q_8$ 
+in Magma:
+\begin{lstlisting}
+> K<i> := CyclotomicField(4);
+> a := Matrix(2, [i,0,0,-i]);
+> b := Matrix(2, [0,1,-1,0]);
+> G := MatrixGroup<2,K|a,b>;
+> GroupName(G);
+Q8      
+\end{lstlisting}    
+
+\subsection*{Exercise~\ref{xca:orders_Z6}}
+
+Here is a Magma solution, where for example we see that, as we know,
+$1\in\Z/6$ is a generator, 
+$2\in\Z/6$ has order three, and $4\in\Z/6$ has order three:
+\begin{lstlisting}
+> R := Integers(6);
+> G, g := AdditiveGroup(R);
+> { <g(x),Order(x)> : x in G };
+{ <0, 1>, <2, 3>, <5, 6>, <3, 2>, <1, 6>, <4, 3> }   
+\end{lstlisting}
+
+\subsection*{Exercise~\ref{xca:order_ab}}
+
+Let us see a Magma solution: 
+\begin{lstlisting}
+> a := Matrix(2, [1,-1,1,0]);
+> b := Matrix(2, [0,1,-1,-1]);
+> Order(a);
+6
+> Order(b);
+3
+> HasFiniteOrder(a*b);
+false    
+\end{lstlisting}
+
+\subsection*{Example~\ref{exa:S3_cosets}}
+
+As we discussed, the annoying fact that Magma multiplies permutations in the opposite order from us is not a serious issue. In this particular example, we only need to work with right cosets instead of left cosets.
+Why? Because switching from left to right cosets exactly compensates for the reversed convention in permutation multiplication!
+
+\begin{lstlisting}
+> G := Sym(3);
+> H := sub<G|(1,2)>;
+> K := sub<G|(1,2,3)>;
+> { h*G!(1,2,3) : h in H };
+{
+    (1, 3),
+    (1, 2, 3)
+}
+> { h*G!(2,3) : h in H };
+{
+    (1, 3, 2),
+    (2, 3)
+}
+\end{lstlisting}
+
+\subsection*{Example~\ref{exa:normal_A4}}
+
+For Magma, getting the list of normal subgroups of $\Alt_4$ 
+is easy: 
+\begin{lstlisting}
+> G := Alt(4);
+> NormalSubgroups(G);
+Conjugacy classes of subgroups
+------------------------------
+
+[1]     Order 1            Length 1
+        Permutation group acting on a set of cardinality 4
+        Order = 1
+[2]     Order 4            Length 1
+        Permutation group acting on a set of cardinality 4
+        Order = 4 = 2^2
+            (1, 3)(2, 4)
+            (1, 2)(3, 4)
+[3]     Order 12           Length 1
+        Permutation group acting on a set of cardinality 4
+        Order = 12 = 2^2 * 3
+            (2, 3, 4)
+            (1, 3)(2, 4)
+            (1, 2)(3, 4)    
+\end{lstlisting}
+
+
+\subsection*{Exercise~\ref{xca:D4_normal}}
+
+The exercise shows that normality is in general not transitive: 
+\begin{lstlisting}
+> G<s,r> := DihedralGroup(GrpGPC, 4);
+> Order(r);
+4
+> Order(s);
+2
+> N := sub<G|s,r^2>;
+> H := sub<G|s>;
+> IsNormal(N,H);
+true
+> IsNormal(G,N);
+true
+> IsNormal(G,H);
+false    
+\end{lstlisting}
+
+Here is the Magma code:
+\begin{lstlisting}
+> G := Sym(3);
+> H := sub<G|(1,2)>;
+> K := sub<G|(2,3)>;
+> H*K eq K*H;
+false    
+\end{lstlisting}
+
+\subsection*{Example~\ref{exa:anotherHK}}
+
+Here is the code to verify some of the statements mentioned: 
+\begin{lstlisting}
+> G := Sym(3);
+> H := sub<G|(1,2)>;
+> K := sub<G|(1,2,3)>;
+> IsNormal(G,K);
+true
+> #(H*K);
+6
+> #(H meet K);
+1    
+\end{lstlisting}
+
+\subsection*{Example~\ref{exa:U(21)}}
+
+Recall that Magma uses additive notation for abelian groups. Here is the code: 
+\begin{lstlisting}
+> R := ResidueClassRing(21);
+> G, g := UnitGroup(R);    
+> { g(x) : x in G };
+{ 17, 1, 2, 19, 20, 4, 5, 8, 10, 11, 13, 16 }
+> f := hom<G->G|x:->3*x>;
+> { g(x) : x in Kernel(f) };
+{ 1, 4, 16 }
+> { g(y) : y in Image(f) };
+{ 1, 13, 8, 20 }
+\end{lstlisting}
+Alternative code:
+\begin{lstlisting}
+> U := { x : x in Integers(21) | GCD(x,21) eq 1 };
+> U;
+{ 17, 1, 2, 19, 20, 4, 5, 8, 10, 11, 13, 16 }
+> G := GenericAbelianGroup(U: 
+> IdIntrinsic := "Id", 
+> AddIntrinsic := "*", 
+> InverseIntrinsic := "/");
+> f := hom<G->G|x:->3*x>;
+> { y : y in Image(f) };
+{ 1, 13, 8, 20 }    
+\end{lstlisting}
+
+% How to check that a map is a homomorphism of abelian groups? 
+% > P, p := PermutationGroup(G);
+% > f := hom<P->P|x:->x^3>;
+% > IsHomomorphism(f);
+% true
+
+\subsection*{Example~\ref{exa:order4}}
+
+The groups are not isomorphic because 
+they do not have the same number of elements of order four: 
+\begin{lstlisting}
+> A := AbelianGroup([4]);
+> B := AbelianGroup([2,2]);
+> #{ x : x in A | Order(x) eq 4 };
+2
+> #{ x : x in B | Order(x) eq 4 };
+0
+\end{lstlisting}
+
+\subsection*{Example~\ref{exa:U(Z/5)}}
+
+Both groups are cyclic of order four: 
+\begin{lstlisting}
+> A := UnitGroup(Integers(5));
+> B := UnitGroup(Integers(10));
+> IsCyclic(A);
+true
+> IsCyclic(B);
+true
+> #A;
+4
+> #B;
+4    
+> IsIsomorphic(A,B);
+true
+\end{lstlisting}
+
+\subsection*{Exercise~\ref{xca:U(Z/10)}}
+
+The groups are not isomorphic. Why? 
+Here is the code: 
+\begin{lstlisting}
+> A := UnitGroup(Integers(10));
+> B := UnitGroup(Integers(12));
+> IsIsomorphic(A,B);
+false    
+> GroupName(A);
+C4
+> GroupName(B);
+C2^2
+\end{lstlisting}
+
+
+\subsection*{Example~\ref{exa:Q8normal}}
+
+Checking in Magma that every subgroup of $Q_8$ 
+is normal is very easy. Here is the code:
+\begin{lstlisting}
+> G := Group("Q8");
+> forall(S){S:S in Subgroups(G)|IsNormal(G,S`subgroup)};
+true    
+\end{lstlisting}
+
+\subsection*{Example~\ref{exa:Z12->Z6}}
+
+Let us use Magma to illustrate the correspondence 
+theorem. Instead of using 
+additive abelian groups we will 
+use their corresponding permutation groups, as 
+several algorithms do not work 
+on abelian groups. 
+\begin{lstlisting} 
+> Z12 := AdditiveGroup(Integers(12));;
+> Z6 := AdditiveGroup(Integers(6));;
+> C12, a := PermutationGroup(Z12);
+> C6, b := PermutationGroup(Z6);
+> f := hom<C12->C6| <C12.1,C6.1>>;
+> K:=Kernel(f);
+> IsHomomorphism(f);
+true
+> for x in AllSubgroups(C12) do
+for> if K subset x then
+for|if> { a(y) : y in x };
+for|if> end if;
+for> end for;
+\end{lstlisting}
