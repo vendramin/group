@@ -80,7 +80,6 @@ have the desired property:
 {}
 \end{lstlisting}
 
-\subsection*{Example~\ref{exa:HKneKH}}
 
 
 \subsection*{Exercise~\ref{xca:D3}}
@@ -112,6 +111,21 @@ in Magma:
 > GroupName(G);
 Q8      
 \end{lstlisting}    
+
+\subsection*{Example~\ref{exa:U(Z/8)again}}
+
+This simple example can be carried out entirely by hand, 
+but the Magma code includes some tricks that may be useful 
+later, especially for identifying elements of the group 
+of units of $\Z/8$ inside $\Z/8$ itself:
+\begin{lstlisting}
+> R := Integers(8);
+> G, g := UnitGroup(R);
+> { g(x) : x in G };
+{ 1, 3, 5, 7 }
+> { g(x) : x in sub<G| 3 @ Inverse(g)>};
+{ 1, 3 }    
+\end{lstlisting}
 
 \subsection*{Exercise~\ref{xca:orders_Z6}}
 
@@ -160,6 +174,15 @@ Why? Because switching from left to right cosets exactly compensates for the rev
 }
 \end{lstlisting}
 
+\subsection*{Bonus exercise~\ref{bonus:SL23}}
+
+With Magma the exercise becomes almost trivial, which is why I encourage the reader to try solving it first without using a computer.
+\begin{lstlisting}
+> G := SL(2,3);
+> #Subgroups(G:OrderEqual:=12);
+0    
+\end{lstlisting}
+
 \subsection*{Example~\ref{exa:normal_A4}}
 
 For Magma, getting the list of normal subgroups of $\Alt_4$ 
@@ -205,6 +228,8 @@ true
 > IsNormal(G,H);
 false    
 \end{lstlisting}
+
+\subsection*{Example~\ref{exa:HKneKH}}
 
 Here is the Magma code:
 \begin{lstlisting}
@@ -310,6 +335,50 @@ C4
 C2^2
 \end{lstlisting}
 
+\subsection*{Example~\ref{exa:Z24}}
+
+We first define the group of integers modulo 24,
+and then use a map to represent the elements 
+of our group correctly inside $\Z/24$: 
+\begin{lstlisting}
+> R := Integers(24);
+> G, g := AdditiveGroup(R);
+> {g(h) : h in H};
+{ 0, 12, 4, 16, 8, 20 }
+> N := sub<G|G!6>;
+\end{lstlisting}
+Now we check the claims on subgroups 
+related to $H$ and $N$: 
+\begin{lstlisting}    
+> H eq sub<G|G!4>;
+true
+> N eq sub<G|G!6>;
+true
+> (H+N) eq sub<G|G!2>;
+true
+> { g(x) : x in (H meet N) };
+{ 0, 12 }
+\end{lstlisting}
+In the example there are also some claims about (left) 
+cosets of $N$ and $H\cap N$: 
+\begin{lstlisting}
+> { g(G!0 + n) : n in N };
+{ 0, 12, 6, 18 }
+> { g(G!2 + n) : n in N };
+{ 2, 14, 8, 20 }
+> { g(G!4 + n) : n in N };
+{ 22, 4, 16, 10 }
+> { g(G!0 + x) : x in H meet N };
+{ 0, 12 }
+> { g(G!4 + x) : x in H meet N };
+{ 4, 16 }
+> { g(G!8 + x) : x in H meet N };
+{ 8, 20 }
+\end{lstlisting}
+
+% > J := H+N;
+% > IsIsomorphic(J/sub<J|N>, H/sub<H|H meet N>);
+% true
 
 \subsection*{Example~\ref{exa:Q8normal}}
 
@@ -344,3 +413,109 @@ for|if> { a(y) : y in x };
 for|if> end if;
 for> end for;
 \end{lstlisting}
+
+\subsection*{Exercise~\ref{xca:aut(S3)}}
+
+Again, this is quite straightforward if we are allowed to use Magma. 
+Here is one possible solution:
+\begin{lstlisting}
+> S3 := Sym(3);
+> aut_S3 := AutomorphismGroup(S3);
+> GroupName(aut_S3);
+S3    
+\end{lstlisting}
+The function \lstinline{GroupName} may fail for larger groups, 
+so it is useful to provide an alternative solution using \lstinline{IsIsomorphic}. 
+However, this function requires permutation groups as input, 
+so we must first convert our automorphism group:
+\begin{lstlisting}
+> P := PermutationGroup(aut_S3);
+> bool := IsIsomorphic(P,S3);
+> bool;
+true   
+\end{lstlisting}
+
+\subsection*{Example~\ref{exa:T}}
+
+Let us construct this semidirect product in Magma.
+We build our groups as permutation groups, which is necessary 
+for the type of computations we will perform.
+\begin{lstlisting}
+> Q := CyclicGroup(4);
+> K := CyclicGroup(3);    
+> autK := AutomorphismGroup(K);
+> rho := autK.2;
+> IsIdentity(rho);
+false
+> tau := hom<Q->autK| <Q.1,rho>>;
+> T := SemidirectProduct(K,Q,tau);
+> #T;
+12
+\end{lstlisting}
+Let us quickly check that this group is not isomorphic to $\Alt_4$: 
+\begin{lstlisting}
+> A4 := Alt(4);
+> IsIsomorphic(T,A4);
+false
+\end{lstlisting}
+
+\subsection*{Sylow subgroups}
+
+\subsection*{Example~\ref{exa:order21}}
+
+Let us check with Magma that 
+\[
+\langle x,y:x^7=y^3-1,yx=x^2y\rangle\simeq\left\langle 
+\begin{pmatrix}
+    1&1\\
+    0&1
+\end{pmatrix},
+\begin{pmatrix}
+    2&0\\
+    0&1
+\end{pmatrix}\right\rangle.
+\]
+There are several ways to verify this. In our situation, since we will construct 
+the groups in different ways, we will simply check 
+that the outputs of the function \lstinline{IdentifyGroup} 
+are the same for both groups:
+\begin{lstlisting}
+> G<x,y> := Group<x,y|x^7, y^3, y*x=x^2*y>;
+> H := MatrixGroup<2, GF(7)|[1,1,0,1],[2,0,0,1]>;
+> IdentifyGroup(G) eq IdentifyGroup(H);
+true    
+\end{lstlisting}
+
+
+\subsection*{Examples~\ref{exa:[6,100,45]}}
+
+Computing abelian invariants of abelian groups is quite easy: 
+\begin{lstlisting}
+> G := AbelianGroup([6,100,45]);
+> AbelianInvariants(G);
+[ 30, 900 ]
+\end{lstlisting}
+
+In the same way, we can easily verify the abelian invariants computed in 
+Example~\ref{exa:[10,15,20,25]} and get the 
+solution to Exercise~\ref{xca:factors:24,12,4,2}.
+
+\subsection*{Exercise~\ref{xca:howmany:500}}
+
+One way to obtain the solution is to inspect the groups of order 500 in the 
+\lstinline{SmallGroups} library:
+\begin{lstlisting}
+> #SmallGroups([200], IsAbelian);
+6    
+\end{lstlisting}
+
+% \begin{lstlisting}
+% > NumberOfSylowSubgroups := function(G,p)
+% function> local P;
+% function> P := SylowSubgroup(G,p);
+% function> return Index(G,Normalizer(G,P));
+% function> end function;
+% > { GroupName(G) : G in SmallGroups([12]) | not 
+% > NumberOfSylowSubgroups(G,3) eq 1 };
+% { A4 }
+% \end{lstlisting}
