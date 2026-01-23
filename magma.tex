@@ -19,6 +19,70 @@ However, some people prefer the left-to-right convention, which corresponds to t
 \end{lstlisting}
 But there's no need to worry: both conventions are equivalent, see Example \ref{exa:op}. 
 
+\subsection*{Example~\ref{exa:dihedral}}
+
+In this example, we show a matrix representation 
+for dihedral groups. To help to fix ideas, 
+we also show what happens with the dihedral group
+$\D_4$ of eight elements. Here is the Magma
+code to construct this particular group.
+\begin{lstlisting}
+> r := Matrix(Integers(), 2, [0,-1,1,0]);
+> s := Matrix(Integers(), 2, [1,0,0,-1]);
+> G := MatrixGroup<2, Integers()|r,s>;
+> #G;
+8
+> r^3*s;
+[ 0 -1]
+[-1  0]    
+\end{lstlisting}
+
+
+\subsection*{Exercise~\ref{xca:D3}}
+
+The following Magma code uses some more advanced methods to construct elements such as $\sqrt{3}$. These details are not needed for solving the exercise and may be ignored; they are included only to record a few useful tips for certain constructions in Magma. 
+
+\begin{lstlisting}
+> Q<x> := PolynomialAlgebra(Rationals());
+> f := x^2 - 3;
+> K<z> := NumberField(f);
+> z^2;
+3
+> r := Matrix(2, [-1/2,-z/2,z/2,-1/2]);
+> s := Matrix(2, [1,0,0,-1]);
+> G := MatrixGroup<2,K|r,s>;
+> #G
+6      
+\end{lstlisting}
+
+\subsection*{Example~\ref{exa:Q8}}
+
+This is the code to create the quaternion group $Q_8$ 
+in Magma:
+\begin{lstlisting}
+> K<i> := CyclotomicField(4);
+> a := Matrix(2, [i,0,0,-i]);
+> b := Matrix(2, [0,1,-1,0]);
+> G := MatrixGroup<2,K|a,b>;
+> GroupName(G);
+Q8      
+\end{lstlisting}    
+
+\subsection*{Example~\ref{exa:U(Z/8)again}}
+
+This simple example can be carried out entirely by hand, 
+but the Magma code includes some tricks that may be useful 
+later, especially for identifying elements of the group 
+of units of $\Z/8$ inside $\Z/8$ itself:
+\begin{lstlisting}
+> R := Integers(8);
+> G, g := UnitGroup(R);
+> { g(x) : x in G };
+{ 1, 3, 5, 7 }
+> { g(x) : x in sub<G| 3 @ Inverse(g)>};
+{ 1, 3 }    
+\end{lstlisting}
+
 \subsection*{Example~\ref{exa:Carmichael}}
 \label{magma:Carmichael}
 
@@ -81,51 +145,6 @@ have the desired property:
 \end{lstlisting}
 
 
-
-\subsection*{Exercise~\ref{xca:D3}}
-
-The following Magma code uses some more advanced methods to construct elements such as $\sqrt{3}$. These details are not needed for solving the exercise and may be ignored; they are included only to record a few useful tips for certain constructions in Magma. 
-
-\begin{lstlisting}
-> Q<x> := PolynomialAlgebra(Rationals());
-> f := x^2 - 3;
-> K<z> := NumberField(f);
-> z^2;
-3
-> r := Matrix(2, [-1/2,-z/2,z/2,-1/2]);
-> s := Matrix(2, [1,0,0,-1]);
-> G := MatrixGroup<2,K|r,s>;
-> #G
-6      
-\end{lstlisting}
-
-\subsection*{Example~\ref{exa:Q8}}
-
-This is the code to create the quaternion group $Q_8$ 
-in Magma:
-\begin{lstlisting}
-> K<i> := CyclotomicField(4);
-> a := Matrix(2, [i,0,0,-i]);
-> b := Matrix(2, [0,1,-1,0]);
-> G := MatrixGroup<2,K|a,b>;
-> GroupName(G);
-Q8      
-\end{lstlisting}    
-
-\subsection*{Example~\ref{exa:U(Z/8)again}}
-
-This simple example can be carried out entirely by hand, 
-but the Magma code includes some tricks that may be useful 
-later, especially for identifying elements of the group 
-of units of $\Z/8$ inside $\Z/8$ itself:
-\begin{lstlisting}
-> R := Integers(8);
-> G, g := UnitGroup(R);
-> { g(x) : x in G };
-{ 1, 3, 5, 7 }
-> { g(x) : x in sub<G| 3 @ Inverse(g)>};
-{ 1, 3 }    
-\end{lstlisting}
 
 \subsection*{Exercise~\ref{xca:orders_Z6}}
 
@@ -458,8 +477,6 @@ Let us quickly check that this group is not isomorphic to $\Alt_4$:
 > IsIsomorphic(T,A4);
 false
 \end{lstlisting}
-
-\subsection*{Sylow subgroups}
 
 \subsection*{Example~\ref{exa:order21}}
 

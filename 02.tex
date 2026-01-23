@@ -169,6 +169,7 @@ $x_1,\dots,x_n$ and their inverses
 $x_1^{-1},\dots,x_n^{-1}$. 
 
 \begin{example}
+\label{exa:dihedral}
 Let $n\geq3$. Let 
 \[
 r=\begin{pmatrix}
@@ -263,17 +264,6 @@ r^3s&=\begin{pmatrix}
 \end{pmatrix}.
 \end{align*}
 This is (a representation of) the group of symmetries of the square. 
-Here is the Magma code:
-\begin{lstlisting}
-> r := Matrix(Integers(), 2, [0,-1,1,0]);
-> s := Matrix(Integers(), 2, [1,0,0,-1]);
-> G := MatrixGroup<2, Integers()|r,s>;
-> #G;
-8
-> r^3*s;
-[ 0 -1]
-[-1  0]    
-\end{lstlisting}
 
 \begin{exercise}
 \label{xca:D3}
