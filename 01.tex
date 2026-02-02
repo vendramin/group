@@ -2,6 +2,21 @@
 
 \section{Groups}
 
+This course is about groups. But what are groups?  If you want an example of a
+group and you don’t know any mathematics, I would give you a Rubik’s Cube.
+Wait... what? Yes, a Rubik’s Cube. This is, after all, just a cube. But there are
+transformations you can apply to this toy that change the color configuration
+of the stickers, while it remains a cube.
+The collection of all possible transformations that you can apply to the cube, including the identity transformation that does nothing, forms a group. (Note that these transformations can be composed one after another and are reversible.)
+
+\begin{figure}[h]
+\ShowCube{2cm}{0.5}{
+\RubikCubeSolvedWY
+\DrawRubikCubeRU
+}
+\caption{This is probably the best example of a group.}
+\end{figure}
+
 Before defining groups, we recall that a binary operation on a set $X$
 is simply a map 
 \[
@@ -133,6 +148,7 @@ $R_g\colon G\to G$, $x\mapsto xg$, are bijective.
 \end{exercise}
 
 \index{Group!table}
+\label{multiplication_table}
 Let $G=\{g_1,g_2,\dots,g_n\}$ be a finite group. The \emph{table} 
 of $G$ is the matrix 
 that in position $(i,j)$ has the element $g_ig_j$. 
@@ -149,22 +165,6 @@ $\Z/4$ of integers modulo 4 is the following:
     3 & 3 & 0 & 1 & 2
   \end{tabular}
 \end{center}
-
-This is a naive Magma code that produces the table:
-\begin{lstlisting}
-> s := {0,1,2,3};
-> m := ZeroMatrix(Integers(), 4);
-> for x in s do
-for> for y in s do
-for|for> m[x+1,y+1] := (x+y) mod 4;
-for|for> end for;
-for> end for;
-> m;
-[0 1 2 3]
-[1 2 3 0]
-[2 3 0 1]
-[3 0 1 2]    
-\end{lstlisting}
 
 We know that $\Z$ is a group with the usual addition. 
 We now discuss a multiplicative version of this group, as it will be
