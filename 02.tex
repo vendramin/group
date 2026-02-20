@@ -379,24 +379,25 @@ the \emph{well-ordering principle}. This principle states that every non-empty s
                 There are then two possible cases: 
                 $n>0$ or $-n>0$. Since 
                 $S$ is a subgroup of $\Z$, $-n\in S$.
+                Hence $\{s\in S: s>0\}$ is non-empty.
         
-                We claim that $S=n\Z$.
+                We claim that $S=m\Z$.
                 If $x\in S$, then $x=my+r$ for $y,r\in\Z$ with 
                 $0\leq r<m$. Suppose that $r\ne 0$. Since $x,m\in S$, it follows that 
                 $r\in S$,
                 a contradiction to the minimality of $m$. Thus $r=0$ 
                 and hence $x=my\in
-                m\Z$. Conversely, since $n\in S$, it follows that
-                 $nk\in S$ for all $k\in\Z$. In fact, if $k=0$, then 
-                 $nk=0\in S$. If $k>0$, 
+                m\Z$. Conversely, since $m\in S$, it follows that
+                 $mk\in S$ for all $k\in\Z$. In fact, if $k=0$, then 
+                 $mk=0\in S$. If $k>0$, 
                  then 
                 \[
-                \underbrace{n+\cdots+n}_{k-\text{times}}\in S.
+                \underbrace{m+\cdots+m}_{k-\text{times}}\in S.
                 \]
                 Finally, if $k<0$, 
                 then 
                 \[
-                nk=\underbrace{-n+(-n)+\cdots+(-n)}_{|k|-\text{times}}\in S.\qedhere
+                mk=\underbrace{-m+(-m)+\cdots+(-m)}_{|k|-\text{times}}\in S.\qedhere
                 \]
         \end{proof}
 
@@ -406,23 +407,49 @@ if $b=ac$ for some $c\in\Z$. Notation:
 \[
 a\mid b\Longleftrightarrow b=ac\text{ for some $c\in\Z$.}
 \]
+\begin{lemma}\label{lem: mutual divisors}
+Let $a,b\in \Z$, then $a\mid b$ and $b\mid a$ if and only if $\vert a \vert = \vert b \vert$.
+\end{lemma}
+\begin{proof}
+One implication is immediate. Conversely, assume that $a\mid b$ and $b\mid a$. If $a=0$ or $b=0$ then this implies that $b=0$ respectively $a=0$ as well (why?), and thus $a\Z = b\Z$. Assume that $a,b\ne 0$. Then there exist non-zero $c,d\in\Z$ such that $a = bc$ and $b= ad$. But then
+\[
+b = ad = (bc)d = b(cd).
+\]
+This implies that $cd=1$ and thus $c=d=1$ (why?), concluding the proof.
+\end{proof}
+
+\begin{lemma}\label{lem: divisibility}
+For any $a,b\in\Z$, $a\Z\subseteq b\Z$ if and only if $a$ is divisible by $b$.
+\end{lemma}
+\begin{proof}
+Let $a,b\in\Z$, if $a\Z\subseteq b\Z$ then $a\in b\Z$ and there exists some $c\in\Z$ such that $a = bc$. Thus thus $a$ is divisible by $b$. Conversely, assume that $a = bc$ for some $c\in\Z$, then for any $y \in a\Z$ there exists some $r\in \Z$ such that $y = ar$, and thus $y = ar = (bc)r = b(cr)\in b\Z$.
+\end{proof}
+This has the following immediate corollary.
+\begin{corollary}
+    Let $a,b\in \Z$, then $a\Z = b\Z$ if and only if $\vert a\vert=\vert b\vert$.
+\end{corollary}
+\begin{proof}
+One implication is immediate. Conversely, assume that $a\Z = b\Z$. Then by Lemma \ref{lem: divisibility} it follows that $a\mid b$ and $b\mid a$, and thus $\vert a \vert = \vert b \vert$ by Lemma \ref{lem: mutual divisors}.
+\end{proof}
+
 If $a,b\in\Z$ are such that $ab\ne0$, then 
 \[
 S=a\Z+b\Z=\{m\in\Z:m=ar+bs\text{ for $r,s\in\Z$}\}
 \]
 is a subgroup of $\Z$ (this is an exercise). 
-By Theorem \ref{thm:Z}, $S=d\Z$ for some $d>0$. 
-This positive integer $d$
-is the \emph{greatest common divisor} of $a$ and $b$, 
-that is $d=\gcd(a,b)$. 
+By Theorem \ref{thm:Z}, $S=d\Z$ for a unique $d>0$ (why is $d$ unique?). 
+%This positive integer $d$
+%is the \emph{greatest common divisor} of $a$ and $b$, 
+%that is $d=\gcd(a,b)$. 
 
 \begin{exercise}
-Let $a,b\in\Z$ be such that $ab\ne0$ and $d=\gcd(a,b)$. 
+Let $a,b\in\Z$ be such that $ab\ne0$ and $d>0$ the unique positive integer such that $a\Z + b\Z = d\Z$. 
 Prove the following statements:
 \begin{enumerate}
+\item There are $r,s\in\Z$ such that $d=ar+bs$.
 \item $d$ divides $a$ and $b$.
 \item If $e\in\Z$ divides $a$ and $b$, then $e$ divides $d$.
-\item There are $r,s\in\Z$ such that $d=ar+bs$.
+\item $d = \gcd(a,b)$, this is, the \emph{greatest common divisor} of $a$ and $b$.
 \end{enumerate}
 \end{exercise}
 
