@@ -372,7 +372,8 @@ the \emph{well-ordering principle}. This principle states that every non-empty s
                 \[
                 m=\min\{s\in S:s>0\}.
                 \]
-                Why does this $m$ exist?  
+                Why does this $m$ exist? Because of the well-ordering
+                principle: 
                 Since $S\ne\{0\}$,  
                 it contains 
                 an element $n\in S\setminus\{0\}$. 
@@ -380,23 +381,23 @@ the \emph{well-ordering principle}. This principle states that every non-empty s
                 $n>0$ or $-n>0$. Since 
                 $S$ is a subgroup of $\Z$, $-n\in S$.
         
-                We claim that $S=n\Z$.
+                We claim that $S=m\Z$.
                 If $x\in S$, then $x=my+r$ for $y,r\in\Z$ with 
                 $0\leq r<m$. Suppose that $r\ne 0$. Since $x,m\in S$, it follows that 
                 $r\in S$,
                 a contradiction to the minimality of $m$. Thus $r=0$ 
                 and hence $x=my\in
-                m\Z$. Conversely, since $n\in S$, it follows that
-                 $nk\in S$ for all $k\in\Z$. In fact, if $k=0$, then 
-                 $nk=0\in S$. If $k>0$, 
+                m\Z$. Conversely, since $m\in S$, it follows that
+                 $mk\in S$ for all $k\in\Z$. In fact, if $k=0$, then 
+                 $mk=0\in S$. If $k>0$, 
                  then 
                 \[
-                \underbrace{n+\cdots+n}_{k-\text{times}}\in S.
+                \underbrace{m+\cdots+m}_{k-\text{times}}\in S.
                 \]
                 Finally, if $k<0$, 
                 then 
                 \[
-                nk=\underbrace{-n+(-n)+\cdots+(-n)}_{|k|-\text{times}}\in S.\qedhere
+                mk=\underbrace{-m+(-m)+\cdots+(-m)}_{|k|-\text{times}}\in S.\qedhere
                 \]
         \end{proof}
 
