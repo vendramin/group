@@ -82,7 +82,11 @@ Then
 \[
 HK=\bigcup_{i=1}^k x_iLK=\bigcup_{i=1}^k x_iK,
 \]
-In particular, since the union is disjoint, 
+This union is disjoint: If, say, $y\in x_1K\cap x_2K$, then 
+$y=x_1a=x_2b$ for some $a,b\in K$. Then $ba^{-1}=x_2^{-1}x_1\in H\cap K=L$. Hence
+$x_1L=x_2L$, a contradiction. 
+
+Since the union is disjoint, 
 \[
 |HK|=\sum_{i=1}^k |x_iK|=k|K|=\frac{|H||K|}{|H\cap K|}.\qedhere
 \]
