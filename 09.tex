@@ -303,14 +303,14 @@ The following example is also important:
 \begin{example}
     The group $\Sym_n$ acts on the set of polynomials on
     $n$ variables $X_1,\dots,X_n$
-    by permitting the variables. For example, for three variables, if 
+    by permuting the variables. For example, for three variables, if 
     $\sigma=(123)$ and 
     \[
     f=X_2X_3-X_1+5X_2X_3^2X_1,
     \]
     then 
     \[
-    \sigma\cdot f=X_2^2X_3-X_1+5X_2X_3^2X_1.
+    \sigma\cdot f=X_3X_1-X_2+5X_3X_1^2X_2.
     \]
 
     Restricting the action, we see that 
@@ -540,8 +540,10 @@ The group $L=H\times K$ acts on $X=HK$ by
 \[
 (h,k)\cdot x=hxk^{-1},\quad x\in X,\,h\in H,\,k\in K.
 \]
-Note that $1\in HK$ and the action of $L$ on $X$ is transitive, as 
-$(h,k^{-1})\cdot 1 = hk$. Since 
+%Note that $1\in HK$ and the action of $L$ on $X$ is transitive, as 
+%$(h,k^{-1})\cdot 1 = hk$. 
+Note that the action of $L$ on $X$ is transitive, since for any $hk, h_1k_1\in X$ it holds that $(h_1h^{-1}, k_1^{-1}k)\cdot hk = h_1k_1$.
+Since 
 \[
 L_1=\{(h,k)\in H\times K: (h,k)\cdot 1=1\}=\{(h,k)\in H\times K:h=k\},
 \]
