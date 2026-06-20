@@ -83,8 +83,8 @@ appear in the following table:
     \coordinate (C) at (3,3);
     \coordinate (D) at (0,3);
     \draw[thick, line width=.3mm] (A) -- (B) -- (C) -- (D) -- cycle;
-    \foreach \point/\color in {A/red, B/blue, C/green, D/orange} {
-        \fill[\color] (\point) circle (4pt); 
+    \foreach \point/\vertexcolor in {A/red, B/blue, C/green, D/orange} {
+        \fill[\vertexcolor] (\point) circle (4pt); 
     }
     \node[left =5pt] at (A) {$3$};
     \node[right=5pt] at (B) {$4$};

@@ -421,8 +421,8 @@ Let us explore the spatial symmetries of the equilateral triangle shown in Figur
     \coordinate (B) at (4,0);
     \coordinate (C) at (2,3);
     \draw[thick, line width=.3mm] (A) -- (B) -- (C) -- cycle;
-    \foreach \point/\color in {A/red, B/blue, C/green} {
-        \fill[\color] (\point) circle (5pt); 
+    \foreach \point/\vertexcolor in {A/red, B/blue, C/green} {
+        \fill[\vertexcolor] (\point) circle (5pt); 
     }
     \node[below left=5pt] at (A) {$2$};
     \node[below right=5pt] at (B) {$3$};
@@ -478,10 +478,10 @@ as Figure~\ref{fig:composition} shows.
     \draw[thick, line width=0.2mm] (A3) -- (B3) -- (C3) -- cycle;
 
     % Draw and color the vertices
-    \foreach \point/\color in {A1/red, B1/blue, C1/green, 
+    \foreach \point/\vertexcolor in {A1/red, B1/blue, C1/green, 
                                A2/red, B2/blue, C2/green,
                                A3/red, B3/blue, C3/green} {
-        \fill[\color] (\point) circle (3pt); 
+        \fill[\vertexcolor] (\point) circle (3pt); 
     }
 
     \node[below left=5pt] at (A1) {$2$};
@@ -531,8 +531,8 @@ By observing the effect of these transformations on the vertices of our square, 
     \coordinate (C) at (3,3);
     \coordinate (D) at (0,3);
     \draw[thick, line width=.3mm] (A) -- (B) -- (C) -- (D) -- cycle;
-    \foreach \point/\color in {A/red, B/blue, C/green, D/orange} {
-        \fill[\color] (\point) circle (4pt); 
+    \foreach \point/\vertexcolor in {A/red, B/blue, C/green, D/orange} {
+        \fill[\vertexcolor] (\point) circle (4pt); 
     }
     \node[left =5pt] at (A) {$3$};
     \node[right=5pt] at (B) {$4$};
