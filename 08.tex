@@ -2,7 +2,19 @@
 
 \section{Semi-direct products}
 
-We first start with an exercise of \emph{direct products}. Let $G$ be a group and $H$ and $K$ be normal subgroups with trivial intersection, that is $H\cap K=\{1\}$. 
+\index{Exact factorization of groups}
+We say that a group $G$ admits an \emph{exact factorization} through 
+the subgroups $H$ and $K$ if $G=HK$ and 
+$H\cap K=\{1\}$. 
+
+\begin{exercise}
+\label{xca:uniqueness}
+    Let $G$ be a group that admits an exact factorization through
+    the subgroups $H$ and $K$. Prove that every $g\in G$ can be written 
+    uniquely as $g=hk$ for some $h\in H$ and $k\in K$. 
+\end{exercise}
+
+Let us briefly discuss \emph{direct products}. Let $G$ be a group and $H$ and $K$ be normal subgroups with trivial intersection, that is $H\cap K=\{1\}$. 
 Then $hk=kh$ for all $h\in H$ and $k\in K$. In fact, 
 \[
 [h,k]=hkh^{-1}k^{-1}\in H\cap K=\{1\}, 
@@ -17,6 +29,10 @@ Let $G$ be a group and $H$ and $K$ be normal subgroups of $G$.
 If $G=HK$ and $H\cap K=\{1\}$, then $G\simeq H\times K$.
 \end{exercise}
 
+By Exercise \ref{xca:direct_product}, 
+if $G$ admits an exact factorization through two normal subgroups, then 
+it is isomorphic to the direct product of these subgroups. 
+
 \begin{exercise}
 \label{xca:direct_product:quotient}
 Let $A$ be a normal subgroup of $H$, and $B$ be a normal subgroup of $K$. 
@@ -25,20 +41,6 @@ $H\times K$ and
 \[
 \frac{H\times K}{A\times B}\simeq(H/A)\times(K/B).
 \]
-\end{exercise}
-
-\index{Exact factorization of groups}
-We say that a group $G$ admits an exact factorization through 
-the subgroups $H$ and $K$ if $G=HK$ and 
-$H\cap K=\{1\}$. By Exercise \ref{xca:direct_product}, 
-if $G$ admits an exact factorization through two normal subgroups, then 
-it is isomorphic to the direct product of these subgroups. 
-
-\begin{exercise}
-\label{xca:uniqueness}
-    Let $G$ be a group that admits an exact factorization through
-    the subgroups $H$ and $K$. Prove that every $g\in G$ can be written 
-    uniquely as $g=hk$ for some $h\in H$ and $k\in K$. 
 \end{exercise}
 
 \begin{example}
@@ -299,7 +301,7 @@ $G$ is abelian.
 
 \index{Action!on groups}
 \index{Action!by automorphisms}
-Let us discuss how groups acts on groups. An action of a group on a group is 
+Let us discuss how groups act on groups. An action of a group on a group is 
 a group homomorphism 
 $\theta\colon Q\to\Aut(K)$, $x\mapsto\theta_x$. 
 This is nothing but a way in which $Q$ permutes the elements of $K$ 
