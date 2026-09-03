@@ -13,8 +13,6 @@
 \address{Department of Mathematics and Data
 Science, Vrije Universiteit Brussel, Pleinlaan 2, 1050 Brussel}
 \email{Leandro.Vendramin@vub.be}
-\thanks{}
-\date{}
 
 \begin{document}
 
@@ -30,16 +28,27 @@ Science, Vrije Universiteit Brussel, Pleinlaan 2, 1050 Brussel}
 \end{abstract}
 
 \maketitle
+\listoflectures
+
+\vspace{5cm}
+\begin{figure}[h]
+    \includegraphics[scale=0.2]{images/VUB.jpg}
+\end{figure}
+
+\thispagestyle{empty}
 
 \setcounter{tocdepth}{1}
-\tableofcontents 
 
-\clearpage
+\newpage
+\thispagestyle{empty}
+\tableofcontents
+
+\newpage
 \pagenumbering{arabic}
 
-\include{introduction}
+\input{introduction}
 
-\input{01}
+\include{01}
 \input{02}
 \input{03}
 \input{04}
@@ -53,7 +62,6 @@ Science, Vrije Universiteit Brussel, Pleinlaan 2, 1050 Brussel}
 \input{12}
 
 \include{magma} 
-%\include{solutions}
 
 \fancyhf{}
 \fancyfoot[R]{\thepage}

@@ -1,7 +1,5 @@
-%\section{Lecture -- Week 1} 
-
-
 \section{Groups}
+\lecture\label{lec:groups}
 
 This course is about groups. But what are groups?  If you want an example of a
 group and you do not know any mathematics, I would give you a Rubik's Cube.
@@ -18,7 +16,8 @@ The collection of all possible transformations that you can apply to the cube, i
 \caption{This is probably the best example of a group.}
 \end{figure}
 
-Before defining groups, we recall that a binary operation on a set $X$
+\index{Binary operation}
+Before defining groups, we recall that a \emph{binary operation} on a set $X$
 is simply a map 
 \[
 X\times X\to X,
@@ -38,9 +37,9 @@ A \emph{group} is a non-empty set $G$ with a binary operation
 $G\times G\to G$, $(x,y)\mapsto xy$, such that
 the following properties hold:
 \begin{enumerate}
-    \item (Associativity) $(xy)z=x(yz)$ for all $x,y,z\in G$.
-    \item (Existence of a neutral element) There exists $e\in G$ such that $xe=ex=x$ for all $x\in G$.
-    \item (Existence of inverses) For each $x\in G$ there exists $y\in G$ such that $xy=yx=e$.
+  \item (Associativity)\index{Associativity} $(xy)z=x(yz)$ for all $x,y,z\in G$.
+    \item (Existence of a neutral element)\index{Neutral element} There exists $e\in G$ such that $xe=ex=x$ for all $x\in G$.
+    \item (Existence of inverses)\index{Inverse element} For each $x\in G$ there exists $y\in G$ such that $xy=yx=e$.
 \end{enumerate}
 \end{definition}
 
@@ -72,11 +71,12 @@ of Cayley's theorem \ref{thm:Cayley}.
     Prove that the neutral element of a group is unique. 
 \end{exercise}
 
-In general, when the binary operation is written multiplicatively, one
-writes the neutral element $e$ of a group as $1_G$ or simply as $1$. The inverse of $x$ will be 
-denoted by $x^{-1}$. 
+In general, when the binary operation is written multiplicatively, one writes
+the neutral element $e$ of a group as $1_G$ or simply as $1$. The inverse of
+$x$ will be denoted by $x^{-1}$. 
 
 \begin{example}
+  \index{Group!general linear}
     Let $n\geq1$. The set $\GL_n(\R)$ of $n\times n$ invertible real 
 matrices forms a
     group with the usual matrix multiplication. The neutral element is the $n\times n$ 
@@ -104,6 +104,7 @@ With this, the following properties (valid in every group) look familiar:
     A group $G$ is \emph{abelian} if $xy=yx$ for all $x,y\in G$. 
 \end{definition}
 
+\index{Additive notation}
 Most of the time, for abelian groups, we will use 
 the \emph{additive notation}. This means that the binary operation
 of the group will be denoted by $(x,y)\mapsto x+y$, the neutral
@@ -116,7 +117,7 @@ the inverse of an element $x$ will be $-x$.
     abelian groups: 
     \begin{enumerate}
         \item $\Z$, $\Q$, $\R$ and $\C$ with the usual addition. 
-        \item Let $n\geq2$. The set $\Z/n$ of integers modulo $n$ with the usual addition modulo $n$.
+        \item Let $n\geq2$. The set $\Z/n$ of integers modulo $n$ with the usual addition modulo $n$.\index{Group!of integers modulo n@Group!of integers modulo $n$} 
         \item $\Q^\times=\Q\setminus\{0\}$, $\R^\times=\R\setminus\{0\}$ and $\C^\times=\C\setminus\{0\}$ 
         with the usual multiplication.
       \item Let $p$ be a prime number. The set
@@ -135,11 +136,14 @@ the addition $0+0=0$, or multiplicatively as $\{1\}$ with multiplication
 $1\cdot 1=1$. 
 
 \begin{definition}
-    \index{Group!order}
-    The \emph{order} $|G|$ of a group $G$ is the 
-    cardinality of $G$. A group $G$ is said to be
-    \emph{finite} if $|G|$ is finite and \emph{infinite}
-    otherwise. 
+  \index{Group!order}
+  \index{Order of a group|see{Group, order}}
+  \index{Group!finite}
+  \index{Group!infinite}
+  The \emph{order} $|G|$ of a group $G$ is the 
+  cardinality of $G$. A group $G$ is said to be
+  \emph{finite} if $|G|$ is finite and \emph{infinite}
+  otherwise. 
 \end{definition}
 
 The group $\Z/n$ of integers modulo $n$ is a finite group of order $n$. 
@@ -153,7 +157,7 @@ the maps $L_g\colon G\to G$, $x\mapsto gx$, and
 $R_g\colon G\to G$, $x\mapsto xg$, are bijective. 
 \end{exercise}
 
-\index{Group!table}
+\index{Group!multiplication table}
 \label{multiplication_table}
 Let $G=\{g_1,g_2,\dots,g_n\}$ be a finite group. The \emph{table} 
 of $G$ is the matrix 
@@ -189,6 +193,7 @@ The following facts are left as an exercise:
 
 \begin{example}
 \label{exa:cyclic}
+\index{Group!cyclic}
 Fix a symbol $g$. Consider the set  
 \[
 \langle g\rangle=\{g^k:k\in\Z\}
@@ -196,7 +201,8 @@ Fix a symbol $g$. Consider the set
 of pairwise distinct formal powers of $g$
 (with the usual convention $g^0=1$). Then
 $\langle g\rangle$
-with the operation $g^ig^j=g^{i+j}$ is an abelian group. 
+with the operation $g^ig^j=g^{i+j}$ is an abelian group. This is the
+\emph{infinite cyclic group}.
 \end{example}
 
 We will see later that $\Z$ and the group of 
@@ -204,6 +210,7 @@ Example \ref{exa:cyclic} are ``indistinguishable''
 as groups, even if they appear to be completely different. 
 
 \begin{example}
+  \index{Group!roots of unity}
 Let $n$ be a positive integer. The set 
 $G_n=\{z\in\C:z^n=1\}$ is an abelian group with
 the usual multiplication of complex numbers. Moreover, the set 
@@ -223,7 +230,8 @@ a$ and $f(x)=x$ otherwise, and $g\colon X\to
 
 \index{Permutation}
 \index{Group!symmetric}
-\label{convention:left-to-right}
+\index{Permutation!degree}
+\label{convention:right-to-left}
 If $X=\{1,2,\dots,n\}$, the group $\Sym_X$ will be written as $\Sym_n$. This is
 the \emph{symmetric group} of degree $n$. The elements of $\Sym_n$ are
 called \emph{permutations} of degree $n$. 
@@ -233,11 +241,12 @@ bijective map
 \[
 f\colon\{1,\dots,n\}\to \{1,\dots,n\}.
 \]
+\index{Permutation!two-line notation}
 To denote permutations, 
 we can use the following convention. The symbol  
 \[
-\genfrac(){0pt}{0}{12345}{31245}
-%\binom{12345}{32145}
+%\genfrac(){0pt}{0}{12345}{32145}
+\perm{32145}
 \]
 denotes the map 
 $f\colon\{1,2,3,4,5\}\to\{1,2,3,4,5\}$ such that 
@@ -249,36 +258,40 @@ f(1)=3,
 \quad f(5)=5.
 \]
 Here 2, 4 and 5 are \emph{fixed points} of the permutation $f$. 
+\index{Permutation!fixed point}
 
 As we said, the operation of $\Sym_n$ is the usual
 composition of maps. 
 For example, 
 \[
-\binom{12345}{32145}
-\binom{12345}{13452}
+\perm{32145}
+\perm{13452}
 =
-\binom{12345}{32145}
+\perm{32145}
 \circ 
-\binom{12345}{13452}
-=\binom{12345}{31452}.
+\perm{13452}
+=\perm{31452}.
 \]
 
 \begin{example}[Klein group]
-\index{Klein group}
+\index{Group!Klein}
+\index{Klein group|see{Group, Klein}}
 The set  
 \[
-K=\left\{ \id,\binom{1234}{2143},\binom{1234}{3412},\binom{1234}{4321}\right\}
+K=\left\{ \id,\perm{2143},\perm{3412},\perm{4321}\right\}
 \]
 together with the usual composition of maps is an abelian group. 
 Note that $K$ is included in $\Sym_{4}$.
 Can you compute the table of this group?
 \end{example}
 
+\index{Permutation!cycle decomposition}
+\index{Cycle}
 Every permutation can be written as a product of disjoint cycles. This fact is
 proved by induction but is relatively intuitive. Let us decompose the
 permutation 
 \[
-\sigma=\binom{123456789}{638915724}\in\Sym_{9}
+\sigma=\perm{638915724}\in\Sym_{9}
 \]
 as a product of cycles. We need to 
 draw a picture for $\sigma$:
@@ -300,23 +313,23 @@ Therefore
 \[
 \sigma=(165)(238)(49)(7).
 \]
-Generally, 
-one omits loops and orders  
-the cycles according to 
-the length. Thus 
+One usually omits 1-cycles. Since disjoint cycles commute, their order in the
+product is not relevant. Thus, for example,  
+%Generally, 
+%one omits loops and orders  
+%the cycles according to 
+%the length. Thus 
 \[
 \sigma=(49)(165)(238).
 \]
 
 \begin{example}
 \label{exa:S3}
-\index{Symmetric group $\Sym_3$}
 The set $\Sym_3$ of bijective maps $\{1,2,3\}\to\{1,2,3\}$
 together with the composition of maps is a group of order six. 
 Its elements are the permutations 
         \[
-        \id,\binom{123}{213},\binom{123}{321},\binom{123}{132},\binom{123}{231},
-\binom{123}{312}.
+        \id,\perm{213},\perm{321},\perm{132},\perm{231},\perm{312}.
         \]
         Writing 
         permutations as a product of disjoint cycles,  
@@ -389,6 +402,7 @@ indeed ``indistinguishable'' as groups.
 
 \begin{example}
 \index{Euler's totient function}
+\index{Group!of units}
 Let $n\geq2$. The multiplicative units of $\Z/n$ form a group 
 with the usual multiplication modulo $n$. 
 We will use the following notation:
@@ -417,16 +431,49 @@ is
 \end{example}
 
 \begin{example}
-Let us explore the spatial symmetries of the equilateral triangle shown in Figure~\ref{fig:triangle}; our triangle is centered at the origin. The spatial transformations that preserve the triangle are the identity, the counterclockwise (plane) rotations  $R_{2\pi/3}$  and  $R_{4\pi/3}$ by angles $2\pi/3$ and  $4\pi/3$, respectively, as well as the (spatial) rotations by angle  $\pi$  about each of the three lines shown in the figure.
+\index{Symmetries!of the triangle}
+Let us explore the spatial symmetries of the equilateral triangle shown in
+Figure~\ref{fig:triangle}; our triangle is centered at the origin. The spatial
+transformations that preserve the triangle are the identity, the
+counterclockwise (plane) rotations  $R_{2\pi/3}$  and  $R_{4\pi/3}$ by angles
+$2\pi/3$ and  $4\pi/3$, respectively, as well as the (spatial) rotations by
+angle  $\pi$  about each of the three lines shown in the figure.
+%\begin{figure}[h]
+%\begin{tikzpicture}
+%    \coordinate (A) at (0,0);
+%    \coordinate (B) at (4,0);
+%    \coordinate (C) at (2,3.464);
+%    \draw[thick, line width=.3mm] (A) -- (B) -- (C) -- cycle;
+%    \foreach \point in {A, B, C, C, B, B, A, C, B} {
+%        \fill (\point) circle (5pt);
+%    }
+%    \node[below left=5pt] at (A) {$2$};
+%    \node[below right=5pt] at (B) {$3$};
+%    \node[above=6pt] at (C) {$1$};
+%    \coordinate (M_AB) at ($(A)!0.5!(B)$);
+%    \coordinate (M_BC) at ($(B)!0.5!(C)$);
+%    \coordinate (M_CA) at ($(C)!0.5!(A)$);
+%    \coordinate (Ext_C_AB) at ($(C)!1.3!(M_AB)$);
+%    \coordinate (Ext_A_BC) at ($(A)!1.3!(M_BC)$);
+%    \coordinate (Ext_B_CA) at ($(B)!1.3!(M_CA)$);
+%    \draw[dashed] (C) -- (Ext_C_AB);
+%    \draw[dashed] (A) -- (Ext_A_BC);
+%    \draw[dashed] (B) -- (Ext_B_CA);
+%\end{tikzpicture}
+%\caption{Symmetries of the triangle.}
+%\label{fig:triangle}
+%\end{figure}
+%
 \begin{figure}[h]
 \begin{tikzpicture}
     \coordinate (A) at (0,0);
-    \coordinate (B) at (4,0);
-    \coordinate (C) at (2,3.464);
+    \coordinate (B) at (2,0);
+    \coordinate (C) at (1,1.732);
     \draw[thick, line width=.3mm] (A) -- (B) -- (C) -- cycle;
-    \foreach \point/\vertexcolor in {A/red, B/blue, C/green} {
-        \fill[\vertexcolor] (\point) circle (5pt); 
-    }
+    % Color vertices: 1=green (C), 2=red (A), 3=blue (B)
+    \fill[red] (A) circle (3pt);
+    \fill[blue] (B) circle (3pt);
+    \fill[green] (C) circle (3pt);
     \node[below left=5pt] at (A) {$2$};
     \node[below right=5pt] at (B) {$3$};
     \node[above=6pt] at (C) {$1$};
@@ -436,18 +483,29 @@ Let us explore the spatial symmetries of the equilateral triangle shown in Figur
     \coordinate (Ext_C_AB) at ($(C)!1.3!(M_AB)$);
     \coordinate (Ext_A_BC) at ($(A)!1.3!(M_BC)$);
     \coordinate (Ext_B_CA) at ($(B)!1.3!(M_CA)$);
-    \draw[dashed] (C) -- (Ext_C_AB); 
-    \draw[dashed] (A) -- (Ext_A_BC); 
-    \draw[dashed] (B) -- (Ext_B_CA); 
+    \draw[dashed] (C) -- (Ext_C_AB);
+    \draw[dashed] (A) -- (Ext_A_BC);
+    \draw[dashed] (B) -- (Ext_B_CA);
 \end{tikzpicture}
 \caption{Symmetries of the triangle.}
 \label{fig:triangle}
 \end{figure}
 
-
-
-What happens to the vertices of our triangle under these transformations? We observe that the (plane) rotation  $R_{2\pi/3}$  maps vertex  1  to  2,  2  to  3, and  3  to  1. Thus we can identify $R_{2\pi/3}$ with the permutation  $(123)$. Similarly, the (spatial) reflection  $S$  across the vertical line fixes  1  and interchanges  2  and  3, which corresponds to the permutation $(23)$.
-Moreover, the compositions of these symmetries correspond to the compositions of their respective permutations. For example, if we first apply  $R_{2\pi/3}$  and then $S$, the resulting transformation on the vertices is given by
+What happens to the vertices of our triangle under these transformations? We
+observe that the (plane) rotation  $R_{2\pi/3}$  maps vertex  1  to  2,  2  to
+3, and  3  to  1. Thus we can identify $R_{2\pi/3}$ with the permutation
+$(123)$. Similarly, the (spatial) rotation $S$ by $\pi$ about the vertical line of
+Figure~\ref{fig:triangle} fixes~1 and interchanges~2 and~3, which corresponds
+to the permutation $(23)$. (Seen from inside the plane of the triangle, this
+rotation looks like the reflection in that line; the two maps differ as
+transformations of space but agree on the triangle.)
+%Similarly, the (spatial) reflection  $S$  across the vertical line
+%fixes  1  and interchanges  2  and  3, which corresponds to the permutation
+%$(23)$.  
+Moreover, the compositions of these symmetries correspond to the
+compositions of their respective permutations. For example, if we first apply
+$R_{2\pi/3}$  and then $S$, the resulting transformation on the vertices is
+given by
 \[
 (23)(123)=(13)
 \]
@@ -481,9 +539,9 @@ as Figure~\ref{fig:composition} shows.
     \draw[thick, line width=0.2mm] (A3) -- (B3) -- (C3) -- cycle;
 
     % Draw and color the vertices
-    \foreach \point/\vertexcolor in {A1/red, B1/blue, C1/green, 
-                               A2/red, B2/blue, C2/green,
-                               A3/red, B3/blue, C3/green} {
+    \foreach \point/\vertexcolor in {A1/red, B1/blue, C1/green,
+                                A2/green, B2/red, C2/blue,
+                                A3/red, B3/green, C3/blue} {
         \fill[\vertexcolor] (\point) circle (3pt); 
     }
 
@@ -517,6 +575,7 @@ correspond to the permutations
 \end{example}
 
 \begin{example}
+\index{Symmetries!of the square}
 Let us study the symmetries of the square shown in Figure~\ref{fig:square}. Our square is centered at the origin. The transformations that preserve the square are the identity, the counterclockwise (plane) rotations
 $R_{\pi/2}$, $R_{\pi}$ and $R_{3\pi/2}$ by angles 
 $\pi/2$, $\pi$ and $3\pi/2$, respectively. Additionally, there are (spatial) rotations by an angle of $\pi$ about the axes along the lines shown in the figure. 
@@ -528,14 +587,15 @@ By observing the effect of these transformations on the vertices of our square, 
 \end{example}
 
 \begin{figure}[ht]
+\centering
 \begin{tikzpicture}
     \coordinate (A) at (0,0);
-    \coordinate (B) at (3,0);
-    \coordinate (C) at (3,3);
-    \coordinate (D) at (0,3);
+    \coordinate (B) at (2,0);
+    \coordinate (C) at (2,2);
+    \coordinate (D) at (0,2);
     \draw[thick, line width=.3mm] (A) -- (B) -- (C) -- (D) -- cycle;
     \foreach \point/\vertexcolor in {A/red, B/blue, C/green, D/orange} {
-        \fill[\vertexcolor] (\point) circle (4pt); 
+        \fill[\vertexcolor] (\point) circle (3pt);
     }
     \node[left =5pt] at (A) {$3$};
     \node[right=5pt] at (B) {$4$};
@@ -545,7 +605,6 @@ By observing the effect of these transformations on the vertices of our square, 
     \coordinate (M_BC) at ($(B)!0.5!(C)$);
     \coordinate (M_CD) at ($(C)!0.5!(D)$);
     \coordinate (M_DA) at ($(D)!0.5!(A)$);
-    \coordinate (Center) at ($(A)!0.5!(C)$);  
     \coordinate (Ext_H1) at ($(M_AB)!1.3!(M_CD)$);
     \coordinate (Ext_H2) at ($(M_CD)!1.3!(M_AB)$);
     \coordinate (Ext_V1) at ($(M_BC)!1.3!(M_DA)$);
@@ -554,30 +613,66 @@ By observing the effect of these transformations on the vertices of our square, 
     \coordinate (Ext_D2) at ($(C)!1.3!(A)$);
     \coordinate (Ext_D3) at ($(B)!1.3!(D)$);
     \coordinate (Ext_D4) at ($(D)!1.3!(B)$);
-    \draw[dashed] (Ext_H1) -- (Ext_H2); 
-    \draw[dashed] (Ext_V1) -- (Ext_V2); 
-    \draw[dashed] (Ext_D1) -- (Ext_D2); 
-    \draw[dashed] (Ext_D3) -- (Ext_D4); 
+    \draw[dashed] (Ext_H1) -- (Ext_H2);
+    \draw[dashed] (Ext_V1) -- (Ext_V2);
+    \draw[dashed] (Ext_D1) -- (Ext_D2);
+    \draw[dashed] (Ext_D3) -- (Ext_D4);
 \end{tikzpicture}
 \caption{The symmetries of the square.}
 \label{fig:square}
 \end{figure}
 
+%\begin{figure}[ht]
+%\begin{tikzpicture}
+%    \coordinate (A) at (0,0);
+%    \coordinate (B) at (3,0);
+%    \coordinate (C) at (3,3);
+%    \coordinate (D) at (0,3);
+%    \draw[thick, line width=.3mm] (A) -- (B) -- (C) -- (D) -- cycle;
+%    \foreach \point/\vertexcolor in {A/red, B/blue, C/green, D/orange} {
+%        \fill[\vertexcolor] (\point) circle (4pt); 
+%    }
+%    \node[left =5pt] at (A) {$3$};
+%    \node[right=5pt] at (B) {$4$};
+%    \node[right=5pt] at (C) {$1$};
+%    \node[left=5pt] at (D) {$2$};
+%    \coordinate (M_AB) at ($(A)!0.5!(B)$);
+%    \coordinate (M_BC) at ($(B)!0.5!(C)$);
+%    \coordinate (M_CD) at ($(C)!0.5!(D)$);
+%    \coordinate (M_DA) at ($(D)!0.5!(A)$);
+%    \coordinate (Center) at ($(A)!0.5!(C)$);  
+%    \coordinate (Ext_H1) at ($(M_AB)!1.3!(M_CD)$);
+%    \coordinate (Ext_H2) at ($(M_CD)!1.3!(M_AB)$);
+%    \coordinate (Ext_V1) at ($(M_BC)!1.3!(M_DA)$);
+%    \coordinate (Ext_V2) at ($(M_DA)!1.3!(M_BC)$);
+%    \coordinate (Ext_D1) at ($(A)!1.3!(C)$);
+%    \coordinate (Ext_D2) at ($(C)!1.3!(A)$);
+%    \coordinate (Ext_D3) at ($(B)!1.3!(D)$);
+%    \coordinate (Ext_D4) at ($(D)!1.3!(B)$);
+%    \draw[dashed] (Ext_H1) -- (Ext_H2); 
+%    \draw[dashed] (Ext_V1) -- (Ext_V2); 
+%    \draw[dashed] (Ext_D1) -- (Ext_D2); 
+%    \draw[dashed] (Ext_D3) -- (Ext_D4); 
+%\end{tikzpicture}
+%\caption{The symmetries of the square.}
+%\label{fig:square}
+%\end{figure}
 
 \begin{exercise}
-\label{xca:GxH}
-        \index{Direct product!of groups}
-        Let $G$ and $H$ be groups. Prove that 
-        the set 
-        $G\times H$
-        of pairs $(g,h)$, where $g\in G$ and 
-        $h\in H$ is a group with
-        the operation
-        \[
-                (g,h)(g_1,h_1)=(gg_1,hh_1).
-        \]
-        This group is called the 
-        \emph{direct product} of $G$ and $H$.
+  \label{xca:GxH}
+  \index{Group!direct product of}
+  \index{Direct product|see{Group, direct product of}}
+  Let $G$ and $H$ be groups. Prove that 
+  the set 
+  $G\times H$
+  of pairs $(g,h)$ with $g\in G$ and 
+  $h\in H$ is a group with
+  the operation
+  \[
+    (g,h)(g_1,h_1)=(gg_1,hh_1).
+  \]
+  This group is called the 
+  \emph{direct product} of $G$ and $H$.
 \end{exercise}
 
 The construction of Exercise \ref{xca:GxH}

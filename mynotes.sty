@@ -13,7 +13,13 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{mynotes}[2026/08/30 v1.0 Personal lecture notes style]
 
+% This is to put the bubble with the lectures on the left of the page
 \reversemarginpar
+
+% Centering captions in figures
+\makeatletter
+\g@addto@macro\@floatboxreset{\centering}
+\makeatother
 
 % ------------------------------------------------------------
 % Packages
@@ -35,6 +41,7 @@
 \RequirePackage{fancyhdr}
 \RequirePackage[english.nosectiondot]{babel}
 \RequirePackage{marginnote}
+\RequirePackage{xparse}
 
 % ------------------------------------------------------------
 % Hyperref setup
@@ -124,6 +131,25 @@ colframe=blue!55!white
 % ------------------------------------------------------------
 % Macros
 % ------------------------------------------------------------
+
+% Special macro for two-line permutation
+\ExplSyntaxOn
+\NewDocumentCommand{\perm}{m} {
+    % Count the number of digits in the input
+    \int_set:Nn \l_tmpa_int { \tl_count:n {#1} }
+
+    % Generate the identity permutation: 123...n
+    \tl_set:Nn \l_identity_tl {}
+    \int_step_inline:nnnn { 1 } { 1 } { \l_tmpa_int } {
+        \tl_put_right:Nn \l_identity_tl { ##1 }
+    }
+
+    % Create the two-line permutation using genfrac
+    \genfrac(){0pt}{0}{\l_identity_tl}{#1}
+}
+\ExplSyntaxOff
+
+% My macros 
 \newcommand{\Irr}{\operatorname{Irr}}
 \newcommand{\Ann}{\operatorname{Ann}}
 \newcommand{\op}{\operatorname{op}}
@@ -171,6 +197,8 @@ colframe=blue!55!white
 \renewcommand{\sl}{\mathfrak{sl}}
 \newcommand{\ad}[1]{\operatorname{ad}\,#1}
 \newcommand{\A}{\mathbb{A}}
+
+
 
 % To add nice titles in the TOC
 \newcommand{\TOC}[1]{
@@ -313,5 +341,16 @@ colframe=yellow!45!black]\begin{bxca}}{\end{bxca}\end{tcolorbox}}
 \fancyfoot[R]{\thepage}
 \fancyhead[L]{\course}
 \setlength{\headheight}{14pt}
+
+% \theindex (and a few other LaTeX internals, e.g. \maketitle) switch to
+% the "plain" page style for their first page. Left at its default, plain
+% puts the page number centered at the bottom instead of on the right, so
+% that one page looks different from the rest of the document. Redefine
+% plain to match.
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[R]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
 
 \endinput
