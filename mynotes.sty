@@ -1,0 +1,317 @@
+% ============================================================
+% Usage in the main file:
+%   \documentclass[12pt]{amsproc}
+%   \usepackage{mynotes}
+%   \renewcommand{\course}{Ring and module theory}
+%   \title{\course}
+%   \author{...}
+%   ...
+%   \begin{document}
+%   ...
+%   \end{document}
+% ============================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mynotes}[2026/08/30 v1.0 Personal lecture notes style]
+
+\reversemarginpar
+
+% ------------------------------------------------------------
+% Packages
+% ------------------------------------------------------------
+\RequirePackage[foot]{amsaddr}
+\RequirePackage{hyperref}
+\RequirePackage{listings}
+\RequirePackage{tikz-cd}
+\usetikzlibrary{arrows,positioning,shapes}
+\RequirePackage{datetime}
+\RequirePackage{amssymb}
+\RequirePackage{mathtools}
+\RequirePackage{stmaryrd}
+\RequirePackage{mdframed}
+\RequirePackage{textcomp}
+\RequirePackage{colortbl}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage[margin=1in,footskip=.25in]{geometry}
+\RequirePackage{fancyhdr}
+\RequirePackage[english.nosectiondot]{babel}
+\RequirePackage{marginnote}
+
+% ------------------------------------------------------------
+% Hyperref setup
+% ------------------------------------------------------------
+\hypersetup{
+  final,
+  colorlinks,
+  linkcolor=-red!55!green!50,
+  citecolor=blue!50!red,
+  urlcolor=green!30!black
+}
+
+\swapnumbers
+
+\overfullrule=1mm
+
+% ------------------------------------------------------------
+% \course: name of the course, shown in the running header and
+% (typically) used for \title{\course}. Give it a default so
+% the package is self-contained; override in the main file with
+% \renewcommand{\course}{...} before \begin{document}.
+% ------------------------------------------------------------
+\providecommand{\course}{}
+
+% ------------------------------------------------------------
+% Emphasis
+% ------------------------------------------------------------
+\renewcommand\emph[1]{\textcolor{blue!50!red}{\bfseries #1}}
+
+% ------------------------------------------------------------
+% Section numbering
+% ------------------------------------------------------------
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\arabic{section}.\arabic{subsection}}
+
+% \def\l@part{\@tocline{1}{12pt plus2pt}{1pc}{}{\bfseries}}
+
+% ------------------------------------------------------------
+% Pink box for optional comments
+% ------------------------------------------------------------
+\newtcolorbox{eqbox}[1][]
+{
+boxrule=0pt,frame hidden,colback=red!5!white,
+  left=.3em, right=.3em, top=.3em, bottom=.3em,
+  beforeafter skip balanced=.4\baselineskip plus 2pt,
+  before upper={\parindent4mm},
+colframe=blue!55!white
+}
+\newenvironment{optional}[1][]{
+\begin{eqbox}
+}{
+\end{eqbox}
+}
+
+% ------------------------------------------------------------
+% Code listings
+% ------------------------------------------------------------
+\lstdefinelanguage{Magma}{
+    morekeywords={function,end,for,while,if,then,else,elif,return,%
+                  local,true,false,print,forward,procedure,case,%
+                  when,repeat,until,break,continue},
+    sensitive=true,
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]"
+}
+
+\lstset{
+    language = Magma,
+    basicstyle=\ttfamily\small,
+    commentstyle=\small,
+    backgroundcolor = \color{gray!8!white},
+    showstringspaces = false,
+    columns=fixed,
+}
+
+% ------------------------------------------------------------
+% Section name used by amsproc's running head (e.g. "Lecture")
+% ------------------------------------------------------------
+\renewcommand\sectionname{\S}
+
+% enumerate labels: 1), 2), 3), ...
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi})}}
+
+\makeindex
+
+% ------------------------------------------------------------
+% Macros
+% ------------------------------------------------------------
+\newcommand{\Irr}{\operatorname{Irr}}
+\newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\op}{\operatorname{op}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\norm}{\operatorname{norm}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Syl}{\mathrm{Syl}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Inn}{\operatorname{Inn}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Alt}{\mathbb{A}}
+\newcommand{\Sym}{\mathbb{S}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\trace}{\operatorname{trace}}
+\newcommand{\sgn}{\operatorname{sign}}
+\newcommand{\ch}{\operatorname{char}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\Ret}{\operatorname{Ret}}
+\newcommand{\GL}{\mathbf{GL}}
+\newcommand{\SL}{\mathbf{SL}}
+\newcommand{\PSL}{\mathbf{PSL}}
+\newcommand{\PGL}{\mathbf{PGL}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\Aff}{\operatorname{Aff}}
+\newcommand{\Soc}{\operatorname{Soc}}
+\newcommand{\Core}{\operatorname{Core}}
+\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+\newcommand{\Fun}{\operatorname{Fun}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\Ind}{\operatorname{Ind}}
+\newcommand{\cp}{\operatorname{cp}}
+\newcommand{\cf}{\operatorname{cf}}
+\newcommand{\Char}{\operatorname{Char}}
+\newcommand{\gl}{\mathfrak{gl}}
+\renewcommand{\sl}{\mathfrak{sl}}
+\newcommand{\ad}[1]{\operatorname{ad}\,#1}
+\newcommand{\A}{\mathbb{A}}
+
+% To add nice titles in the TOC
+\newcommand{\TOC}[1]{
+  \addtocontents{toc}{\bigskip}
+  \addtocontents{toc}{\textcolor{red!70!black}{\hspace{-0.6cm}\textbf{#1}}}
+}
+
+% column vector
+\newcount\colveccount
+\newcommand*\colvec[1]{
+\global\colveccount#1
+\begin{pmatrix}
+        \colvecnext
+        }
+        \def\colvecnext#1{
+        #1
+        \global\advance\colveccount-1
+        \ifnum\colveccount>0
+        \\
+        \expandafter\colvecnext
+        \else
+\end{pmatrix}
+\fi
+}
+
+% ------------------------------------------------------------
+% Theorem-like environments
+% ------------------------------------------------------------
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{xca}[theorem]{Exercise}
+\newtheorem{bxca}[theorem]{Bonus exercise}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{que}[theorem]{Question}
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{open}[theorem]{Open problem}
+\newtheorem{convention}[theorem]{Convention}
+
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+\newenvironment{sol}[1]
+{\renewcommand{\qedsymbol}{}\begin{proof}[\ref{#1}]}
+  {\end{proof}}
+
+\newenvironment{problem}
+{\begin{tcolorbox}[boxrule=0pt,frame hidden,colback=blue!5!white,
+  left=.3em, right=.3em, top=-.2em, bottom=.3em,
+  beforeafter skip balanced=.4\baselineskip plus 2pt,
+  before upper={\parindent4mm\noindent},
+colframe=blue!55!white]\begin{open}}{\end{open}\end{tcolorbox}}
+
+\newenvironment{question}
+{\begin{tcolorbox}[boxrule=0pt,frame hidden,colback=blue!5!white,
+  left=.3em, right=.3em, top=-.2em, bottom=.3em,
+  beforeafter skip balanced=.4\baselineskip plus 2pt,
+  before upper={\parindent4mm\noindent},
+colframe=blue!55!white]\begin{que}}{\end{que}\end{tcolorbox}}
+
+\newenvironment{conjecture}
+{\begin{tcolorbox}[boxrule=0pt,frame hidden,colback=blue!5!white,
+  left=.3em, right=.3em, top=-.2em, bottom=.3em,
+  beforeafter skip balanced=.4\baselineskip plus 2pt,
+  before upper={\parindent4mm\noindent},
+colframe=blue!55!white]\begin{conj}}{\end{conj}\end{tcolorbox}}
+
+% Mandatory exercises: green background
+\newenvironment{exercise}
+{\begin{tcolorbox}[boxrule=0pt,frame hidden,colback=green!5!white,
+  left=.3em, right=.3em, top=-.2em, bottom=.3em,
+  beforeafter skip balanced=.4\baselineskip plus 2pt,
+  before upper={\parindent4mm\noindent},
+colframe=green!55!black]\begin{xca}}{\end{xca}\end{tcolorbox}}
+
+% Optional (bonus) exercises: yellow background
+\newenvironment{bonus}
+{\begin{tcolorbox}[boxrule=0pt,frame hidden,colback=yellow!15!white,
+  left=.3em, right=.3em, top=-.2em, bottom=.3em,
+  beforeafter skip balanced=.4\baselineskip plus 2pt,
+  before upper={\parindent4mm\noindent},
+colframe=yellow!45!black]\begin{bxca}}{\end{bxca}\end{tcolorbox}}
+
+\numberwithin{figure}{section}
+\numberwithin{equation}{section}
+
+% ------------------------------------------------------------
+% Section / subsection / subsubsection titles
+% ------------------------------------------------------------
+\makeatletter
+\renewcommand\section{\@startsection{section}{1}%
+  \z@{.7\linespacing\@plus\linespacing}{.5\linespacing}%
+  {\color{green!30!black}\normalfont\bfseries\centering}}
+\renewcommand\subsection{\@startsection{subsection}{2}%
+  \normalparindent{.5\linespacing\@plus.7\linespacing}{-.5em}%
+  {\color{-red!55!green!50}\normalfont\bfseries}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}%
+  \normalparindent\z@{-.5em}%
+  {\color{green!50!blue}\normalfont\itshape}}
+\makeatother
+
+% ------------------------------------------------------------
+% Lectures
+% ------------------------------------------------------------
+\makeatletter
+\newcommand{\listoflectures}{%
+  \par\addvspace{3.5ex \@plus 1ex \@minus .2ex}%
+  {\centering\normalfont\bfseries List of lectures\par}%
+  \nobreak\vspace{2.3ex \@plus .2ex}%
+  \@afterindentfalse\@afterheading
+  \begingroup
+    \makeatletter
+    \IfFileExists{\jobname.lec}{\@input{\jobname.lec}}{}%
+    \if@filesw
+      \expandafter\newwrite\csname tf@lec\endcsname
+      \immediate\openout\csname tf@lec\endcsname\jobname.lec\relax
+    \fi
+  \endgroup}
+\newcommand{\lecturebubble}[1]{\tikz[baseline]{\node[rounded corners=7pt,
+ draw=gray!15!white,line width=.7pt,fill=gray!5!white,inner xsep=7pt,inner ysep=3.5pt,
+ font=\sffamily\footnotesize\color{blue!50!red}]{Lecture~#1};}}
+\newcounter{lecture}
+\newcommand{\lecture}{%
+  \refstepcounter{lecture}%
+  \addcontentsline{lec}{section}{Lecture~\thelecture}%
+  \marginnote{\lecturebubble{\thelecture}}[-1.9\baselineskip]%
+  \ignorespaces}
+\makeatother
+
+% ------------------------------------------------------------
+% Page style: running header/footer
+% ------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[R]{\thepage}
+\fancyhead[L]{\course}
+\setlength{\headheight}{14pt}
+
+\endinput
