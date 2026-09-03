@@ -1,17 +1,20 @@
-\documentclass[12pt]{amsproc}
+\documentclass[12pt,oneside]{amsproc}
+\usepackage{mynotes}
 
-\newcommand{\course}{Group theory}
+\renewcommand{\course}{Group theory}
 
-\input{mystuff}
-
-\usetikzlibrary{calc}
-
-%\usepackage{mathptmx}
-%\usepackage{newtxtext}
-
+% This is for the Rubik's cube
 \usepackage{tikz}
 \usepackage{rubikcube}
 \usetikzlibrary{calc,positioning}
+
+\title{\course}
+\author{Leandro Vendramin}
+\address{Department of Mathematics and Data
+Science, Vrije Universiteit Brussel, Pleinlaan 2, 1050 Brussel}
+\email{Leandro.Vendramin@vub.be}
+\thanks{}
+\date{}
 
 \begin{document}
 
@@ -35,7 +38,6 @@
 \pagenumbering{arabic}
 
 \include{introduction}
-%\input{subsections}
 
 \input{01}
 \input{02}
@@ -51,7 +53,7 @@
 \input{12}
 
 \include{magma} 
-\include{solutions}
+%\include{solutions}
 
 \fancyhf{}
 \fancyfoot[R]{\thepage}

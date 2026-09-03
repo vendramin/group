@@ -4,8 +4,8 @@
 \section{Groups}
 
 This course is about groups. But what are groups?  If you want an example of a
-group and you don’t know any mathematics, I would give you a Rubik’s Cube.
-Wait... what? Yes, a Rubik’s Cube. This is, after all, just a cube. But there are
+group and you do not know any mathematics, I would give you a Rubik's Cube.
+Wait... what? Yes, a Rubik's Cube. This is, after all, just a cube. But there are
 transformations you can apply to this toy that change the color configuration
 of the stickers, while it remains a cube.
 The collection of all possible transformations that you can apply to the cube, including the identity transformation that does nothing, forms a group. (Note that these transformations can be composed one after another and are reversible.)
@@ -30,7 +30,7 @@ juxtaposition to denote this generic binary operation. For example,
 (x,y)\mapsto x-y
 \]
 is a binary operation on $\Z$ but not
-in $\Z_{\geq 0}$.
+on $\Z_{\geq 0}$.
 
 \begin{definition}
 \index{Group}
@@ -44,9 +44,9 @@ the following properties hold:
 \end{enumerate}
 \end{definition}
 
-The associativity condition implies
-that all ordered products that we can form with, say, 
-the elements $x_1,x_2,\dots,x_n$ will be equal. For example,
+The associativity condition implies that all parenthesizations of a product
+with the factors in a fixed order have the same value.
+For example,
 \[
 (x_1x_2)((x_3x_4)x_5)=x_1(x_2(x_3(x_4x_5)))
 \]
@@ -64,7 +64,7 @@ of Cayley's theorem \ref{thm:Cayley}.
 
 \begin{proof}
     Let $y,z\in G$ be inverses of $x\in G$. Then 
-    $z=z(xy)=(zx)y=ey=y$.
+    $z=ze=z(xy)=(zx)y=ey=y$.
 \end{proof}
 
 \begin{exercise}
@@ -119,15 +119,20 @@ the inverse of an element $x$ will be $-x$.
         \item Let $n\geq2$. The set $\Z/n$ of integers modulo $n$ with the usual addition modulo $n$.
         \item $\Q^\times=\Q\setminus\{0\}$, $\R^\times=\R\setminus\{0\}$ and $\C^\times=\C\setminus\{0\}$ 
         with the usual multiplication.
-        \item Let $p$ be a prime number. The set $(\Z/p)^{\times}=\Z/p\setminus\{0\}$ of invertible integers modulo $p$ 
-            with the usual multiplication modulo $p$. 
+      \item Let $p$ be a prime number. The set
+        $\mathcal{U}(\Z/p)=(\Z/p)^{\times}=(\Z/p)\setminus\{0\}$ of invertible
+        integers modulo $p$ with the usual multiplication modulo $p$. 
     \end{enumerate}
 \end{example}
 
 The groups of the first two items will be written in additive notation. 
 
 \index{Group!trivial}
-The \emph{trivial group} is the (unique) group containing exactly one element, the neutral element. We can write this group additively, so we have the group $\{0\}$ with the addition $0+0=0$, or multiplicatively as $\{1\}$ with multiplication $1\cdot 1=1$. 
+The \emph{trivial group} is the (unique up to isomorphism\footnote{This notion
+will be explained later.}) group containing exactly one element, the neutral
+element. We can write this group additively, so we have the group $\{0\}$ with
+the addition $0+0=0$, or multiplicatively as $\{1\}$ with multiplication
+$1\cdot 1=1$. 
 
 \begin{definition}
     \index{Group!order}
@@ -172,8 +177,8 @@ We now discuss a multiplicative version of this group, as it will be
 very important later. We first need a little bit of notation. 
 Let $G$ be a group and $g\in G$. For $k\in\Z\setminus\{0\}$, we write 
 \begin{align*}
-    & g^k=g\cdots g\quad (k-\text{times}) && \text{if $k>0$},\\
-    & g^k=g^{-1}\cdots g^{-1}\quad (|k|-\text{times}) && \text{if $k<0$}.
+    & g^k=g\cdots g\quad (k\text{ times}) && \text{if $k>0$},\\
+    & g^k=g^{-1}\cdots g^{-1}\quad (|k|\text{ times}) && \text{if $k<0$}.
 \end{align*}
 By convention, $g^0=1$.
 The following facts are left as an exercise: 
@@ -188,7 +193,8 @@ Fix a symbol $g$. Consider the set
 \[
 \langle g\rangle=\{g^k:k\in\Z\}
 \]
-of integers powers of $g$ (with the usual convention $g^0=1$). Then
+of pairwise distinct formal powers of $g$
+(with the usual convention $g^0=1$). Then
 $\langle g\rangle$
 with the operation $g^ig^j=g^{i+j}$ is an abelian group. 
 \end{example}
@@ -201,7 +207,7 @@ as groups, even if they appear to be completely different.
 Let $n$ be a positive integer. The set 
 $G_n=\{z\in\C:z^n=1\}$ is an abelian group with
 the usual multiplication of complex numbers. Moreover, the set 
-$\cup_{n\geq1}G_n$ is an abelian group. 
+$\bigcup_{n\geq1}G_n$ is an abelian group. 
 \end{example}
 
 \begin{example}
@@ -209,8 +215,8 @@ $\cup_{n\geq1}G_n$ is an abelian group.
     is a group with the usual composition of maps. If $|X|\geq3$, the group
     $\Sym_{X}$ is non-abelian. To prove this, let $a,b,c\in
         X$ be three different elements. Let $f\colon X\to X$ be such that
-        $f(a)=b$, $f(b)=c$ and $f(c)=
-a$ and $g\colon X\to
+        $f(a)=b$, $f(b)=c$, $f(c)=
+a$ and $f(x)=x$ otherwise, and $g\colon X\to
         X$ be such that $g(a)=b$, $g(b)=a$ and $g(x)=x$ for all $x\in
         X\setminus\{a,b\}$.  Then $fg\ne gf$.
 \end{example}
@@ -260,16 +266,16 @@ For example,
 \index{Klein group}
 The set  
 \[
-K=\left\{ \mathrm{id},\binom{1234}{2143},\binom{1234}{3412},\binom{1234}{4321}\right\}
+K=\left\{ \id,\binom{1234}{2143},\binom{1234}{3412},\binom{1234}{4321}\right\}
 \]
 together with the usual composition of maps is an abelian group. 
 Note that $K$ is included in $\Sym_{4}$.
 Can you compute the table of this group?
 \end{example}
 
-Every permutation can be written as a product of disjoint cycles. The fact 
-is proved by induction but is relatively intuitive. Let us 
-decompose the permutation 
+Every permutation can be written as a product of disjoint cycles. This fact is
+proved by induction but is relatively intuitive. Let us decompose the
+permutation 
 \[
 \sigma=\binom{123456789}{638915724}\in\Sym_{9}
 \]
@@ -340,13 +346,13 @@ $x\mapsto x$, $x\mapsto 1-x$ and $x\mapsto\frac{1}{x}$.
 We claim that 
 the set 
 \[
-G=\left\{x,\frac{1}{x},1-x,\frac{1}{1-x},\frac{x}{x-1},\frac{x-1}{x}\right\}
+G=\left\{x,\frac{1}{x},1-x,\frac{1}{1-x},\frac{x}{x-1},1-\frac{1}{x}\right\}
 \subseteq\{f\colon\overline{\R}\to\overline{\R}:f\text{ is a map}\}
 \]
 is a non-abelian group with the usual composition of maps. How is this group ``acting'' on 
 the set $\{0,1,\infty\}$? 
 The group 
-$G$ can be identified with the set of bijective maps 
+$G$ can be identified with the group of bijective maps 
 \[
 \{0,1,\infty\}\to\{0,1,\infty\}.
 \]
@@ -365,22 +371,23 @@ in the following way:
         \arrow[from=2-2, to=3-1]
         \arrow[from=3-1, to=1-1]
 \end{tikzcd}\]
-\end{example}
 Writing the elements of $G$ as cycles, 
 \[
 G=\{\id,
 (0\;\infty),
-(0\:1),
+(0\;1),
 (1\;\infty\;0),
 (\infty\;1),
 (1\;0\;\infty)\}.
 \]
+\end{example}
 
 We will see later that the 
 groups of Examples \ref{exa:S3} and \ref{exa:another_S3} are
 indeed ``indistinguishable'' as groups. 
 
 \begin{example}
+\index{Euler's totient function}
 Let $n\geq2$. The multiplicative units of $\Z/n$ form a group 
 with the usual multiplication modulo $n$. 
 We will use the following notation:
@@ -388,7 +395,7 @@ We will use the following notation:
 \mathcal{U}(\Z/n)=\{x\in\Z/n:\gcd(x,n)=1\}.
 \]
 The order of $\mathcal{U}(\Z/n)$ is $\varphi(n)$, where $\varphi$ 
-is the Euler's totient function, that is 
+is Euler's totient function, that is 
 \[
 \varphi(n)=|\{x\in\Z:1\leq x\leq n,\,\gcd(x,n)=1\}|.
 \]
@@ -408,18 +415,13 @@ is
 \end{center}
 \end{example}
 
-%plane rotations around an axis perpendicular to the plane and passing %through the center of the triangle'. 
-
-
-
-
 \begin{example}
 Let us explore the spatial symmetries of the equilateral triangle shown in Figure~\ref{fig:triangle}; our triangle is centered at the origin. The spatial transformations that preserve the triangle are the identity, the counterclockwise (plane) rotations  $R_{2\pi/3}$  and  $R_{4\pi/3}$ by angles $2\pi/3$ and  $4\pi/3$, respectively, as well as the (spatial) rotations by angle  $\pi$  about each of the three lines shown in the figure.
 \begin{figure}[h]
 \begin{tikzpicture}
     \coordinate (A) at (0,0);
     \coordinate (B) at (4,0);
-    \coordinate (C) at (2,3);
+    \coordinate (C) at (2,3.464);
     \draw[thick, line width=.3mm] (A) -- (B) -- (C) -- cycle;
     \foreach \point/\vertexcolor in {A/red, B/blue, C/green} {
         \fill[\vertexcolor] (\point) circle (5pt); 
@@ -577,7 +579,7 @@ By observing the effect of these transformations on the vertices of our square, 
         \emph{direct product} of $G$ and $H$.
 \end{exercise}
 
-The construction of Example \ref{xca:GxH}
+The construction of Exercise \ref{xca:GxH}
 can be easily generalized to the product of 
 three or more groups.
 
