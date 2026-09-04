@@ -1,6 +1,5 @@
-%\section{Lecture -- Week 8}
-
-\section{Semi-direct products}
+\section{Semidirect products}
+\lecture\label{lec:semidirect}
 
 \index{Exact factorization of groups}
 We say that a group $G$ admits an \emph{exact factorization} through 
@@ -108,7 +107,7 @@ Exercise~\ref{xca:direct_product}.
 
 \begin{definition}
 \index{Semi-direct product}
-We say that a group $G$ is a \emph{semi-direct product} of $Q$ and $K$ if $K$ 
+We say that a group $G$ is a \emph{semidirect product} of $Q$ and $K$ if $K$ 
 is normal in $G$ and 
 $K$ admits a complement in $G$ isomorphic to $Q$. Notation: $G=K\rtimes Q$.
 \end{definition}
@@ -414,7 +413,7 @@ for all $x\in Q$ and $a\in K$, that is
 \]
 
 \begin{exercise}
-Prove that if $G$ is a semi-direct product of the normal subgroup 
+Prove that if $G$ is a semidirect product of the normal subgroup 
 $K$ with the subgroup $Q$, there exists a group homomorphism
 $\theta\colon Q\to\Aut(K)$
 such that $G\simeq K\rtimes_\theta Q$.
@@ -440,7 +439,7 @@ Let us discuss some examples.
     \]
     for all $a,b\in\R$ and $x,y\in\R^{\times}$. 
     
-    Hence one can construct the semi-direct product $K\rtimes Q$. The operation of 
+    Hence one can construct the semidirect product $K\rtimes Q$. The operation of 
     this group is 
     \[ 
         (d,c)(b,a)=(cb+d,ca). 
@@ -501,14 +500,14 @@ $\Sym_4=K\rtimes H$.
 
 Let $n\geq5$. 
 Using the fact that $\Alt_n$ is a simple group,  
-one proves that $\Alt_n$ cannot be written as a semi-direct product of proper subgroups. 
+one proves that $\Alt_n$ cannot be written as a semidirect product of proper subgroups. 
 
 \begin{example}
 Let $K=\Z/3$ and $Q=\Z/4$. Since $\Hom(Q,\Aut(K))=\{1,\tau\}$, where 
 \[
 \tau\colon\Z/4\to\Aut(\Z/3)=\{\id,\rho\}\simeq\Z/2,\quad 1\mapsto\rho,
 \]
-the semi-direct product $T=K\rtimes_\tau Q$ is a non-abelian group of order 12. Moreover,
+the semidirect product $T=K\rtimes_\tau Q$ is a non-abelian group of order 12. Moreover,
 $T\not\simeq\Alt
 _4$ as $|(2,2)|=6$ and $\Alt_4$ has no elements of order six.
 \end{example}
@@ -516,5 +515,5 @@ _4$ as $|(2,2)|=6$ and $\Alt_4$ has no elements of order six.
 
 \begin{exercise}
     \label{xca:affine_semidirect}
-    Prove that the group of Exercise~\ref{xca:affine} is a semi-direct product. 
+    Prove that the group of Exercise~\ref{xca:affine} is a semidirect product. 
 \end{exercise}

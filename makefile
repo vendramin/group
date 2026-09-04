@@ -2,13 +2,13 @@
 # Makefile for building both versions of the notes:
 #   notes.pdf           -- original version   (notes.tex,     pdflatex)
 #   dyslexic.pdf        -- accessible version (dyslexic.tex,   xelatex)
-#   solutions-only.pdf  -- just the solutions section, standalone
+#   solutions.pdf       -- just the solutions section, standalone
 #
 # Usage (from a terminal, in this folder):
 #   make              build both PDFs
 #   make notes        build only notes.pdf
 #   make dyslexic     build only dyslexic.pdf
-#   make solutions    build only solmanual.pdf
+#   make solutions    build only solutions.pdf
 #   make clean        remove build junk (.aux, .log, .idx, ...)
 #   make distclean    also remove the PDFs
 #
@@ -32,7 +32,7 @@
 
 NOTES     := notes
 DYSLEXIC  := dyslexic
-SOLUTIONS := solmanual
+SOLUTIONS := solutions
 
 .PHONY: all notes dyslexic solutions clean distclean
 
@@ -42,7 +42,7 @@ notes:
 	latexmk -pdf -interaction=nonstopmode $(NOTES).tex
 
 dyslexic:
-	latexmk -pdf -interaction=nonstopmode $(DYSLEXIC).tex
+	latexmk -lualatex -interaction=nonstopmode $(DYSLEXIC).tex
 
 # Rebuild notes.aux (and friends) first, then seed solutions.aux
 # from it before each pdflatex pass so \ref/\sol lookups resolve.

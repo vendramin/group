@@ -1,6 +1,5 @@
-%\section{Lecture -- Week 4}
-
 \section{The symmetric group}
+\lecture\label{lec:symmetric}
 
 \index{Cycle}
 Let $\sigma\in\Sym_n$. We say that the permutation $\sigma$ is an $r$-cycle 
@@ -415,6 +414,7 @@ From this, the claim follows, as each 3-cycle is a commutator:
 \]
 \end{example}
 
+\begin{optional}
 \section{Application: Block permutation cipher}
 A permutation $\sigma\in\Sym_n$ can be used as a secret key in the crypto-system 
 called \emph{permutation cipher}. The idea is simple: We are given a message
@@ -448,12 +448,13 @@ Now apply $\sigma$ to each sub-message to obtain
 \begin{center}
 \textsf{n i eareensv u tsehi|omsperiudur docn rot|iorastrnp eeofect tn|ufyrroesmstmp ysgo}
 \end{center}
+\end{optional}
 
 \section{Application: The 15-puzzle}
 
 Probably, we are all familiar with the puzzle of Figure~\ref{fig:toy}. 
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.25\linewidth]{images/15puzzle.jpg}
     \caption{The puzzle in its standard position.}
