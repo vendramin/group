@@ -42,7 +42,24 @@
 \RequirePackage[english.nosectiondot]{babel}
 \RequirePackage{marginnote}
 \RequirePackage{xparse}
-\RequirePackage{float}
+
+% ------------------------------------------------------------
+% Project bubble
+% ------------------------------------------------------------
+% Project marker: green pill in the RIGHT margin
+\setlength{\marginparwidth}{.85in}
+\setlength{\marginparsep}{7pt}
+\makeatletter
+\newcommand{\projectbubble}{\tikz[baseline]{\node[rounded corners=7pt,
+ draw=gray!50!white,line width=.7pt,fill=gray!5!white,inner xsep=7pt,inner ysep=3.5pt,
+ font=\normalfont\sffamily\footnotesize\color{green!30!black}]{Project};}}
+\NewDocumentCommand{\project}{O{0pt}}{%
+  \begingroup
+  \normalmarginpar \@twosidefalse
+  \marginnote{\projectbubble}[#1]%
+  \endgroup
+  \ignorespaces}
+\makeatother
 
 % ------------------------------------------------------------
 % Hyperref setup
@@ -89,10 +106,19 @@ boxrule=0pt,frame hidden,colback=red!5!white,
   left=.3em, right=.3em, top=.3em, bottom=.3em,
   beforeafter skip balanced=.4\baselineskip plus 2pt,
   before upper={\parindent4mm},breakable,
-colframe=blue!55!white
+  colframe=blue!55!white,#1
 }
 \newenvironment{optional}[1][]{
 \begin{eqbox}
+}{
+\end{eqbox}
+}
+
+% ------------------------------------------------------------
+% Gray box for other type of optional comments
+% ------------------------------------------------------------
+\newenvironment{graybox}[1][]{
+\begin{eqbox}[colback=gray!5!white]
 }{
 \end{eqbox}
 }
@@ -324,31 +350,113 @@ colframe=yellow!45!black]\begin{bxca}}{\end{bxca}\end{tcolorbox}}
     \fi
   \endgroup}
 \newcommand{\lecturebubble}[1]{\tikz[baseline]{\node[rounded corners=7pt,
- draw=gray!15!white,line width=.7pt,fill=gray!5!white,inner xsep=7pt,inner ysep=3.5pt,
- font=\sffamily\footnotesize\color{blue!50!red}]{Lecture~#1};}}
+ draw=green!15!white,line width=.7pt,fill=gray!5!white,inner xsep=7pt,inner ysep=3.5pt,
+ font=\sffamily\footnotesize\color{green!30!black}]{Lecture~#1};}}
 \newcounter{lecture}
 \newcommand{\lecture}{%
   \refstepcounter{lecture}%
   \addcontentsline{lec}{section}{Lecture~\thelecture}%
   \marginnote{\lecturebubble{\thelecture}}[-1.9\baselineskip]%
   \ignorespaces}
+
+\newcommand{\graybubble}[1]{\tikz[baseline]{\node[rounded corners=7pt,
+ draw=gray!15!white,line width=.7pt,fill=gray!5!white,inner xsep=7pt,inner ysep=3.5pt,
+ font=\sffamily\footnotesize\color{blue!50!red}]{#1};}}
+
 \makeatother
+
+%% ------------------------------------------------------------
+%% Page style: running header/footer
+%% ------------------------------------------------------------
+%\pagestyle{plain}
+%\fancyhf{}
+%\fancyfoot[R]{\thepage}
+%%\fancyhead[L]{\course}
+%%\setlength{\headheight}{14pt}
+%
+%% \theindex (and a few other LaTeX internals, e.g. \maketitle) switch to
+%% the "plain" page style for their first page. Left at its default, plain
+%% puts the page number centered at the bottom instead of on the right, so
+%% that one page looks different from the rest of the document. Redefine
+%% plain to match.
+%%\fancypagestyle{plain}{%
+%%  \fancyhf{}
+%%  \fancyfoot[R]{\thepage}
+%%  \renewcommand{\headrulewidth}{0pt}
+%%}
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyfoot[R]{\thepage}
+%\renewcommand{\headrulewidth}{0pt}
+%\setlength{\headheight}{14pt}
+%
+%\makeatletter
+%\newcommand{\mynotes@plainblock}[1]{%
+%  \clearpage
+%  \begingroup
+%    \pagestyle{plain}\thispagestyle{plain}%
+%    #1%
+%    \clearpage
+%  \endgroup}
+%\let\mynotes@tableofcontents\tableofcontents
+%\renewcommand{\tableofcontents}{\mynotes@plainblock{\mynotes@tableofcontents}}
+%\let\mynotes@listoflectures\listoflectures
+%\renewcommand{\listoflectures}{\mynotes@plainblock{\mynotes@listoflectures}}
+%\makeatother
+%
+%\endinput
 
 % ------------------------------------------------------------
 % Page style: running header/footer
 % ------------------------------------------------------------
+% amsproc's \@sect never sets a running mark (\sectionmark is \@gobble),
+% so we hook \@tocwrite -- it is called by \@sect for every heading,
+% at a point where \@secnumber holds the section number -- and set the
+% mark ourselves for sections only.  The number must be expanded now,
+% otherwise every header would show the number of the last section.
+\makeatletter
+\newcommand{\mynotes@sectionmark}[2]{% #1 = number (may be empty), #2 = title
+  \begingroup
+    %\protected@xdef\mynotes@mark{%
+    %  \@ifempty{#1}{#2}{\noexpand\sectionname\space#1.\space#2}}%
+    \protected@xdef\mynotes@mark{%
+      \@ifempty{#1}{}{\noexpand\sectionname\space#1.\space#2}}%
+  \endgroup
+  \expandafter\mynotes@markboth\expandafter{\mynotes@mark}%
+}
+\newcommand{\mynotes@markboth}[1]{\markboth{#1}{#1}}
+% \maketitle sets a mark of its own (short title / authors); clear it so
+% that the front matter carries no running head at all.
+\let\mynotes@maketitle\maketitle
+\renewcommand{\maketitle}{\mynotes@maketitle\markboth{}{}}
+\let\mynotes@tocwrite\@tocwrite
+\def\@tocwrite#1#2{%
+  \def\mynotes@a{#1}\def\mynotes@b{section}%
+  \ifx\mynotes@a\mynotes@b
+    \expandafter\mynotes@sectionmark\expandafter{\@secnumber}{#2}%
+  \fi
+  \mynotes@tocwrite{#1}{#2}}
+\makeatother
+ 
 \pagestyle{fancy}
 \fancyhf{}
+\fancyhead[L]{\nouppercase{\rightmark}}
 \fancyfoot[R]{\thepage}
-\fancyhead[L]{\course}
+\renewcommand{\headrulewidth}{0pt}
 \setlength{\headheight}{14pt}
-
-% \theindex (and a few other LaTeX internals, e.g. \maketitle) switch to
-% the "plain" page style for their first page. Left at its default, plain
-% puts the page number centered at the bottom instead of on the right, so
-% that one page looks different from the rest of the document. Redefine
-% plain to match.
+ 
+% LaTeX internals (\maketitle, \theindex, ...) switch to the "plain"
+% page style on their first page.  Make it identical, so that every
+% page of the document looks the same: nothing on top, page number
+% alone in the lower right corner.
 \fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[R]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+% amsproc's \maketitle uses its own "firstpage" style (page number
+% centred, series logo on top).  Same treatment.
+\fancypagestyle{firstpage}{%
   \fancyhf{}
   \fancyfoot[R]{\thepage}
   \renewcommand{\headrulewidth}{0pt}
