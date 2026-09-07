@@ -33,7 +33,6 @@
 \RequirePackage{amssymb}
 \RequirePackage{mathtools}
 \RequirePackage{stmaryrd}
-\RequirePackage{mdframed}
 \RequirePackage{textcomp}
 \RequirePackage{colortbl}
 \RequirePackage[most]{tcolorbox}
@@ -42,6 +41,7 @@
 \RequirePackage[english.nosectiondot]{babel}
 \RequirePackage{marginnote}
 \RequirePackage{xparse}
+\RequirePackage{enumitem}
 
 % ------------------------------------------------------------
 % Project bubble
@@ -50,7 +50,7 @@
 \setlength{\marginparwidth}{.85in}
 \setlength{\marginparsep}{7pt}
 \makeatletter
-\newcommand{\projectbubble}{\tikz[baseline]{\node[rounded corners=7pt,
+\newcommand{\projectbubble}{\tikz[baseline=(char.base)]{\node(char)[rounded corners=7pt,
  draw=gray!50!white,line width=.7pt,fill=gray!5!white,inner xsep=7pt,inner ysep=3.5pt,
  font=\normalfont\sffamily\footnotesize\color{green!30!black}]{Project};}}
 \NewDocumentCommand{\project}{O{0pt}}{%
@@ -95,33 +95,41 @@
 \renewcommand\thesection{\arabic{section}}
 \renewcommand\thesubsection{\arabic{section}.\arabic{subsection}}
 
-% \def\l@part{\@tocline{1}{12pt plus2pt}{1pc}{}{\bfseries}}
-
 % ------------------------------------------------------------
 % Pink box for optional comments
 % ------------------------------------------------------------
+%\newtcolorbox{eqbox}[1][]
+% {
+% boxrule=0pt,frame hidden,colback=red!5!white,
+%   left=.3em, right=.3em, top=.3em, bottom=.3em,
+%   beforeafter skip balanced=.4\baselineskip plus 2pt,
+%   before upper={\parindent4mm},breakable,
+%   %colframe=blue!55!white,#1
+%   #1
+% }
 \newtcolorbox{eqbox}[1][]
 {
-boxrule=0pt,frame hidden,colback=red!5!white,
-  left=.3em, right=.3em, top=.3em, bottom=.3em,
+  boxrule=0pt,
+  frame hidden,
+  colback=red!5!white,
+  % Keep inner horizontal padding at 0pt so the text box boundaries line up
+  left=0pt, 
+  right=0pt, 
+  top=.3em, 
+  bottom=.3em,
   beforeafter skip balanced=.4\baselineskip plus 2pt,
-  before upper={\parindent4mm},breakable,
-  colframe=blue!55!white,#1
+  % Force the box to look up and use the true document indentation
+  before upper={\parindent\normalparindent}, 
+  breakable,
+  #1
 }
-\newenvironment{optional}[1][]{
-\begin{eqbox}
-}{
-\end{eqbox}
-}
+\newenvironment{optional}[1][]{\begin{eqbox}[#1]}{\end{eqbox}}
 
 % ------------------------------------------------------------
 % Gray box for other type of optional comments
 % ------------------------------------------------------------
 \newenvironment{graybox}[1][]{
-\begin{eqbox}[colback=gray!5!white]
-}{
-\end{eqbox}
-}
+\begin{eqbox}[colback=gray!5!white,#1]}{\end{eqbox}}
 
 % ------------------------------------------------------------
 % Code listings
@@ -151,9 +159,7 @@ boxrule=0pt,frame hidden,colback=red!5!white,
 \renewcommand\sectionname{\S}
 
 % enumerate labels: 1), 2), 3), ...
-\renewcommand{\labelenumi}{\textbf{\arabic{enumi})}}
-
-\makeindex
+\setlist[enumerate,1]{label=\textbf{\arabic{enumi})}, ref=\textbf{\arabic{enumi})}}
 
 % ------------------------------------------------------------
 % Macros
@@ -399,17 +405,17 @@ colframe=yellow!45!black]\begin{bxca}}{\end{bxca}\end{tcolorbox}}
       \immediate\openout\csname tf@lec\endcsname\jobname.lec\relax
     \fi
   \endgroup}
-\newcommand{\lecturebubble}[1]{\tikz[baseline]{\node[rounded corners=7pt,
- draw=green!15!white,line width=.7pt,fill=gray!5!white,inner xsep=7pt,inner ysep=3.5pt,
- font=\sffamily\footnotesize\color{green!30!black}]{Lecture~#1};}}
+
 \newcounter{lecture}
 \newcommand{\lecture}{%
   \refstepcounter{lecture}%
   \addcontentsline{lec}{section}{Lecture~\thelecture}%
   \marginnote{\lecturebubble{\thelecture}}[-1.9\baselineskip]%
   \ignorespaces}
-
-\newcommand{\graybubble}[1]{\tikz[baseline]{\node[rounded corners=7pt,
+\newcommand{\lecturebubble}[1]{\tikz[baseline={([yshift=.9cm]char.base)}]{\node(char)[rounded corners=7pt,
+ draw=gray!15!white,line width=.7pt,fill=gray!5!white,inner xsep=7pt,inner ysep=3.5pt,
+ font=\sffamily\footnotesize\color{green!30!black}]{Lecture~#1};}}
+\newcommand{\graybubble}[1]{\tikz[baseline=(char.base)]{\node(char)[rounded corners=7pt,
  draw=gray!15!white,line width=.7pt,fill=gray!5!white,inner xsep=7pt,inner ysep=3.5pt,
  font=\sffamily\footnotesize\color{blue!50!red}]{#1};}}
 
@@ -418,57 +424,9 @@ colframe=yellow!45!black]\begin{bxca}}{\end{bxca}\end{tcolorbox}}
 %% ------------------------------------------------------------
 %% Page style: running header/footer
 %% ------------------------------------------------------------
-%\pagestyle{plain}
-%\fancyhf{}
-%\fancyfoot[R]{\thepage}
-%%\fancyhead[L]{\course}
-%%\setlength{\headheight}{14pt}
-%
-%% \theindex (and a few other LaTeX internals, e.g. \maketitle) switch to
-%% the "plain" page style for their first page. Left at its default, plain
-%% puts the page number centered at the bottom instead of on the right, so
-%% that one page looks different from the rest of the document. Redefine
-%% plain to match.
-%%\fancypagestyle{plain}{%
-%%  \fancyhf{}
-%%  \fancyfoot[R]{\thepage}
-%%  \renewcommand{\headrulewidth}{0pt}
-%%}
-%\pagestyle{fancy}
-%\fancyhf{}
-%\fancyfoot[R]{\thepage}
-%\renewcommand{\headrulewidth}{0pt}
-%\setlength{\headheight}{14pt}
-%
-%\makeatletter
-%\newcommand{\mynotes@plainblock}[1]{%
-%  \clearpage
-%  \begingroup
-%    \pagestyle{plain}\thispagestyle{plain}%
-%    #1%
-%    \clearpage
-%  \endgroup}
-%\let\mynotes@tableofcontents\tableofcontents
-%\renewcommand{\tableofcontents}{\mynotes@plainblock{\mynotes@tableofcontents}}
-%\let\mynotes@listoflectures\listoflectures
-%\renewcommand{\listoflectures}{\mynotes@plainblock{\mynotes@listoflectures}}
-%\makeatother
-%
-%\endinput
-
-% ------------------------------------------------------------
-% Page style: running header/footer
-% ------------------------------------------------------------
-% amsproc's \@sect never sets a running mark (\sectionmark is \@gobble),
-% so we hook \@tocwrite -- it is called by \@sect for every heading,
-% at a point where \@secnumber holds the section number -- and set the
-% mark ourselves for sections only.  The number must be expanded now,
-% otherwise every header would show the number of the last section.
 \makeatletter
 \newcommand{\mynotes@sectionmark}[2]{% #1 = number (may be empty), #2 = title
   \begingroup
-    %\protected@xdef\mynotes@mark{%
-    %  \@ifempty{#1}{#2}{\noexpand\sectionname\space#1.\space#2}}%
     \protected@xdef\mynotes@mark{%
       \@ifempty{#1}{}{\noexpand\sectionname\space#1.\space#2}}%
   \endgroup
