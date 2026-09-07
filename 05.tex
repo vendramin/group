@@ -16,7 +16,7 @@ What does this mean? We need to check that
 \eqref{eq:operation} is indeed a function. 
 For that purpose, we need to prove that
 \eqref{eq:operation} does not depend on the representatives of left
-cosets used. Thus we need to show that 
+cosets used. Thus we need to show that if 
 $xN=x_1N$ and $yN=y_1N$, then 
 $xyN=x_1y_1N$. 
 
@@ -29,16 +29,17 @@ $m,n\in N$. Thus
 if and only if $y^{-1}ny\in N$.
 
 \begin{example}
-If $G=\Sym_3$ and $N=\langle (12)\rangle$, then $(xN,yN)\mapsto xyN$ is not a function. Recall that 
+If $G=\Sym_3$ and $N=\langle (12)\rangle$, then $(xN,yN)\mapsto xyN$ is not a function. Assume it is. Recall that 
 \[
 G/N=\{N,(123)N,(132)N\},
 \]
 where 
-$N=(12)N$, $(123)N=(13)N$ and $(132)N=(23)N$. Then 
+$N=(12)N$, $(123)N=(13)N$ and $(132)N=(23)N$. Since 
 \[
 (132)N=(13)(23)N=(13)N(23)N=(123)N(132)N=N,
 \]
-a contradiction.
+a contradiction. Hence 
+the proposed product depends on the representatives.
 \end{example}
 
 \begin{definition}
@@ -63,7 +64,7 @@ The following statements are equivalent:
 
 \begin{proof}
 We only prove that $1)\implies 2)$, as the other implications are trivial. If $n\in N$ and $g\in G$, then 
-$n=g(g^{-1}ng)g^{-1}\in gNg^{-1}$.
+$n=g^{-1}(gng^{-1})g\in g^{-1}Ng\subseteq N$. 
 \end{proof}
 
 \begin{proposition}
@@ -76,7 +77,7 @@ $n=g(g^{-1}ng)g^{-1}\in gNg^{-1}$.
 \end{proposition}
 
 \begin{proof}
-   We first prove that $1)\implies 2)$. Let $g\in G$. Since
+   We first prove that $1)\implies 2)$. Let $g,h\in G$. Since
    $gNg^{-1}=N$, 
    \[
    (gN)(hN)=g(Nh)N=g(hN)N=(gh)N.
@@ -162,7 +163,8 @@ Let $G=\R\times\R^\times$ with the operation
 \[
 (x,y)(u,v)=(x+yu,yv).
 \]
-Prove that $\{(x,1):x\in\R\}$ is normal in $G$ and that
+Prove that this operation makes $G$ into a group, and then prove  
+that $\{(x,1):x\in\R\}$ is normal in $G$ and that
 $\{(0,y):y\in\R^\times\}$ is not. 
 \end{exercise}
 
@@ -235,7 +237,11 @@ for all $\tau\in\Sym_4$ and $K\subseteq N$ because
 \[
 (ac)(bd)=(abcd)^2.
 \]
-This implies that $|N|\geq10$. Since $K\subseteq N$,  $|N\cap\Alt_4|\geq 5$. Moreover, $N\cap\Alt_4$ is a normal subgroup of $\Alt_4$.
+This implies that $|N|\geq10$. Since $K\subseteq N$,  $|N\cap\Alt_4|\geq 4$. 
+Now the restriction of $\sgn$ to $N$ is surjective, as $N$ contains a 4-cycle. The 
+kernel of this restriction is 
+$N\cap\Alt_4$. Thus $[N:N\cap A_4]=2$ 
+and hence $|N\cap A_4|=|N|/2\ge5$. 
 Hence $N\cap\Alt_4=\Alt_4\subseteq N$. Since $N\ne \Alt_4$, $|N|>12$ and hence $N=\Sym_4$.
 \end{example}
 
@@ -271,14 +277,15 @@ $[\Alt_4,\Alt_4]=K=\{\id,(12)(34),(13)(24),(14)(23)\}$.
 We know that $K$ is normal in $\Alt_4$. Since $\Alt_4/K$ has order three, 
 it is abelian. Then $[\Alt_4,\Alt_4]\subseteq K$. Since 
 \[
-(ab)(cd)=[(abc),(cda)],
+(ab)(cd)=[(abc),(cda)]
 \]
+for pairwise distinct $a,b,c,d$, 
 we conclude that $K\subseteq[\Alt_4,\Alt_4]$.
 \end{example}
 
 \begin{exercise}
 \label{xca:G/Z(G)}
-If $G/Z(G)$ is cyclic, then $G$ is abelian.
+Prove that if $G/Z(G)$ is cyclic, then $G$ is abelian.
 \end{exercise}
 
 \begin{exercise}
@@ -318,8 +325,8 @@ Let $H$ be a subgroup of $G$ such that $p=(G:H)$ is a prime number.
 Prove that the following statements are equivalent:
 \begin{enumerate}
 \item $H$ is normal in $G$.
-\item If $g\in G\setminus H$, then $g^p\in H$.
-\item If $g\in G\setminus H$, then $g^n\in H$ for some $n$ with no prime divisors $<p$.
+\item If $g\in G\setminus H$, then $g^p\in H$. 
+\item If $g\in G\setminus H$, then $g^n\in H$ for some $n\geq1$ with no prime divisors $<p$.
 \item If $g\in G\setminus H$, then $g^k\not\in H$ for all $k\in\{2,\dots,p-1\}$.
 \end{enumerate}
 \end{bonus}

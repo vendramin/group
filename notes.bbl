@@ -1,0 +1,40 @@
+\begin{thebibliography}{1}
+
+\bibitem{MR1129886}
+M.~Artin.
+\newblock {\em Algebra}.
+\newblock Prentice Hall, Inc., Englewood Cliffs, NJ, 1991.
+
+\bibitem{zbMATH01077111}
+W.~Bosma, J.~Cannon, and C.~Playoust.
+\newblock The {Magma} algebra system. {I}: {The} user language.
+\newblock {\em J. Symb. Comput.}, 24(3-4):235--265, 1997.
+
+\bibitem{MR0075938}
+R.~D. Carmichael.
+\newblock {\em Introduction to the theory of groups of finite order}.
+\newblock Dover Publications, Inc., New York, 1956.
+
+\bibitem{MR2286236}
+D.~S. Dummit and R.~M. Foote.
+\newblock {\em Abstract algebra}.
+\newblock John Wiley \& Sons, Inc., Hoboken, NJ, third edition, 2004.
+
+\bibitem{MR673806}
+R.~M. Guralnick.
+\newblock Commutators and commutator subgroups.
+\newblock {\em Adv. in Math.}, 45(3):319--330, 1982.
+
+\bibitem{MR600654}
+T.~W. Hungerford.
+\newblock {\em Algebra}, volume~73 of {\em Graduate Texts in Mathematics}.
+\newblock Springer-Verlag, New York-Berlin, 1980.
+\newblock Reprint of the 1974 original.
+
+\bibitem{MR783636}
+S.~Lang.
+\newblock {\em Algebra}.
+\newblock Addison-Wesley Publishing Company, Advanced Book Program, Reading,
+  MA, second edition, 1984.
+
+\end{thebibliography}

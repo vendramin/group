@@ -1,0 +1,7 @@
+If I need to update the style:
+git subtree pull --prefix styles https://github.com main --squash
+
+If I modify the style: 
+git subtree push --prefix styles https://github.com main
+
+

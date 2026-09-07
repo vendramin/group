@@ -8,6 +8,20 @@
 \usepackage{rubikcube}
 \usetikzlibrary{calc,positioning}
 
+% This is the special dyslexic-friendly configuration
+\overfullrule=0mm
+\geometry{margin=1.2in}
+\usepackage{fontspec}
+\setmainfont{Arial}       
+\usepackage{sfmath}      
+\renewcommand{\familydefault}{\sfdefault} 
+\usepackage{setspace}
+\onehalfspacing           
+\usepackage{ragged2e}
+\RaggedRight             
+\thickmuskip=6mu plus 3mu 
+\medmuskip=5mu plus 2mu minus 1mu   
+
 \title{\course}
 \author{Leandro Vendramin}
 \address{Department of Mathematics and Data
@@ -63,10 +77,10 @@ Science, Vrije Universiteit Brussel, Pleinlaan 2, 1050 Brussel}
 
 \include{magma} 
 
-%\fancyhf{}
-%\fancyfoot[R]{\thepage}
-%\fancyhead[L]{\course}
-%\setlength{\headheight}{14pt}
+\fancyhf{}
+\fancyfoot[R]{\thepage}
+\fancyhead[L]{\course}
+\setlength{\headheight}{14pt}
 
 \bibliographystyle{abbrv}
 \bibliography{refs}
