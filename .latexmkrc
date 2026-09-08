@@ -1,2 +1,2 @@
-ensure_path('TEXINPUTS', './styles//');
+ensure_path('TEXINPUTS', './sty//');
 
