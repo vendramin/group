@@ -1,7 +1,7 @@
 \section{Semidirect products}
 \lecture\label{lec:semidirect}
 
-\index{Exact factorization of groups}
+\index{Group!exact factorization}
 We say that a group $G$ admits an \emph{exact factorization} through 
 the subgroups $H$ and $K$ if $G=HK$ and 
 $H\cap K=\{1\}$. 
@@ -22,7 +22,7 @@ since $hkh^{-1}\in K$ because $K$ is normal in $G$ and
 $kh^{-1}k^{-1}\in H$ because $H$ is normal in $G$. 
 
 \begin{exercise}
-\index{Direct product of groups}
+\index{Group!direct product}
 \label{xca:direct_product}
 Let $G$ be a group and $H$ and $K$ be normal subgroups of $G$.
 If $G=HK$ and $H\cap K=\{1\}$, then $G\simeq H\times K$.
@@ -56,7 +56,7 @@ In the next example, we present a group of \emph{affine transformations}.
 
 \begin{example}
 \label{exa:affine}
-\index{Group!of affine transformations}
+\index{Group!affine}
     Let 
     \[ 
     G=\{f\colon\R\to\R, f(x)=ax+b\text{ for some $a,b\in\R$ with $a\ne 0$}\}.
@@ -85,7 +85,7 @@ In the next example, we present a group of \emph{affine transformations}.
 \end{example}
 
 \begin{definition}
-\index{Complement}
+\index{Subgroup!complement}
 Let $G$ be a group, $K$ a normal subgroup of $G$, and $Q$ a subgroup of $G$. We say
 that $Q$ \emph{complements} $K$ in $G$ if $K\cap Q=\{1\}$ and $G=KQ$.
 \end{definition}
@@ -106,7 +106,7 @@ We now present a generalization of the (internal) direct product of
 Exercise~\ref{xca:direct_product}. 
 
 \begin{definition}
-\index{Semi-direct product}
+\index{Group!semidirect product}
 We say that a group $G$ is a \emph{semidirect product} of $Q$ and $K$ if $K$ 
 is normal in $G$ and 
 $K$ admits a complement in $G$ isomorphic to $Q$. Notation: $G=K\rtimes Q$.
@@ -195,10 +195,12 @@ and $g\rho(g^{-1})\in K=\ker\rho$, as $\rho(g\rho(g^{-1}))=  \rho(g)\rho(g^{-1})
 \end{proof}
 
 \begin{example}
+    Let $n\geq2$. Then 
 $\Sym_n=\Alt_n\rtimes\langle(12)\rangle$, as $Q=\langle (12)\rangle\simeq\Z/2$ complements 
 $\Alt_n$ in $\Sym_n$.
 \end{example}
 
+\index{Automorphism}
 For a group $G$, 
 the set 
 \[
@@ -206,8 +208,8 @@ the set
 \]
 is a group with the composition of maps. It is called 
 the \emph{automorphism group} of $G$. 
-Examples of automorphism groups are the identity map and 
-conjugations homomorphisms. 
+Examples of automorphisms are the identity map and 
+conjugations maps. 
 
 \begin{example}
 $\Aut(\Z)\simeq\Z/2$, as $\Aut(\Z)=\{\id,-\id\}$.
@@ -218,15 +220,16 @@ Let $G$ be a group and $g\in G$. The conjugation
 map $\gamma_g\colon G\to G$, $x\mapsto gxg^{-1}$,
 is an automorphism of $G$, as 
 \[
-\gamma_g(xy)=g(xy)g^{-1}=(gxg^{-1})(gyg^{-1})=\gamma_g(x)\gamma_g(y).
+\gamma_g(xy)=g(xy)g^{-1}=(gxg^{-1})(gyg^{-1})=\gamma_g(x)\gamma_g(y),
 \]
-Moreover, $\gamma\colon G\to\Aut(G)$, $g\mapsto\gamma_g$, is a group
+and $\gamma_g^{-1}=\gamma_{g^{-1}}$. Moreover, 
+$\gamma\colon G\to\Aut(G)$, $g\mapsto\gamma_g$, is a group
 homomorphism:
 \[
 \gamma_{gh}(x)=(gh)x(gh)^{-1}=g(\gamma_h(x))g^{-1}=\gamma_g(\gamma_h(x))=(\gamma_g\circ\gamma_h)(x).
 \]
 
-\index{Inner automorphisms}
+\index{Automorphism!inner}
 The group of \emph{inner automorphisms} of $G$ is the 
 group 
 $\Inn(G)=\gamma(G)$. Note that $\ker\gamma=Z(G)$, as
@@ -250,6 +253,7 @@ G/Z(G)\simeq \gamma(G)=\Inn(G).
     Let $G$ be a group. Prove that $\Inn(G)$ is a normal subgroup of $\Aut(G)$. 
 \end{exercise} 
 
+\index{Automorphism!outer}
 For a group $G$, the quotient $\Aut(G)/\Inn(G)$ is called 
 the group of \emph{outer automorphisms} of $G$. 
 Note that 
@@ -334,8 +338,8 @@ the following properties hold:
     Before doing calculations, note that 
     this formula 
     is nothing but the usual 
-    left multiplication of matrices 
-    by vectors! In fact
+    multiplication of column vectors by matrices on the left. 
+    In fact, for 
     $\alpha\in\GL_2(\R)$ and $v\in\R^{2\times1}$, 
     the action of \eqref{eq:action} is 
     just 
@@ -362,7 +366,7 @@ the following properties hold:
     \]
     Finally, the fourth property is just the left distributivity:
     \[
-    \alpha\cdot (v+w)=x(v+w)=\alpha v+\alpha w=\alpha\cdot v+\alpha\cdot w
+    \alpha\cdot (v+w)=\alpha(v+w)=\alpha v+\alpha w=\alpha\cdot v+\alpha\cdot w
     \]
     for all $\alpha\in\GL_2(\R)$ and $v,w\in\R^{2\times1}$. 
 \end{example}
@@ -371,6 +375,7 @@ the following properties hold:
 
 \begin{exercise}
 \label{xca:semi-direct}
+\index{Group!semidirect product}
 Let $K$ and $Q$ be groups and $\theta\colon Q\to\Aut(K)$, $x\mapsto\theta_x$, a group
 homomorphism. Prove that $K\times Q$ 
 with 
@@ -387,7 +392,7 @@ is a group. This group will be written as $K\rtimes_\theta Q$.
 % \end{proof}
 
 The group of Exercise \ref{xca:semi-direct} is the
-semi-direct product of the subgroups 
+semidirect product of the subgroups 
 \begin{align*}
 K\times\{1\}=\{(a,1):a\in K\}\simeq K,&&
 \{1\}\times Q=\{(1,x):x\in Q\}\simeq Q
@@ -455,10 +460,13 @@ Let us discuss some examples.
 \end{example}
 
 
-
 \begin{example}
-Let $N\simeq \Z/n$ and $H\simeq\Z/2=\{0,1\}$. The map $\theta\colon H\to\Aut(N)$, 
-$1\mapsto (x\mapsto x^{-1})$, is a group homomorphism. Let $G=N\rtimes_\theta H$.
+    For $n\geq3$, let 
+$N\simeq \Z/n$ and $H=\langle y\rangle\simeq\Z/2$, written multiplicatively. The map \[
+\theta\colon H\to\Aut(N),\quad  
+y\mapsto (x\mapsto x^{-1}),
+\]
+is a group homomorphism. Let $G=N\rtimes_\theta H$.
 Then $G\simeq\D_n$, the dihedral group of order $2n$.
 
 Recall that 
