@@ -97,9 +97,9 @@ $\langle (12)\rangle$, $\langle
 \end{example}
 
 The previous example shows that complements are not unique. However, 
-complements are unique under isomorphism, as 
+complements are unique up to isomorphism, as 
 \[
-G/K= KQ/K\simeq Q/K\cap Q=Q/\{1\}\simeq Q.
+G/K= KQ/K\simeq Q/(K\cap Q)=Q/\{1\}\simeq Q.
 \]
 
 We now present a generalization of the (internal) direct product of
@@ -114,7 +114,9 @@ $K$ admits a complement in $G$ isomorphic to $Q$. Notation: $G=K\rtimes Q$.
 
 The symbol $\rtimes$ is not symmetric, but serves to remind us which subgroup is normal. 
 
-Let $G=K\rtimes Q$. Then $G=KQ$ with $K$ normal in $G$. 
+Let $G=K\rtimes Q$. 
+Identify $Q$ with a complement of $K$ in $G$. 
+Then $G=KQ$ with $K$ normal in $G$. 
 Let $g=ax$ and $g_1=a_1x_1$ with $a,a_1\in K$ and $x,x_1\in Q$. 
 Then 
 \[
@@ -144,7 +146,9 @@ and hence $x=x_1$ and $y=y_1$.
 
 %It is an exercise to show that $(2)\implies(1)$.
 
-We now prove that $(2)\implies(3)$. Let $s\colon G/K\to G$, $s(Kg)=y$ if 
+We now prove that $(2)\implies(3)$. 
+Note that uniqueness implies $K\cap Q=\{1\}$.
+Let $s\colon G/K\to G$, $s(Kg)=y$ if 
 $g=xy$ with $x\in K$ and $y\in Q$. (Note that here we use right cosets, as it is more convenient.)
 Let us check that $s$ is well-defined. 
 For that purpose, we must show that $Kg=Kg_1$ implies $s(Kg)=s(Kg_1)$. Let $g=xy$ 
