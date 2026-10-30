@@ -1,7 +1,7 @@
 \section{Permutable subgroups}
 \lecture\label{sec:permutable}
 
-\index{Product of subgroups}
+\index{Subgroup!product}
 If $H$ and $K$ are subgroups of $G$, let 
 \[
         HK=\{hk:h\in H,\,k\in K\}.
@@ -27,7 +27,7 @@ Note that $HK\leq G$ if and only if $\langle H\cup K\rangle=HK$.
     Thus $HK$ is closed under multiplication. 
 
     Now assume that $HK$ is a subgroup of $G$. Since $H\subseteq HK$,
-    $K\subseteq HK$ and $HK$ closed under multiplication,
+    $K\subseteq HK$ and $HK$ is closed under multiplication,
         \[
         KH\subseteq (HK)(HK)\subseteq HK.
         \]
@@ -52,7 +52,7 @@ HK=KH=\{
 \]
 is a subgroup of 
 $\Sym_4$. Note that neither $H$ nor $K$
-are normal in $G$.
+is normal in $G$.
 \end{example}
 
 \begin{exercise}
@@ -60,7 +60,7 @@ Let $G$ be a group and $S$ be a subgroup of $G$.
 If $T\leq N_G(S)$, then $TS$ is a group and $S\leq TS$.
 \end{exercise}
 
-\index{Permutable subgroups}
+\index{Subgroup!permutable}
 Two subgroups $H$ and $K$ of $G$ are said to be
 \emph{permutable} if $HK=KH$.
 
@@ -136,11 +136,17 @@ using the fact that $H\cap K=\{\id\}$). It follows that the map
 H\times K\to G,\quad
 (h,k)\mapsto hk,
 \]
-is bijective. Note that this bijective map is not compatible 
-with the operation of $G$, as 
+is bijective, but it does not preserve multiplication.
+Take $h_1=k_2=\id$, $k_1=(123)$ and $h_2=(12)$. Then
 \[
-(h_1k_1)(h_2k_2)\ne (h_1h_2)(k_1k_2).
+(h_1k_1)(h_2k_2)=(123)(12)=(13)
+\ne(23)=(12)(123)=(h_1h_2)(k_1k_2).
 \]
+% Note that this bijective map is not compatible 
+% with the operation of $G$, as 
+% \[
+% (h_1k_1)(h_2k_2)\ne (h_1h_2)(k_1k_2).
+% \]
 \end{example}
 
 \section{Homomorphisms}
@@ -159,6 +165,9 @@ then $f(1)=1$. Why?
 \index{Homomorphism!injective}
 \index{Homomorphism!surjective}
 \index{Homomorphism!bijective}
+\index{Monomorphism|see{Homomorphism, injective}}
+\index{Epimorphism|see{Homomorphism, surjective}} 
+\index{Isomorphism|see{Homomorphism, bijective}}.
 If a group homomorphism is injective, it will be called
 a \emph{monomorphism}. If it is surjective, 
 an \emph{epimorphism}. If it is bijective, 
@@ -188,7 +197,7 @@ The map $\exp\colon\R\to\R^\times$, $\exp(x)=e^x$, is a group homomorphism.
 \end{example}
 
 \begin{example}
-\index{Inclusion}
+\index{Homomorphism!inclusion}
 The inclusion map $\Z\hookrightarrow\Q$ is an injective group homomorphism. 
 \end{example}
 
@@ -201,7 +210,7 @@ The determinant $\det\colon\GL_2(\R)\to\R^\times$ is a group homomorphism.
 \end{example}
 
 \begin{example}
-\index{Restriction homomorphism}
+\index{Homomorphism!restriction}
     Let $f\colon G\to H$ be a group homomorphism and
     $S$ be a subgroup of $G$.
     The \emph{restriction} $f|_S\colon S\to H$ is a group homomorphism. 
@@ -259,6 +268,7 @@ $f(x)=f(y)$ if and only if $x=yk$ for some $k\in\ker f$.
 
 \begin{exercise}
 \label{xca:affine}
+\index{Group!affine}
 Let
 \[
 \Aff(\R)=\left\{\begin{pmatrix}a&b\\0&1\end{pmatrix}:a\in\R^\times,\,b\in\R\right\}\leq\GL_2(\R).
@@ -278,7 +288,7 @@ is a group homomorphism such that
 1&b\\
 0&1
 \end{pmatrix}
-\right\}.
+:b\in R\right\}.
 \]
 Show that $g\colon\Aff(\R)\to\R$, $\begin{pmatrix}a&b\\0&1\end{pmatrix}\mapsto b$,
 is not a group homomorphism.
@@ -345,16 +355,17 @@ image is $\{1,8,13,20\}$.
 \end{example}
 
 \begin{example}
+Let $n\geq2$. 
 The map $\sgn\colon\Sym_n\to\{-1,1\}$ is a surjective group 
 homomorphism such that  
 $\ker(\sgn)=\Alt_n$. In particular, $\Alt_n$ is a normal subgroup of $\Sym_n$.
 \end{example}
 
 \begin{example}
-\index{Canonical homomorphism}
-If $N$ is a normal subgroup of $G$, the map $\pi\colon G\to G/N$, $x\mapsto xN$, is a surjective group homomorphism such that 
-$\ker\pi=N$. The map $\pi$ is called 
-the \emph{canonical homomorphism} $G\to G/N$.
+  \index{Homomorphism!canonical}
+  If $N$ is a normal subgroup of $G$, the map $\pi\colon G\to G/N$, $x\mapsto xN$, is a surjective group homomorphism such that
+  $\ker\pi=N$. The map $\pi$ is called
+  the \emph{canonical homomorphism} $G\to G/N$.
 \end{example}
 
 The previous example implies that 
@@ -415,7 +426,7 @@ $\Z/2\times\Z/2\not\simeq\Z/4$, as $\Z/2\times\Z/2$ has no elements of order fou
 
 \begin{example}
 $\Q/\Z\not\simeq\Q$. Both groups are abelian, but they are not isomorphic. To show this, note that every non-trivial element of $\Q$ has infinite order (if $kx=0$ for some $k\in\Z$ and $x\in\Q\setminus\{0\}$, then
-$k=0$). However, every non-trivial element of $\Q/\Z$ has finite order. In fact, if $x=r/s\in\Q$, then, since 
+$k=0$). However, every non-trivial element of $\Q/\Z$ has finite order. In fact, if $x=r/s$ with $r\in\Z$ and $s\in\Z_{\ge1}$, then, since 
 \[
 s(x+\Z)=sx+\Z=r+\Z=\Z
 \]
@@ -428,10 +439,13 @@ Note that $\mathcal{U}(\Z/5)\simeq\mathcal{U}(\Z/10)$, as
 both groups are cyclic of order four. 
 \end{example}
 
-In page \pageref{convention:right-to-left} we mentioned that left-to-right and right-to-left 
-conventions for multiplying permutations were equivalent. What does this really mean?
+We use right-to-left composition of permutations. The following example explains why the opposite convention gives an isomorphic group.
+
+% In page \pageref{convention:right-to-left} we mentioned that left-to-right and right-to-left 
+% conventions for multiplying permutations were equivalent. What does this really mean?
 
 \begin{example}
+\index{Group!opposite}
 \label{exa:op}
     For a group $G$, 
     one can define the group $G^{\operatorname{op}}$ as the group structure 
@@ -460,6 +474,7 @@ conventions for multiplying permutations were equivalent. What does this really 
 
 
 \begin{exercise}
+    Let $n\geq2$. 
 Prove that $F=\{\sigma\in\Sym_n:\sigma(n)=n\}\leq\Sym_n$ and $F\simeq\Sym_{n-1}$.
 \end{exercise}
 
@@ -494,17 +509,20 @@ f(k)=f(\underbrace{(-1)+\cdots+(-1)}_{|k|-\text{times}})=f(-1)^{-k}=(g^{-1})^{-k
 \end{example}
 
 \begin{example}
-We claim that $\Hom(\Z/8,\Z/10)$ has exactly two elements (one of these elements being 
-the zero homomorphism, that is $\Z/8\to\Z/10$, $x\mapsto 0$).
+We claim that $\Hom(\Z/8,\Z/10)$ has exactly two elements,  one of these elements being 
+the zero homomorphism, that is 
+\[
+\Z/8\to\Z/10,\quad x\mapsto 0.
+\]
 Let $f\in\Hom(\Z/8,\Z/10)$ be a non-trivial homomorphism. 
-%be a non-trivial homomorphism. If 
 If 
 $n=|f(1)|$, then 
 $n$ divides $8$, that is $n\in\{1,2,4,8\}$. Since $f(1)\in\Z/10$ and
 $f$ is non-trivial,
 $n=2$. Thus $f(1)=5$ and $f$ is univocally determined. 
 This means that 
-$f(k)=5k$ for $k\in\{0,1,\dots,7\}$.
+$f(k)=5k$ for $k\in\{0,1,\dots,7\}$. Conversely, the map 
+$f(k)=5k$ is well-defined, additive and non-zero. 
 \end{example}
 
 \begin{exercise}
@@ -533,7 +551,8 @@ either $G\simeq\Sym_3$ or $G$ is cyclic of order six.
 Since $|G|$ is even, there exists an element of $G$ 
 that has order two (see Exercise~\ref{xca:orden2}). 
 If every element of $G\setminus\{1\}$ has order two, then
-$xy=yx$ for all $x,y\in G$. Hence 
+$xy=yx$ for all $x,y\in G$. 
+Choose distinct $x,y\in G\setminus\{1\}$. Then 
 \[
 \langle x,y\rangle=\{1,x,y,xy\}\leq G,
 \]
