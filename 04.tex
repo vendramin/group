@@ -3,7 +3,7 @@
 
 \index{Cycle}
 Let $\sigma\in\Sym_n$. We say that the permutation $\sigma$ is an $r$-cycle 
-if there are $a_1,\dots,a_r\in\{1,\dots,n\}$ such that 
+if there are distinct $a_1,\dots,a_r\in\{1,\dots,n\}$ such that 
 $\sigma(j)=j$ for all $j\not\in\{a_1,\dots,a_r\}$ and 
 \[
 \sigma(a_i)=\begin{cases}
@@ -14,10 +14,10 @@ a_1 & \text{if $i=r$}.
 
 For example, $(12)$, $(13)$ and $(23)$ are 2-cycles of 
 $\Sym_3$. Note that 
-2-cycles are called \emph{transpositions}.
+2-cycles are called \emph{transpositions}\index{Transposition}.
 The permutations $(123)$ and $(132)$ are 3-cycles of $\Sym_3$.
 
-\index{Disjoint permutations}
+\index{Permutation!disjoint}
 We say that the permutations $\sigma,\tau\in\Sym_n$ 
 are \emph{disjoint} if for all 
 $j\in\{1,\dots,n\}$
@@ -37,7 +37,7 @@ Disjoint permutations commute.
 
 
 We now prove that every permutation can be written 
-as product of disjoint cycles. 
+as a product of disjoint cycles. 
 The decomposition is unique up to the order of the factors. 
 We start with a lemma (used to prove the uniqueness of the decomposition).
 
@@ -68,22 +68,32 @@ of disjoint cycles of length
     $\sigma$ be a permutation that moves $k\geq2$ points and 
     $i_1\in\{1,\dots,n\}$ be such that $\sigma(i_1)\ne i_1$. We 
     consider the cycle that contains $i_1$. So let 
-        $i_2=\sigma(i_1)$, $i_3=\sigma(i_2)$... We know that 
-        there exists $r$ such that $\sigma(i_r)=i_1$
+        $i_2=\sigma(i_1)$, $i_3=\sigma(i_2)$... 
+        and $r$ be minimal such that
+        $\sigma(i_r)\in\{i_1,\dots,i_r\}$.
+        Then $\sigma(i_r)=i_1$
         (otherwise, if $\sigma(i_r)=i_j$ for some 
         $j\geq2$, then 
         \[
         \sigma(i_{j-1})=i_j=\sigma(i_r),
         \]
         a contradiction to the bijectivity of $\sigma$, as $i_{j-1}\ne i_r$). 
-        Let $\sigma_1=(i_1\cdots i_r)$. By the inductive hypothesis, since 
-        $\sigma_1^{-1}\sigma$ moves $<k$ points (because 
-        the $i_j$ are fixed points of $\sigma_1^{-1}\sigma$), 
-        we can write \[
+        Let $\sigma_1=(i_1\cdots i_r)$. 
+        If $\sigma_1^{-1}\sigma=\id$, then $\sigma=\sigma_1$.
+        Otherwise, $\sigma_1^{-1}\sigma$ fixes each $i_j$ and
+        coincides with $\sigma$ elsewhere, so it moves $<k$ points.
+        By the inductive hypothesis,  
+        % Otherwise, by the inductive hypothesis,
+        % $\sigma_1^{-1}\sigma$ moves $<k$ points (because 
+        % the $i_j$ are fixed points of $\sigma_1^{-1}\sigma$), 
+        % we can write 
+        \[
         \sigma_1^{-1}\sigma=\sigma_2\cdots\sigma_s,
         \]
         where 
-        $\sigma_2,\dots,\sigma_s$ are disjoint cycles. 
+        $\sigma_2,\dots,\sigma_s$ are disjoint cycles. Since their product fixes every $i_j$, none of these
+        disjoint cycles moves an $i_j$. Thus they are also
+        disjoint from $\sigma_1$.
         This implies that $\sigma=\sigma_1\sigma_2\cdots\sigma_s$.
 
         We now prove the uniqueness of the decomposition. 
@@ -111,6 +121,7 @@ This implies that
 
 \begin{corollary}\
 \label{cor:generation}
+Let $n\geq2$. Then the following statements hold: 
         \begin{enumerate}
                 \item $\Sym_n=\langle (ij):i<j\rangle$.
                 \item $\Sym_n=\langle (12),(13),\dots,(1n)\rangle$.
@@ -138,7 +149,7 @@ This implies that
         \[
         (1i)(1j)(1i)=(ij), 
         \]
-        where $i\ne j$.
+        where $2\leq i,j\leq n$ and $i\ne j$.
 
         To prove the third claim, write $\sigma$ as a product 
         of transpositions and 
@@ -147,7 +158,7 @@ This implies that
         (13)=(12)(23)(12),\quad
         (1\,k+1)=(k\,k+1)(1k)(k\,k+1)
         \]
-        for all $k\geq3$.
+        for $2\leq k\leq n-1$.
 
         Finally, the fourth claim follows from 
         the third claim and 
@@ -155,7 +166,7 @@ This implies that
         \[
         (12\cdots n)^{k-1}(12)(12\cdots n)^{1-k}=(k\,k+1),
         \]
-        where $k\geq1$.
+        where $1\leq k\leq n-1$.
 \end{proof}
 
 Here is an alternative proof of
@@ -183,6 +194,7 @@ our permutation into a product of transpositions.
     $(1324)(56)(789)\in\Sym_9$. 
 \end{exercise}
 
+\index{Permutation!matrix}
 Every permutation yields a permutation matrix. For example, 
 the matrix corresponding to $\sigma=\id\in\Sym_3$ 
 is the $3\times 3$ identity matrix. The permutation
@@ -224,9 +236,9 @@ $\sigma\in\Sym_n$, permutes the elements of the standard basis
 of $\R^{n\times1}$ in the way $\sigma$ permutes 
 the elements of $\{1,2,\dots,n\}$.
 
-\index{Elementary matrix}
+\index{Matrix unit}
 Recall that the 
-\emph{elementary matrix} 
+\emph{matrix unit} 
 $E_{i,j}$ is the matrix with a one in position
 $(i,j)$ and zero in all other entries. Recall the
 following formulas: 
@@ -260,7 +272,8 @@ P_\sigma P_\tau &=\left(\sum_{i=1}^n E_{\sigma(i),i}\right)\left(\sum_{j=1}^nE_{
 &=\sum_{j=1}^n E_{\sigma(\tau(j)),j}\\
 &=P_{\sigma\tau},
 \end{align*}
-where the double sum is zero unless $i=\tau(j)$.
+where the summand $E_{\sigma(i),i}E_{\tau(j),j}$ is zero unless $i=\tau(j)$. 
+%where the double sum is zero unless $i=\tau(j)$.
 \end{proof}
 
 
@@ -303,7 +316,7 @@ $s$ is even.
 
 
 \begin{example}
-\index{Center!of $\Sym_n$}
+\index{Center!of Sn@of $\Sym_n$}
 We claim that if $n\geq3$ then $Z(\Sym_n)=\{\id\}$.
 Assume that $Z(\Sym_n)\ne\{\id\}$. Let 
 $\sigma\in Z(\Sym_n)$ be such that $\sigma(i)=j$ for some $i\ne j$. 
@@ -317,7 +330,7 @@ a contradiction.
 \end{example}
 
 \begin{definition}   
-\index{Alternating group}
+\index{Group!alternating}
 The \emph{alternating group}
 \[
 \Alt_n=\{\sigma\in\Sym_n:\sgn(\sigma)=1\}
@@ -326,7 +339,8 @@ is the subgroup of $\Sym_n$ formed by even permutations.
 \end{definition}
 
 \begin{proposition}
-\index{Order!of the alternating group}
+\index{Group!alternating!order}
+Let $n\geq2$. Then 
 $|\Alt_n|=n!/2$.
 \end{proposition}
 
@@ -355,9 +369,9 @@ A direct calculation shows that
 \]
 The group $\Alt_3$ is abelian.
 In Example \ref{exa:A4}, we used the alternating group 
-\begin{multline*}
-\Alt_4=\{\id,(234),(243),(12)(34),\\(123),(124),(132),(134),(13)(24),(142),(143),(14)(23)\}.
-\end{multline*}
+\[ 
+\Alt_4=\{\id,(234),(243),(12)(34),(123),(124),(132),(134),(13)(24),(142),(143),(14)(23)\}.
+\]
 If $n\geq4$, then $\Alt_n$ is non-abelian. For example, 
 $(123)$ and $(124)$ do not commute. 
 
@@ -372,10 +386,12 @@ To prove the other inclusion, let $\sigma\in\Alt_n$.
 Write $\sigma=\sigma_1\cdots\sigma_s$ for some even integer $s$ 
 and transpositions $\sigma_1,\dots,\sigma_s$. 
 Now the claim follows from the formulas 
-\[
-(kl)(ij)=(kl)(ki)(ki)(ij)=(kil)(ijk),\quad
-(ik)(ij)=(ijk).\qedhere
-\]
+\begin{align*}
+\id=(ij)(ij),&&
+(kl)(ij)=(kl)(ki)(ki)(ij)=(kil)(ijk), 
+&&(ik)(ij)=(ijk),
+\end{align*}
+where $i,j,k,l$ are pairwise distinct. 
  \end{proof}
 
 Proposition \ref{pro:A_n3cycles} has several 
@@ -383,7 +399,7 @@ important applications.
 
 \begin{exercise}
 \label{xca:commutator_A4}
-    Prove that $[\Alt_4:\Alt_4]=\{\id,(12)(34),(13)(24),(14)(23)\}$. 
+    Prove that $[\Alt_4,\Alt_4]=\{\id,(12)(34),(13)(24),(14)(23)\}$. 
 \end{exercise}
 
 \begin{example}
@@ -417,7 +433,7 @@ From this, the claim follows, as each 3-cycle is a commutator:
 \begin{optional}
 \section{Application: Block permutation cipher}
 A permutation $\sigma\in\Sym_n$ can be used as a secret key in the crypto-system 
-called \emph{permutation cipher}. The idea is simple: We are given a message
+called \emph{permutation cipher}\index{Permutation cipher}. The idea is simple: We are given a message
 \[
 a_1\cdots a_n
 \]
@@ -438,7 +454,7 @@ Hermann Weyl:
 The message has length eighty. 
 Let 
 \[
-\sigma=(1\,18\,37\,10\,6\,17\,15\,13\,19\,2\,4\,16)(5\,12\,8\,20\,14)\in\Sym_{20}.
+\sigma=(1\,18\,3\,7\,10\,6\,17\,15\,13\,19\,2\,4\,16)(5\,12\,8\,20\,14)\in\Sym_{20}.
 \]
 We split the message into four smaller messages, each of length twenty:
 \begin{center}
@@ -446,7 +462,7 @@ We split the message into four smaller messages, each of length twenty:
 \end{center}
 Now apply $\sigma$ to each sub-message to obtain 
 \begin{center}
-\textsf{n i eareensv u tsehi|omsperiudur docn rot|iorastrnp eeofect tn|ufyrroesmstmp ysgo}
+\textsf{n\textvisiblespace i\textvisiblespace eareensv\textvisiblespace u\textvisiblespace tsehi|omsperiudur\textvisiblespace docn\textvisiblespace rot|iorastrnp\textvisiblespace eeofect\textvisiblespace tn|ufyrroesmstmp ysgo\textvisiblespace\textvisiblespace}
 \end{center}
 \end{optional}
 
@@ -478,9 +494,10 @@ Probably, we are all familiar with the puzzle of Figure~\ref{fig:toy}.
 %     \end{center}
 % \bigskip 
 
+\index{15-puzzle}
 The squares can slide vertically or horizontally using the empty square. Starting from the \emph{standard configuration}, 
 namely the one shown in Figure~\ref{fig:toy}, one can reach any other \emph{admissible} position.
-Around 1886, the following version of the puzzle (known as the \emph{15-puzzle}) 
+In 1880, the following version of the puzzle (known as the \emph{15-puzzle}) 
 became quite popular: Is the configuration 
 \bigskip 
     \begin{center}
@@ -499,9 +516,9 @@ became quite popular: Is the configuration
 \bigskip 
 admissible? In other words, can the puzzle be solved and moved to the standard configuration? 
 
-
-A famous puzzle maker was so confident that the problem was very difficult 
-that he even offered a substantial amount of money—\$1,000 at the time, which was a small fortune. 
+In 1896, Sam Loyd advertised a \$1,000 prize for solving the arrangement with 14 and 15 interchanged.
+%A famous puzzle maker was so confident that the problem was very difficult 
+%that he even offered a substantial amount of money—\$1,000 at the time, which was a small fortune. 
 The 15-puzzle has no solution. Let us see why.
 We identify the configuration 
 \bigskip 
@@ -520,8 +537,8 @@ We identify the configuration
     \end{center}
 \bigskip 
 with the permutation $\sigma\in\Sym_{16}$ such that  
-$\sigma(i)=\sigma_i$ for all $i\in\{1,\dots,16\}$. Here $\sigma_{16}$ 
-represents the empty square. What happens to our permutation 
+$\sigma(i)=\sigma_i$ for all $i\in\{1,\dots,16\}$. The label 16 represents 
+the empty square. What happens to our permutation 
 $\sigma$ when we move squares? It should be enough to see 
 this in a concrete example. We know that the 15-puzzle corresponds to the 
 permutation $\sigma=(14\,15)$. Now if 
@@ -543,22 +560,41 @@ configuration is
     \end{center}
 \bigskip 
 so the resulting permutation 
-is $\sigma(12\,16)$. 
+is $(12\,16)\sigma$.
 
-In general, moving squares correspond to multiplying  
-our permutation by transpositions of the form $(i\,16)$ for
-some $i\in\{1,\dots,15\}$. This means that 
-after performing $m$ movements, 
-one gets a configuration with 
-permutation
+In general, moving the tile labelled $i$ into the empty square
+multiplies the current permutation on the left by $(i\,16)$.
+Starting from $\sigma=(14\,15)$, after $m$ moves we obtain 
 \[
-\tau_m\tau_{m-1}\cdots\tau_2\tau_1,
+\tau_m\cdots\tau_1\sigma,
 \]
-where $\tau_1,\dots,\tau_m$ are transpositions. In particular, 
-to ``solve'' the puzzle (that is, to return it into the default position), 
-an even number of 
-movements is needed. This explains why the puzzle cannot
+where each $\tau_j$ is a transposition.
+To reach the standard configuration, this product must equal
+$\id$. Taking signs, 
+\[
+1=(-1)^m\sgn(\sigma)=(-1)^{m+1},
+\]
+so $m$ is odd.
+On the other hand, color the board like a chessboard.
+Each move changes the color of the square occupied by the blank.
+Since the blank starts and ends in the bottom-right square,
+$m$ must be even, a contradiction. This explains why the puzzle cannot
 be solved! 
+
+% In general, moving squares correspond to multiplying  
+% our permutation by transpositions of the form $(i\,16)$ for
+% some $i\in\{1,\dots,15\}$. This means that 
+% after performing $m$ movements, 
+% one gets a configuration with 
+% permutation
+% \[
+% \tau_m\tau_{m-1}\cdots\tau_2\tau_1,
+% \]
+% where $\tau_1,\dots,\tau_m$ are transpositions. In particular, 
+% to ``solve'' the puzzle (that is, to return it into the default position), 
+% an even number of 
+% movements is needed. This explains why the puzzle cannot
+% be solved! 
 
 \begin{bonus}
 \label{xca:15tricky}

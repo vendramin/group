@@ -24,6 +24,8 @@ When is a subset $S$ of a group $G$ itself a group under the operations inherite
     $\{1\}$ and $G$ are always subgroups of $G$. 
 \end{example}
 
+\index{Subgroup!trivial}
+\index{Subgroup!proper}
 The subgroup $\{1\}$ is known as the \emph{trivial subgroup} of $G$. 
 A subgroup $S$ of $G$ is said to be \emph{proper} if $S\ne G$. 
 
@@ -36,6 +38,7 @@ is a chain of subgroups.
 \end{example}
 
 \begin{example}
+\index{Group!circle}
 $S^1=\{z\in\C:|z|=1\}\leq\C^\times=\C\setminus\{0\}$.
 \end{example}
 
@@ -46,7 +49,7 @@ Let $n\geq1$. Then $G_n=\{z\in\C:z^
 n=1\}$ is a subgroup of $\C^\times$. 
 Note that
 \[
-G_n=\{1,\exp(2\pi i/n),\exp(4i\pi/n),\dots,\exp(2(n-1)i\pi/n)\}.
+G_n=\{1,\exp(2\pi i/n),\exp(4i\pi/n),\dots,\exp(2(n-1)i\pi/n)\}
 \]
 and 
 \[
@@ -54,7 +57,7 @@ G_n\leq\bigcup_{k\geq1}G_k\leq S^1\leq\C^\times.
 \]
 \end{example}
 
-Why $\bigcup_{k\geq1}G_k$ is a group? 
+Why is $\bigcup_{k\geq1}G_k$ a group? 
 
 \begin{exercise}
 \label{xca:center}
@@ -76,7 +79,7 @@ is a subgroup of $G$. Moreover,
 $Z(G)=\bigcap_{g\in G}C_G(g)$. 
 
 \begin{exercise}
-        \index{Conjugate of a subgroup}
+        \index{Subgroup!conjugate}
         \label{xca:conjugate}
         Let $S$ be a subgroup of $G$ and $g\in G$. Prove that
         the \emph{conjugate} $gSg^{-1}$
@@ -89,12 +92,13 @@ $Z(G)=\bigcap_{g\in G}C_G(g)$.
 
 \begin{exercise}
 \label{xca:center_S3}
-\index{Center!of $\Sym_3$}
+\index{Center!of S3@of $\Sym_3$}
         Prove that $Z(\Sym_3)=\{\id\}$ and compute $C_{\Sym_3}((12))$.
 \end{exercise}
 
 \begin{exercise}
 \label{xca:center_2x2}
+\index{Center!of GL2(R)@of $\GL_2(\R)$}
     Find the center of $\GL_2(\R)$.
 \end{exercise}
 
@@ -114,13 +118,17 @@ to solve the following problem:
 
 \begin{exercise}
 \label{xca:SL_subgroup}
+\index{Group!special linear}
 Prove that $\SL_n(\R)=\{a\in\GL_n(\R):\det(a)=1\}\leq\GL_n(\R)$. 
 \end{exercise}
 
 \begin{exercise}
 \label{xca:intersection}
-    Prove that an arbitrary intersection (not necessarily finite) of subgroups is again a subgroup.
+    Prove that an arbitrary intersection (not necessarily finite) of subgroups of $G$
+    is again a subgroup. For an empty family, take the intersection to be $G$. 
 \end{exercise}
+
+% For an empty family, take the intersection to be $G$. 
 
 The previous exercise is easy but crucial. We need it 
 to construct subgroups generated 
@@ -137,7 +145,9 @@ by a given subset of elements.
         \]
 \end{definition}
 
-Why this is the smallest subgroup that contains $X$? 
+By convention, the empty set generates the trivial group. 
+
+Why is this the smallest subgroup that contains $X$? 
 Let $H\leq G$ be such that 
 $X\subseteq H$. Since $H$ is one of the subgroups appearing
 in the intersection, 
@@ -156,8 +166,9 @@ X\rangle=\langle\{g_1,\dots,g_k\}\rangle=\langle g_1,\dots,g_k\rangle.
 \label{xca:generated}
 Prove that 
 \[
-    \langle X\rangle=\{x_1^{n_1}\cdots x_k^{n_k}:k\geq0,\,x_1,\dots,x_k\in X,\,-1\leq n_1,\dots,n_k\leq 1\}.
+    \langle X\rangle=\{x_1^{n_1}\cdots x_k^{n_k}:k\geq0,\,x_1,\dots,x_k\in X,\,n_1,\dots,n_k\in\{-1,0,1\}\},
 \]
+where by convention the empty product is equal to the identity of the group. 
 \end{exercise}
 
 The previous exercise shows that
@@ -169,6 +180,7 @@ $x_1^{-1},\dots,x_n^{-1}$.
 
 \begin{example}
 \label{exa:dihedral}
+\index{Group!dihedral}
 Let $n\geq3$. Let 
 \[
 r=\begin{pmatrix}
@@ -290,6 +302,7 @@ triangle.
 
 \begin{example}
 \label{exa:Q8}
+\index{Group!quaternion}
     Let $Q_8$ be the set of matrices 
     \begin{align*}
         I&=\begin{pmatrix}
@@ -401,22 +414,23 @@ the \emph{well-ordering principle}. This principle states that every non-empty s
         \end{proof}
 
 The previous theorem has nice applications. 
-If $a,b\in\Z$, we say that $a$ \emph{divides} $b$ (or $b$ is divisible by $a$)
+If $a,b\in\Z$, we say that $a$ \emph{divides}\index{Divisibility} $b$ (or $b$ is divisible by $a$)
 if $b=ac$ for some $c\in\Z$. Notation: 
 \[
 a\mid b\Longleftrightarrow b=ac\text{ for some $c\in\Z$.}
 \]
-If $a,b\in\Z$ are such that $ab\ne0$, then 
+If $a,b\in\Z$ are such that $(a,b)\ne(0,0)$, then 
 \[
 S=a\Z+b\Z=\{m\in\Z:m=ar+bs\text{ for $r,s\in\Z$}\}
 \]
 is a subgroup of $\Z$ (this is an exercise). 
-By Theorem \ref{thm:Z}, $S=d\Z$ for some $d>0$. 
+By Theorem \ref{thm:Z}, $S=d\Z$ for some $d>0$. By convention, $\gcd(0,0)=0$. 
 This positive integer $d$
-is the \emph{greatest common divisor} of $a$ and $b$, 
+is the \emph{greatest common divisor}\index{Greatest common divisor} of $a$ and $b$, 
 that is $d=\gcd(a,b)$. 
 
 \begin{exercise}
+\index{Bezout's identity@B\'ezout's identity}
 Let $a,b\in\Z$ be such that $ab\ne0$ and $d=\gcd(a,b)$. 
 Prove the following statements:
 \begin{enumerate}
@@ -426,7 +440,7 @@ Prove the following statements:
 \end{enumerate}
 \end{exercise}
 
-Two integers $a$ and $b$ are said to be \emph{coprime} if 
+Two integers $a$ and $b$ are said to be \emph{coprime}\index{Coprime integers} if 
 and only if the only positive integer dividing 
 $a$ and $b$ is one, that is  
 \begin{align*}
@@ -447,7 +461,7 @@ Let $a,b\in\Z$ be such that $ab\ne 0$. Since $a\Z\cap b\Z$
 is a non-zero subgroup of $\Z$ (note that it contains $ab\ne 0$), 
 we can write  $a\Z\cap b\Z=m\Z$
 for some $m\geq1$. The integer $m$
-is the \emph{least common multiple} of $a$ and $b$ 
+is the \emph{least common multiple}\index{Least common multiple} of $a$ and $b$ 
 and will be written as $m=\lcm(a,b)$.
 
 \begin{exercise}

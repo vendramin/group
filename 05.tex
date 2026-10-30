@@ -34,7 +34,7 @@ If $G=\Sym_3$ and $N=\langle (12)\rangle$, then $(xN,yN)\mapsto xyN$ is not a fu
 G/N=\{N,(123)N,(132)N\},
 \]
 where 
-$N=(12)N$, $(123)N=(13)N$ and $(132)N=(23)N$. Since 
+$N=(12)N$, $(123)N=(13)N$ and $(132)N=(23)N$. Then 
 \[
 (132)N=(13)(23)N=(13)N(23)N=(123)N(132)N=N,
 \]
@@ -78,7 +78,7 @@ $n=g^{-1}(gng^{-1})g\in g^{-1}Ng\subseteq N$.
 
 \begin{proof}
    We first prove that $1)\implies 2)$. Let $g,h\in G$. Since
-   $gNg^{-1}=N$, 
+   $hNh^{-1}=N$, 
    \[
    (gN)(hN)=g(Nh)N=g(hN)N=(gh)N.
    \]
@@ -100,22 +100,24 @@ G$.
 \end{example}
 
 \begin{example}
-If $G$ is a group, then  $[G,G]$ is a normal subgroup of $G$. If 
-$x\in [G,G]$ and $g\in G$, then
-$gxg^{-1}=(gxg^{-1}x^{-1})x=[g,x]x\in [G,G]$. Alternatively,
-\[
-g\left(\prod_{i=1}^k[x_i,y_i]\right)g^{-1}=\prod_{i=1}^k [gx_ig^{-1},gy_ig^{-1}]
-\]
-for all $g,x_1,\dots,x_k,y_1,\dots,y_k\in G$.
+  \index{Commutator subgroup!normality}
+  If $G$ is a group, then  $[G,G]$ is a normal subgroup of $G$. If
+  $x\in [G,G]$ and $g\in G$, then
+  $gxg^{-1}=(gxg^{-1}x^{-1})x=[g,x]x\in [G,G]$. Alternatively,
+  \[
+    g\left(\prod_{i=1}^k[x_i,y_i]\right)g^{-1}=\prod_{i=1}^k [gx_ig^{-1},gy_ig^{-1}]
+  \]
+  for all $g,x_1,\dots,x_k,y_1,\dots,y_k\in G$.
 \end{example}
 
 \begin{example}
-Let $n\geq2$. Then 
-$\Alt_n$ is a normal subgroup of $\Sym_n$.
-If $\sigma\in\Alt_n$ and $\tau\in\Sym_n$, then $\tau\sigma\tau^{-1}\in\Alt_n$, as 
-\[
-\sgn(\tau\sigma\tau^{-1})=\sgn(\sigma)=1.
-\]
+  \index{Group!alternating!normality}
+  Let $n\geq2$. Then
+  $\Alt_n$ is a normal subgroup of $\Sym_n$.
+  If $\sigma\in\Alt_n$ and $\tau\in\Sym_n$, then $\tau\sigma\tau^{-1}\in\Alt_n$, as
+  \[
+    \sgn(\tau\sigma\tau^{-1})=\sgn(\sigma)=1.
+  \]
 \end{example}
 
 \begin{example}
@@ -138,7 +140,8 @@ For example, $(13)(12)(13)=(23)\not\in\langle(12)\rangle$.
 \end{example}
 
 \begin{example}
-The subgroup $\SL_n(\R)$ is normal in $\GL_n(\R)$. If $g\in\GL_n(\R)$ and $x\in\SL_n(\R)$, then $\det(gxg^{-1})=(\det g)(\det x)(\det g)^{-1}=1$.
+  \index{Group!special linear!normality}
+  The subgroup $\SL_n(\R)$ is normal in $\GL_n(\R)$. If $g\in\GL_n(\R)$ and $x\in\SL_n(\R)$, then $\det(gxg^{-1})=(\det g)(\det x)(\det g)^{-1}=1$.
 \end{example}
 
 \begin{example}
@@ -172,7 +175,7 @@ Let us compute the list of normal subgroups of $\Alt_4$.
 
 \begin{example}
 \label{exa:normal_A4}
-\index{Normal subgroups of $\Alt_4$}
+\index{Subgroup!normal!of A4@of $\Alt_4$}
 We claim that 
 $\{\id\}$, $K=\{\id,(12)(34),(13)(24),(14)(23)\}$ and $\Alt_4$ 
 are the normal subgroups of $\Alt_4$.
@@ -183,11 +186,16 @@ $\Alt_4$ of order four). Let $N\ne\{\id\}$ be a normal subgroup of
 $\Alt_4$. 
 
 If $N$ contains a 3-cycle, say 
-$(abc)\in N$, then 
-\[
-(acd)=(bcd)(abc)(bcd)^{-1}\in N
-\]
-and hence $N=\Alt_4$ (because $N$ contains every 3-cycle). 
+$(abc)\in N$. 
+% , then 
+% \[
+% (acd)=(bcd)(abc)(bcd)^{-1}\in N
+% \]
+% and hence $N=\Alt_4$ (because $N$ contains every 3-cycle). 
+Since $(acd)\notin\langle(abc)\rangle$, 
+$|N|>3$ and 3 divides $|N|$. By Lagrange's theorem,
+$|N|\in\{6,12\}$. Example~\ref{exa:A4} excludes
+order six, so $N=\Alt_4$.
 
 Assume that $N$ does not contain 3-cycles. 
 Then some non-trivial element of $K$ belongs to $N$, say 
@@ -211,7 +219,7 @@ Prove that $H$ is normal in $N$, $N$ is normal in $G$ but $H$ is not normal in $
 
 
 \begin{example}
-\index{Normal subgroups!of $\Sym_4$}
+\index{Subgroup!normal!of S4@of $\Sym_4$}
 We claim that $\{\id\}$, $K$, $\Alt_4$ and $\Sym_4$ are the normal subgroups of $\Sym_4$.
 
 Let $N$ be a normal subgroup of $\Sym_4$. If $N\subseteq\Alt_4$, then
@@ -237,12 +245,14 @@ for all $\tau\in\Sym_4$ and $K\subseteq N$ because
 \[
 (ac)(bd)=(abcd)^2.
 \]
-This implies that $|N|\geq10$. Since $K\subseteq N$,  $|N\cap\Alt_4|\geq 4$. 
-Now the restriction of $\sgn$ to $N$ is surjective, as $N$ contains a 4-cycle. The 
-kernel of this restriction is 
-$N\cap\Alt_4$. Thus $[N:N\cap A_4]=2$ 
-and hence $|N\cap A_4|=|N|/2\ge5$. 
-Hence $N\cap\Alt_4=\Alt_4\subseteq N$. Since $N\ne \Alt_4$, $|N|>12$ and hence $N=\Sym_4$.
+This implies that $|N|\geq10$. Since $K\subseteq N$, 
+$(ac)=(abcd)(ab)(cd)\in N$. Thus $N$ contains a transposition, and hence $N=\Sym_4$. 
+%$|N\cap\Alt_4|\geq 4$. 
+% Now the restriction of $\sgn$ to $N$ is surjective, as $N$ contains a 4-cycle. The 
+% kernel of this restriction is 
+% $N\cap\Alt_4$. Thus $[N:N\cap A_4]=2$ 
+% and hence $|N\cap A_4|=|N|/2\ge5$. 
+% Hence $N\cap\Alt_4=\Alt_4\subseteq N$. Since $N\ne \Alt_4$, $|N|>12$ and hence $N=\Sym_4$.
 \end{example}
 
 The following theorem is crucial.
@@ -272,7 +282,7 @@ As an application,
 we compute the commutator subgroup of $\Alt_4$. 
 
 \begin{example}
-\index{Commutator!of $\Alt_4$}
+\index{Commutator subgroup!of A4@of $\Alt_4$}.
 $[\Alt_4,\Alt_4]=K=\{\id,(12)(34),(13)(24),(14)(23)\}$.
 We know that $K$ is normal in $\Alt_4$. Since $\Alt_4/K$ has order three, 
 it is abelian. Then $[\Alt_4,\Alt_4]\subseteq K$. Since 
