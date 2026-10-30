@@ -4,7 +4,7 @@
 The following theorem is fundamental. For example, it allows us to recognize quotient groups. 
 
 \begin{theorem}[First isomorphism theorem]
-\index{First isomorphism theorem}
+\index{Isomorphism theorems!first}
 If $f\colon G\to H$ is a group homomorphism, then $G/\ker f\simeq f(G)$.
 \end{theorem}
 
@@ -57,7 +57,7 @@ $\ker f=n\Z$. By the first isomorphism theorem, the claim follows.
 \end{example}
 
 \begin{example}
-Note that $2\Z\simeq 3\Z$, as both groups are infinite (alternatively, one can also consider the map $2k\mapsto 3k$). Moreover, 
+Note that $2\Z\simeq 3\Z$, as both groups are infinite cyclic (alternatively, one can also consider the map $2k\mapsto 3k$). Moreover, 
 \[
 \Z/2\simeq\Z/2\Z\not\simeq\Z/3\Z\simeq\Z/3.
 \]
@@ -128,7 +128,8 @@ Let us see another application that shows that
 the first isomorphism theorem is quite familiar. 
 
 \begin{example}
-Let $V$ be a vector space and $W$ be a subspace of $V$. 
+    \index{Vector space!quotient}
+Let $V$ be a real vector space and $W$ be a subspace of $V$. 
 In particular, 
 $V$ is an abelian group and 
 $W$ is a normal subgroup of $V$. The abelian group 
@@ -142,6 +143,7 @@ the reader needs to show that
 $\dim (V/W)=\dim V-\dim W$
 if $\dim V<\infty$.
 
+\index{Rank-nullity theorem}
 If $f\colon V\to U$ is a linear map, then
 $V/\ker f\simeq f(V)$ as abelian groups (by the first
 isomorphism theorem). The map realizing this
@@ -154,6 +156,7 @@ if $\dim V<\infty$, then
 \end{example}
 
 \begin{exercise}
+    \index{Group!quotient!universal property}
 \label{xca:quotients}
 Let $f\colon G\to H$ be a group homomorphism and 
 $K$ a normal subgroup of $G$ such that $K\subseteq\ker f$. 
@@ -190,6 +193,7 @@ what the theorem is about, one has the following diagram:
 \end{tikzcd}\]
 
 \begin{exercise}[Second isomorphism theorem]
+\index{Isomorphism theorems!second}
 If $N$ is a normal subgroup of $G$ and 
 $T$ is a subgroup of $G$, then $N\cap T$ is normal in $T$
 and 
@@ -245,7 +249,7 @@ The left cosets of $H\cap N$ in $H$ are
 \quad
 8+(H\cap N)=\{8,20\}.
 \]
-By the second isomorphism theorem, $(H+N)/N\simeq H/H\cap N$. The
+By the second isomorphism theorem, $(H+N)/N\simeq H/(H\cap N)$. The
 isomorphism is given by 
 $f\colon H/(H\cap N)\to (H+N)/N$, $h+(H\cap N)\mapsto h+N$.
 In our particular case, 
@@ -267,7 +271,7 @@ Let $a,b\in\Z\setminus\{0\}$. Then $a\Z+b\Z=\gcd(a,b)\Z$ and $a\Z\cap b\Z=\lcm(a
 Since the formula involves finite groups, 
 computing orders yields 
 \[
-ab=\gcd(a,b)\lcm(a,b).
+|ab|=\gcd(a,b)\lcm(a,b).
 \]
 \end{example}
 
@@ -277,7 +281,7 @@ ab=\gcd(a,b)\lcm(a,b).
 A group $G$ is said to be \emph{meta-abelian}
 if it contains an abelian normal subgroup $N$ and $G/N$
 is abelian. Abelian groups are meta-abelian. However, the group $\Sym_3$ is meta-abelian and not abelian.  The following exercise
-present another application of the second isomorphism theorem. 
+presents another application of the second isomorphism theorem. 
 
 \begin{xca}
 Prove that if $G$ is a meta-abelian group and $H$ is a subgroup of
@@ -323,6 +327,7 @@ There is a third isomorphism theorem.
 % %Un caso particular del lema nos permite demostrar elegantemente el tercer teorema de isomorfismos.
 
 \begin{bonus}[Third isomorphism theorem]
+\index{Isomorphism theorems!third}
 \label{xca:third}
 Let $S$ and $T$ be normal subgroups of $G$ such that 
 $S\subseteq T$. Prove that $S$ is normal in $T$, 
@@ -395,6 +400,7 @@ The correspondence is given by $\sigma(L)=f(L)$ and $\tau(Y)=f^{-1}(Y)$. Moreove
     We now prove that $\sigma\circ\tau=\id_\mathcal{B}$. If  $Y\in\mathcal{B}$, then $\sigma(\tau(Y))=Y$. If $y\in Y\subseteq f(G)$, then $y=f(x)$ for some $x\in G$, that is $x\in f^{-1}(y)$. This implies that $y=f(x)\in f(f^{-1}(Y))$. Conversely, if $y\in f(f^{-1}(Y))$, then $y=f(x)$ for some $x\in f^{-1}(Y)$. This implies that $y=f(x)\in Y$.
 
     It is an exercise to show that 
+    for $X,Y\in\mathcal{A}$, 
     $X\leq Y$ if and only if $f(X)\leq f(Y)$.
 
     We now show that $L\unlhd G$ if and only if 
@@ -478,17 +484,18 @@ If $H$ is a subgroup of $G$, then
 \]
 \begin{example}
 \label{exa:Q8normal}
-\index{Quaternion group}
+\index{Group!quaternion}
 Let us show that every subgroup of 
 \[
 Q_8=\{1,-1,i,-i,j,-j,k,-k\}
 \]
-is normal $Q_8$.
+is normal in $Q_8$.
 
-One way to verify that every subgroup of  $Q_8$ is normal is to list all its subgroups 
+One way to verify that every subgroup of $Q_8$ is normal is to list all its subgroups 
 and check their normality individually. The subgroups of $Q_8$ are $\{1\}$, $\{1,-1\}$, $\{1,-1,i,-i\}$, $\{1,-1,j,-j\}$, $\{1,-1,k,-k\}$ and $Q_8$. 
 
-Let us try a different approach. Let $N=\{-1,1\}$. 
+Let us try a different approach. First note that
+the trivial subgroup $\{1\}$ is normal in $Q_8$. Let now $N=\{-1,1\}$. 
 Then $N$ is normal in $Q_8$, as $N\subseteq Z(Q_8)$. Since $|Q_8/N|=4$, 
 $Q_8/N$ is an abelian group. 
 
@@ -496,12 +503,12 @@ We claim that $N$ is included in every non-trivial
 subgroup of $Q_8$. If 
 $K$ is a non-trivial subgroup of $Q_8$, then $-1\in K$ (because, for example, if $-i\in K$, then
  $-1=(-i)^2\in K$).
-Then every subgroup of $Q_8$ corresponds to a subgroup of $Q_8/N$. 
+Then every non-trivial subgroup of $Q_8$ corresponds to a subgroup of $Q_8/N$. 
 Since $Q_8/N$ is abelian, every subgroup of $Q_8/N$ is normal. Thus 
-if $S\leq Q_8$, then 
+if $\{1\}\ne S\leq Q_8$, then 
 $\pi(S)$ is normal in $Q_8/N$.
 Since $N\subseteq S$, it follows that
-$S=\pi^{-1}(\pi(S))$. Hence $S$ is normal in $Q_8$.
+$S=\pi^{-1}(\pi(S))$. Hence $S$ is normal in $Q_8$. 
 \end{example}
 
 % Alternative: 
@@ -566,7 +573,7 @@ $G$ such that $N\simeq\Z/5$ and $G/N\simeq\Sym_4$. The following statements hold
 \begin{enumerate}
 \item $|G|=120$
 \item $G$ contains a normal subgroup of order 20.
-\item $G$ contains three subgroups of order 15, none of them normal in $G$.
+\item $G$ contains four subgroups of order 15, none of them normal in $G$.
 \end{enumerate}
 
 To prove the first claim we note that 
@@ -575,8 +582,7 @@ Lagrange's theorem implies that
 24=|G/N|=\frac{|G|}{|N|}=|G|/5.
 \]
 
-We prove the second claim. Let $K$ be the subgroup of $G/N$ isomorphic
-to the Klein group. 
+We prove the second claim. Let $K$ be the unique normal subgroup of order four in $G/N$. 
 Then 
 $K$ is normal in $G/N$ and $|K|=4$. Since 
 $(G/N:K)=6$,
@@ -612,16 +618,17 @@ $gx=L_g(x)=L_h(x)=hx$ for all $x\in G$, which ultimately implies $g=h$).
 It follows that $G\simeq f(G)$, which is a subgroup of $\Sym_G$. 
 \end{proof}
 
+\index{Group!linear}
 Every finite group is isomorphic to a subgroup of some 
 $\Sym_n$. 
 In particular, using permutation matrices, 
-we see that every finite group 
+we see that every finite group is 
 isomorphic to a subgroup of $\GL_n(\Z)$ for some $n$.
 Those groups are known as \emph{linear groups}.
 
 \begin{optional}
 \begin{proposition}
-Every finite simple group $G$ is contained in some $\Alt_n$.
+Every finite simple group $G$ is isomorphic to a subgroup of $\Alt_n$.
 \end{proposition}
 
 \begin{proof}
