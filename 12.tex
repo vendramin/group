@@ -62,7 +62,7 @@ Since $H$ is normal in $G$, $yxy^{-1}\in H$. That is
 $yxy^{-1}=x^i$ for some $i\in\{1,\dots,6\}$. Therefore 
 $x^7=y^3=1$ and  $yx=x^iy$ for some $i\in\{1,\dots,6\}$. What can we say about this $i$? We note that
 \[
-x=y^3xy^{-3}=y^2(yxy^{-1})y^{-2}=y^2x^iy^{-2}=y(x^i)^2y^{-1}=(x^i)^3.
+x=y^3xy^{-3}=y^2(yxy^{-1})y^{-2}=y^2x^iy^{-2}=yx^{i^2}y^{-1}=x^{i^3}.
 \]
 Then $i^3\equiv 1\bmod 7$, that is $i\in\{1,2,4\}$. There are
 three cases: 
@@ -80,7 +80,8 @@ three cases:
         \quad
         G\simeq\langle x,y\rangle\leq \GL_2(\Z/7).
 \]
-\item[(c)] If $yxy^{-1}=x^4$, then $y^2xy^{-2}=x^2$. Since $|y^2|=|y|=3$, if $z=y^2$, then $H=\langle y\rangle=\langle z\rangle$. 
+\item[(c)] If $yxy^{-1}=x^4$, then $y^2xy^{-2}=x^2$. Since $|y^2|=|y|=3$, if $z=y^2$, then 
+$K=\langle y\rangle=\langle z\rangle$. 
 So we are in the previous case. 
 \end{enumerate}
 \end{example}
@@ -92,7 +93,7 @@ So we are in the previous case.
 If $G$ is a group of order $5\cdot 7\cdot 17$, then $G$ is cyclic.
 
 For $p\in\{5,7,17\}$, let $n_p=n_p(G)$. Since $n_5\equiv 1\bmod 5$ and $n_5$ divides $7\cdot 17$, it follows that 
-$n_5=1$. Let $H\in\Syl_5(G)$. This is the only Sylow $5$-subgrop of $G$, 
+$n_5=1$. Let $H\in\Syl_5(G)$. This is the only Sylow $5$-subgroup of $G$, 
 so $H$ is normal in $G$. Let $K\in\Syl_7(G)$ and $L\in\Syl_{17}(G)$. Since $H$ is normal in $G$, $HK$ is a subgroup of $G$. By Lagrange's theorem, $H\cap K=\{1\}$ because $H$ and $K$ have coprime orders.
 Thus  $|HK|=5\cdot 7$.
 We now apply Sylow's theorems to the group $HK$. If $m_7=n_7(HK)$, then $m_7=1$. In particular, $K\in\Syl_7(HK)$ and $K$ is normal in $HK$. 
@@ -135,7 +136,7 @@ x\in P.
 \]
 Since $P$ is not normal in $G$, $P\ne \ker\rho$. Thus $\ker\rho$ is a proper subgroup of $P$. Hence 
 $\ker\rho=\{1\}$ since $|P|=3$.
-Let $S,T\in\Syl_3(G)$. Since $S\simeq T\simeq\Z/3$, Lagrange's theorem implies that $S\cap T=\{1\}$. Thus $G$ 
+Let $S,T\in\Syl_3(G)$ with $S\ne T$. Since $S\simeq T\simeq\Z/3$, Lagrange's theorem implies that $S\cap T=\{1\}$. Thus $G$ 
 contains exactly eight elements of order three. 
 Since the elements of order three of $\Sym_4$ belong to $\Alt_4$, the subgroup $\rho(G)\cap\Alt_4$ of $\Sym_4$ contains at least
 eight elements. Therefore $G\simeq\rho(G)\simeq\Alt_4$.
@@ -187,6 +188,7 @@ We conclude our study of the Sylow theorems with two final results, which may be
 
 \begin{optional}
 \begin{theorem}
+\index{Subgroup!Sylow!in normal subgroups}
     Let $N$ be a normal subgroup of a finite group 
     $G$ and $P\in\Syl_p(G)$. Then 
     $P\cap N\in\Syl_p(N)$. Moreover, every Sylow 
@@ -195,16 +197,20 @@ We conclude our study of the Sylow theorems with two final results, which may be
 \end{theorem}
 
 \begin{proof}
-    Since $N$ is normal,
-    by Theorem \ref{thm:Sylow_auxiliar} applied to the group $N$, 
-    there exists 
-    $g\in G$ such that 
-        \[
-                g(P\cap N)g^{-1}=gPg^{-1}\cap gNg^{-1}=gPg^{-1}\cap N\in\Syl_p(N).
-        \]
-    Then $P\cap N$ is a Sylow $p$-subgroup of $g^{-1}Ng=N$.
+    Since $N$ is normal, $PN$ is a subgroup of $G$, and
+    $(N:P\cap N)=(PN:P)$ divides $(G:P)$. 
+Thus $P\cap N$ is a $p$-subgroup of $N$ whose index
+is not divisible by $p$. Hence $P\cap N\in\Syl_p(N)$.
+    % Since $N$ is normal,
+    % by Theorem \ref{thm:Sylow_auxiliar} applied to the group $N$, 
+    % there exists 
+    % $g\in G$ such that 
+    %     \[
+    %             g(P\cap N)g^{-1}=gPg^{-1}\cap gNg^{-1}=gPg^{-1}\cap N\in\Syl_p(N).
+    %     \]
+    % Then $P\cap N$ is a Sylow $p$-subgroup of $g^{-1}Ng=N$.
 
-    Let $Q\in\Syl_pN$ and $P\in\Syl_p(G)$ be such that
+    Let $Q\in\Syl_p(N)$ and $P\in\Syl_p(G)$ be such that
     $Q\subseteq P$. Then
     $Q\subseteq P\cap N$. Hence 
     $Q=P\cap N$, as $P\cap N$ is a Sylow $p$-subgroup of $N$. 
@@ -217,6 +223,7 @@ $n_p(N)\leq n_p(G)$.
 
 \begin{optional}
 \begin{theorem}
+    \index{Subgroup!Sylow!in quotient groups}
     Let $p$ be a prime number, $G$ be a finite group, $P\in\Syl_p(G)$, 
     and $N$ be a normal subgroup of $G$. Let $\pi\colon G\to G/N$ be the canonical homomorphism. Then 
     $\pi(P)\in\Syl_p(G/N)$ and every Sylow 
@@ -224,7 +231,7 @@ $n_p(N)\leq n_p(G)$.
 \end{theorem}
 
 \begin{proof}
-    Since $\pi(P)=(\pi|_{P})(P)\simeq P/N\cap P$,
+    Since $\pi(P)=(\pi|_{P})(P)\simeq P/(N\cap P)$,
     the second isomorphism theorem 
     implies that 
     $\pi(P)$ is a $p$-group. Since
@@ -310,18 +317,18 @@ $x_1,\dots,x_k$, that is
 We say that $\{x_1,\dots,x_k\}$ \emph{generates} $A$ if 
 $A=\langle x_1,\dots,x_k\rangle$. And we say that the set 
 $\{x_1,\dots,x_k\}$ is 
-\emph{linearly independent} if 
+\emph{linearly independent}\index{Group!abelian!linear independence} if 
 \[
 \sum_{i=1}^k m_ix_i=0\implies m_1x_1=\cdots=m_kx_k=0.
 \]
 
-Note that our definition of linearly independence for abelian groups is slightly 
+Note that our definition of linear independence for abelian groups is slightly 
 different from that of linear algebra. For example, in the group $\Z/5$, 
-one has $5x=0$ for all $x$. Thus there will be no linearly independent sets with 
+one has $5x=0$ for all $x$. Thus there will be no non-empty linearly independent sets with 
 the standard linear algebra definition. 
 
 \begin{definition}
-\index{Direct sum of abelian groups}
+\index{Group!direct sum}
     Let $A$ be an abelian group and $X$ and $Y$ be subgroups of $A$. 
     We say that $A$ is the \emph{direct sum} of $X$ and $Y$ 
     if $A=X+Y$ and $X\cap Y=\{0\}$. In this case, we write $A=X\oplus Y$. 
@@ -335,6 +342,7 @@ the standard linear algebra definition.
     written uniquely as $a=x+y$ for $x\in X$ and $y\in Y$.     
 \end{exercise}
 
+\index{Group!abelian!basis}
 A subset $\{x_1,\dots,x_k\}$ is a \emph{basis} of $A$ 
 if $A=\langle x_1\rangle\oplus\cdots\oplus \langle x_k\rangle$, that is
 if $\{x_1,\dots,x_k\}$ is a 
@@ -343,6 +351,7 @@ linearly independent set of generators of $A$.
 
 \begin{theorem}
 \label{thm:fundamental_abelian}
+\index{Group!abelian!structure theorem}
     Every finitely generated abelian group has a basis. In particular, 
     it is a finite direct sum of cyclic groups. 
 \end{theorem}
@@ -352,7 +361,7 @@ Before proving the theorem, we need a lemma.
 \begin{lemma}
 \label{lem:trick_abelian}
     Let $A=\langle x_1,\dots,x_n\rangle$ be a finitely generated 
-    abelian group and $c_1,\dots,c_n$ be positive integers such that 
+    abelian group and $c_1,\dots,c_n$ be non-negative integers such that 
     $\gcd(c_1,\dots,c_n)=1$. Then there exist $y_1,\dots,y_n\in A$ 
     such that 
     $A=\langle y_1,\dots,y_n\rangle$ and 
@@ -399,12 +408,14 @@ Now we are ready to prove the main theorem of this section.
     $\langle x_1\rangle\cap \langle x_2,\dots,x_n\rangle\ne\{0\}$. Let  
     $\xi\in \langle x_1\rangle\cap \langle x_2,\dots,x_n\rangle$ be a non-zero element. Then 
     $\xi=m_1x_1=m_2x_2+\cdots+m_nx_n$ for some integers  
-    $m_1\ne 0$ and $m_2,\dots,m_n\in\Z$ not all zero.  Thus 
+    $0<|m_1|<|x_1|$ 
+    %$m_1\ne 0$ 
+    and $m_2,\dots,m_n\in\Z$ not all zero.  Thus 
     \[ 
     (-m_1)x_1+m_2x_2+\cdots+m_nx_n=0.
     \]
     After changing the sign of some of the generators, 
-    we produce a generating set $\{z_1,\dots,z_k\}$ of $A$ 
+    we produce a generating set $\{z_1,\dots,z_n\}$ of $A$ 
     such that our linear combination becomes 
     \[ 
     \lambda_1z_1+\lambda_2z_2+\cdots+\lambda_nz_n=0, 
@@ -438,10 +449,12 @@ translates into the following result.
     for integers $n_1,\dots,n_k\geq2$ and 
     $r\geq0$. The integers
     $n_1,\dots,n_k$ 
-    can be chosen so that $n_1\geq2$ and 
+    can be chosen so that 
     $n_j$ divides $n_{j+1}$ for all $j\in\{1,\dots,k-1\}$. 
 \end{theorem}
 
+\index{Group!abelian!rank}
+\index{Group!abelian!invariant factors}
 The integer $r$ 
 in Theorem \ref{thm:abelian_factors}
 is uniquely determined by $A$ and 
