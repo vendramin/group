@@ -2,7 +2,7 @@
 \lecture\label{lec:sylow}
 
 \begin{definition}
-\index{Sylow subgroup}
+\index{Subgroup!Sylow}
 Let $G$ be a group of order $p^\alpha m$, where $p$ is a prime number
 coprime with $m$. A subgroup $S$ of $G$ is said to be a \emph{Sylow $p$-subgroup} of $G$ if $|S|=p^\alpha$.
 \end{definition}
@@ -96,14 +96,14 @@ formula, we get the result we wanted to prove.
 \end{proof}
 
 \begin{theorem}[Sylow's first theorem]
-\index{Theorem!Sylow, I}
+\index{Sylow's theorems!first}
 \label{thm:Sylow1}
 Let $G$ be a finite group and 
 $p$ a prime number. Then there exists a Sylow $p$-subgroup of $G$. 
 \end{theorem}
 
 \begin{proof}
-Write $|G|=p^\alpha m$ with $\gcd(p,m)=1$ and $\alpha\geq1$. Let 
+Write $|G|=p^\alpha m$ with $\gcd(p,m)=1$ and $\alpha\geq0$. Let 
 \[
 X=\{S:S\subseteq G\text{ subsets of size $p^\alpha$}\}.
 \]
@@ -115,7 +115,7 @@ implies that
 \]
 Thus there exists an orbit $\mathcal{O}$ of size not divisible by $p$. 
 If $S\in\mathcal{O}$, let $G_S$ be the stabilizer of $S$ in $G$. Since
-$|\mathcal{O}|=(G:G_S)$ and $|\mathcal{O}|$ is not divisible by $p$, we obtain that $p^\alpha$ divide a $|
+$|\mathcal{O}|=(G:G_S)$ and $|\mathcal{O}|$ is not divisible by $p$, we obtain that $p^\alpha$ divides $|
 G_S|$. In particular, $p^\alpha\leq |G_S|$. If $g\in G_S$, then
 $gS=S$. If $x\in S$, then $G_Sx\subseteq S$. Thus 
 \[
@@ -125,12 +125,12 @@ as $S\in X$. Therefore $G_S$ is a Sylow $p$-subgroup of $G$.
 \end{proof}
 
 If $G$ is a finite group and
-$p$ is a prime divisor of $|G|$, 
+$p$ is a prime number, 
 let 
 \[
 \Syl_p(G)=\{\text{Sylow $p$-subgroups of $G$}\}.
 \]
-The first Sylow's theorem states that 
+The Sylow's first theorem states that 
 $\Syl_p(G)$ is non-empty. 
 
 Before proving Sylow's second theorem, 
@@ -177,7 +177,7 @@ is, $G$ acts transitively
 by conjugation on $\Syl_p(G)$. 
 
 \begin{theorem}[Sylow's second theorem]
-\index{Theorem!Sylow, II}
+\index{Sylow's theorems!second}
 \label{thm:Sylow2}
 Let $G$ be a finite group and $p$ 
 a prime number. If 
@@ -203,6 +203,7 @@ $\Syl_p(G)=\{S\}$.
 If $T\in\Syl_p(G)$, then $T=gSg^{-1}=S$ for some $g\in G$.
 \end{proof}
 
+\index{Subgroup!Sylow!number}
 For the next theorem, we need some notation. If $p$
 is a prime number and $G$ is a finite group of order
 $p^\alpha m$ with $\gcd(p,m)=1$, then
@@ -210,11 +211,12 @@ $n_p(G)=|\Syl_p(G)|$. Note that
 \[
 n_p(G)=(G:N_G(P))
 \]
-for all $P\in\Syl_p(G)$ (see Example~\ref{xca:counting_conjugates}). We will prove that
+for all $P\in\Syl_p(G)$ (see Example~\ref{xca:counting_conjugates}). 
+Since $P\leq N_G(P)$ and $(G:P)=m$, it follows that
 $n_p(G)$ divides $m$.
 
 \begin{theorem}[Sylow's third theorem]
-\index{Theorem!Sylow, III}
+    \index{Sylow's theorems!third}
 \label{thm:Sylow3}
 Let $G$ be a finite group and $p$ a prime number. 
 Then $n_p(G)\equiv 1\bmod p$.
@@ -247,7 +249,7 @@ Then $n_p(G)\equiv 1\bmod p$.
         \[
         (xP_i)^{p^{\alpha}}=x^{p^{\alpha}}P_i=P_i.
         \]
-        This means that the order of 
+        This means that 
         $xP_i\in N_G(P_i)/P_i$ has order dividing $p^{\alpha}$. Since 
         $N_G(P_i)/P_i$ has order not divisible by $p$, it follows 
         that $xP_i$ is the neutral element of $N_G(P_i)/P_i$, that is $xP_i=P_i$. Thus
