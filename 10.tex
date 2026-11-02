@@ -4,7 +4,7 @@ The idea used in Example \ref{exa:for_HK} can be generalized.
 
 \begin{optional}
 \begin{example}
-\index{Double coset}
+\index{Coset!double}
 Let $G$ be a group and $H$ and $K$ be subgroups of $G$. Let the group $L=H\times K$ act on $G$ by
 \[
 (h,k)\cdot g=hgk^{-1}.
@@ -25,7 +25,9 @@ for some set $I$. Now we compute
 L_g=\{(h,k)\in H\times K:hgk^{-1}=g\}=\{(h,g^{-1}hg)\in H\times K\}.
 \]
 Then $|L_g|=|H\cap gKg^{-1}|$, because there is a bijection between $L_g$ and
-$H\cap gKg^{-1}$. By the fundamental counting principle (Theorem~\ref{thm:fundamental}), 
+$H\cap gKg^{-1}$.
+Assume now that $H$ and $K$ are finite. 
+By the fundamental counting principle (Theorem~\ref{thm:fundamental}), 
 \[
 |HgK|=(L:L_g)=\frac{|H\times K|}{|H\cap gKg^{-1}|}=\frac{|H||K|}{|H\cap gKg^{-1}|}.
 \]
@@ -40,8 +42,9 @@ the group $\GL_n(q)$ in the case where
 $q$ is a power of the prime number $p$.
 
 \begin{example}
+\index{Group!general linear!order}
 Let $p$ be a prime number and $K=\Z/p$.
-We claim that 
+We claim that, for $n\geq2$, 
 \[
 |\GL_n(p)|=(p^n-1)p^{n-1}|\GL_{n-1}(p)|,
 \]
@@ -55,8 +58,8 @@ Assume that it holds for $n-1\geq1$.
 The group $G=\GL_{n}(p)$ acts on
 $K^{n\times 1}$ by left multiplication. 
 What are the orbits? 
-Since for every 
-non-zero $v,w\in K^{n\times 1}$, then there exists 
+For every 
+non-zero $v,w\in K^{n\times 1}$ there exists 
 $g\in G$ such that $gv=w$. Thus there are only two orbits.
 One orbit is the one-element orbit 
 of the zero column vector of $K^{n\times1}$, and 
@@ -65,7 +68,7 @@ By the fundamental counting principle,
 \[
 p^{n}-1=|\mathcal{O}|=(G:G_{v}),
 \]
-for every $v\in\mathcal{O}$, that is every $v\in K^{n\times 1}$. 
+for every $v\in\mathcal{O}$, that is every $0\ne v\in K^{n\times 1}$. 
 
 To compute the stabilizer $G_v$ easily, take 
 \[
@@ -96,18 +99,18 @@ which implies the formula we wanted to prove.
 \section{\texorpdfstring{$p$}{p}-groups}
 \lecture\label{sec:pgroups}
 
-\index{Action!fixed points}
+\index{Action!fixed point}
 \index{Class equation}
 Let $G$ be a finite group acting on a finite 
 set $X$. Let 
 \[
 \Fix(X)=\{x\in X:g\cdot x=x\text{ for all $g\in G$}\}
 \]
-be the set of \emph{fixed points} of $X$, that is the set of one-element 
+be the set of \emph{fixed points} of $X$, that is the union of one-element 
 orbits. We know that $X$ decomposes as a disjoint 
 union of orbits. In particular, 
 \[
-X=\Fix(X)\cup \mathcal{O}_1\cup\cdots\mathcal{O}_k,
+X=\Fix(X)\cup \mathcal{O}_1\cup\cdots\cup\mathcal{O}_k,
 \]
 where $\mathcal{O}_1,\dots,\mathcal{O}_k$ are orbits such that 
 $|\mathcal{O}_j|\geq2$ for all $j\in\{1,\dots,k\}$. 
@@ -119,7 +122,7 @@ fundamental counting principle,
 =|\Fix(X)|+\sum_{i=1}^k(G:G_{x_i}),
 \end{equation}
 where $x_j\in\mathcal{O}_j$ and 
-$(G:G_{x_i})\geq2$ for all $j\in\{1,\dots,k\}$. 
+$(G:G_{x_j})\geq2$ for all $j\in\{1,\dots,k\}$. 
 Equality~\eqref{eq:clases} is extremely 
 useful and is called the 
 \emph{class equation}.
@@ -135,7 +138,7 @@ $(G:C_G(x_i))\geq2$ for all $i\in\{1,\dots,k\}$.
 \end{example}
 
 \begin{definition}
-\index{$p$-group}
+\index{Group!p-group@$p$-group}
 Let $p$ be a prime number. We say 
 that $G$ is a \emph{$p$-group} if $|G|=p^m$ for some $m\geq0$.
 \end{definition}
@@ -166,7 +169,7 @@ The following corollary follows immediately:
 
 \begin{corollary}
 Let $p$ be a prime number and 
-$G$ a $p$-group. Then 
+$G$ a non-trivial $p$-group. Then 
 $Z(G)\ne\{1\}$.
 \end{corollary}
 
@@ -254,11 +257,12 @@ If $k\equiv 1\bmod p$, then $rs=sr$ and hence, since $G$ is abelian, $G\simeq\Z/
 \begin{theorem}
     Let $p$ be a prime number. 
     A group of order $p^m$ has a normal subgroup of order
-    $p^n$ for every $n\leq m$.
+    $p^n$ for every $n\in\{0,1,\dots,m\}$. 
 \end{theorem}
 
 \begin{proof}
-    We proceed by induction on $m$. The case where $m=1$ is trivial. So let $m\geq1$ and 
+    The subgroup of order one is $\{1\}$.
+    We proceed by induction on $m$. The case where $m=1$ is trivial. So let $m\geq0$ and 
     assume the result holds for groups of order $p^m$. Let
     $G$ be a group of order $p^{m+1}$.
     We claim that if $n\leq m$, $G$ contains a normal subgroup of
